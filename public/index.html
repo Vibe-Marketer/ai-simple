@@ -325,22 +325,26 @@ tailwind.config = {
   <div class="absolute inset-0 bg-gradient-to-b from-orange-950/10 via-transparent to-transparent pointer-events-none"></div>
 
   <!-- Waterfall / Aurora Background Animation (CSS) -->
-  <div class="absolute inset-0 z-0 h-[800px] overflow-hidden pointer-events-none" style="mask-image: linear-gradient(to bottom, transparent, black 5%, black 75%, transparent);">
-    <!-- Flowing gradient layer 1 -->
-    <div class="absolute inset-0" style="background: radial-gradient(ellipse 80% 50% at 20% 40%, rgba(249,115,22,0.12) 0%, transparent 60%), radial-gradient(ellipse 60% 60% at 75% 60%, rgba(251,146,60,0.08) 0%, transparent 60%); animation: auroraShift1 8s ease-in-out infinite alternate;"></div>
-    <!-- Flowing gradient layer 2 -->
-    <div class="absolute inset-0" style="background: radial-gradient(ellipse 70% 50% at 60% 30%, rgba(234,88,12,0.1) 0%, transparent 55%), radial-gradient(ellipse 50% 70% at 30% 70%, rgba(249,115,22,0.06) 0%, transparent 60%); animation: auroraShift2 12s ease-in-out infinite alternate-reverse;"></div>
-    <!-- Vertical light beams -->
-    <div class="absolute inset-0 flex justify-around px-[10%]" style="animation: auroraShift3 6s ease-in-out infinite alternate;">
-      <div class="w-px h-full bg-gradient-to-b from-transparent via-orange-500/10 to-transparent"></div>
-      <div class="w-px h-full bg-gradient-to-b from-transparent via-white/5 to-transparent"></div>
-      <div class="w-px h-full bg-gradient-to-b from-transparent via-orange-500/8 to-transparent"></div>
-      <div class="w-px h-full bg-gradient-to-b from-transparent via-white/3 to-transparent"></div>
-      <div class="w-px h-full bg-gradient-to-b from-transparent via-orange-500/6 to-transparent"></div>
+  <div class="absolute top-0 left-0 right-0 z-[1] h-[850px] overflow-hidden pointer-events-none" style="mask-image: linear-gradient(to bottom, transparent, black 3%, black 80%, transparent);">
+    <!-- Primary flowing glow -->
+    <div class="absolute inset-0" style="background: radial-gradient(ellipse 90% 60% at 25% 40%, rgba(249,115,22,0.35) 0%, transparent 55%), radial-gradient(ellipse 70% 70% at 80% 55%, rgba(251,146,60,0.25) 0%, transparent 55%); animation: auroraShift1 8s ease-in-out infinite alternate;"></div>
+    <!-- Secondary flowing glow -->
+    <div class="absolute inset-0" style="background: radial-gradient(ellipse 80% 60% at 65% 30%, rgba(234,88,12,0.28) 0%, transparent 50%), radial-gradient(ellipse 60% 80% at 25% 65%, rgba(249,115,22,0.18) 0%, transparent 55%); animation: auroraShift2 12s ease-in-out infinite alternate-reverse;"></div>
+    <!-- Bright center accent -->
+    <div class="absolute inset-0" style="background: radial-gradient(ellipse 40% 40% at 50% 45%, rgba(251,146,60,0.2) 0%, transparent 70%); animation: auroraShift3 6s ease-in-out infinite alternate;"></div>
+    <!-- Vertical light beams / columns -->
+    <div class="absolute inset-0 flex justify-around px-[8%]" style="animation: auroraShift3 6s ease-in-out infinite alternate;">
+      <div class="w-px h-full bg-gradient-to-b from-transparent via-orange-500/25 to-transparent"></div>
+      <div class="w-px h-full bg-gradient-to-b from-transparent via-white/10 to-transparent"></div>
+      <div class="w-px h-full bg-gradient-to-b from-transparent via-orange-400/20 to-transparent"></div>
+      <div class="w-px h-full bg-gradient-to-b from-transparent via-white/8 to-transparent"></div>
+      <div class="w-px h-full bg-gradient-to-b from-transparent via-orange-500/15 to-transparent"></div>
+      <div class="w-px h-full bg-gradient-to-b from-transparent via-white/6 to-transparent"></div>
+      <div class="w-px h-full bg-gradient-to-b from-transparent via-orange-400/12 to-transparent"></div>
     </div>
   </div>
 
-  <div class="z-10 text-center max-w-5xl mt-24 mr-auto mb-12 ml-auto pr-6 pl-6 relative" style="position: relative; z-index: 10;">
+  <div class="z-20 text-center max-w-5xl mt-24 mr-auto mb-12 ml-auto pr-6 pl-6 relative">
     <!-- Badge -->
     <div class="[animation:fadeSlideIn_1s_ease-out_0.8s_both] inline-flex transition-transform hover:scale-105 cursor-pointer group bg-gradient-to-b from-white/10 to-white/0 rounded-none mb-10 pt-1.5 pr-4 pb-1.5 pl-3 backdrop-blur-sm gap-x-2 items-center border border-zinc-800 border-dashed">
       <span class="flex h-1.5 w-1.5 rounded-full animate-pulse bg-orange-500 shadow-[0_0_10px_rgba(249,115,22,0.5)]"></span>
