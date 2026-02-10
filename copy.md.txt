@@ -1,0 +1,115 @@
+Pick the **first one** (red / black creative agency layout).
+
+Here’s why and exactly how to bend it to your will.
+
+---
+
+## Why Template #1
+
+1. **It already looks like a “boutique operator studio,” not a SaaS app.**  
+   You and Los are the product. Template #1 is built to showcase people, work, and outcomes. The others scream “fintech SaaS” or “crypto protocol,” which fights your positioning.
+
+2. **Card layout = perfect for case studies + authority.**  
+   Those 3–4 cards under the hero? That’s where you show:  
+   - “$XM in revenue unlocked”  
+   - “XX,XXX leads generated”  
+   - “Top brands we’ve helped”  
+   Instantly feels like a proven shop, not a dude with prompts.
+
+3. **Dark, premium aesthetic without the ‘AI gradient vomit’ vibe.**  
+   It reads as design-forward and expensive, not “I used a free AI page builder.”
+
+---
+
+## How to repurpose it for “You + Los”
+
+### Hero
+
+Replace the current hero with:
+
+- Big headline:  
+  **Build Offers, Brands & AI Systems That Actually Move the Needle**
+
+- Subhead:  
+  “Work directly with Los Silva and [Your Name] to architect offers, content machines, and AI-driven systems that turn attention into revenue.”
+
+- Two CTAs:  
+  - **Work With Us** (scrolls to a consulting section / Typeform)  
+  - **Get Our AI Lead Vault** (goes to your Offer MBA + 728M leads page)
+
+Side‑by‑side photos of you and Los or a single strong shot together.
+
+---
+
+### The 3 main cards under hero
+
+Use them like this:
+
+1. **“Offer Architecture”**  
+   Short copy: “We build Grand Slam offers, positioning, and pricing that make your market feel stupid saying no.”
+
+2. **“Brand & Content Systems”**  
+   “We install a repeatable content + social system that compounds attention and authority.”
+
+3. **“AI & Automation in the Business”**  
+   “We implement workflows that turn calls, content, and ops into repeatable systems with AI.”
+
+Optional 4th card: **“Private Founder Advisory”** for your coaching / consulting.
+
+---
+
+### Stats / proof section
+
+Swap their generic stats for your concrete bragging rights:
+
+- `+$XM` in client revenue influenced  
+- `XX,XXX+` leads / calls booked  
+- `X` industries / markets  
+- `Y` years operating online
+
+Below that: logos of brands / platforms / podcasts (Acquisition.com, YouTube subs, shows Los has been on, etc.)
+
+---
+
+### “Projects / Case studies” strip
+
+Turn this into 3–6 **mini case studies**:
+
+- “Scaled [Brand] from X → Y followers and Z booked calls in 90 days.”  
+- “Rebuilt [Offer] -> 3x close rate without more traffic.”  
+
+Each card: result in the title, one‑liner on how, CTA: **See Breakdown** (could open a simple Notion or stay static for now).
+
+---
+
+### Pricing section
+
+You can either:
+
+- Keep a **single “Engage Us” tier** with “Apply to work with us” button,  
+  or  
+- Remove pricing entirely and use it as a “How we work” visual (Strategy Day → 90‑Day Build → Long‑Term Advisory).
+
+Main CTA in this section: **Apply for a Strategy Call**.
+
+---
+
+### Global “Lead Magnet” button
+
+In the header, add one standout button:
+
+**“Free Offer MBA + 728M Leads”**  
+→ Links straight to your event / lead magnet page.
+
+That keeps the credibility site doing its job (authority) while quietly feeding the funnel.
+
+---
+
+Execute order:
+
+1. Choose Template #1.  
+2. Swap hero + nav + buttons to match above.  
+3. Replace inner sections with proof, case studies, and your core 3–4 services.  
+4. Add the global AI Lead Vault button.
+
+You don’t need it perfect; you need it live before the event. Pretty can happen on iteration 2.

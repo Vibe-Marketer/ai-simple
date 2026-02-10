@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Simple - Build Offers, Brands & AI Systems That Actually Move the Needle</title>
+<meta name="description" content="Work directly with Los Silva and Andrew Naegele to architect offers, content machines, and AI-driven systems that turn attention into revenue.">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+body { font-family: 'Inter', sans-serif; }
+.font-manrope { font-family: 'Manrope', sans-serif !important; }
+.font-geist { font-family: 'Geist', sans-serif !important; }
+.font-geist-mono { font-family: 'Geist Mono', monospace !important; }
+.font-space-mono { font-family: 'Space Mono', monospace !important; }
+
+/* Animation Keyframe: Content Fade In */
+@keyframes fadeSlideIn {
+  0% { opacity: 0; transform: translateY(30px); filter: blur(8px); }
+  100% { opacity: 1; transform: translateY(0); filter: blur(0px); }
+}
+
+/* Aurora / Waterfall Background Keyframes */
+@keyframes auroraShift1 {
+  0% { transform: translateX(-8%) translateY(-3%) scale(1); opacity: 0.7; }
+  50% { transform: translateX(8%) translateY(3%) scale(1.1); opacity: 1; }
+  100% { transform: translateX(-8%) translateY(-3%) scale(1); opacity: 0.7; }
+}
+@keyframes auroraShift2 {
+  0% { transform: translateX(5%) translateY(5%) scale(1.05); opacity: 0.8; }
+  50% { transform: translateX(-5%) translateY(-5%) scale(1); opacity: 0.6; }
+  100% { transform: translateX(5%) translateY(5%) scale(1.05); opacity: 0.8; }
+}
+@keyframes auroraShift3 {
+  0% { transform: translateX(-3%); opacity: 0.4; }
+  100% { transform: translateX(3%); opacity: 0.7; }
+}
+
+/* Animation Keyframe: Column Clip Reveal */
+@keyframes columnReveal {
+  0% { clip-path: inset(0 0 100% 0); opacity: 0; }
+  100% { clip-path: inset(0 0 0% 0); opacity: 1; }
+}
+.col-anim {
+  animation: columnReveal 1.4s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  will-change: clip-path;
+}
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+.delay-5 { animation-delay: 0.5s; }
+.delay-6 { animation-delay: 0.6s; }
+.delay-7 { animation-delay: 0.7s; }
+
+/* Animation on Scroll State Management */
+.animate-on-scroll { animation-play-state: paused !important; }
+.animate-on-scroll.animate { animation-play-state: running !important; }
+
+/* Animated Shiny CTA Button Styles */
+@property --gradient-angle { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
+@property --gradient-angle-offset { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
+@property --gradient-percent { syntax: "<percentage>"; initial-value: 20%; inherits: false; }
+@property --gradient-shine { syntax: "<color>"; initial-value: #f97316; inherits: false; }
+.shiny-cta {
+  --gradient-angle: 0deg;
+  --gradient-angle-offset: 0deg;
+  --gradient-percent: 20%;
+  --gradient-shine: #f97316;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0px;
+  padding: 1.25rem 3rem;
+  font-size: 1.125rem;
+  line-height: 1.2;
+  font-weight: 500;
+  color: #ffffff;
+  background: linear-gradient(#000000, #000000) padding-box,
+    conic-gradient(from calc(var(--gradient-angle) - var(--gradient-angle-offset)),
+    transparent 0%, #f97316 5%, var(--gradient-shine) 15%, #f97316 30%, transparent 40%, transparent 100%) border-box;
+  border: 2px solid transparent;
+  box-shadow: inset 0 0 0 1px #1a1818;
+  outline: none;
+  transition: --gradient-angle-offset 800ms cubic-bezier(0.25, 1, 0.5, 1),
+    --gradient-percent 800ms cubic-bezier(0.25, 1, 0.5, 1),
+    --gradient-shine 800ms cubic-bezier(0.25, 1, 0.5, 1),
+    box-shadow 0.3s;
+  cursor: pointer;
+  isolation: isolate;
+  outline-offset: 4px;
+  z-index: 0;
+  animation: border-spin 2.5s linear infinite;
+}
+@keyframes border-spin { to { --gradient-angle: 360deg; } }
+.shiny-cta:active { transform: translateY(1px); }
+.shiny-cta::before {
+  content: '';
+  pointer-events: none;
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  --size: calc(100% - 6px);
+  width: var(--size); height: var(--size);
+  background: radial-gradient(circle at 2px 2px, white 0.5px, transparent 0) padding-box;
+  background-size: 4px 4px;
+  background-repeat: space;
+  mask-image: conic-gradient(from calc(var(--gradient-angle) + 45deg), black, transparent 10% 90%, black);
+  border-radius: inherit;
+  opacity: 0.4;
+}
+.shiny-cta::after {
+  content: '';
+  pointer-events: none;
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  width: 100%;
+  aspect-ratio: 1;
+  background: linear-gradient(-50deg, transparent, #f97316, transparent);
+  mask-image: radial-gradient(circle at bottom, transparent 40%, black);
+  opacity: 0.6;
+  animation: shimmer 4s linear infinite;
+}
+.shiny-cta span { position: relative; z-index: 2; display: inline-block; }
+.shiny-cta span::before {
+  content: '';
+  pointer-events: none;
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  --size: calc(100% + 1rem);
+  width: var(--size); height: var(--size);
+  box-shadow: inset 0 -1ex 2rem 4px #f97316;
+  opacity: 0;
+  border-radius: inherit;
+  transition: opacity 800ms cubic-bezier(0.25, 1, 0.5, 1);
+  animation: breathe 4.5s linear infinite;
+}
+@keyframes shimmer { to { transform: translate(-50%, -50%) rotate(360deg); } }
+@keyframes breathe {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.20); }
+}
+
+/* Progressive Blur CSS */
+.gradient-blur {
+  position: fixed;
+  z-index: 5;
+  inset: 0 0 auto 0;
+  height: 12%;
+  pointer-events: none;
+}
+.gradient-blur>div, .gradient-blur::before, .gradient-blur::after { position: absolute; inset: 0; }
+.gradient-blur::before { content: ""; z-index: 1; backdrop-filter: blur(0.5px); mask: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 12.5%, rgba(0,0,0,1) 25%, rgba(0,0,0,0) 37.5%); }
+.gradient-blur>div:nth-of-type(1) { z-index: 2; backdrop-filter: blur(1px); mask: linear-gradient(to top, rgba(0,0,0,0) 12.5%, rgba(0,0,0,1) 25%, rgba(0,0,0,1) 37.5%, rgba(0,0,0,0) 50%); }
+.gradient-blur>div:nth-of-type(2) { z-index: 3; backdrop-filter: blur(2px); mask: linear-gradient(to top, rgba(0,0,0,0) 25%, rgba(0,0,0,1) 37.5%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 62.5%); }
+.gradient-blur>div:nth-of-type(3) { z-index: 4; backdrop-filter: blur(4px); mask: linear-gradient(to top, rgba(0,0,0,0) 37.5%, rgba(0,0,0,1) 50%, rgba(0,0,0,1) 62.5%, rgba(0,0,0,0) 75%); }
+.gradient-blur>div:nth-of-type(4) { z-index: 5; backdrop-filter: blur(8px); mask: linear-gradient(to top, rgba(0,0,0,0) 50%, rgba(0,0,0,1) 62.5%, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 87.5%); }
+.gradient-blur>div:nth-of-type(5) { z-index: 6; backdrop-filter: blur(16px); mask: linear-gradient(to top, rgba(0,0,0,0) 62.5%, rgba(0,0,0,1) 75%, rgba(0,0,0,1) 87.5%, rgba(0,0,0,0) 100%); }
+.gradient-blur>div:nth-of-type(6) { z-index: 7; backdrop-filter: blur(32px); mask: linear-gradient(to top, rgba(0,0,0,0) 75%, rgba(0,0,0,1) 87.5%, rgba(0,0,0,1) 100%); }
+.gradient-blur::after { content: ""; z-index: 8; backdrop-filter: blur(64px); mask: linear-gradient(to top, rgba(0,0,0,0) 87.5%, rgba(0,0,0,1) 100%); }
+
+/* Border gradient shared style */
+[style*="--border-gradient"]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: var(--border-radius-before, inherit);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  background: var(--border-gradient);
+  pointer-events: none;
+}
+</style>
+
+<script>
+tailwind.config = {
+  theme: {
+    extend: {}
+  },
+  plugins: [
+    function({ addUtilities }) {
+      const rotateXUtilities = {};
+      const rotateYUtilities = {};
+      const rotateZUtilities = {};
+      const rotateValues = [0, 5, 10, 15, 20, 30, 45, 75];
+      rotateValues.forEach((value) => {
+        rotateXUtilities[`.rotate-x-${value}`] = {
+          '--tw-rotate-x': `${value}deg`,
+          transform: `translate3d(var(--tw-translate-x, 0), var(--tw-translate-y, 0), var(--tw-translate-z, 0)) rotateX(var(--tw-rotate-x, 0)) rotateY(var(--tw-rotate-y, 0)) rotateZ(var(--tw-rotate-z, 0)) skewX(var(--tw-skew-x, 0)) skewY(var(--tw-skew-y, 0)) scaleX(var(--tw-scale-x, 1)) scaleY(var(--tw-scale-y, 1))`,
+        };
+        if (value !== 0) {
+          rotateXUtilities[`.-rotate-x-${value}`] = {
+            '--tw-rotate-x': `-${value}deg`,
+            transform: `translate3d(var(--tw-translate-x, 0), var(--tw-translate-y, 0), var(--tw-translate-z, 0)) rotateX(var(--tw-rotate-x, 0)) rotateY(var(--tw-rotate-y, 0)) rotateZ(var(--tw-rotate-z, 0)) skewX(var(--tw-skew-x, 0)) skewY(var(--tw-skew-y, 0)) scaleX(var(--tw-scale-x, 1)) scaleY(var(--tw-scale-y, 1))`,
+          };
+        }
+      });
+      rotateValues.forEach((value) => {
+        rotateYUtilities[`.rotate-y-${value}`] = {
+          '--tw-rotate-y': `${value}deg`,
+          transform: `translate3d(var(--tw-translate-x, 0), var(--tw-translate-y, 0), var(--tw-translate-z, 0)) rotateX(var(--tw-rotate-x, 0)) rotateY(var(--tw-rotate-y, 0)) rotateZ(var(--tw-rotate-z, 0)) skewX(var(--tw-skew-x, 0)) skewY(var(--tw-skew-y, 0)) scaleX(var(--tw-scale-x, 1)) scaleY(var(--tw-scale-y, 1))`,
+        };
+      });
+      const perspectiveUtilities = {
+        ".perspective-none": { perspective: "none" },
+        ".perspective-dramatic": { perspective: "100px" },
+        ".perspective-near": { perspective: "300px" },
+        ".perspective-normal": { perspective: "500px" },
+        ".perspective-midrange": { perspective: "800px" },
+        ".perspective-distant": { perspective: "1200px" },
+      };
+      const transformStyleUtilities = {
+        ".transform-style-preserve-3d": { "transform-style": "preserve-3d" },
+        ".transform-style-flat": { "transform-style": "flat" },
+      };
+      addUtilities({
+        ...rotateXUtilities,
+        ...rotateYUtilities,
+        ...rotateZUtilities,
+        ...perspectiveUtilities,
+        ...transformStyleUtilities,
+      });
+    }
+  ]
+};
+</script>
+
+<script>
+(function () {
+  const once = true;
+  if (!window.__inViewIO) {
+    window.__inViewIO = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animate");
+          if (once) window.__inViewIO.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: "0px 0px -5% 0px" });
+  }
+  window.initInViewAnimations = function (selector = ".animate-on-scroll") {
+    document.querySelectorAll(selector).forEach((el) => {
+      window.__inViewIO.observe(el);
+    });
+  };
+  document.addEventListener("DOMContentLoaded", () => initInViewAnimations());
+})();
+</script>
+</head>
+
+<body class="antialiased overflow-x-hidden selection:bg-orange-600/30 selection:text-orange-200 text-white bg-black">
+
+<!-- Progressive Blur Top -->
+<div class="gradient-blur" style="height: 120px;">
+  <div></div><div></div><div></div><div></div><div></div><div></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- NAVIGATION -->
+<!-- ============================================================ -->
+<div class="fixed flex [animation:fadeSlideIn_1s_ease-out_0.5s_both] w-full z-50 pt-6 pr-4 pl-4 top-0 left-0 justify-center">
+  <nav class="shadow-black/50 flex md:gap-8 md:w-auto bg-black/60 w-full max-w-5xl rounded-none pt-2 pr-2 pb-2 pl-3 shadow-2xl backdrop-blur-lg gap-x-4 gap-y-4 items-center justify-between" style="position: relative; --border-gradient: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0), rgba(255,255,255,0.2)); --border-radius-before: 0">
+    <div class="flex gap-2 shrink-0 items-center">
+      <a href="/" class="flex gap-x-3 items-center">
+        <div class="grid grid-cols-2 opacity-90 w-6 h-6 gap-x-1 gap-y-1">
+          <div class="bg-[#f97316] w-full h-full rounded-sm"></div>
+          <div class="w-full h-full bg-zinc-700 rounded-sm"></div>
+          <div class="w-full h-full bg-zinc-800 rounded-sm"></div>
+          <div class="w-full h-full bg-white rounded-sm shadow-[0_0_10px_rgba(255,255,255,0.4)]"></div>
+        </div>
+        <span class="text-xl font-bold text-white tracking-tight font-manrope">AI Simple</span>
+      </a>
+    </div>
+    <div class="hidden md:flex items-center gap-6">
+      <a href="#about" class="group hover:text-white transition-colors text-sm font-medium text-gray-400 font-sans py-1 relative">
+        About
+        <span class="absolute -bottom-3 left-1/2 w-0 h-[1px] bg-gradient-to-r from-transparent via-[#f97316] to-transparent group-hover:w-full group-hover:opacity-100 transition-all duration-300 ease-out -translate-x-1/2 shadow-[0_0_10px_rgba(249,115,22,0.8)]"></span>
+      </a>
+      <a href="#results" class="group hover:text-white transition-colors text-sm font-medium text-gray-400 font-sans py-1 relative">
+        Results
+        <span class="absolute -bottom-3 left-1/2 w-0 h-[1px] bg-gradient-to-r from-transparent via-[#f97316] to-transparent group-hover:w-full group-hover:opacity-100 transition-all duration-300 ease-out -translate-x-1/2 shadow-[0_0_10px_rgba(249,115,22,0.8)]"></span>
+      </a>
+      <a href="#how-we-work" class="group hover:text-white transition-colors text-sm font-medium text-gray-400 font-sans py-1 relative">
+        How We Work
+        <span class="absolute -bottom-3 left-1/2 w-0 h-[1px] bg-gradient-to-r from-transparent via-[#f97316] to-transparent group-hover:w-full group-hover:opacity-100 transition-all duration-300 ease-out -translate-x-1/2 shadow-[0_0_10px_rgba(249,115,22,0.8)]"></span>
+      </a>
+    </div>
+    <div class="flex gap-3 shrink-0 items-center">
+      <!-- Free AI Lead Vault - Standout Button -->
+      <a href="lead-magnet.html" class="hidden md:inline-flex items-center gap-2 rounded-none px-4 py-2.5 text-xs font-bold tracking-wide uppercase bg-[#f97316] text-black hover:bg-orange-400 transition-colors cursor-pointer">
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Free AI Lead Vault
+      </a>
+      <!-- Work With Us -->
+      <a href="#how-we-work" class="group inline-flex overflow-hidden transition-transform active:scale-95 cursor-pointer outline-none rounded-none pt-2.5 pr-5 pb-2.5 pl-5 relative items-center justify-center" style="background-color: rgba(255,255,255,0.05)">
+        <span class="absolute inset-[-100%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,transparent_75%,#f97316_100%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
+        <span class="absolute inset-0 rounded-none bg-zinc-800 transition-opacity duration-300 group-hover:opacity-0"></span>
+        <span class="bg-black z-10 rounded-none absolute top-[1px] right-[1px] bottom-[1px] left-[1px]"></span>
+        <div class="absolute inset-0 pointer-events-none transition-opacity duration-500 opacity-0 group-hover:opacity-100 z-10" style="background: radial-gradient(50% 50% at 50% 100%, rgba(249,115,22,0.2) 0%, transparent 100%);"></div>
+        <span class="relative z-20 flex items-center justify-center gap-2 text-xs font-medium text-white tracking-wide uppercase">
+          <span>Work With Us</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 group-hover:translate-x-0.5"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+        </span>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<!-- ============================================================ -->
+<!-- HERO SECTION -->
+<!-- ============================================================ -->
+<section class="h-auto min-h-[800px] flex flex-col overflow-hidden w-full pt-32 md:pt-20 relative items-center justify-start">
+  <!-- Subtle background gradient -->
+  <div class="absolute inset-0 bg-gradient-to-b from-orange-950/10 via-transparent to-transparent pointer-events-none"></div>
+
+  <!-- Waterfall / Aurora Background Animation (CSS) -->
+  <div class="absolute inset-0 z-0 h-[800px] overflow-hidden pointer-events-none" style="mask-image: linear-gradient(to bottom, transparent, black 5%, black 75%, transparent);">
+    <!-- Flowing gradient layer 1 -->
+    <div class="absolute inset-0" style="background: radial-gradient(ellipse 80% 50% at 20% 40%, rgba(249,115,22,0.12) 0%, transparent 60%), radial-gradient(ellipse 60% 60% at 75% 60%, rgba(251,146,60,0.08) 0%, transparent 60%); animation: auroraShift1 8s ease-in-out infinite alternate;"></div>
+    <!-- Flowing gradient layer 2 -->
+    <div class="absolute inset-0" style="background: radial-gradient(ellipse 70% 50% at 60% 30%, rgba(234,88,12,0.1) 0%, transparent 55%), radial-gradient(ellipse 50% 70% at 30% 70%, rgba(249,115,22,0.06) 0%, transparent 60%); animation: auroraShift2 12s ease-in-out infinite alternate-reverse;"></div>
+    <!-- Vertical light beams -->
+    <div class="absolute inset-0 flex justify-around px-[10%]" style="animation: auroraShift3 6s ease-in-out infinite alternate;">
+      <div class="w-px h-full bg-gradient-to-b from-transparent via-orange-500/10 to-transparent"></div>
+      <div class="w-px h-full bg-gradient-to-b from-transparent via-white/5 to-transparent"></div>
+      <div class="w-px h-full bg-gradient-to-b from-transparent via-orange-500/8 to-transparent"></div>
+      <div class="w-px h-full bg-gradient-to-b from-transparent via-white/3 to-transparent"></div>
+      <div class="w-px h-full bg-gradient-to-b from-transparent via-orange-500/6 to-transparent"></div>
+    </div>
+  </div>
+
+  <div class="z-10 text-center max-w-5xl mt-24 mr-auto mb-12 ml-auto pr-6 pl-6 relative" style="position: relative; z-index: 10;">
+    <!-- Badge -->
+    <div class="[animation:fadeSlideIn_1s_ease-out_0.8s_both] inline-flex transition-transform hover:scale-105 cursor-pointer group bg-gradient-to-b from-white/10 to-white/0 rounded-none mb-10 pt-1.5 pr-4 pb-1.5 pl-3 backdrop-blur-sm gap-x-2 items-center border border-zinc-800 border-dashed">
+      <span class="flex h-1.5 w-1.5 rounded-full animate-pulse bg-orange-500 shadow-[0_0_10px_rgba(249,115,22,0.5)]"></span>
+      <span class="text-xs font-medium tracking-wide font-mono text-orange-100/80 uppercase">
+        AI Strategists for 8 &amp; 9-Figure Brands
+      </span>
+    </div>
+
+    <!-- Heading -->
+    <h1 class="[animation:fadeSlideIn_1s_ease-out_1s_both] flex flex-wrap justify-center gap-x-[0.25em] gap-y-2 leading-[1.1] md:text-7xl lg:text-8xl cursor-default text-4xl font-medium tracking-tighter font-manrope mb-8">
+      <span class="inline-block leading-[1.3] bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50 opacity-60">Build</span>
+      <span class="inline-block leading-[1.3] bg-clip-text text-transparent bg-gradient-to-b from-orange-400 via-orange-500 to-orange-600/50 opacity-100">Offers,</span>
+      <span class="inline-block leading-[1.3] bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50 opacity-100">Brands</span>
+      <span class="inline-block leading-[1.3] bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50 opacity-60">&amp;</span>
+      <span class="inline-block leading-[1.3] bg-clip-text text-transparent bg-gradient-to-b from-orange-400 via-orange-500 to-orange-600/50 opacity-100">AI&nbsp;Systems</span>
+      <span class="inline-block leading-[1.3] bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50 opacity-60">That&nbsp;Actually</span>
+      <span class="inline-block leading-[1.3] bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50 opacity-100">Move&nbsp;the&nbsp;Needle</span>
+    </h1>
+
+    <!-- Subtext -->
+    <p class="[animation:fadeSlideIn_1s_ease-out_1.2s_both] leading-relaxed md:text-2xl text-lg font-medium text-gray-400 tracking-normal font-manrope max-w-3xl mr-auto mb-12 ml-auto">
+      Work directly with Los Silva and Andrew Naegele to architect offers, content machines, and AI&#8209;driven systems that turn attention&nbsp;into&nbsp;revenue.
+    </p>
+
+    <!-- CTA Buttons -->
+    <div class="[animation:fadeSlideIn_1s_ease-out_1.4s_both] flex flex-col md:flex-row mb-12 gap-6 items-center justify-center">
+      <!-- Button 1: Work With Us (white beam) -->
+      <a href="#how-we-work" class="group relative flex min-w-[180px] h-[50px] w-auto items-center justify-center rounded-none px-6 outline-none cursor-pointer transition-transform active:scale-95 no-underline" style="background-color: rgba(255,255,255,0.05); border: none;">
+        <div class="pointer-events-none absolute inset-0 opacity-100 transition-opacity duration-[1200ms] ease-in-out group-hover:opacity-0" style="background: radial-gradient(15% 50% at 50% 100%, rgb(255,255,255) 0%, rgba(255,255,255,0) 100%); filter: blur(15px);"></div>
+        <div class="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-[1200ms] ease-in-out group-hover:opacity-100" style="background: radial-gradient(60.6% 50% at 50% 100%, rgb(255,255,255) 0%, rgba(255,255,255,0) 100%); filter: blur(18px);"></div>
+        <div class="pointer-events-none will-change-auto absolute inset-0 opacity-100 transition-opacity duration-[1200ms] ease-in-out group-hover:opacity-0" style="background: radial-gradient(10.7% 50% at 50% 100%, rgb(255,255,255) 0%, rgba(255,255,255,0) 100%);"></div>
+        <div class="pointer-events-none will-change-auto absolute inset-0 opacity-0 transition-opacity duration-[1200ms] ease-in-out group-hover:opacity-100" style="background: radial-gradient(60.1% 50% at 50% 100%, rgb(255,255,255) 0%, rgba(255,255,255,0) 100%);"></div>
+        <div class="pointer-events-none absolute inset-0 overflow-hidden rounded-none">
+          <div class="absolute -inset-[300%] animate-[spin_4s_linear_infinite]" style="background: conic-gradient(from 90deg at 50% 50%, transparent 0%, transparent 90%, #ffffff 100%);"></div>
+        </div>
+        <div class="absolute inset-[1px] rounded-none" style="background-color: rgb(0,0,0);"></div>
+        <span class="relative z-20 flex items-center justify-center gap-2 text-xs font-medium text-white tracking-wide uppercase">
+          <span style="-webkit-font-smoothing: antialiased; text-shadow: 0 1px 2px rgba(0,0,0,0.5);">Work With Us</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 group-hover:translate-x-0.5"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+        </span>
+      </a>
+
+      <!-- Button 2: Get the AI Lead Vault (orange beam) -->
+      <a href="lead-magnet.html" class="group relative inline-flex min-w-[180px] h-[50px] items-center justify-center overflow-hidden rounded-none outline-none cursor-pointer transition-transform active:scale-95 no-underline" style="background-color: rgba(255,255,255,0.05);">
+        <span class="absolute inset-[-100%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,transparent_75%,#f97316_100%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
+        <span class="absolute inset-0 rounded-none bg-zinc-800 transition-opacity duration-300 group-hover:opacity-0"></span>
+        <span class="absolute inset-[1px] rounded-none bg-black z-10"></span>
+        <span class="absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-500 group-hover:opacity-100 z-10" style="background: radial-gradient(50% 50% at 50% 100%, rgba(249,115,22,0.2) 0%, transparent 100%);"></span>
+        <span class="relative z-20 flex items-center justify-center gap-2 text-xs font-medium text-white tracking-wide uppercase">
+          <span>Get the AI Lead Vault</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 group-hover:translate-x-0.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        </span>
+      </a>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- 3 MAIN CARDS UNDER HERO -->
+  <!-- ============================================================ -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-6xl mt-8 mr-auto mb-8 ml-auto relative px-6">
+
+    <!-- Card 1: Offer Architecture -->
+    <div class="bg-black border border-zinc-800 border-dashed rounded-none p-8 group hover:border-[#f97316]/50 transition-all duration-500 relative animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.2s_both]">
+      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#f97316]"></div>
+      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#f97316]"></div>
+      <div class="flex items-center gap-3 mb-5">
+        <div class="w-8 h-8 border border-zinc-700 rounded-none flex items-center justify-center group-hover:border-[#f97316]/50 transition-colors">
+          <i data-lucide="target" class="w-4 h-4 text-[#f97316]"></i>
+        </div>
+      </div>
+      <h3 class="text-lg font-semibold text-white font-manrope tracking-tight mb-3 group-hover:translate-x-1 transition-transform duration-300">Offer Architecture</h3>
+      <p class="text-sm text-zinc-400 leading-relaxed">We build Grand Slam offers, positioning, and pricing that make your market feel stupid saying no.</p>
+    </div>
+
+    <!-- Card 2: Brand & Content Systems -->
+    <div class="bg-black border border-zinc-800 border-dashed rounded-none p-8 group hover:border-[#f97316]/50 transition-all duration-500 relative animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.3s_both]">
+      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#f97316]"></div>
+      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#f97316]"></div>
+      <div class="flex items-center gap-3 mb-5">
+        <div class="w-8 h-8 border border-zinc-700 rounded-none flex items-center justify-center group-hover:border-[#f97316]/50 transition-colors">
+          <i data-lucide="megaphone" class="w-4 h-4 text-[#f97316]"></i>
+        </div>
+      </div>
+      <h3 class="text-lg font-semibold text-white font-manrope tracking-tight mb-3 group-hover:translate-x-1 transition-transform duration-300">Brand &amp; Content Systems</h3>
+      <p class="text-sm text-zinc-400 leading-relaxed">We install a repeatable content + social system that compounds attention and authority.</p>
+    </div>
+
+    <!-- Card 3: AI & Automation -->
+    <div class="bg-black border border-zinc-800 border-dashed rounded-none p-8 group hover:border-[#f97316]/50 transition-all duration-500 relative animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.4s_both]">
+      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#f97316]"></div>
+      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#f97316]"></div>
+      <div class="flex items-center gap-3 mb-5">
+        <div class="w-8 h-8 border border-zinc-700 rounded-none flex items-center justify-center group-hover:border-[#f97316]/50 transition-colors">
+          <i data-lucide="cpu" class="w-4 h-4 text-[#f97316]"></i>
+        </div>
+      </div>
+      <h3 class="text-lg font-semibold text-white font-manrope tracking-tight mb-3 group-hover:translate-x-1 transition-transform duration-300">AI &amp; Automation</h3>
+      <p class="text-sm text-zinc-400 leading-relaxed">We implement workflows that turn calls, content, and ops into repeatable systems with AI.</p>
+    </div>
+
+    <!-- Card 4: Private Founder Advisory -->
+    <div class="bg-black border border-zinc-800 border-dashed rounded-none p-8 group hover:border-[#f97316]/50 transition-all duration-500 relative animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.5s_both]">
+      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#f97316]"></div>
+      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#f97316]"></div>
+      <div class="flex items-center gap-3 mb-5">
+        <div class="w-8 h-8 border border-zinc-700 rounded-none flex items-center justify-center group-hover:border-[#f97316]/50 transition-colors">
+          <i data-lucide="shield-check" class="w-4 h-4 text-[#f97316]"></i>
+        </div>
+      </div>
+      <h3 class="text-lg font-semibold text-white font-manrope tracking-tight mb-3 group-hover:translate-x-1 transition-transform duration-300">Private Founder Advisory</h3>
+      <p class="text-sm text-zinc-400 leading-relaxed">Direct access to Los and Andrew for high-level strategy, accountability, and execution sprints.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- STATS / PROOF SECTION -->
+<!-- ============================================================ -->
+<section class="w-full max-w-6xl mx-auto px-6 py-20 relative animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.3s_both]">
+  <div class="border border-zinc-800 border-dashed rounded-none bg-black relative overflow-hidden">
+    <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#f97316]"></div>
+    <div class="absolute top-0 right-0 w-2 h-2 border-t border-r border-[#f97316]"></div>
+    <div class="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-[#f97316]"></div>
+    <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#f97316]"></div>
+
+    <!-- Stats Row -->
+    <div class="grid grid-cols-2 md:grid-cols-4 border-b border-zinc-800 border-dashed">
+      <div class="p-8 border-r border-zinc-800 border-dashed text-center">
+        <p class="text-4xl md:text-5xl font-bold text-white font-manrope tracking-tighter">$100M<span class="text-xl text-zinc-500">+</span></p>
+        <p class="text-xs text-zinc-500 font-mono uppercase tracking-wider mt-2">Ad Spend Managed</p>
+      </div>
+      <div class="p-8 md:border-r border-zinc-800 border-dashed text-center">
+        <p class="text-4xl md:text-5xl font-bold text-white font-manrope tracking-tighter">$300M<span class="text-xl text-zinc-500">+</span></p>
+        <p class="text-xs text-zinc-500 font-mono uppercase tracking-wider mt-2">In Exits Advised</p>
+      </div>
+      <div class="p-8 border-r border-zinc-800 border-dashed text-center">
+        <p class="text-4xl md:text-5xl font-bold text-white font-manrope tracking-tighter">20<span class="text-xl text-zinc-500">+</span></p>
+        <p class="text-xs text-zinc-500 font-mono uppercase tracking-wider mt-2">Years Operating</p>
+      </div>
+      <div class="p-8 text-center">
+        <p class="text-4xl md:text-5xl font-bold text-white font-manrope tracking-tighter">12K<span class="text-xl text-zinc-500">+</span></p>
+        <p class="text-xs text-zinc-500 font-mono uppercase tracking-wider mt-2">Community Members</p>
+      </div>
+    </div>
+
+    <!-- Logos / Names -->
+    <div class="p-6">
+      <div class="flex items-center gap-3 mb-5">
+        <span class="font-mono text-[10px] text-[#f97316] tracking-widest uppercase font-bold">[ Trusted By ]</span>
+      </div>
+      <div class="flex flex-wrap gap-6 md:gap-10 items-center justify-center md:justify-start">
+        <span class="text-sm font-manrope font-semibold text-zinc-400 hover:text-white transition-colors">Anik Singal</span>
+        <span class="text-sm font-manrope font-semibold text-zinc-400 hover:text-white transition-colors">Jon Benson</span>
+        <span class="text-sm font-manrope font-semibold text-zinc-400 hover:text-white transition-colors">Chris Record</span>
+        <span class="text-sm font-manrope font-semibold text-zinc-400 hover:text-white transition-colors">Andrew Kroeze</span>
+        <span class="text-sm font-manrope font-semibold text-zinc-400 hover:text-white transition-colors">Heidi Powell</span>
+        <span class="text-sm font-manrope font-semibold text-zinc-400 hover:text-white transition-colors">Thomas DeLauer</span>
+        <span class="text-sm font-manrope font-semibold text-zinc-400 hover:text-white transition-colors">Josh Elizetxe</span>
+        <span class="text-sm font-manrope font-semibold text-zinc-400 hover:text-white transition-colors">Ryan Moran</span>
+      </div>
+      <div class="flex flex-wrap gap-4 md:gap-8 items-center justify-center md:justify-start mt-5 pt-5 border-t border-zinc-800 border-dashed">
+        <span class="text-xs font-mono text-zinc-600 uppercase tracking-wider">Entrepreneur</span>
+        <span class="text-xs font-mono text-zinc-600 uppercase tracking-wider">TechCrunch</span>
+        <span class="text-xs font-mono text-zinc-600 uppercase tracking-wider">AppSumo</span>
+        <span class="text-xs font-mono text-zinc-600 uppercase tracking-wider">Mixergy</span>
+        <span class="text-xs font-mono text-zinc-600 uppercase tracking-wider">Under 30 CEOs</span>
+        <span class="text-xs font-mono text-zinc-600 uppercase tracking-wider">Secret Entourage</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- WHO WE ARE - Side by Side Bios -->
+<!-- ============================================================ -->
+<section id="about" class="w-full max-w-6xl z-20 mt-12 mr-auto mb-24 ml-auto px-6 relative">
+  <!-- Section Header -->
+  <div class="flex flex-col md:flex-row md:items-end w-full mb-16 gap-x-8 gap-y-6 justify-between animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.2s_both]">
+    <div class="flex flex-col max-w-3xl gap-y-6">
+      <div class="flex items-center gap-3">
+        <span class="uppercase text-sm font-medium text-[#f97316] tracking-widest font-mono">01. Who We Are</span>
+      </div>
+      <h2 class="md:text-6xl text-4xl font-medium text-white tracking-tighter font-manrope">
+        Meet the <span class="bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-orange-600">Team</span>
+      </h2>
+      <p class="leading-relaxed text-lg font-light text-gray-400 max-w-xl">
+        Two operators who&rsquo;ve built, scaled, and exited businesses across every vertical &mdash; now building AI systems that do the heavy lifting.
+      </p>
+    </div>
+  </div>
+
+  <div class="pointer-events-none w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent mb-16"></div>
+
+  <!-- Bio Cards -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <!-- Andrew Naegele -->
+    <div class="bg-black border border-zinc-800 border-dashed rounded-none relative group hover:border-[#f97316]/50 transition-all duration-500 animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.3s_both]">
+      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#f97316]"></div>
+      <div class="absolute top-0 right-0 w-2 h-2 border-t border-r border-[#f97316]"></div>
+      <div class="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-[#f97316]"></div>
+      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#f97316]"></div>
+      <div class="w-full h-96 overflow-hidden border-b border-zinc-800">
+        <img src="Andrew Naegele Headshot B&W.png" alt="Andrew Naegele" class="w-full h-full object-cover object-[center_20%] grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105">
+      </div>
+      <div class="p-8">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="w-1.5 h-1.5 bg-[#f97316]"></span>
+          <span class="font-mono text-[10px] text-[#f97316] tracking-widest uppercase font-bold">The AI Architect</span>
+        </div>
+        <h3 class="text-3xl font-semibold text-white font-manrope tracking-tight mb-4">Andrew Naegele</h3>
+        <p class="text-sm text-zinc-400 leading-relaxed mb-6">
+          Founder of CallVault AI. Worked with 8 and 9-figure founders like Anik Singal and Jon Benson. Scaled a cold-email brand from &lt;$50K to $250K+/mo. Built the largest Vibe Marketing community on Skool with 12,000+ members. Former 7-figure brick-and-mortar owner and #1 T-Mobile TPR location in the US.
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1 border border-zinc-800 text-[10px] text-zinc-400 uppercase font-mono">AI Systems</span>
+          <span class="px-3 py-1 border border-zinc-800 text-[10px] text-zinc-400 uppercase font-mono">Cold Outreach</span>
+          <span class="px-3 py-1 border border-zinc-800 text-[10px] text-zinc-400 uppercase font-mono">Offer Engineering</span>
+          <span class="px-3 py-1 border border-zinc-800 text-[10px] text-zinc-400 uppercase font-mono">Vibe Marketing</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Los Silva -->
+    <div class="bg-black border border-zinc-800 border-dashed rounded-none relative group hover:border-[#f97316]/50 transition-all duration-500 animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.5s_both]">
+      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#f97316]"></div>
+      <div class="absolute top-0 right-0 w-2 h-2 border-t border-r border-[#f97316]"></div>
+      <div class="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-[#f97316]"></div>
+      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#f97316]"></div>
+      <div class="w-full h-96 overflow-hidden border-b border-zinc-800">
+        <img src="los-silva-headshot.png" alt="Los Silva" class="w-full h-full object-cover object-[center_20%] grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105">
+      </div>
+      <div class="p-8">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="w-1.5 h-1.5 bg-[#f97316]"></span>
+          <span class="font-mono text-[10px] text-[#f97316] tracking-widest uppercase font-bold">The Scale Operator</span>
+        </div>
+        <h3 class="text-3xl font-semibold text-white font-manrope tracking-tight mb-4">Los Silva</h3>
+        <p class="text-sm text-zinc-400 leading-relaxed mb-6">
+          20+ year entrepreneur with $100M+ in ad spend managed and $300M+ in exits advised. CEO of SVG Media, Co-founder of PowerHouse Brands and 528 Partners. Built the AI Council system for autonomous business operations. Featured in Entrepreneur, TechCrunch, and AppSumo.
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1 border border-zinc-800 text-[10px] text-zinc-400 uppercase font-mono">Revenue Ops</span>
+          <span class="px-3 py-1 border border-zinc-800 text-[10px] text-zinc-400 uppercase font-mono">Private Equity</span>
+          <span class="px-3 py-1 border border-zinc-800 text-[10px] text-zinc-400 uppercase font-mono">DTC Scaling</span>
+          <span class="px-3 py-1 border border-zinc-800 text-[10px] text-zinc-400 uppercase font-mono">AI Council</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- FEATURED TESTIMONIAL -->
+<!-- ============================================================ -->
+<section class="w-full max-w-6xl mx-auto px-6 py-12 relative animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.3s_both]">
+  <div class="border border-zinc-800 border-dashed rounded-none bg-black relative overflow-hidden p-8 md:p-12">
+    <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#f97316]"></div>
+    <div class="absolute top-0 right-0 w-2 h-2 border-t border-r border-[#f97316]"></div>
+    <div class="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-[#f97316]"></div>
+    <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#f97316]"></div>
+    <div class="flex gap-4 items-start">
+      <span class="text-[#f97316] text-5xl font-manrope leading-none shrink-0">&ldquo;</span>
+      <div>
+        <p class="text-lg md:text-xl text-zinc-200 leading-relaxed font-light italic">
+          By far the BEST AI EXPERT I've had a chance to talk to... the very FIRST person that I now not WALK, but RUN to for AI advice. He solved some of the toughest AI problems in our company in under 24 hours &mdash; work that would have taken my internal team weeks.
+        </p>
+        <div class="flex items-center gap-3 mt-6">
+          <div class="w-px h-6 bg-[#f97316]"></div>
+          <div>
+            <p class="text-white font-semibold font-manrope text-sm">Anik Singal</p>
+            <p class="text-zinc-500 text-xs font-mono">Founder of Lurn &amp; Complily &middot; $200M+ in online sales</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- RESULTS / MINI CASE STUDIES -->
+<!-- ============================================================ -->
+<section id="results" class="w-full max-w-6xl mx-auto px-6 py-24 relative">
+  <!-- Section Header -->
+  <div class="flex flex-col md:flex-row md:items-end w-full mb-16 gap-x-8 gap-y-6 justify-between animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.2s_both]">
+    <div class="flex flex-col max-w-3xl gap-y-6">
+      <div class="flex items-center gap-3">
+        <span class="uppercase text-sm font-medium text-[#f97316] tracking-widest font-mono">02. Results</span>
+      </div>
+      <h2 class="md:text-6xl text-4xl font-medium text-white tracking-tighter font-manrope">
+        Case <span class="bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-orange-600">Studies</span>
+      </h2>
+      <p class="leading-relaxed text-lg font-light text-gray-400 max-w-xl">
+        Real outcomes from real businesses. Here&rsquo;s what happens when you install the right systems.
+      </p>
+    </div>
+  </div>
+
+  <div class="pointer-events-none w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent mb-16"></div>
+
+  <!-- Mini Case Studies -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- Case Study 1 -->
+    <div class="bg-black border border-zinc-800 border-dashed rounded-none p-8 group hover:border-[#f97316]/50 transition-all duration-500 relative flex flex-col animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.1s_both]">
+      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#f97316]"></div>
+      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#f97316]"></div>
+      <p class="text-3xl font-bold text-white font-manrope tracking-tighter mb-1">5x Revenue in 10 Months</p>
+      <p class="text-sm text-zinc-400 leading-relaxed mt-3 mb-6 flex-1">Scaled a cold-email brand from &lt;$50K to $250K+/mo using AI-powered prospecting and offer optimization.</p>
+      <a href="#" class="inline-flex items-center gap-2 text-[#f97316] text-xs font-mono uppercase tracking-wider hover:text-orange-400 transition-colors group/link">
+        See Breakdown
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 group-hover/link:translate-x-1"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+      </a>
+    </div>
+
+    <!-- Case Study 2 -->
+    <div class="bg-black border border-zinc-800 border-dashed rounded-none p-8 group hover:border-[#f97316]/50 transition-all duration-500 relative flex flex-col animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.2s_both]">
+      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#f97316]"></div>
+      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#f97316]"></div>
+      <p class="text-3xl font-bold text-white font-manrope tracking-tighter mb-1">$68K MRR in 28 Days</p>
+      <p class="text-sm text-zinc-400 leading-relaxed mt-3 mb-6 flex-1">Took a coaching offer from zero to $68K MRR with engineered positioning, AI content, and automated outreach.</p>
+      <a href="#" class="inline-flex items-center gap-2 text-[#f97316] text-xs font-mono uppercase tracking-wider hover:text-orange-400 transition-colors group/link">
+        See Breakdown
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 group-hover/link:translate-x-1"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+      </a>
+    </div>
+
+    <!-- Case Study 3 -->
+    <div class="bg-black border border-zinc-800 border-dashed rounded-none p-8 group hover:border-[#f97316]/50 transition-all duration-500 relative flex flex-col animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.3s_both]">
+      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#f97316]"></div>
+      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#f97316]"></div>
+      <p class="text-3xl font-bold text-white font-manrope tracking-tighter mb-1">$6M Startup Saved in 8 Hours</p>
+      <p class="text-sm text-zinc-400 leading-relaxed mt-3 mb-6 flex-1">Resurrected a dying $6M/year startup by systematizing founder knowledge into AI-driven processes.</p>
+      <a href="#" class="inline-flex items-center gap-2 text-[#f97316] text-xs font-mono uppercase tracking-wider hover:text-orange-400 transition-colors group/link">
+        See Breakdown
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 group-hover/link:translate-x-1"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+      </a>
+    </div>
+
+    <!-- Case Study 4 -->
+    <div class="bg-black border border-zinc-800 border-dashed rounded-none p-8 group hover:border-[#f97316]/50 transition-all duration-500 relative flex flex-col animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.4s_both]">
+      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#f97316]"></div>
+      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#f97316]"></div>
+      <p class="text-3xl font-bold text-white font-manrope tracking-tighter mb-1">$19K Deal in 36 Hours</p>
+      <p class="text-sm text-zinc-400 leading-relaxed mt-3 mb-6 flex-1">One LinkedIn post, engineered with our content system, closed a $19K deal within 36 hours.</p>
+      <a href="#" class="inline-flex items-center gap-2 text-[#f97316] text-xs font-mono uppercase tracking-wider hover:text-orange-400 transition-colors group/link">
+        See Breakdown
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 group-hover/link:translate-x-1"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+      </a>
+    </div>
+
+    <!-- Case Study 5 -->
+    <div class="bg-black border border-zinc-800 border-dashed rounded-none p-8 group hover:border-[#f97316]/50 transition-all duration-500 relative flex flex-col animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.5s_both]">
+      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#f97316]"></div>
+      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#f97316]"></div>
+      <p class="text-3xl font-bold text-white font-manrope tracking-tighter mb-1">$20K/mo Recovered by AI</p>
+      <p class="text-sm text-zinc-400 leading-relaxed mt-3 mb-6 flex-1">AI agents autonomously recovering $20K/month in late payments with zero human touchpoints.</p>
+      <a href="#" class="inline-flex items-center gap-2 text-[#f97316] text-xs font-mono uppercase tracking-wider hover:text-orange-400 transition-colors group/link">
+        See Breakdown
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 group-hover/link:translate-x-1"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+      </a>
+    </div>
+
+    <!-- Case Study 6 -->
+    <div class="bg-black border border-zinc-800 border-dashed rounded-none p-8 group hover:border-[#f97316]/50 transition-all duration-500 relative flex flex-col animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.6s_both]">
+      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#f97316]"></div>
+      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#f97316]"></div>
+      <p class="text-3xl font-bold text-white font-manrope tracking-tighter mb-1">38% Cold Outreach Reply Rate</p>
+      <p class="text-sm text-zinc-400 leading-relaxed mt-3 mb-6 flex-1">Fully AI-powered cold outreach system running at 38% reply rates across multiple campaigns.</p>
+      <a href="#" class="inline-flex items-center gap-2 text-[#f97316] text-xs font-mono uppercase tracking-wider hover:text-orange-400 transition-colors group/link">
+        See Breakdown
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 group-hover/link:translate-x-1"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- TESTIMONIALS -->
+<!-- ============================================================ -->
+<section class="w-full max-w-6xl mx-auto px-6 py-16 relative">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <!-- Testimonial 1: Anik Singal -->
+    <div class="bg-black border border-zinc-800 border-dashed rounded-none p-8 relative group hover:border-[#f97316]/50 transition-all duration-500 animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.2s_both]">
+      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#f97316]"></div>
+      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#f97316]"></div>
+      <span class="text-[#f97316] text-4xl font-manrope leading-none">&ldquo;</span>
+      <p class="text-zinc-200 leading-relaxed mt-4 mb-6 italic">
+        The knowledge, the ideas, the way he looks at things... He is literally the very FIRST person that I now not WALK, but RUN to for AI advice. He solved some of the toughest AI problems in our company in under 24 hours.
+      </p>
+      <div class="flex items-center gap-3">
+        <div class="w-px h-6 bg-[#f97316]"></div>
+        <div>
+          <p class="text-white font-semibold font-manrope text-sm">Anik Singal</p>
+          <p class="text-zinc-500 text-xs font-mono">Founder, Lurn &amp; Complily &middot; $200M+ in online sales</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Testimonial 2: Los Silva about Andrew -->
+    <div class="bg-black border border-zinc-800 border-dashed rounded-none p-8 relative group hover:border-[#f97316]/50 transition-all duration-500 animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.3s_both]">
+      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#f97316]"></div>
+      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#f97316]"></div>
+      <span class="text-[#f97316] text-4xl font-manrope leading-none">&ldquo;</span>
+      <p class="text-zinc-200 leading-relaxed mt-4 mb-6 italic">
+        Andrew is the monstrosity here on AI by leaps and bounds. I don't think there's many people out there that can top Andrew. His ability to see the problem, build the system, and deploy it &mdash; usually during the same call &mdash; is unlike anything I've seen in 20+ years.
+      </p>
+      <div class="flex items-center gap-3">
+        <div class="w-px h-6 bg-[#f97316]"></div>
+        <div>
+          <p class="text-white font-semibold font-manrope text-sm">Los Silva</p>
+          <p class="text-zinc-500 text-xs font-mono">CEO, SVG Media &middot; $100M+ in ad spend</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- HOW WE WORK -->
+<!-- ============================================================ -->
+<section id="how-we-work" class="w-full max-w-6xl mx-auto px-6 py-24 relative">
+  <!-- Section Header -->
+  <div class="flex flex-col mb-16 gap-y-6 animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.2s_both]">
+    <div class="flex items-center gap-3">
+      <span class="uppercase text-sm font-medium text-[#f97316] tracking-widest font-mono">03. How We Work</span>
+    </div>
+    <h2 class="md:text-6xl text-4xl font-medium text-white tracking-tighter font-manrope">
+      The <span class="bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-orange-600">Process</span>
+    </h2>
+    <p class="leading-relaxed text-lg font-light text-gray-400 max-w-xl">
+      No fluff. No 12-month retainers. A clear path from strategy to execution.
+    </p>
+  </div>
+
+  <div class="pointer-events-none w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent mb-16"></div>
+
+  <!-- 3 Steps -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+    <!-- Step 1 -->
+    <div class="bg-black border border-zinc-800 border-dashed rounded-none p-8 group hover:border-[#f97316]/50 transition-all duration-500 relative animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.2s_both]">
+      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#f97316]"></div>
+      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#f97316]"></div>
+      <div class="flex items-center gap-3 mb-6">
+        <span class="text-4xl font-bold text-[#f97316] font-manrope tracking-tighter">01</span>
+      </div>
+      <h3 class="text-xl font-semibold text-white font-manrope tracking-tight mb-3">Strategy Day</h3>
+      <p class="text-sm text-zinc-400 leading-relaxed">We audit your offer, systems, and bottlenecks. You leave with a clear roadmap for what to build, fix, and automate &mdash; plus the priority order.</p>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="bg-black border border-zinc-800 border-dashed rounded-none p-8 group hover:border-[#f97316]/50 transition-all duration-500 relative animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.3s_both]">
+      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#f97316]"></div>
+      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#f97316]"></div>
+      <div class="flex items-center gap-3 mb-6">
+        <span class="text-4xl font-bold text-[#f97316] font-manrope tracking-tighter">02</span>
+      </div>
+      <h3 class="text-xl font-semibold text-white font-manrope tracking-tight mb-3">90-Day Build</h3>
+      <p class="text-sm text-zinc-400 leading-relaxed">We install the offers, content systems, and AI automations. You get weekly builds, live implementation, and measurable results within 90 days.</p>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="bg-black border border-zinc-800 border-dashed rounded-none p-8 group hover:border-[#f97316]/50 transition-all duration-500 relative animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.4s_both]">
+      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#f97316]"></div>
+      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#f97316]"></div>
+      <div class="flex items-center gap-3 mb-6">
+        <span class="text-4xl font-bold text-[#f97316] font-manrope tracking-tighter">03</span>
+      </div>
+      <h3 class="text-xl font-semibold text-white font-manrope tracking-tight mb-3">Long-Term Advisory</h3>
+      <p class="text-sm text-zinc-400 leading-relaxed">Ongoing strategic guidance, system optimization, and direct access to Los and Andrew as your business scales to the next level.</p>
+    </div>
+  </div>
+
+  <!-- Apply CTA -->
+  <div class="text-center animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.5s_both]">
+    <a href="#book" class="shiny-cta inline-block">
+      <span>Apply for a Strategy Call</span>
+    </a>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- LEAD MAGNET CTA -->
+<!-- ============================================================ -->
+<section id="resources" class="w-full max-w-4xl mx-auto px-6 py-24 relative animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.3s_both]">
+  <div class="border border-zinc-800 border-dashed rounded-none bg-black relative p-12 md:p-16 text-center overflow-hidden">
+    <div class="absolute top-0 left-0 w-3 h-3 border-t border-l border-[#f97316]"></div>
+    <div class="absolute top-0 right-0 w-3 h-3 border-t border-r border-[#f97316]"></div>
+    <div class="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-[#f97316]"></div>
+    <div class="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-[#f97316]"></div>
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(249,115,22,0.05) 0%, transparent 70%);"></div>
+    <div class="relative z-10">
+      <div class="flex items-center justify-center gap-3 mb-6">
+        <span class="w-1.5 h-1.5 bg-[#f97316] animate-pulse"></span>
+        <span class="font-mono text-[10px] text-[#f97316] tracking-widest uppercase font-bold">Free Resource</span>
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold text-white font-manrope tracking-tighter mb-6">
+        Get the AI Lead Vault
+      </h2>
+      <p class="text-lg text-zinc-400 leading-relaxed max-w-2xl mx-auto mb-10">
+        The exact AI frameworks, prompts, and systems we use with 8 and 9-figure brands &mdash; packaged so you can start deploying them today.
+      </p>
+      <a href="lead-magnet.html" class="shiny-cta inline-block">
+        <span>Get Free Access</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- BOOK A CALL CTA -->
+<!-- ============================================================ -->
+<section id="book" class="w-full max-w-4xl mx-auto px-6 py-24 relative animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.3s_both]">
+  <div class="text-center">
+    <div class="flex items-center justify-center gap-3 mb-6">
+      <span class="font-mono text-[10px] text-[#f97316] tracking-widest uppercase font-bold">[ Ready to Scale? ]</span>
+    </div>
+    <h2 class="text-4xl md:text-6xl font-bold text-white font-manrope tracking-tighter mb-6">
+      Let&rsquo;s Build Your <span class="bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-orange-600">AI Engine</span>
+    </h2>
+    <p class="text-lg text-zinc-400 leading-relaxed max-w-2xl mx-auto mb-10">
+      Apply for a free strategy call. We&rsquo;ll map out the offers, content systems, and AI automations that will move the needle fastest in your business.
+    </p>
+    <a href="#book" class="group relative inline-flex min-w-[220px] h-[56px] items-center justify-center overflow-hidden rounded-none outline-none cursor-pointer transition-transform active:scale-95 no-underline" style="background-color: rgba(255,255,255,0.05);">
+      <span class="absolute inset-[-100%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,transparent_75%,#f97316_100%)] opacity-100"></span>
+      <span class="absolute inset-[1px] rounded-none bg-black z-10"></span>
+      <span class="absolute inset-0 pointer-events-none opacity-100 z-10" style="background: radial-gradient(50% 50% at 50% 100%, rgba(249,115,22,0.15) 0%, transparent 100%);"></span>
+      <span class="relative z-20 flex items-center justify-center gap-2 text-sm font-semibold text-white tracking-wide uppercase px-8">
+        <span>Apply for a Strategy Call</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 group-hover:translate-x-1"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+      </span>
+    </a>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- FOOTER -->
+<!-- ============================================================ -->
+<footer class="w-full border-t border-zinc-800 border-dashed mt-12">
+  <div class="max-w-6xl mx-auto px-6 py-16">
+    <div class="flex flex-col md:flex-row justify-between gap-12">
+      <!-- Brand -->
+      <div class="flex flex-col gap-6">
+        <div class="flex items-center gap-3">
+          <div class="grid grid-cols-2 opacity-90 w-6 h-6 gap-x-1 gap-y-1">
+            <div class="bg-[#f97316] w-full h-full rounded-sm"></div>
+            <div class="w-full h-full bg-zinc-700 rounded-sm"></div>
+            <div class="w-full h-full bg-zinc-800 rounded-sm"></div>
+            <div class="w-full h-full bg-white rounded-sm shadow-[0_0_10px_rgba(255,255,255,0.4)]"></div>
+          </div>
+          <span class="text-xl font-bold text-white tracking-tight font-manrope">AI Simple</span>
+        </div>
+        <p class="text-sm text-zinc-500 max-w-xs">Offers, brands, and AI systems that actually move the needle.</p>
+      </div>
+
+      <!-- Links -->
+      <div class="flex gap-16">
+        <div class="flex flex-col gap-4">
+          <span class="font-mono text-[10px] text-zinc-500 uppercase tracking-widest font-bold">Navigation</span>
+          <a href="/" class="text-sm text-zinc-400 hover:text-white transition-colors">Home</a>
+          <a href="#about" class="text-sm text-zinc-400 hover:text-white transition-colors">About</a>
+          <a href="#results" class="text-sm text-zinc-400 hover:text-white transition-colors">Results</a>
+          <a href="#how-we-work" class="text-sm text-zinc-400 hover:text-white transition-colors">How We Work</a>
+        </div>
+        <div class="flex flex-col gap-4">
+          <span class="font-mono text-[10px] text-zinc-500 uppercase tracking-widest font-bold">Resources</span>
+          <a href="#book" class="text-sm text-zinc-400 hover:text-white transition-colors">Apply for a Call</a>
+          <a href="lead-magnet.html" class="text-sm text-zinc-400 hover:text-white transition-colors">AI Lead Vault</a>
+        </div>
+        <div class="flex flex-col gap-4">
+          <span class="font-mono text-[10px] text-zinc-500 uppercase tracking-widest font-bold">Social</span>
+          <a href="https://linkedin.com/in/andrewnaegele" target="_blank" rel="noopener" class="text-sm text-zinc-400 hover:text-white transition-colors">LinkedIn</a>
+          <a href="https://x.com/callvaultai" target="_blank" rel="noopener" class="text-sm text-zinc-400 hover:text-white transition-colors">X / Twitter</a>
+          <a href="https://youtube.com/@callvaultai" target="_blank" rel="noopener" class="text-sm text-zinc-400 hover:text-white transition-colors">YouTube</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="mt-16 pt-8 border-t border-zinc-800 border-dashed flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="text-xs text-zinc-600 font-mono">&copy; 2026 AI Simple. All rights reserved.</p>
+      <p class="text-xs text-zinc-700 font-mono">Built with systems, not hustle.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Initialize Lucide Icons -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof lucide !== 'undefined') {
+      lucide.createIcons();
+    }
+  });
+</script>
+
+</body>
+</html>

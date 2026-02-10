@@ -1,0 +1,1464 @@
+<html lang="en" class="dark"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative - Digital Designer &amp; Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+    <style>
+      body { font-family: 'Inter', sans-serif; }
+      .font-geist { font-family: 'Geist', sans-serif !important; }
+      /*
+      Animation Keyframe: Content Fade In
+      */
+      @keyframes fadeSlideIn {
+      0% {
+      opacity: 0;
+      transform: translateY(30px);
+      filter: blur(8px);
+      }
+      100% {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0px);
+      }
+      }
+      /*
+      Animation Keyframe: Column Clip Reveal
+      */
+      @keyframes columnReveal {
+      0% {
+      clip-path: inset(0 0 100% 0);
+      opacity: 0;
+      }
+      100% {
+      clip-path: inset(0 0 0% 0);
+      opacity: 1;
+      }
+      }
+      .col-anim {
+      animation: columnReveal 1.4s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+      will-change: clip-path;
+      }
+      /* Staggered Delays for Grid Columns */
+      .delay-1 { animation-delay: 0.1s; }
+      .delay-2 { animation-delay: 0.2s; }
+      .delay-3 { animation-delay: 0.3s; }
+      .delay-4 { animation-delay: 0.4s; }
+      .delay-5 { animation-delay: 0.5s; }
+      .delay-6 { animation-delay: 0.6s; }
+      .delay-7 { animation-delay: 0.7s; }
+      /*
+      Animation on Scroll State Management
+      */
+      .animate-on-scroll { animation-play-state: paused !important; }
+      .animate-on-scroll.animate { animation-play-state: running !important; }
+      /* Animated Shiny CTA Button Styles */
+      @property --gradient-angle { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
+      @property --gradient-angle-offset { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
+      @property --gradient-percent { syntax: "<percentage>"; initial-value: 20%; inherits: false; }
+      @property --gradient-shine { syntax: "<color>"; initial-value: #dc2626; inherits: false; }
+      .shiny-cta {
+      --gradient-angle: 0deg;
+      --gradient-angle-offset: 0deg;
+      --gradient-percent: 20%;
+      --gradient-shine: #dc2626;
+      position: relative;
+      overflow: hidden;
+      border-radius: 9999px;
+      padding: 1.25rem 3rem;
+      font-size: 1.125rem;
+      line-height: 1.2;
+      font-weight: 500;
+      color: #ffffff;
+      background: linear-gradient(#000000, #000000) padding-box,
+      conic-gradient(from calc(var(--gradient-angle) - var(--gradient-angle-offset)),
+      transparent 0%, #dc2626 5%, var(--gradient-shine) 15%, #dc2626 30%, transparent 40%, transparent 100%) border-box;
+      border: 2px solid transparent;
+      box-shadow: inset 0 0 0 1px #1a1818;
+      outline: none;
+      transition: --gradient-angle-offset 800ms cubic-bezier(0.25, 1, 0.5, 1), --gradient-percent 800ms cubic-bezier(0.25, 1, 0.5, 1), --gradient-shine 800ms cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s;
+      cursor: pointer;
+      isolation: isolate;
+      outline-offset: 4px;
+      z-index: 0;
+      animation: border-spin 2.5s linear infinite;
+      }
+      @keyframes border-spin { to { --gradient-angle: 360deg; } }
+      .shiny-cta:active { transform: translateY(1px); }
+      .shiny-cta::before {
+      content: '';
+      pointer-events: none;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+      --size: calc(100% - 6px);
+      --position: 2px;
+      --space: 4px;
+      width: var(--size);
+      height: var(--size);
+      background: radial-gradient(circle at var(--position) var(--position), white 0.5px, transparent 0) padding-box;
+      background-size: var(--space) var(--space);
+      background-repeat: space;
+      mask-image: conic-gradient(from calc(var(--gradient-angle) + 45deg), black, transparent 10% 90%, black);
+      border-radius: inherit;
+      opacity: 0.4;
+      }
+      .shiny-cta::after {
+      content: '';
+      pointer-events: none;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      width: 100%;
+      aspect-ratio: 1;
+      background: linear-gradient(-50deg, transparent, #dc2626, transparent);
+      mask-image: radial-gradient(circle at bottom, transparent 40%, black);
+      opacity: 0.6;
+      animation: shimmer 4s linear infinite;
+      }
+      .shiny-cta span { position: relative; z-index: 2; display: inline-block; }
+      .shiny-cta span::before {
+      content: '';
+      pointer-events: none;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+      --size: calc(100% + 1rem);
+      width: var(--size);
+      height: var(--size);
+      box-shadow: inset 0 -1ex 2rem 4px #dc2626;
+      opacity: 0;
+      border-radius: inherit;
+      transition: opacity 800ms cubic-bezier(0.25, 1, 0.5, 1);
+      animation: breathe 4.5s linear infinite;
+      }
+      @keyframes shimmer { to { transform: translate(-50%, -50%) rotate(360deg); } }
+      @keyframes breathe {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); }
+      50% { transform: translate(-50%, -50%) scale(1.20); }
+      }
+      /* Progressive Blur CSS */
+      .gradient-blur {
+      position: fixed;
+      z-index: 5;
+      inset: 0 0 auto 0;
+      height: 12%;
+      pointer-events: none;
+      }
+      .gradient-blur>div, .gradient-blur::before, .gradient-blur::after { position: absolute; inset: 0; }
+      .gradient-blur::before { content: ""; z-index: 1; backdrop-filter: blur(0.5px); mask: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 12.5%, rgba(0, 0, 0, 1) 25%, rgba(0, 0, 0, 0) 37.5%); }
+      .gradient-blur>div:nth-of-type(1) { z-index: 2; backdrop-filter: blur(1px); mask: linear-gradient(to top, rgba(0, 0, 0, 0) 12.5%, rgba(0, 0, 0, 1) 25%, rgba(0, 0, 0, 1) 37.5%, rgba(0, 0, 0, 0) 50%); }
+      .gradient-blur>div:nth-of-type(2) { z-index: 3; backdrop-filter: blur(2px); mask: linear-gradient(to top, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 1) 37.5%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 62.5%); }
+      .gradient-blur>div:nth-of-type(3) { z-index: 4; backdrop-filter: blur(4px); mask: linear-gradient(to top, rgba(0, 0, 0, 0) 37.5%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 1) 62.5%, rgba(0, 0, 0, 0) 75%); }
+      .gradient-blur>div:nth-of-type(4) { z-index: 5; backdrop-filter: blur(8px); mask: linear-gradient(to top, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 1) 62.5%, rgba(0, 0, 0, 1) 75%, rgba(0, 0, 0, 0) 87.5%); }
+      .gradient-blur>div:nth-of-type(5) { z-index: 6; backdrop-filter: blur(16px); mask: linear-gradient(to top, rgba(0, 0, 0, 0) 62.5%, rgba(0, 0, 0, 1) 75%, rgba(0, 0, 0, 1) 87.5%, rgba(0, 0, 0, 0) 100%); }
+      .gradient-blur>div:nth-of-type(6) { z-index: 7; backdrop-filter: blur(32px); mask: linear-gradient(to top, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 1) 87.5%, rgba(0, 0, 0, 1) 100%); }
+      .gradient-blur::after { content: ""; z-index: 8; backdrop-filter: blur(64px); mask: linear-gradient(to top, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 1) 100%); }
+    </style>
+    <script>
+      (function () {
+      const once = true;
+      if (!window.__inViewIO) {
+      window.__inViewIO = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+      entry.target.classList.add("animate");
+      if (once) window.__inViewIO.unobserve(entry.target);
+      }
+      });
+      }, { threshold: 0.1, rootMargin: "0px 0px -5% 0px" });
+      }
+      window.initInViewAnimations = function (selector = ".animate-on-scroll") {
+      document.querySelectorAll(selector).forEach((el) => {
+      window.__inViewIO.observe(el);
+      });
+      };
+      document.addEventListener("DOMContentLoaded", () => initInViewAnimations());
+      })();
+    </script>
+    <meta name="disabled-font-classes" content="font-roboto,font-montserrat,font-poppins,font-playfair,font-instrument-serif,font-merriweather,font-bricolage,font-jakarta,font-space-grotesk,font-work-sans,font-pt-serif,font-geist-mono,font-space-mono,font-quicksand,font-nunito">
+    <style id="aura-editor-visibility-style">
+      .invisible { visibility: hidden !important; }
+    </style>
+    <script>
+      // Configure Tailwind to include our custom 3D transform utilities
+      tailwind.config = {
+      theme: {
+      extend: {
+      // Add any custom theme extensions here if needed
+      }
+      },
+      plugins: [
+      function({ addUtilities }) {
+      const rotateXUtilities = {};
+      const rotateYUtilities = {};
+      const rotateZUtilities = {};
+      const rotateValues = [0, 5, 10, 15, 20, 30, 45, 75];
+      // Generate rotate-x utilities
+      rotateValues.forEach((value) => {
+      rotateXUtilities[`.rotate-x-${value}`] = {
+      '--tw-rotate-x': `${value}deg`,
+      transform: `
+      translate3d(var(--tw-translate-x, 0), var(--tw-translate-y, 0), var(--tw-translate-z, 0))
+      rotateX(var(--tw-rotate-x, 0))
+      rotateY(var(--tw-rotate-y, 0))
+      rotateZ(var(--tw-rotate-z, 0))
+      skewX(var(--tw-skew-x, 0))
+      skewY(var(--tw-skew-y, 0))
+      scaleX(var(--tw-scale-x, 1))
+      scaleY(var(--tw-scale-y, 1))
+      `.replace(/\\s+/g, ' ').trim(),
+      };
+      if (value !== 0) {
+      rotateXUtilities[`.-rotate-x-${value}`] = {
+      '--tw-rotate-x': `-${value}deg`,
+      transform: `
+      translate3d(var(--tw-translate-x, 0), var(--tw-translate-y, 0), var(--tw-translate-z, 0))
+      rotateX(var(--tw-rotate-x, 0))
+      rotateY(var(--tw-rotate-y, 0))
+      rotateZ(var(--tw-rotate-z, 0))
+      skewX(var(--tw-skew-x, 0))
+      skewY(var(--tw-skew-y, 0))
+      scaleX(var(--tw-scale-x, 1))
+      scaleY(var(--tw-scale-y, 1))
+      `.replace(/\\s+/g, ' ').trim(),
+      };
+      }
+      });
+      // Generate rotate-y utilities
+      rotateValues.forEach((value) => {
+      rotateYUtilities[`.rotate-y-${value}`] = {
+      '--tw-rotate-y': `${value}deg`,
+      transform: `
+      translate3d(var(--tw-translate-x, 0), var(--tw-translate-y, 0), var(--tw-translate-z, 0))
+      rotateX(var(--tw-rotate-x, 0))
+      rotateY(var(--tw-rotate-y, 0))
+      rotateZ(var(--tw-rotate-z, 0))
+      skewX(var(--tw-skew-x, 0))
+      skewY(var(--tw-skew-y, 0))
+      scaleX(var(--tw-scale-x, 1))
+      scaleY(var(--tw-scale-y, 1))
+      `.replace(/\\s+/g, ' ').trim(),
+      };
+      if (value !== 0) {
+      rotateYUtilities[`.-rotate-y-${value}`] = {
+      '--tw-rotate-y': `-${value}deg`,
+      transform: `
+      translate3d(var(--tw-translate-x, 0), var(--tw-translate-y, 0), var(--tw-translate-z, 0))
+      rotateX(var(--tw-rotate-x, 0))
+      rotateY(var(--tw-rotate-y, 0))
+      rotateZ(var(--tw-rotate-z, 0))
+      skewX(var(--tw-skew-x, 0))
+      skewY(var(--tw-skew-y, 0))
+      scaleX(var(--tw-scale-x, 1))
+      scaleY(var(--tw-scale-y, 1))
+      `.replace(/\\s+/g, ' ').trim(),
+      };
+      }
+      });
+      // Generate rotate-z utilities
+      rotateValues.forEach((value) => {
+      rotateZUtilities[`.rotate-z-${value}`] = {
+      '--tw-rotate-z': `${value}deg`,
+      transform: `
+      translate3d(var(--tw-translate-x, 0), var(--tw-translate-y, 0), var(--tw-translate-z, 0))
+      rotateX(var(--tw-rotate-x, 0))
+      rotateY(var(--tw-rotate-y, 0))
+      rotateZ(var(--tw-rotate-z, 0))
+      skewX(var(--tw-skew-x, 0))
+      skewY(var(--tw-skew-y, 0))
+      scaleX(var(--tw-scale-x, 1))
+      scaleY(var(--tw-scale-y, 1))
+      `.replace(/\\s+/g, ' ').trim(),
+      };
+      if (value !== 0) {
+      rotateZUtilities[`.-rotate-z-${value}`] = {
+      '--tw-rotate-z': `-${value}deg`,
+      transform: `
+      translate3d(var(--tw-translate-x, 0), var(--tw-translate-y, 0), var(--tw-translate-z, 0))
+      rotateX(var(--tw-rotate-x, 0))
+      rotateY(var(--tw-rotate-y, 0))
+      rotateZ(var(--tw-rotate-z, 0))
+      skewX(var(--tw-skew-x, 0))
+      skewY(var(--tw-skew-y, 0))
+      scaleX(var(--tw-scale-x, 1))
+      scaleY(var(--tw-scale-y, 1))
+      `.replace(/\\s+/g, ' ').trim(),
+      };
+      }
+      });
+      // Perspective utilities
+      const perspectiveUtilities = {
+      ".perspective-none": { perspective: "none" },
+      ".perspective-dramatic": { perspective: "100px" },
+      ".perspective-near": { perspective: "300px" },
+      ".perspective-normal": { perspective: "500px" },
+      ".perspective-midrange": { perspective: "800px" },
+      ".perspective-distant": { perspective: "1200px" },
+      };
+      // Transform style utilities
+      const transformStyleUtilities = {
+      ".transform-style-preserve-3d": { "transform-style": "preserve-3d" },
+      ".transform-style-flat": { "transform-style": "flat" },
+      };
+      addUtilities({
+      ...rotateXUtilities,
+      ...rotateYUtilities,
+      ...rotateZUtilities,
+      ...perspectiveUtilities,
+      ...transformStyleUtilities,
+      });
+      }
+      ]
+      };
+    </script>
+    <script>
+      /*
+      Sequence animation on scroll when visible. Requires Animation Keyframe. Usage:
+      1) Insert this code in the <head> along with the Animation Keyframe code.
+      2) Add to Tailwind Classes: [animation:animationIn_0.8s_ease-out_0.1s_both] animate-on-scroll
+      */
+      (function () {
+      // Inject CSS for paused/running states
+      const style = document.createElement("style");
+      style.textContent = `
+      /* Default: paused */
+      .animate-on-scroll { animation-play-state: paused !important; }
+      /* Activated by JS */
+      .animate-on-scroll.animate { animation-play-state: running !important; }
+      `;
+      document.head.appendChild(style);
+      const once = true;
+      if (!window.__inViewIO) {
+      window.__inViewIO = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+      entry.target.classList.add("animate");
+      if (once) window.__inViewIO.unobserve(entry.target);
+      }
+      });
+      }, { threshold: 0.2, rootMargin: "0px 0px -10% 0px" });
+      }
+      window.initInViewAnimations = function (selector = ".animate-on-scroll") {
+      document.querySelectorAll(selector).forEach((el) => {
+      window.__inViewIO.observe(el); // observing twice is a no-op
+      });
+      };
+      document.addEventListener("DOMContentLoaded", () => initInViewAnimations());
+      })();
+    </script>
+    <style>
+      /* Default: paused */
+      .animate-on-scroll { animation-play-state: paused !important; }
+      /* Activated by JS */
+      .animate-on-scroll.animate { animation-play-state: running !important; }
+    </style>
+    <style>
+      /* Default: paused */
+      .animate-on-scroll { animation-play-state: paused !important; }
+      /* Activated by JS */
+      .animate-on-scroll.animate { animation-play-state: running !important; }
+    </style>
+    <style>
+      /* Default: paused */
+      .animate-on-scroll { animation-play-state: paused !important; }
+      /* Activated by JS */
+      .animate-on-scroll.animate { animation-play-state: running !important; }
+    </style>
+    <style>
+      /* Default: paused */
+      .animate-on-scroll { animation-play-state: paused !important; }
+      /* Activated by JS */
+      .animate-on-scroll.animate { animation-play-state: running !important; }
+    </style>
+    <style>
+      /* Default: paused */
+      .animate-on-scroll { animation-play-state: paused !important; }
+      /* Activated by JS */
+      .animate-on-scroll.animate { animation-play-state: running !important; }
+    </style>
+    <style>
+      /* Default: paused */
+      .animate-on-scroll { animation-play-state: paused !important; }
+      /* Activated by JS */
+      .animate-on-scroll.animate { animation-play-state: running !important; }
+    </style>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  <link id="all-fonts-link-font-geist" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-geist">
+.font-geist { font-family: 'Geist', sans-serif !important; }
+</style><link id="all-fonts-link-font-roboto" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-roboto">
+.font-roboto { font-family: 'Roboto', sans-serif !important; }
+</style><link id="all-fonts-link-font-montserrat" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-montserrat">
+.font-montserrat { font-family: 'Montserrat', sans-serif !important; }
+</style><link id="all-fonts-link-font-poppins" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-poppins">
+.font-poppins { font-family: 'Poppins', sans-serif !important; }
+</style><link id="all-fonts-link-font-playfair" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&amp;display=swap"><style id="all-fonts-style-font-playfair">
+.font-playfair { font-family: 'Playfair Display', serif !important; }
+</style><link id="all-fonts-link-font-instrument-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-instrument-serif">
+.font-instrument-serif { font-family: 'Instrument Serif', serif !important; }
+</style><link id="all-fonts-link-font-merriweather" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&amp;display=swap"><style id="all-fonts-style-font-merriweather">
+.font-merriweather { font-family: 'Merriweather', serif !important; }
+</style><link id="all-fonts-link-font-bricolage" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-bricolage">
+.font-bricolage { font-family: 'Bricolage Grotesque', sans-serif !important; }
+</style><link id="all-fonts-link-font-jakarta" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-jakarta">
+.font-jakarta { font-family: 'Plus Jakarta Sans', sans-serif !important; }
+</style><link id="all-fonts-link-font-manrope" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-manrope">
+.font-manrope { font-family: 'Manrope', sans-serif !important; }
+</style><link id="all-fonts-link-font-space-grotesk" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-space-grotesk">
+.font-space-grotesk { font-family: 'Space Grotesk', sans-serif !important; }
+</style><link id="all-fonts-link-font-work-sans" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-work-sans">
+.font-work-sans { font-family: 'Work Sans', sans-serif !important; }
+</style><link id="all-fonts-link-font-pt-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&amp;display=swap"><style id="all-fonts-style-font-pt-serif">
+.font-pt-serif { font-family: 'PT Serif', serif !important; }
+</style><link id="all-fonts-link-font-geist-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-geist-mono">
+.font-geist-mono { font-family: 'Geist Mono', monospace !important; }
+</style><link id="all-fonts-link-font-space-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;display=swap"><style id="all-fonts-style-font-space-mono">
+.font-space-mono { font-family: 'Space Mono', monospace !important; }
+</style><link id="all-fonts-link-font-quicksand" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-quicksand">
+.font-quicksand { font-family: 'Quicksand', sans-serif !important; }
+</style><link id="all-fonts-link-font-nunito" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-nunito">
+.font-nunito { font-family: 'Nunito', sans-serif !important; }
+</style><link id="all-fonts-link-font-geist" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-geist">
+.font-geist { font-family: 'Geist', sans-serif !important; }
+</style><link id="all-fonts-link-font-roboto" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-roboto">
+.font-roboto { font-family: 'Roboto', sans-serif !important; }
+</style><link id="all-fonts-link-font-montserrat" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-montserrat">
+.font-montserrat { font-family: 'Montserrat', sans-serif !important; }
+</style><link id="all-fonts-link-font-poppins" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-poppins">
+.font-poppins { font-family: 'Poppins', sans-serif !important; }
+</style><link id="all-fonts-link-font-playfair" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&amp;display=swap"><style id="all-fonts-style-font-playfair">
+.font-playfair { font-family: 'Playfair Display', serif !important; }
+</style><link id="all-fonts-link-font-instrument-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-instrument-serif">
+.font-instrument-serif { font-family: 'Instrument Serif', serif !important; }
+</style><link id="all-fonts-link-font-merriweather" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&amp;display=swap"><style id="all-fonts-style-font-merriweather">
+.font-merriweather { font-family: 'Merriweather', serif !important; }
+</style><link id="all-fonts-link-font-bricolage" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-bricolage">
+.font-bricolage { font-family: 'Bricolage Grotesque', sans-serif !important; }
+</style><link id="all-fonts-link-font-jakarta" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-jakarta">
+.font-jakarta { font-family: 'Plus Jakarta Sans', sans-serif !important; }
+</style><link id="all-fonts-link-font-manrope" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-manrope">
+.font-manrope { font-family: 'Manrope', sans-serif !important; }
+</style><link id="all-fonts-link-font-space-grotesk" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-space-grotesk">
+.font-space-grotesk { font-family: 'Space Grotesk', sans-serif !important; }
+</style><link id="all-fonts-link-font-work-sans" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-work-sans">
+.font-work-sans { font-family: 'Work Sans', sans-serif !important; }
+</style><link id="all-fonts-link-font-pt-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&amp;display=swap"><style id="all-fonts-style-font-pt-serif">
+.font-pt-serif { font-family: 'PT Serif', serif !important; }
+</style><link id="all-fonts-link-font-geist-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-geist-mono">
+.font-geist-mono { font-family: 'Geist Mono', monospace !important; }
+</style><link id="all-fonts-link-font-space-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;display=swap"><style id="all-fonts-style-font-space-mono">
+.font-space-mono { font-family: 'Space Mono', monospace !important; }
+</style><link id="all-fonts-link-font-quicksand" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-quicksand">
+.font-quicksand { font-family: 'Quicksand', sans-serif !important; }
+</style><link id="all-fonts-link-font-nunito" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-nunito">
+.font-nunito { font-family: 'Nunito', sans-serif !important; }
+</style><link id="all-fonts-link-font-geist" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-geist">
+.font-geist { font-family: 'Geist', sans-serif !important; }
+</style><link id="all-fonts-link-font-roboto" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-roboto">
+.font-roboto { font-family: 'Roboto', sans-serif !important; }
+</style><link id="all-fonts-link-font-montserrat" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-montserrat">
+.font-montserrat { font-family: 'Montserrat', sans-serif !important; }
+</style><link id="all-fonts-link-font-poppins" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-poppins">
+.font-poppins { font-family: 'Poppins', sans-serif !important; }
+</style><link id="all-fonts-link-font-playfair" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&amp;display=swap"><style id="all-fonts-style-font-playfair">
+.font-playfair { font-family: 'Playfair Display', serif !important; }
+</style><link id="all-fonts-link-font-instrument-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-instrument-serif">
+.font-instrument-serif { font-family: 'Instrument Serif', serif !important; }
+</style><link id="all-fonts-link-font-merriweather" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&amp;display=swap"><style id="all-fonts-style-font-merriweather">
+.font-merriweather { font-family: 'Merriweather', serif !important; }
+</style><link id="all-fonts-link-font-bricolage" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-bricolage">
+.font-bricolage { font-family: 'Bricolage Grotesque', sans-serif !important; }
+</style><link id="all-fonts-link-font-jakarta" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-jakarta">
+.font-jakarta { font-family: 'Plus Jakarta Sans', sans-serif !important; }
+</style><link id="all-fonts-link-font-manrope" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-manrope">
+.font-manrope { font-family: 'Manrope', sans-serif !important; }
+</style><link id="all-fonts-link-font-space-grotesk" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-space-grotesk">
+.font-space-grotesk { font-family: 'Space Grotesk', sans-serif !important; }
+</style><link id="all-fonts-link-font-work-sans" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-work-sans">
+.font-work-sans { font-family: 'Work Sans', sans-serif !important; }
+</style><link id="all-fonts-link-font-pt-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&amp;display=swap"><style id="all-fonts-style-font-pt-serif">
+.font-pt-serif { font-family: 'PT Serif', serif !important; }
+</style><link id="all-fonts-link-font-geist-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-geist-mono">
+.font-geist-mono { font-family: 'Geist Mono', monospace !important; }
+</style><link id="all-fonts-link-font-space-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;display=swap"><style id="all-fonts-style-font-space-mono">
+.font-space-mono { font-family: 'Space Mono', monospace !important; }
+</style><link id="all-fonts-link-font-quicksand" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-quicksand">
+.font-quicksand { font-family: 'Quicksand', sans-serif !important; }
+</style><link id="all-fonts-link-font-nunito" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-nunito">
+.font-nunito { font-family: 'Nunito', sans-serif !important; }
+</style><link id="all-fonts-link-font-geist" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-geist">
+.font-geist { font-family: 'Geist', sans-serif !important; }
+</style><link id="all-fonts-link-font-roboto" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-roboto">
+.font-roboto { font-family: 'Roboto', sans-serif !important; }
+</style><link id="all-fonts-link-font-montserrat" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-montserrat">
+.font-montserrat { font-family: 'Montserrat', sans-serif !important; }
+</style><link id="all-fonts-link-font-poppins" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-poppins">
+.font-poppins { font-family: 'Poppins', sans-serif !important; }
+</style><link id="all-fonts-link-font-playfair" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&amp;display=swap"><style id="all-fonts-style-font-playfair">
+.font-playfair { font-family: 'Playfair Display', serif !important; }
+</style><link id="all-fonts-link-font-instrument-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-instrument-serif">
+.font-instrument-serif { font-family: 'Instrument Serif', serif !important; }
+</style><link id="all-fonts-link-font-merriweather" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&amp;display=swap"><style id="all-fonts-style-font-merriweather">
+.font-merriweather { font-family: 'Merriweather', serif !important; }
+</style><link id="all-fonts-link-font-bricolage" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-bricolage">
+.font-bricolage { font-family: 'Bricolage Grotesque', sans-serif !important; }
+</style><link id="all-fonts-link-font-jakarta" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-jakarta">
+.font-jakarta { font-family: 'Plus Jakarta Sans', sans-serif !important; }
+</style><link id="all-fonts-link-font-manrope" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-manrope">
+.font-manrope { font-family: 'Manrope', sans-serif !important; }
+</style><link id="all-fonts-link-font-space-grotesk" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-space-grotesk">
+.font-space-grotesk { font-family: 'Space Grotesk', sans-serif !important; }
+</style><link id="all-fonts-link-font-work-sans" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-work-sans">
+.font-work-sans { font-family: 'Work Sans', sans-serif !important; }
+</style><link id="all-fonts-link-font-pt-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&amp;display=swap"><style id="all-fonts-style-font-pt-serif">
+.font-pt-serif { font-family: 'PT Serif', serif !important; }
+</style><link id="all-fonts-link-font-geist-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-geist-mono">
+.font-geist-mono { font-family: 'Geist Mono', monospace !important; }
+</style><link id="all-fonts-link-font-space-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;display=swap"><style id="all-fonts-style-font-space-mono">
+.font-space-mono { font-family: 'Space Mono', monospace !important; }
+</style><link id="all-fonts-link-font-quicksand" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-quicksand">
+.font-quicksand { font-family: 'Quicksand', sans-serif !important; }
+</style><link id="all-fonts-link-font-nunito" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-nunito">
+.font-nunito { font-family: 'Nunito', sans-serif !important; }
+</style><link id="all-fonts-link-font-geist" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-geist">
+.font-geist { font-family: 'Geist', sans-serif !important; }
+</style><link id="all-fonts-link-font-manrope" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-manrope">
+.font-manrope { font-family: 'Manrope', sans-serif !important; }
+</style><link id="all-fonts-link-font-newsreader" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400..800&amp;display=swap"><style id="all-fonts-style-font-newsreader">
+.font-newsreader { font-family: 'Newsreader', serif !important; }
+</style><link id="all-fonts-link-font-google-sans-flex" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-google-sans-flex">
+.font-google-sans-flex { font-family: 'Google Sans Flex', sans-serif !important; }
+</style><link id="all-fonts-link-font-oswald" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-oswald">
+.font-oswald { font-family: 'Oswald', sans-serif !important; }
+</style><link id="all-fonts-link-font-dm-sans" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-dm-sans">
+.font-dm-sans { font-family: 'DM Sans', sans-serif !important; }
+</style><link id="all-fonts-link-font-cormorant" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-cormorant">
+.font-cormorant { font-family: 'Cormorant Garamond', serif !important; }
+</style><style id="border-gradient-shared-style">
+  [style*="--border-gradient"]::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: var(--border-radius-before, inherit);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    background: var(--border-gradient);
+    pointer-events: none;
+  }</style></head>
+  <body class="antialiased overflow-x-hidden selection:bg-red-600/30 selection:text-red-200 text-white bg-black">
+    <!-- Background (component) added by Aura -->
+    <div class="aura-background-component -z-10 w-full top-0 absolute h-[800px]" data-alpha-mask="80" style="mask-image: linear-gradient(transparent, black 0%, black 80%, transparent);">
+      <div class="aura-background-component top-0 w-full -z-10 absolute h-full">
+        <div data-us-project="sajpUiTp7MIKdX6daDCu" class="absolute w-full h-full left-0 top-0 -z-10"></div>
+        <script type="text/javascript">
+          !function(){if(!window.UnicornStudio){window.UnicornStudio={isInitialized:!1};var i=document.createElement("script");i.src="https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.29/dist/unicornStudio.umd.js",i.onload=function(){window.UnicornStudio.isInitialized||(UnicornStudio.init(),window.UnicornStudio.isInitialized=!0)},(document.head || document.body).appendChild(i)}}();
+        </script>
+      </div>
+    </div>
+    <!-- Progressive Blur Top -->
+    <div class="gradient-blur" style="">
+      <div class=""></div>
+      <div class="" style=""></div>
+      <div class="" style=""></div>
+      <div class="" style=""></div>
+      <div class="" style=""></div>
+      <div class="" style=""></div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="fixed flex [animation:fadeSlideIn_1s_ease-out_0.1s_both] w-full z-50 pt-6 pr-4 pl-4 top-0 left-0 justify-center">
+      <nav class="shadow-black/50 flex md:gap-12 md:w-auto bg-black/60 w-full max-w-5xl rounded-none pt-2 pr-2 pb-2 pl-3 shadow-2xl backdrop-blur-lg gap-x-8 gap-y-8 items-center justify-between" style="position: relative; --border-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.2)); --border-radius-before: 0">
+        <div class="flex gap-2 shrink-0 gap-x-2 gap-y-2 items-center">
+          <div class="flex gap-x-3 gap-y-3 items-center" onclick="window.location.href='/home'" role="button">
+            <div class="grid grid-cols-2 opacity-90 w-6 h-6 gap-x-1 gap-y-1">
+              <div class="bg-[#ef233c] w-full h-full rounded-sm"></div>
+              <div class="w-full h-full bg-zinc-700 rounded-sm [animation:fadeSlideIn_1s_ease-out_0.3s_both] animate-on-scroll animate"></div>
+              <div class="w-full h-full bg-zinc-800 rounded-sm"></div>
+              <div class="w-full h-full bg-white rounded-sm shadow-[0_0_10px_rgba(255,255,255,0.4)]"></div>
+            </div>
+            <span class="text-xl text-white tracking-tight font-manrope font-semibold">
+              Creative
+            </span>
+          </div>
+        </div>
+        <div class="hidden md:flex items-center gap-6">
+          <a href="/work" class="group hover:text-white transition-colors text-sm font-medium text-gray-400 font-sans pt-1 pb-1 relative">
+            Work
+            <span class="absolute -bottom-3 left-1/2 w-0 h-[1px] bg-gradient-to-r from-transparent via-[#ef233c] to-transparent group-hover:w-full group-hover:opacity-100 transition-all duration-300 ease-out -translate-x-1/2 shadow-[0_0_10px_rgba(239,35,60,0.8)]"></span>
+          </a>
+          <a href="/services" class="group hover:text-white transition-colors text-sm font-medium text-gray-400 font-sans py-1 relative">
+            Services
+            <span class="absolute -bottom-3 left-1/2 w-0 h-[1px] bg-gradient-to-r from-transparent via-[#ef233c] to-transparent group-hover:w-full group-hover:opacity-100 transition-all duration-300 ease-out -translate-x-1/2 shadow-[0_0_10px_rgba(239,35,60,0.8)]"></span>
+          </a>
+          <a href="/about" class="group hover:text-white transition-colors text-sm font-medium text-gray-400 font-sans py-1 relative">
+            About
+            <span class="absolute -bottom-3 left-1/2 w-0 h-[1px] bg-gradient-to-r from-transparent via-[#ef233c] to-transparent group-hover:w-full group-hover:opacity-100 transition-all duration-300 ease-out -translate-x-1/2 shadow-[0_0_10_rgba(239,35,60,0.8)]"></span>
+          </a>
+          <a href="/pricing" class="group hover:text-white transition-colors text-sm font-medium text-gray-400 font-sans py-1 relative">
+            Pricing
+            <span class="absolute -bottom-3 left-1/2 w-0 h-[1px] bg-gradient-to-r from-transparent via-[#ef233c] to-transparent group-hover:w-full group-hover:opacity-100 transition-all duration-300 ease-out -translate-x-1/2 shadow-[0_0_10px_rgba(239,35,60,0.8)]"></span>
+          </a>
+          <a href="#contact" class="group hover:text-white transition-colors text-sm font-medium text-gray-400 font-sans py-1 relative">
+            Contact
+            <span class="absolute -bottom-3 left-1/2 w-0 h-[1px] bg-gradient-to-r from-transparent via-[#ef233c] to-transparent group-hover:w-full group-hover:opacity-100 transition-all duration-300 ease-out -translate-x-1/2 shadow-[0_0_10px_rgba(239,35,60,0.8)]"></span>
+          </a>
+        </div>
+        <div class="flex gap-4 shrink-0 gap-x-4 gap-y-4 items-center" style="">
+          <button class="group inline-flex overflow-hidden transition-transform active:scale-95 cursor-pointer outline-none rounded-none pt-2.5 pr-6 pb-2.5 pl-6 relative gap-x-4 gap-y-4 items-center justify-center" style="background-color: rgba(255, 255, 255, 0.05)">
+            <!-- Red Beam Animation -->
+            <span class="absolute inset-[-100%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,transparent_75%,#ef233c_100%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" style=""></span>
+
+            <!-- Static Border (Fades out on hover) -->
+            <span class="absolute inset-0 rounded-none bg-[#ef233c] transition-opacity duration-300 opacity-100"></span>
+
+            <!-- Inner Black Background -->
+            <span class="bg-black z-10 rounded-none absolute top-[1px] right-[1px] bottom-[1px] left-[1px]" onclick="document.getElementById('book-call').scrollIntoView({behavior: 'smooth'})" role="button"></span>
+
+            <!-- Red Glow Effect (View Portfolio Style) -->
+            <div class="absolute inset-0 pointer-events-none transition-opacity duration-500 opacity-0 group-hover:opacity-100 z-10" style="background: radial-gradient(50% 50% at 50% 100%, rgba(239, 35, 60, 0.2) 0%, transparent 100%);"></div>
+
+            <!-- Content -->
+            <span class="relative z-20 flex items-center justify-center gap-2 text-xs font-medium text-white tracking-wide uppercase">
+              <span class="">Book Call</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 group-hover:translate-x-0.5">
+                <path d="M5 12h14" class=""></path>
+                <path d="m12 5 7 7-7 7" class=""></path>
+              </svg>
+            </span>
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="flex flex-col z-10 w-full max-w-7xl mr-auto ml-auto pt-40 pr-6 pb-20 pl-6 relative">
+      <div class="flex flex-col animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.2s_both] animate mb-20 gap-x-6 gap-y-6">
+        <div class="flex items-center gap-3">
+          <span class="uppercase text-sm font-medium text-[#ef233c] tracking-widest">
+            Contact
+          </span>
+        </div>
+        <h1 class="text-5xl md:text-7xl font-medium text-white tracking-tighter font-manrope">
+          Let's start a
+
+          <span class="bg-clip-text text-transparent bg-[#ef233c]">
+            conversation.
+          </span>
+        </h1>
+        <p class="text-lg text-gray-400 font-sans max-w-2xl leading-relaxed">
+          No pressure, no commitment. Whether you have a specific project in
+          mind or just want to explore possibilities, we're here to chat.
+        </p>
+        <div class="flex gap-4 mt-8">
+          <a href="#contact-form" class="text-xs font-semibold uppercase tracking-widest text-white border-b border-white/20 pb-1 hover:border-[#ef233c] transition-colors">
+            Send Inquiry
+          </a>
+          <span class="text-zinc-800">/</span>
+          <a href="#book-call" class="text-xs font-semibold uppercase tracking-widest text-white border-b border-white/20 pb-1 hover:border-[#ef233c] transition-colors">
+            Book Discovery Call
+          </a>
+        </div>
+      </div>
+
+      <div class="grid lg:grid-cols-12 gap-12 lg:gap-24">
+        <!-- Left: Info -->
+        <div class="lg:col-span-4 flex flex-col gap-12 animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.4s_both] animate">
+          <div class="">
+            <h3 class="text-sm text-white uppercase tracking-wider mb-4 font-manrope font-semibold">
+              Direct Contact
+            </h3>
+            <a href="mailto:hello@creative.com" class="text-2xl text-zinc-300 hover:text-[#ef233c] transition-colors font-sans block mb-2">
+              hello@creative.com
+            </a>
+            <p class="text-sm text-zinc-500 font-sans">
+              We usually reply within 24 hours.
+            </p>
+          </div>
+
+          <div class="">
+            <h3 class="text-sm font-bold text-white uppercase tracking-wider mb-4 font-manrope">
+              Alternative Channels
+            </h3>
+            <div class="flex flex-col gap-4">
+              <a href="#" class="flex items-center gap-3 text-zinc-400 hover:text-white transition-colors group">
+                <div class="w-10 h-10 border border-zinc-800 rounded-sm flex items-center justify-center group-hover:border-[#ef233c] transition-colors">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+                  </svg>
+                </div>
+                <span class="font-medium font-sans">Twitter / X</span>
+              </a>
+              <a href="#" class="flex items-center gap-3 text-zinc-400 hover:text-white transition-colors group">
+                <div class="w-10 h-10 border border-zinc-800 rounded-sm flex items-center justify-center group-hover:border-[#ef233c] transition-colors">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                    <rect width="4" height="12" x="2" y="9"></rect>
+                    <circle cx="4" cy="4" r="2"></circle>
+                  </svg>
+                </div>
+                <span class="font-medium font-sans">LinkedIn</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="group bg-black border border-zinc-800 p-6 relative overflow-hidden">
+            <div class="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#ef233c]">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+            </div>
+            <h3 class="text-sm font-manrope font-bold uppercase tracking-wider text-white mb-6">
+              Regional Offices
+            </h3>
+
+            <div class="space-y-6">
+              <div class="flex items-center justify-between border-b border-zinc-900 pb-4">
+                <div>
+                  <p class="text-white font-medium">New York</p>
+                  <p class="text-xs text-zinc-500 mt-0.5">122 West 24th St</p>
+                </div>
+                <div class="text-right">
+                  <span class="text-sm font-mono text-[#ef233c]">09:42 AM</span>
+                  <div class="flex justify-end mt-1">
+                    <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between border-b border-zinc-900 pb-4">
+                <div>
+                  <p class="text-white font-medium">London</p>
+                  <p class="text-xs text-zinc-500 mt-0.5">14 Fournier St</p>
+                </div>
+                <div class="text-right">
+                  <span class="text-sm font-mono text-zinc-400">02:42 PM</span>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="text-white font-medium">Tokyo</p>
+                  <p class="text-xs text-zinc-500 mt-0.5">Remote Hub</p>
+                </div>
+                <div class="text-right">
+                  <span class="text-sm font-mono text-zinc-600">10:42 PM</span>
+                  <div class="flex justify-end mt-1">
+                    <span class="w-1.5 h-1.5 bg-zinc-700 rounded-full"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Form -->
+        <div class="lg:col-span-8 animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.6s_both] animate">
+          <form class="bg-black border border-zinc-800 p-8 md:p-12 relative overflow-hidden group" id="contact-form">
+            <!-- Subtle Glow Effect -->
+            <div class="absolute top-0 right-0 w-[300px] h-[300px] bg-red-900/10 blur-[100px] rounded-full pointer-events-none group-hover:bg-red-900/20 transition-all duration-700"></div>
+
+            <div class="relative z-10 space-y-12">
+              <!-- Section 1: Introduction -->
+              <div class="space-y-8">
+                <h3 class="text-xl font-manrope font-semibold text-white flex items-center gap-3 tracking-tight">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="user" class="lucide lucide-user w-5 h-5 text-[#ef233c]"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+
+                  About You
+                </h3>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div class="relative z-0 group/input">
+                    <input type="text" id="name" name="name" class="block py-2.5 px-0 w-full text-lg text-white bg-transparent border-0 border-b border-zinc-800 appearance-none focus:outline-none focus:ring-0 focus:border-[#ef233c] peer" placeholder=" " required="">
+                    <label for="name" class="peer-focus:font-medium absolute text-sm text-zinc-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#ef233c] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 font-mono uppercase tracking-wide">
+                      Name
+                    </label>
+                  </div>
+                  <div class="relative z-0 group/input">
+                    <input type="email" id="email" name="email" class="block py-2.5 px-0 w-full text-lg text-white bg-transparent border-0 border-b border-zinc-800 appearance-none focus:outline-none focus:ring-0 focus:border-[#ef233c] peer" placeholder=" " required="">
+                    <label for="email" class="peer-focus:font-medium absolute text-sm text-zinc-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#ef233c] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 font-mono uppercase tracking-wide">
+                      Email
+                    </label>
+                  </div>
+                </div>
+                <div class="relative z-0 group/input">
+                  <input type="text" id="company" name="company" class="block py-2.5 px-0 w-full text-lg text-white bg-transparent border-0 border-b border-zinc-800 appearance-none focus:outline-none focus:ring-0 focus:border-[#ef233c] peer" placeholder=" ">
+                  <label for="company" class="peer-focus:font-medium absolute text-sm text-zinc-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#ef233c] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 font-mono uppercase tracking-wide">
+                    Company / Organization
+                  </label>
+                </div>
+              </div>
+
+              <!-- Section 2: Interest Selector (Custom Component) -->
+              <div class="space-y-8">
+                <h3 class="text-xl font-manrope font-semibold text-white flex items-center gap-3">
+                  What can we help with?
+                </h3>
+
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                  <!-- Option 1 -->
+                  <label class="cursor-pointer group">
+                    <input type="checkbox" class="peer sr-only" name="interest" value="strategy">
+                    <div class="h-full p-4 border border-zinc-800 bg-zinc-900/20 peer-checked:bg-[#ef233c] peer-checked:border-[#ef233c] peer-checked:text-white transition-all duration-300 hover:border-zinc-600 flex flex-col gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-zinc-500 peer-checked:text-white">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="m9 12 2 2 4-4"></path>
+                      </svg>
+                      <span class="text-sm font-medium text-zinc-300 peer-checked:text-white">
+                        Strategy &amp; Audit
+                      </span>
+                    </div>
+                  </label>
+                  <!-- Option 2 -->
+                  <label class="cursor-pointer group">
+                    <input type="checkbox" class="peer sr-only" name="interest" value="branding">
+                    <div class="h-full p-4 border border-zinc-800 bg-zinc-900/20 peer-checked:bg-[#ef233c] peer-checked:border-[#ef233c] peer-checked:text-white transition-all duration-300 hover:border-zinc-600 flex flex-col gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-zinc-500 peer-checked:text-white">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                      </svg>
+                      <span class="text-sm font-medium text-zinc-300 peer-checked:text-white">
+                        Brand Identity
+                      </span>
+                    </div>
+                  </label>
+                  <!-- Option 3 -->
+                  <label class="cursor-pointer group">
+                    <input type="checkbox" class="peer sr-only" name="interest" value="webdesign">
+                    <div class="h-full p-4 border border-zinc-800 bg-zinc-900/20 peer-checked:bg-[#ef233c] peer-checked:border-[#ef233c] peer-checked:text-white transition-all duration-300 hover:border-zinc-600 flex flex-col gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-zinc-500 peer-checked:text-white">
+                        <rect width="20" height="14" x="2" y="3" rx="2"></rect>
+                        <line x1="8" x2="16" y1="21" y2="21"></line>
+                        <line x1="12" x2="12" y1="17" y2="21"></line>
+                      </svg>
+                      <span class="text-sm font-medium text-zinc-300 peer-checked:text-white">
+                        Web Design
+                      </span>
+                    </div>
+                  </label>
+                  <!-- Option 4 -->
+                  <label class="cursor-pointer group">
+                    <input type="checkbox" class="peer sr-only" name="interest" value="development">
+                    <div class="h-full p-4 border border-zinc-800 bg-zinc-900/20 peer-checked:bg-[#ef233c] peer-checked:border-[#ef233c] peer-checked:text-white transition-all duration-300 hover:border-zinc-600 flex flex-col gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-zinc-500 peer-checked:text-white">
+                        <polyline points="16 18 22 12 16 6"></polyline>
+                        <polyline points="8 6 2 12 8 18"></polyline>
+                      </svg>
+                      <span class="text-sm font-medium text-zinc-300 peer-checked:text-white">
+                        Development
+                      </span>
+                    </div>
+                  </label>
+                  <!-- Option 5 -->
+                  <label class="cursor-pointer group">
+                    <input type="checkbox" class="peer sr-only" name="interest" value="motion">
+                    <div class="h-full p-4 border border-zinc-800 bg-zinc-900/20 peer-checked:bg-[#ef233c] peer-checked:border-[#ef233c] peer-checked:text-white transition-all duration-300 hover:border-zinc-600 flex flex-col gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-zinc-500 peer-checked:text-white">
+                        <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path>
+                        <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path>
+                        <path d="M9 12H4s.55-3.03 2-4c1.62-1.1 4-1 4-1s.25 4 1 6c.9 2.4 2 5 2 5l-9-9"></path>
+                      </svg>
+                      <span class="text-sm font-medium text-zinc-300 peer-checked:text-white">
+                        Motion / 3D
+                      </span>
+                    </div>
+                  </label>
+                  <!-- Option 6 -->
+                  <label class="cursor-pointer group">
+                    <input type="checkbox" class="peer sr-only" name="interest" value="other">
+                    <div class="h-full p-4 border border-zinc-800 bg-zinc-900/20 peer-checked:bg-[#ef233c] peer-checked:border-[#ef233c] peer-checked:text-white transition-all duration-300 hover:border-zinc-600 flex flex-col gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-zinc-500 peer-checked:text-white">
+                        <circle cx="12" cy="12" r="1"></circle>
+                        <circle cx="19" cy="12" r="1"></circle>
+                        <circle cx="5" cy="12" r="1"></circle>
+                      </svg>
+                      <span class="text-sm font-medium text-zinc-300 peer-checked:text-white">
+                        Other
+                      </span>
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Section 3: Budget Slider (Custom Component) -->
+              <div class="space-y-8">
+                <h3 class="text-xl font-manrope font-semibold text-white flex items-center gap-3">
+                  Project Budget
+                </h3>
+
+                <div class="pt-4 pb-2">
+                  <div class="flex justify-between text-sm text-zinc-400 font-mono mb-4 uppercase tracking-widest">
+                    <span class="">&lt;$10k</span>
+                    <span>$25k</span>
+                    <span>$50k</span>
+                    <span>$100k+</span>
+                  </div>
+                  <input type="range" min="1" max="4" step="1" class="w-full bg-zinc-800 rounded-lg appearance-none cursor-pointer">
+                </div>
+              </div>
+
+              <!-- Section 4: Details -->
+              <div class="space-y-8">
+                <h3 class="text-xl font-manrope font-semibold text-white flex items-center gap-3">
+                  Project Details
+                </h3>
+                <div class="relative z-0 group/input">
+                  <textarea id="message" name="message" rows="4" class="block py-2.5 px-0 w-full text-lg text-white bg-transparent border-0 border-b border-zinc-800 appearance-none focus:outline-none focus:ring-0 focus:border-[#ef233c] peer resize-none" placeholder=" "></textarea>
+                  <label for="message" class="peer-focus:font-medium absolute text-sm text-zinc-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#ef233c] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 font-mono uppercase tracking-wide">
+                    Tell us about your goals
+                  </label>
+                </div>
+              </div>
+
+              <!-- Submit Action -->
+              <div class="pt-6 border-t border-zinc-800 flex items-center justify-between">
+                <div class="flex items-start gap-2 text-xs text-zinc-500 max-w-xs">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mt-0.5">
+                    <rect width="18" height="11" x="3" y="11" rx="2" ry="2">
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </rect>
+                  </svg>
+                  <span class="">
+                    Your data is processed securely and we never share it with
+                    third parties.
+                  </span>
+                </div>
+
+                <button type="submit" class="shiny-cta group relative inline-flex items-center gap-3 overflow-hidden rounded-none px-8 py-4 transition-transform active:scale-95">
+                  <span class="relative z-10 text-sm uppercase tracking-widest text-white font-semibold">
+                    Send Inquiry
+                  </span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="relative z-10 transition-transform duration-300 group-hover:translate-x-1">
+                    <line x1="22" x2="2" y1="12" y2="12"></line>
+                    <path d="m15 5 7 7-7 7"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section id="book-call" class="w-full px-6 max-w-7xl mx-auto pb-32 animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.2s_both]">
+      <div class="border border-zinc-800 bg-black p-8 md:p-16 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#ef233c] to-transparent"></div>
+
+        <div class="grid lg:grid-cols-2 gap-16 items-start">
+          <div class="space-y-8">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-red-900/30 bg-red-900/10 text-[#ef233c] text-xs font-medium uppercase tracking-widest">
+              <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ef233c] opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-[#ef233c]"></span>
+              </span>
+              Live Scheduling
+            </div>
+            <h2 class="text-4xl md:text-5xl font-manrope font-semibold tracking-tight text-white">
+              Book a
+              <span class="text-[#ef233c]">discovery call</span>
+            </h2>
+            <p class="text-zinc-400 text-lg leading-relaxed max-w-md">
+              Select a date and time that suits you. In this 30-minute session,
+              we'll dive into your project goals and see how we can help.
+            </p>
+
+            <div class="space-y-6 pt-4">
+              <div class="flex items-center gap-4 text-zinc-300">
+                <div class="w-10 h-10 rounded-sm border border-zinc-800 flex items-center justify-center text-[#ef233c]">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="clock" class="lucide lucide-clock w-5 h-5"><path d="M12 6v6l4 2"></path><circle cx="12" cy="12" r="10"></circle></svg>
+                </div>
+                <div>
+                  <p class="font-medium">30 Minutes</p>
+                  <p class="text-xs text-zinc-500">
+                    Video call via Google Meet
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-center gap-4 text-zinc-300">
+                <div class="w-10 h-10 rounded-sm border border-zinc-800 flex items-center justify-center text-[#ef233c]">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="calendar" class="lucide lucide-calendar w-5 h-5"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg>
+                </div>
+                <div>
+                  <p class="font-medium">Free Consultation</p>
+                  <p class="text-xs text-zinc-500">No commitment required</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-zinc-900/30 border border-zinc-800 rounded-none p-1 relative">
+            <div class="bg-black h-full p-6 md:p-8 flex flex-col">
+              <div class="flex items-center justify-between mb-8">
+                <h3 class="font-manrope font-bold text-white uppercase tracking-widest text-sm">
+                  October 2024
+                </h3>
+                <div class="flex gap-2">
+                  <button class="p-2 hover:bg-zinc-800 text-zinc-500 hover:text-white transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-left" class="lucide lucide-chevron-left w-4 h-4"><path d="m15 18-6-6 6-6"></path></svg>
+                  </button>
+                  <button class="p-2 hover:bg-zinc-800 text-zinc-500 hover:text-white transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-right" class="lucide lucide-chevron-right w-4 h-4"><path d="m9 18 6-6-6-6"></path></svg>
+                  </button>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-7 gap-1 mb-4 text-center">
+                <span class="text-[10px] font-bold text-zinc-600 uppercase">
+                  M
+                </span>
+                <span class="text-[10px] font-bold text-zinc-600 uppercase">
+                  T
+                </span>
+                <span class="text-[10px] font-bold text-zinc-600 uppercase">
+                  W
+                </span>
+                <span class="text-[10px] font-bold text-zinc-600 uppercase">
+                  T
+                </span>
+                <span class="text-[10px] font-bold text-zinc-600 uppercase">
+                  F
+                </span>
+                <span class="text-[10px] font-bold text-zinc-600 uppercase text-zinc-800">
+                  S
+                </span>
+                <span class="text-[10px] font-bold text-zinc-600 uppercase text-zinc-800">
+                  S
+                </span>
+              </div>
+
+              <div class="grid grid-cols-7 gap-1">
+                <div class="aspect-square flex items-center justify-center text-zinc-800 text-xs">
+                  30
+                </div>
+                <button class="aspect-square flex items-center justify-center text-zinc-300 hover:bg-zinc-800 transition-all text-xs">
+                  1
+                </button>
+                <button class="aspect-square flex items-center justify-center text-zinc-300 hover:bg-zinc-800 transition-all text-xs">
+                  2
+                </button>
+                <button class="aspect-square flex items-center justify-center text-zinc-300 hover:bg-zinc-800 transition-all text-xs">
+                  3
+                </button>
+                <button class="aspect-square flex items-center justify-center text-zinc-300 hover:bg-zinc-800 transition-all text-xs">
+                  4
+                </button>
+                <div class="aspect-square flex items-center justify-center text-zinc-800 text-xs">
+                  5
+                </div>
+                <div class="aspect-square flex items-center justify-center text-zinc-800 text-xs">
+                  6
+                </div>
+
+                <button class="aspect-square flex items-center justify-center text-zinc-300 hover:bg-zinc-800 transition-all text-xs">
+                  7
+                </button>
+                <button class="aspect-square flex items-center justify-center bg-[#ef233c] text-white text-xs font-bold">
+                  8
+                </button>
+                <button class="aspect-square flex items-center justify-center text-zinc-300 hover:bg-zinc-800 transition-all text-xs">
+                  9
+                </button>
+                <button class="aspect-square flex items-center justify-center text-zinc-300 hover:bg-zinc-800 transition-all text-xs">
+                  10
+                </button>
+                <button class="aspect-square flex items-center justify-center text-zinc-300 hover:bg-zinc-800 transition-all text-xs">
+                  11
+                </button>
+                <div class="aspect-square flex items-center justify-center text-zinc-800 text-xs">
+                  12
+                </div>
+                <div class="aspect-square flex items-center justify-center text-zinc-800 text-xs">
+                  13
+                </div>
+
+                <button class="aspect-square flex items-center justify-center text-zinc-300 hover:bg-zinc-800 transition-all text-xs">
+                  14
+                </button>
+                <button class="aspect-square flex items-center justify-center text-zinc-300 hover:bg-zinc-800 transition-all text-xs">
+                  15
+                </button>
+                <button class="aspect-square flex items-center justify-center text-zinc-300 hover:bg-zinc-800 transition-all text-xs">
+                  16
+                </button>
+                <button class="aspect-square flex items-center justify-center text-zinc-300 hover:bg-zinc-800 transition-all text-xs">
+                  17
+                </button>
+                <button class="aspect-square flex items-center justify-center text-zinc-300 hover:bg-zinc-800 transition-all text-xs">
+                  18
+                </button>
+                <div class="aspect-square flex items-center justify-center text-zinc-800 text-xs">
+                  19
+                </div>
+                <div class="aspect-square flex items-center justify-center text-zinc-800 text-xs">
+                  20
+                </div>
+              </div>
+
+              <div class="mt-10 pt-8 border-t border-zinc-900">
+                <div class="flex items-center justify-between mb-6">
+                  <p class="text-[10px] text-zinc-500 font-mono tracking-widest uppercase">
+                    Timeslots for Oct 8
+                  </p>
+                  <p class="text-[10px] text-zinc-400 font-mono">UTC+1</p>
+                </div>
+                <div class="grid grid-cols-2 gap-2">
+                  <button class="py-3 px-4 text-xs border border-zinc-800 text-zinc-400 hover:border-[#ef233c] hover:text-white transition-all text-left">
+                    09:00 AM
+                  </button>
+                  <button class="py-3 px-4 text-xs border border-[#ef233c] bg-[#ef233c]/10 text-white text-left font-medium">
+                    10:30 AM
+                  </button>
+                  <button class="py-3 px-4 text-xs border border-zinc-800 text-zinc-400 hover:border-[#ef233c] hover:text-white transition-all text-left">
+                    01:00 PM
+                  </button>
+                  <button class="py-3 px-4 text-xs border border-zinc-800 text-zinc-400 hover:border-[#ef233c] hover:text-white transition-all text-left">
+                    03:30 PM
+                  </button>
+                </div>
+                <button class="w-full mt-8 py-4 bg-white text-black text-xs font-bold uppercase tracking-widest hover:bg-[#ef233c] hover:text-white transition-all active:scale-[0.98]">
+                  Schedule Meeting
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="overflow-hidden border-dashed [animation:fadeSlideIn_1s_ease-out_1s_both] animate-on-scroll text-white bg-black w-full border-zinc-800 border-t relative">
+      <!-- Main Content Wrapper -->
+      <div class="w-full max-w-7xl mx-auto border-x border-dashed border-zinc-800">
+        <!-- Top Section: Grid -->
+        <div class="grid lg:grid-cols-12">
+          <!-- Left Brand Section -->
+          <div class="lg:col-span-5 p-8 md:p-12 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-dashed border-zinc-800 relative min-h-[360px] [animation:fadeSlideIn_1s_ease-out_0.2s_both] animate-on-scroll animate">
+            <div class="">
+              <!-- Logo -->
+              <div class="flex mb-8 gap-x-3 gap-y-3 items-center">
+                <div class="grid grid-cols-2 gap-1 w-8 h-8 opacity-90">
+                  <div class="bg-[#ef233c] w-full h-full rounded-sm"></div>
+                  <div class="w-full h-full bg-zinc-700 rounded-sm [animation:fadeSlideIn_1s_ease-out_0.3s_both] animate-on-scroll animate"></div>
+                  <div class="w-full h-full bg-zinc-800 rounded-sm"></div>
+                  <div class="w-full h-full bg-white rounded-sm shadow-[0_0_10px_rgba(255,255,255,0.4)]"></div>
+                </div>
+                <span class="text-2xl tracking-tight text-white font-manrope font-semibold">
+                  Creative
+                </span>
+              </div>
+
+              <p class="text-zinc-400 max-w-sm text-sm leading-relaxed mb-12 font-medium">
+                We offer clarity and collaboration tools to help teams
+                effectively plan, track, and launch digital products.
+              </p>
+            </div>
+
+            <!-- Social Icons -->
+            <div class="flex items-center gap-3 mt-auto">
+              <a href="#" class="w-10 h-10 flex items-center justify-center border border-dashed border-zinc-700 hover:border-red-600 hover:bg-red-600/10 hover:text-red-600 transition-all duration-300 rounded text-zinc-400 group">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram">
+                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+                </svg>
+              </a>
+              <a href="#" class="w-10 h-10 flex items-center justify-center border border-dashed border-zinc-700 hover:border-red-600 hover:bg-red-600/10 hover:text-red-600 transition-all duration-300 rounded text-zinc-400 group">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-twitter">
+                  <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+                </svg>
+              </a>
+              <a href="#" class="w-10 h-10 flex items-center justify-center border border-dashed border-zinc-700 hover:border-red-600 hover:bg-red-600/10 hover:text-red-600 transition-all duration-300 rounded text-zinc-400 group">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-globe">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+                  <path d="M2 12h20"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Links Section -->
+          <div class="lg:col-span-7 p-8 md:p-12 bg-black/50">
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-10 h-full content-start">
+              <!-- Column 1 -->
+              <div class="flex flex-col gap-8">
+                <h4 class="uppercase text-xs text-[#ef233c] tracking-widest font-manrope font-semibold">
+                  Map
+                </h4>
+                <div class="flex flex-col gap-5">
+                  <a href="#" class="group flex items-center justify-between text-xs font-medium text-zinc-400 hover:text-white transition-colors">
+                    FEATURES
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-red-600">
+                      <path d="m9 18 6-6-6-6" class=""></path>
+                    </svg>
+                  </a>
+                  <a href="#" class="group flex items-center justify-between text-xs font-medium text-zinc-400 hover:text-white transition-colors">
+                    SERVICES
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-red-600">
+                      <path d="m9 18 6-6-6-6"></path>
+                    </svg>
+                  </a>
+                  <a href="#" class="group flex items-center justify-between text-xs font-medium text-zinc-400 hover:text-white transition-colors">
+                    REVIEWS
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-red-600">
+                      <path d="m9 18 6-6-6-6"></path>
+                    </svg>
+                  </a>
+                  <a href="#" class="group flex items-center justify-between text-xs font-medium text-zinc-400 hover:text-white transition-colors">
+                    FAQS
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-red-600">
+                      <path d="m9 18 6-6-6-6"></path>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Column 2 -->
+              <div class="flex flex-col gap-8">
+                <h4 class="uppercase text-xs text-[#ef233c] tracking-widest font-manrope font-semibold">
+                  Company
+                </h4>
+                <div class="flex flex-col gap-5">
+                  <a href="#" class="group flex items-center justify-between text-xs font-medium text-zinc-400 hover:text-white transition-colors">
+                    HOME
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-red-600">
+                      <path d="m9 18 6-6-6-6"></path>
+                    </svg>
+                  </a>
+                  <a href="#" class="group flex items-center justify-between text-xs font-medium text-zinc-400 hover:text-white transition-colors">
+                    ABOUT
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-red-600">
+                      <path d="m9 18 6-6-6-6"></path>
+                    </svg>
+                  </a>
+                  <a href="#" class="group flex items-center justify-between text-xs font-medium text-zinc-400 hover:text-white transition-colors">
+                    PRICING
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-red-600">
+                      <path d="m9 18 6-6-6-6"></path>
+                    </svg>
+                  </a>
+                  <a href="#" class="group flex items-center justify-between text-xs font-medium text-zinc-400 hover:text-white transition-colors">
+                    CONTACT
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-red-600">
+                      <path d="m9 18 6-6-6-6"></path>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Column 3 -->
+              <div class="flex flex-col gap-8">
+                <h4 class="uppercase text-xs text-[#ef233c] tracking-widest font-manrope font-semibold">
+                  Legal
+                </h4>
+                <div class="flex flex-col gap-5">
+                  <a href="#" class="group flex items-center justify-between text-xs font-medium text-zinc-400 hover:text-white transition-colors">
+                    PRIVACY POLICY
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-red-600">
+                      <path d="m9 18 6-6-6-6"></path>
+                    </svg>
+                  </a>
+                  <a href="#" class="group flex items-center justify-between text-xs font-medium text-zinc-400 hover:text-white transition-colors">
+                    TERMS &amp; CONDITIONS
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-red-600">
+                      <path d="m9 18 6-6-6-6"></path>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Middle Divider -->
+        <div class="w-full border-t border-dashed border-zinc-800"></div>
+
+        <!-- Big Brand Text -->
+        <div class="w-full h-auto py-12 md:py-24 px-4 overflow-hidden flex justify-center items-center relative bg-black select-none [animation:fadeSlideIn_1s_ease-out_0.4s_both] animate-on-scroll animate">
+          <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,black_40%,transparent_100%)] pointer-events-none"></div>
+
+          <h2 class="text-[14vw] leading-[0.8] text-transparent tracking-tighter pointer-events-none font-manrope font-semibold" style="-webkit-text-stroke: 1px rgba(63, 63, 70, 0.5);">
+            CREATIVE
+          </h2>
+
+          <!-- Glow Overlay -->
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10"></div>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="w-full py-8 text-center border-t border-dashed border-zinc-800 bg-black z-20 relative [animation:fadeSlideIn_1s_ease-out_0.5s_both] animate-on-scroll animate">
+        <p class="text-[10px] text-zinc-600 uppercase tracking-[0.2em] font-sans font-semibold">
+          Made with love by
+          <a href="#" class="hover:text-white transition-colors text-[#ef233c]">
+            Creative Team
+          </a>
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      lucide.createIcons();
+    </script>
+  
+</body></html>

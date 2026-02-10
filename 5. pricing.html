@@ -1,0 +1,2063 @@
+<html lang="en" class="dark"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Creative - Digital Designer &amp; Developer</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body { font-family: 'Inter', sans-serif; }
+.font-geist { font-family: 'Geist', sans-serif !important; }
+/*
+Animation Keyframe: Content Fade In
+*/
+@keyframes fadeSlideIn {
+0% {
+opacity: 0;
+transform: translateY(30px);
+filter: blur(8px);
+}
+100% {
+opacity: 1;
+transform: translateY(0);
+filter: blur(0px);
+}
+}
+/*
+Animation Keyframe: Column Clip Reveal
+*/
+@keyframes columnReveal {
+0% {
+clip-path: inset(0 0 100% 0);
+opacity: 0;
+}
+100% {
+clip-path: inset(0 0 0% 0);
+opacity: 1;
+}
+}
+.col-anim {
+animation: columnReveal 1.4s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+will-change: clip-path;
+}
+/* Staggered Delays for Grid Columns */
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+.delay-5 { animation-delay: 0.5s; }
+.delay-6 { animation-delay: 0.6s; }
+.delay-7 { animation-delay: 0.7s; }
+/*
+Animation on Scroll State Management
+*/
+.animate-on-scroll { animation-play-state: paused !important; }
+.animate-on-scroll.animate { animation-play-state: running !important; }
+/* Animated Shiny CTA Button Styles */
+@property --gradient-angle { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
+@property --gradient-angle-offset { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
+@property --gradient-percent { syntax: "<percentage>"; initial-value: 20%; inherits: false; }
+@property --gradient-shine { syntax: "<color>"; initial-value: #dc2626; inherits: false; }
+.shiny-cta {
+--gradient-angle: 0deg;
+--gradient-angle-offset: 0deg;
+--gradient-percent: 20%;
+--gradient-shine: #dc2626;
+position: relative;
+overflow: hidden;
+border-radius: 9999px;
+padding: 1.25rem 3rem;
+font-size: 1.125rem;
+line-height: 1.2;
+font-weight: 500;
+color: #ffffff;
+background: linear-gradient(#000000, #000000) padding-box,
+conic-gradient(from calc(var(--gradient-angle) - var(--gradient-angle-offset)),
+transparent 0%, #dc2626 5%, var(--gradient-shine) 15%, #dc2626 30%, transparent 40%, transparent 100%) border-box;
+border: 2px solid transparent;
+box-shadow: inset 0 0 0 1px #1a1818;
+outline: none;
+transition: --gradient-angle-offset 800ms cubic-bezier(0.25, 1, 0.5, 1), --gradient-percent 800ms cubic-bezier(0.25, 1, 0.5, 1), --gradient-shine 800ms cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s;
+cursor: pointer;
+isolation: isolate;
+outline-offset: 4px;
+z-index: 0;
+animation: border-spin 2.5s linear infinite;
+}
+@keyframes border-spin { to { --gradient-angle: 360deg; } }
+.shiny-cta:active { transform: translateY(1px); }
+.shiny-cta::before {
+content: '';
+pointer-events: none;
+position: absolute;
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+z-index: 0;
+--size: calc(100% - 6px);
+--position: 2px;
+--space: 4px;
+width: var(--size);
+height: var(--size);
+background: radial-gradient(circle at var(--position) var(--position), white 0.5px, transparent 0) padding-box;
+background-size: var(--space) var(--space);
+background-repeat: space;
+mask-image: conic-gradient(from calc(var(--gradient-angle) + 45deg), black, transparent 10% 90%, black);
+border-radius: inherit;
+opacity: 0.4;
+}
+.shiny-cta::after {
+content: '';
+pointer-events: none;
+position: absolute;
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+z-index: 1;
+width: 100%;
+aspect-ratio: 1;
+background: linear-gradient(-50deg, transparent, #dc2626, transparent);
+mask-image: radial-gradient(circle at bottom, transparent 40%, black);
+opacity: 0.6;
+animation: shimmer 4s linear infinite;
+}
+.shiny-cta span { position: relative; z-index: 2; display: inline-block; }
+.shiny-cta span::before {
+content: '';
+pointer-events: none;
+position: absolute;
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+z-index: -1;
+--size: calc(100% + 1rem);
+width: var(--size);
+height: var(--size);
+box-shadow: inset 0 -1ex 2rem 4px #dc2626;
+opacity: 0;
+border-radius: inherit;
+transition: opacity 800ms cubic-bezier(0.25, 1, 0.5, 1);
+animation: breathe 4.5s linear infinite;
+}
+@keyframes shimmer { to { transform: translate(-50%, -50%) rotate(360deg); } }
+@keyframes breathe {
+0%, 100% { transform: translate(-50%, -50%) scale(1); }
+50% { transform: translate(-50%, -50%) scale(1.20); }
+}
+/* Progressive Blur CSS */
+.gradient-blur {
+position: fixed;
+z-index: 5;
+inset: 0 0 auto 0;
+height: 12%;
+pointer-events: none;
+}
+.gradient-blur>div, .gradient-blur::before, .gradient-blur::after { position: absolute; inset: 0; }
+.gradient-blur::before { content: ""; z-index: 1; backdrop-filter: blur(0.5px); mask: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 12.5%, rgba(0, 0, 0, 1) 25%, rgba(0, 0, 0, 0) 37.5%); }
+.gradient-blur>div:nth-of-type(1) { z-index: 2; backdrop-filter: blur(1px); mask: linear-gradient(to top, rgba(0, 0, 0, 0) 12.5%, rgba(0, 0, 0, 1) 25%, rgba(0, 0, 0, 1) 37.5%, rgba(0, 0, 0, 0) 50%); }
+.gradient-blur>div:nth-of-type(2) { z-index: 3; backdrop-filter: blur(2px); mask: linear-gradient(to top, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 1) 37.5%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 62.5%); }
+.gradient-blur>div:nth-of-type(3) { z-index: 4; backdrop-filter: blur(4px); mask: linear-gradient(to top, rgba(0, 0, 0, 0) 37.5%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 1) 62.5%, rgba(0, 0, 0, 0) 75%); }
+.gradient-blur>div:nth-of-type(4) { z-index: 5; backdrop-filter: blur(8px); mask: linear-gradient(to top, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 1) 62.5%, rgba(0, 0, 0, 1) 75%, rgba(0, 0, 0, 0) 87.5%); }
+.gradient-blur>div:nth-of-type(5) { z-index: 6; backdrop-filter: blur(16px); mask: linear-gradient(to top, rgba(0, 0, 0, 0) 62.5%, rgba(0, 0, 0, 1) 75%, rgba(0, 0, 0, 1) 87.5%, rgba(0, 0, 0, 0) 100%); }
+.gradient-blur>div:nth-of-type(6) { z-index: 7; backdrop-filter: blur(32px); mask: linear-gradient(to top, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 1) 87.5%, rgba(0, 0, 0, 1) 100%); }
+.gradient-blur::after { content: ""; z-index: 8; backdrop-filter: blur(64px); mask: linear-gradient(to top, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 1) 100%); }
+</style>
+<script>
+(function () {
+const once = true;
+if (!window.__inViewIO) {
+window.__inViewIO = new IntersectionObserver((entries) => {
+entries.forEach((entry) => {
+if (entry.isIntersecting) {
+entry.target.classList.add("animate");
+if (once) window.__inViewIO.unobserve(entry.target);
+}
+});
+}, { threshold: 0.1, rootMargin: "0px 0px -5% 0px" });
+}
+window.initInViewAnimations = function (selector = ".animate-on-scroll") {
+document.querySelectorAll(selector).forEach((el) => {
+window.__inViewIO.observe(el);
+});
+};
+document.addEventListener("DOMContentLoaded", () => initInViewAnimations());
+})();
+</script>
+<meta name="disabled-font-classes" content="font-roboto,font-montserrat,font-poppins,font-playfair,font-instrument-serif,font-merriweather,font-bricolage,font-jakarta,font-space-grotesk,font-work-sans,font-pt-serif,font-geist-mono,font-space-mono,font-quicksand,font-nunito">
+<style id="aura-editor-visibility-style">
+.invisible { visibility: hidden !important; }
+</style>
+<script>
+// Configure Tailwind to include our custom 3D transform utilities
+tailwind.config = {
+theme: {
+extend: {
+// Add any custom theme extensions here if needed
+}
+},
+plugins: [
+function({ addUtilities }) {
+const rotateXUtilities = {};
+const rotateYUtilities = {};
+const rotateZUtilities = {};
+const rotateValues = [0, 5, 10, 15, 20, 30, 45, 75];
+// Generate rotate-x utilities
+rotateValues.forEach((value) => {
+rotateXUtilities[`.rotate-x-${value}`] = {
+'--tw-rotate-x': `${value}deg`,
+transform: `
+translate3d(var(--tw-translate-x, 0), var(--tw-translate-y, 0), var(--tw-translate-z, 0))
+rotateX(var(--tw-rotate-x, 0))
+rotateY(var(--tw-rotate-y, 0))
+rotateZ(var(--tw-rotate-z, 0))
+skewX(var(--tw-skew-x, 0))
+skewY(var(--tw-skew-y, 0))
+scaleX(var(--tw-scale-x, 1))
+scaleY(var(--tw-scale-y, 1))
+`.replace(/\\s+/g, ' ').trim(),
+};
+if (value !== 0) {
+rotateXUtilities[`.-rotate-x-${value}`] = {
+'--tw-rotate-x': `-${value}deg`,
+transform: `
+translate3d(var(--tw-translate-x, 0), var(--tw-translate-y, 0), var(--tw-translate-z, 0))
+rotateX(var(--tw-rotate-x, 0))
+rotateY(var(--tw-rotate-y, 0))
+rotateZ(var(--tw-rotate-z, 0))
+skewX(var(--tw-skew-x, 0))
+skewY(var(--tw-skew-y, 0))
+scaleX(var(--tw-scale-x, 1))
+scaleY(var(--tw-scale-y, 1))
+`.replace(/\\s+/g, ' ').trim(),
+};
+}
+});
+// Generate rotate-y utilities
+rotateValues.forEach((value) => {
+rotateYUtilities[`.rotate-y-${value}`] = {
+'--tw-rotate-y': `${value}deg`,
+transform: `
+translate3d(var(--tw-translate-x, 0), var(--tw-translate-y, 0), var(--tw-translate-z, 0))
+rotateX(var(--tw-rotate-x, 0))
+rotateY(var(--tw-rotate-y, 0))
+rotateZ(var(--tw-rotate-z, 0))
+skewX(var(--tw-skew-x, 0))
+skewY(var(--tw-skew-y, 0))
+scaleX(var(--tw-scale-x, 1))
+scaleY(var(--tw-scale-y, 1))
+`.replace(/\\s+/g, ' ').trim(),
+};
+if (value !== 0) {
+rotateYUtilities[`.-rotate-y-${value}`] = {
+'--tw-rotate-y': `-${value}deg`,
+transform: `
+translate3d(var(--tw-translate-x, 0), var(--tw-translate-y, 0), var(--tw-translate-z, 0))
+rotateX(var(--tw-rotate-x, 0))
+rotateY(var(--tw-rotate-y, 0))
+rotateZ(var(--tw-rotate-z, 0))
+skewX(var(--tw-skew-x, 0))
+skewY(var(--tw-skew-y, 0))
+scaleX(var(--tw-scale-x, 1))
+scaleY(var(--tw-scale-y, 1))
+`.replace(/\\s+/g, ' ').trim(),
+};
+}
+});
+// Generate rotate-z utilities
+rotateValues.forEach((value) => {
+rotateZUtilities[`.rotate-z-${value}`] = {
+'--tw-rotate-z': `${value}deg`,
+transform: `
+translate3d(var(--tw-translate-x, 0), var(--tw-translate-y, 0), var(--tw-translate-z, 0))
+rotateX(var(--tw-rotate-x, 0))
+rotateY(var(--tw-rotate-y, 0))
+rotateZ(var(--tw-rotate-z, 0))
+skewX(var(--tw-skew-x, 0))
+skewY(var(--tw-skew-y, 0))
+scaleX(var(--tw-scale-x, 1))
+scaleY(var(--tw-scale-y, 1))
+`.replace(/\\s+/g, ' ').trim(),
+};
+if (value !== 0) {
+rotateZUtilities[`.-rotate-z-${value}`] = {
+'--tw-rotate-z': `-${value}deg`,
+transform: `
+translate3d(var(--tw-translate-x, 0), var(--tw-translate-y, 0), var(--tw-translate-z, 0))
+rotateX(var(--tw-rotate-x, 0))
+rotateY(var(--tw-rotate-y, 0))
+rotateZ(var(--tw-rotate-z, 0))
+skewX(var(--tw-skew-x, 0))
+skewY(var(--tw-skew-y, 0))
+scaleX(var(--tw-scale-x, 1))
+scaleY(var(--tw-scale-y, 1))
+`.replace(/\\s+/g, ' ').trim(),
+};
+}
+});
+// Perspective utilities
+const perspectiveUtilities = {
+".perspective-none": { perspective: "none" },
+".perspective-dramatic": { perspective: "100px" },
+".perspective-near": { perspective: "300px" },
+".perspective-normal": { perspective: "500px" },
+".perspective-midrange": { perspective: "800px" },
+".perspective-distant": { perspective: "1200px" },
+};
+// Transform style utilities
+const transformStyleUtilities = {
+".transform-style-preserve-3d": { "transform-style": "preserve-3d" },
+".transform-style-flat": { "transform-style": "flat" },
+};
+addUtilities({
+...rotateXUtilities,
+...rotateYUtilities,
+...rotateZUtilities,
+...perspectiveUtilities,
+...transformStyleUtilities,
+});
+}
+]
+};
+</script>
+<script>
+/*
+Sequence animation on scroll when visible. Requires Animation Keyframe. Usage:
+1) Insert this code in the <head> along with the Animation Keyframe code.
+2) Add to Tailwind Classes: [animation:animationIn_0.8s_ease-out_0.1s_both] animate-on-scroll
+*/
+(function () {
+// Inject CSS for paused/running states
+const style = document.createElement("style");
+style.textContent = `
+/* Default: paused */
+.animate-on-scroll { animation-play-state: paused !important; }
+/* Activated by JS */
+.animate-on-scroll.animate { animation-play-state: running !important; }
+`;
+document.head.appendChild(style);
+const once = true;
+if (!window.__inViewIO) {
+window.__inViewIO = new IntersectionObserver((entries) => {
+entries.forEach((entry) => {
+if (entry.isIntersecting) {
+entry.target.classList.add("animate");
+if (once) window.__inViewIO.unobserve(entry.target);
+}
+});
+}, { threshold: 0.2, rootMargin: "0px 0px -10% 0px" });
+}
+window.initInViewAnimations = function (selector = ".animate-on-scroll") {
+document.querySelectorAll(selector).forEach((el) => {
+window.__inViewIO.observe(el); // observing twice is a no-op
+});
+};
+document.addEventListener("DOMContentLoaded", () => initInViewAnimations());
+})();
+</script>
+<style>
+/* Default: paused */
+.animate-on-scroll { animation-play-state: paused !important; }
+/* Activated by JS */
+.animate-on-scroll.animate { animation-play-state: running !important; }
+</style>
+<style>
+/* Default: paused */
+.animate-on-scroll { animation-play-state: paused !important; }
+/* Activated by JS */
+.animate-on-scroll.animate { animation-play-state: running !important; }
+</style>
+<style>
+/* Default: paused */
+.animate-on-scroll { animation-play-state: paused !important; }
+/* Activated by JS */
+.animate-on-scroll.animate { animation-play-state: running !important; }
+</style>
+<style>
+/* Default: paused */
+.animate-on-scroll { animation-play-state: paused !important; }
+/* Activated by JS */
+.animate-on-scroll.animate { animation-play-state: running !important; }
+</style>
+<style>
+/* Default: paused */
+.animate-on-scroll { animation-play-state: paused !important; }
+/* Activated by JS */
+.animate-on-scroll.animate { animation-play-state: running !important; }
+</style>
+<style>
+/* Default: paused */
+.animate-on-scroll { animation-play-state: paused !important; }
+/* Activated by JS */
+.animate-on-scroll.animate { animation-play-state: running !important; }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link id="all-fonts-link-font-geist" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-geist">
+.font-geist { font-family: 'Geist', sans-serif !important; }
+</style><link id="all-fonts-link-font-roboto" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-roboto">
+.font-roboto { font-family: 'Roboto', sans-serif !important; }
+</style><link id="all-fonts-link-font-montserrat" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-montserrat">
+.font-montserrat { font-family: 'Montserrat', sans-serif !important; }
+</style><link id="all-fonts-link-font-poppins" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-poppins">
+.font-poppins { font-family: 'Poppins', sans-serif !important; }
+</style><link id="all-fonts-link-font-playfair" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&amp;display=swap"><style id="all-fonts-style-font-playfair">
+.font-playfair { font-family: 'Playfair Display', serif !important; }
+</style><link id="all-fonts-link-font-instrument-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-instrument-serif">
+.font-instrument-serif { font-family: 'Instrument Serif', serif !important; }
+</style><link id="all-fonts-link-font-merriweather" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&amp;display=swap"><style id="all-fonts-style-font-merriweather">
+.font-merriweather { font-family: 'Merriweather', serif !important; }
+</style><link id="all-fonts-link-font-bricolage" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-bricolage">
+.font-bricolage { font-family: 'Bricolage Grotesque', sans-serif !important; }
+</style><link id="all-fonts-link-font-jakarta" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-jakarta">
+.font-jakarta { font-family: 'Plus Jakarta Sans', sans-serif !important; }
+</style><link id="all-fonts-link-font-manrope" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-manrope">
+.font-manrope { font-family: 'Manrope', sans-serif !important; }
+</style><link id="all-fonts-link-font-space-grotesk" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-space-grotesk">
+.font-space-grotesk { font-family: 'Space Grotesk', sans-serif !important; }
+</style><link id="all-fonts-link-font-work-sans" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-work-sans">
+.font-work-sans { font-family: 'Work Sans', sans-serif !important; }
+</style><link id="all-fonts-link-font-pt-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&amp;display=swap"><style id="all-fonts-style-font-pt-serif">
+.font-pt-serif { font-family: 'PT Serif', serif !important; }
+</style><link id="all-fonts-link-font-geist-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-geist-mono">
+.font-geist-mono { font-family: 'Geist Mono', monospace !important; }
+</style><link id="all-fonts-link-font-space-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;display=swap"><style id="all-fonts-style-font-space-mono">
+.font-space-mono { font-family: 'Space Mono', monospace !important; }
+</style><link id="all-fonts-link-font-quicksand" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-quicksand">
+.font-quicksand { font-family: 'Quicksand', sans-serif !important; }
+</style><link id="all-fonts-link-font-nunito" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-nunito">
+.font-nunito { font-family: 'Nunito', sans-serif !important; }
+</style><link id="all-fonts-link-font-geist" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-geist">
+.font-geist { font-family: 'Geist', sans-serif !important; }
+</style><link id="all-fonts-link-font-roboto" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-roboto">
+.font-roboto { font-family: 'Roboto', sans-serif !important; }
+</style><link id="all-fonts-link-font-montserrat" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-montserrat">
+.font-montserrat { font-family: 'Montserrat', sans-serif !important; }
+</style><link id="all-fonts-link-font-poppins" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-poppins">
+.font-poppins { font-family: 'Poppins', sans-serif !important; }
+</style><link id="all-fonts-link-font-playfair" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&amp;display=swap"><style id="all-fonts-style-font-playfair">
+.font-playfair { font-family: 'Playfair Display', serif !important; }
+</style><link id="all-fonts-link-font-instrument-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-instrument-serif">
+.font-instrument-serif { font-family: 'Instrument Serif', serif !important; }
+</style><link id="all-fonts-link-font-merriweather" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&amp;display=swap"><style id="all-fonts-style-font-merriweather">
+.font-merriweather { font-family: 'Merriweather', serif !important; }
+</style><link id="all-fonts-link-font-bricolage" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-bricolage">
+.font-bricolage { font-family: 'Bricolage Grotesque', sans-serif !important; }
+</style><link id="all-fonts-link-font-jakarta" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-jakarta">
+.font-jakarta { font-family: 'Plus Jakarta Sans', sans-serif !important; }
+</style><link id="all-fonts-link-font-manrope" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-manrope">
+.font-manrope { font-family: 'Manrope', sans-serif !important; }
+</style><link id="all-fonts-link-font-space-grotesk" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-space-grotesk">
+.font-space-grotesk { font-family: 'Space Grotesk', sans-serif !important; }
+</style><link id="all-fonts-link-font-work-sans" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-work-sans">
+.font-work-sans { font-family: 'Work Sans', sans-serif !important; }
+</style><link id="all-fonts-link-font-pt-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&amp;display=swap"><style id="all-fonts-style-font-pt-serif">
+.font-pt-serif { font-family: 'PT Serif', serif !important; }
+</style><link id="all-fonts-link-font-geist-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-geist-mono">
+.font-geist-mono { font-family: 'Geist Mono', monospace !important; }
+</style><link id="all-fonts-link-font-space-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;display=swap"><style id="all-fonts-style-font-space-mono">
+.font-space-mono { font-family: 'Space Mono', monospace !important; }
+</style><link id="all-fonts-link-font-quicksand" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-quicksand">
+.font-quicksand { font-family: 'Quicksand', sans-serif !important; }
+</style><link id="all-fonts-link-font-nunito" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-nunito">
+.font-nunito { font-family: 'Nunito', sans-serif !important; }
+</style><link id="all-fonts-link-font-geist" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-geist">
+.font-geist { font-family: 'Geist', sans-serif !important; }
+</style><link id="all-fonts-link-font-roboto" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-roboto">
+.font-roboto { font-family: 'Roboto', sans-serif !important; }
+</style><link id="all-fonts-link-font-montserrat" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-montserrat">
+.font-montserrat { font-family: 'Montserrat', sans-serif !important; }
+</style><link id="all-fonts-link-font-poppins" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-poppins">
+.font-poppins { font-family: 'Poppins', sans-serif !important; }
+</style><link id="all-fonts-link-font-playfair" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&amp;display=swap"><style id="all-fonts-style-font-playfair">
+.font-playfair { font-family: 'Playfair Display', serif !important; }
+</style><link id="all-fonts-link-font-instrument-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-instrument-serif">
+.font-instrument-serif { font-family: 'Instrument Serif', serif !important; }
+</style><link id="all-fonts-link-font-merriweather" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&amp;display=swap"><style id="all-fonts-style-font-merriweather">
+.font-merriweather { font-family: 'Merriweather', serif !important; }
+</style><link id="all-fonts-link-font-bricolage" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-bricolage">
+.font-bricolage { font-family: 'Bricolage Grotesque', sans-serif !important; }
+</style><link id="all-fonts-link-font-jakarta" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-jakarta">
+.font-jakarta { font-family: 'Plus Jakarta Sans', sans-serif !important; }
+</style><link id="all-fonts-link-font-manrope" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-manrope">
+.font-manrope { font-family: 'Manrope', sans-serif !important; }
+</style><link id="all-fonts-link-font-space-grotesk" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-space-grotesk">
+.font-space-grotesk { font-family: 'Space Grotesk', sans-serif !important; }
+</style><link id="all-fonts-link-font-work-sans" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-work-sans">
+.font-work-sans { font-family: 'Work Sans', sans-serif !important; }
+</style><link id="all-fonts-link-font-pt-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&amp;display=swap"><style id="all-fonts-style-font-pt-serif">
+.font-pt-serif { font-family: 'PT Serif', serif !important; }
+</style><link id="all-fonts-link-font-geist-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-geist-mono">
+.font-geist-mono { font-family: 'Geist Mono', monospace !important; }
+</style><link id="all-fonts-link-font-space-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;display=swap"><style id="all-fonts-style-font-space-mono">
+.font-space-mono { font-family: 'Space Mono', monospace !important; }
+</style><link id="all-fonts-link-font-quicksand" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-quicksand">
+.font-quicksand { font-family: 'Quicksand', sans-serif !important; }
+</style><link id="all-fonts-link-font-nunito" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-nunito">
+.font-nunito { font-family: 'Nunito', sans-serif !important; }
+</style><link id="all-fonts-link-font-geist" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-geist">
+.font-geist { font-family: 'Geist', sans-serif !important; }
+</style><link id="all-fonts-link-font-roboto" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-roboto">
+.font-roboto { font-family: 'Roboto', sans-serif !important; }
+</style><link id="all-fonts-link-font-montserrat" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-montserrat">
+.font-montserrat { font-family: 'Montserrat', sans-serif !important; }
+</style><link id="all-fonts-link-font-poppins" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-poppins">
+.font-poppins { font-family: 'Poppins', sans-serif !important; }
+</style><link id="all-fonts-link-font-playfair" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&amp;display=swap"><style id="all-fonts-style-font-playfair">
+.font-playfair { font-family: 'Playfair Display', serif !important; }
+</style><link id="all-fonts-link-font-instrument-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-instrument-serif">
+.font-instrument-serif { font-family: 'Instrument Serif', serif !important; }
+</style><link id="all-fonts-link-font-merriweather" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&amp;display=swap"><style id="all-fonts-style-font-merriweather">
+.font-merriweather { font-family: 'Merriweather', serif !important; }
+</style><link id="all-fonts-link-font-bricolage" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-bricolage">
+.font-bricolage { font-family: 'Bricolage Grotesque', sans-serif !important; }
+</style><link id="all-fonts-link-font-jakarta" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-jakarta">
+.font-jakarta { font-family: 'Plus Jakarta Sans', sans-serif !important; }
+</style><link id="all-fonts-link-font-manrope" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-manrope">
+.font-manrope { font-family: 'Manrope', sans-serif !important; }
+</style><link id="all-fonts-link-font-space-grotesk" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-space-grotesk">
+.font-space-grotesk { font-family: 'Space Grotesk', sans-serif !important; }
+</style><link id="all-fonts-link-font-work-sans" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-work-sans">
+.font-work-sans { font-family: 'Work Sans', sans-serif !important; }
+</style><link id="all-fonts-link-font-pt-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&amp;display=swap"><style id="all-fonts-style-font-pt-serif">
+.font-pt-serif { font-family: 'PT Serif', serif !important; }
+</style><link id="all-fonts-link-font-geist-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-geist-mono">
+.font-geist-mono { font-family: 'Geist Mono', monospace !important; }
+</style><link id="all-fonts-link-font-space-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;display=swap"><style id="all-fonts-style-font-space-mono">
+.font-space-mono { font-family: 'Space Mono', monospace !important; }
+</style><link id="all-fonts-link-font-quicksand" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-quicksand">
+.font-quicksand { font-family: 'Quicksand', sans-serif !important; }
+</style><link id="all-fonts-link-font-nunito" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-nunito">
+.font-nunito { font-family: 'Nunito', sans-serif !important; }
+</style><link id="all-fonts-link-font-geist" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-geist">
+.font-geist { font-family: 'Geist', sans-serif !important; }
+</style><link id="all-fonts-link-font-manrope" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-manrope">
+.font-manrope { font-family: 'Manrope', sans-serif !important; }
+</style><link id="all-fonts-link-font-newsreader" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400..800&amp;display=swap"><style id="all-fonts-style-font-newsreader">
+.font-newsreader { font-family: 'Newsreader', serif !important; }
+</style><link id="all-fonts-link-font-google-sans-flex" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-google-sans-flex">
+.font-google-sans-flex { font-family: 'Google Sans Flex', sans-serif !important; }
+</style><link id="all-fonts-link-font-oswald" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-oswald">
+.font-oswald { font-family: 'Oswald', sans-serif !important; }
+</style><link id="all-fonts-link-font-dm-sans" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-dm-sans">
+.font-dm-sans { font-family: 'DM Sans', sans-serif !important; }
+</style><link id="all-fonts-link-font-cormorant" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-cormorant">
+.font-cormorant { font-family: 'Cormorant Garamond', serif !important; }
+</style><style id="border-gradient-shared-style">
+[style*="--border-gradient"]::before {
+content: "";
+position: absolute;
+inset: 0;
+padding: 1px;
+border-radius: var(--border-radius-before, inherit);
+-webkit-mask: linear-gradient(#fff 0 0) content-box,
+linear-gradient(#fff 0 0);
+-webkit-mask-composite: xor;
+mask-composite: exclude;
+background: var(--border-gradient);
+pointer-events: none;
+}</style></head>
+  <body class="antialiased overflow-x-hidden selection:bg-red-600/30 selection:text-red-200 text-white bg-black">
+    <!-- Background (component) added by Aura -->
+    <div class="aura-background-component -z-10 w-full top-0 absolute h-[800px]" data-alpha-mask="80" style="mask-image: linear-gradient(transparent, black 0%, black 80%, transparent);">
+      <div class="aura-background-component top-0 w-full -z-10 absolute h-full">
+        <div data-us-project="sajpUiTp7MIKdX6daDCu" class="absolute w-full h-full left-0 top-0 -z-10"></div>
+        <script type="text/javascript">
+          !function(){if(!window.UnicornStudio){window.UnicornStudio={isInitialized:!1};var i=document.createElement("script");i.src="https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.29/dist/unicornStudio.umd.js",i.onload=function(){window.UnicornStudio.isInitialized||(UnicornStudio.init(),window.UnicornStudio.isInitialized=!0)},(document.head || document.body).appendChild(i)}}();
+        </script>
+      </div>
+    </div>
+    <!-- Progressive Blur Top -->
+    <div class="gradient-blur" style="height: 120px;">
+      <div class=""></div>
+      <div class="" style=""></div>
+      <div class="" style=""></div>
+      <div class="" style=""></div>
+      <div class="" style=""></div>
+      <div class="" style=""></div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="fixed flex [animation:fadeSlideIn_1s_ease-out_1s_both] w-full z-50 pt-6 pr-4 pl-4 top-0 left-0 justify-center">
+      <nav class="shadow-black/50 flex md:gap-12 md:w-auto bg-black/60 w-full max-w-5xl rounded-none pt-2 pr-2 pb-2 pl-3 shadow-2xl backdrop-blur-lg gap-x-8 gap-y-8 items-center justify-between" style="position: relative; --border-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.2)); --border-radius-before: 0">
+        <div class="flex gap-2 shrink-0 gap-x-2 gap-y-2 items-center">
+          <div class="flex gap-x-3 gap-y-3 items-center" onclick="window.location.href='/home'" role="button">
+            <div class="grid grid-cols-2 opacity-90 w-6 h-6 gap-x-1 gap-y-1">
+              <div class="bg-[#ef233c] w-full h-full rounded-sm"></div>
+              <div class="w-full h-full bg-zinc-700 rounded-sm [animation:fadeSlideIn_1s_ease-out_0.3s_both] animate-on-scroll animate"></div>
+              <div class="w-full h-full bg-zinc-800 rounded-sm"></div>
+              <div class="w-full h-full bg-white rounded-sm shadow-[0_0_10px_rgba(255,255,255,0.4)]"></div>
+            </div>
+            <span class="text-xl font-bold text-white tracking-tight font-manrope">
+              Creative
+            </span>
+          </div>
+        </div>
+        <div class="hidden md:flex items-center gap-6">
+          <a href="/work" class="group hover:text-white transition-colors text-sm font-medium text-gray-400 font-sans pt-1 pb-1 relative">
+            Work
+            <span class="absolute -bottom-3 left-1/2 w-0 h-[1px] bg-gradient-to-r from-transparent via-[#ef233c] to-transparent group-hover:w-full group-hover:opacity-100 transition-all duration-300 ease-out -translate-x-1/2 shadow-[0_0_10px_rgba(239,35,60,0.8)]"></span>
+          </a>
+          <a href="/services" class="group hover:text-white transition-colors text-sm font-medium text-gray-400 font-sans py-1 relative">
+            Services
+            <span class="absolute -bottom-3 left-1/2 w-0 h-[1px] bg-gradient-to-r from-transparent via-[#ef233c] to-transparent group-hover:w-full group-hover:opacity-100 transition-all duration-300 ease-out -translate-x-1/2 shadow-[0_0_10px_rgba(239,35,60,0.8)]"></span>
+          </a>
+          <a href="/about" class="group hover:text-white transition-colors text-sm font-medium text-gray-400 font-sans py-1 relative">
+            About
+            <span class="absolute -bottom-3 left-1/2 w-0 h-[1px] bg-gradient-to-r from-transparent via-[#ef233c] to-transparent group-hover:w-full group-hover:opacity-100 transition-all duration-300 ease-out -translate-x-1/2 shadow-[0_0_10px_rgba(239,35,60,0.8)]"></span>
+          </a>
+          <a href="/pricing" class="group text-white transition-colors text-sm font-medium font-sans pt-1 pb-1 relative">
+            Pricing
+            <span class="absolute -bottom-3 left-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-[#ef233c] to-transparent opacity-100 transition-all duration-300 ease-out -translate-x-1/2 shadow-[0_0_10px_rgba(239,35,60,0.8)]"></span>
+          </a>
+        </div>
+        <div class="flex gap-4 shrink-0 gap-x-4 gap-y-4 items-center" style="">
+          <button class="group inline-flex overflow-hidden transition-transform active:scale-95 cursor-pointer outline-none rounded-none pt-2.5 pr-6 pb-2.5 pl-6 relative gap-x-4 gap-y-4 items-center justify-center" style="background-color: rgba(255, 255, 255, 0.05)">
+            <!-- Red Beam Animation -->
+            <span class="absolute inset-[-100%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,transparent_75%,#ef233c_100%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" style=""></span>
+
+            <!-- Static Border (Fades out on hover) -->
+            <span class="absolute inset-0 rounded-none bg-zinc-800 transition-opacity duration-300 group-hover:opacity-0" style=""></span>
+
+            <!-- Inner Black Background -->
+            <span class="bg-black z-10 rounded-none absolute top-[1px] right-[1px] bottom-[1px] left-[1px]" onclick="window.location.href='/bookcall'" role="button"></span>
+
+            <!-- Red Glow Effect (View Portfolio Style) -->
+            <div class="absolute inset-0 pointer-events-none transition-opacity duration-500 opacity-0 group-hover:opacity-100 z-10" style="background: radial-gradient(50% 50% at 50% 100%, rgba(239, 35, 60, 0.2) 0%, transparent 100%);"></div>
+
+            <!-- Content -->
+            <span class="relative z-20 flex items-center justify-center gap-2 text-xs font-medium text-white tracking-wide uppercase">
+              <span class="">Contact us</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 group-hover:translate-x-0.5">
+                <path d="M5 12h14" class=""></path>
+                <path d="m12 5 7 7-7 7" class=""></path>
+              </svg>
+            </span>
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="h-auto min-h-[800px] flex flex-col md:pt-20 overflow-hidden w-full pt-32 relative items-center justify-start" style="mask-image: linear-gradient(180deg, transparent, black 0%, black 95%, transparent); -webkit-mask-image: linear-gradient(180deg, transparent, black 0%, black 95%, transparent);">
+      <!-- Background Effects -->
+
+      <!-- Grid/Curtain Structure with Column-by-Column Clip Animation -->
+
+      <!-- Content Container -->
+      <div class="text-center max-w-5xl z-10 mt-24 mr-auto mb-12 ml-auto pr-6 pl-6 relative">
+        <!-- Badge -->
+        <div class="[animation:fadeSlideIn_1s_ease-out_0.8s_both] inline-flex transition-transform hover:scale-105 cursor-pointer group animate bg-gradient-to-br from-white/10 to-white/0 bg-gradient-to-b from-white/20 via-white/0 to-white/10 rounded-full mb-10 pt-1.5 pr-3 pb-1.5 pl-3 backdrop-blur-sm gap-x-2 gap-y-2 items-center" style="position: relative; --border-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.1)); --border-radius-before: 9999px">
+          <span class="flex h-1.5 w-1.5 rounded-full group-hover:animate-pulse bg-red-600 shadow-[0_0_10px_rgba(220,38,38,0.5)]"></span>
+          <span class="text-xs font-medium tracking-wide group-hover:text-white transition-colors font-sans text-red-100/80">
+            Flexible Plans
+          </span>
+        </div>
+
+        <!-- Heading -->
+        <h1 class="[animation:fadeSlideIn_1s_ease-out_1s_both] animate flex flex-wrap justify-center gap-x-[0.25em] gap-y-2 leading-[1.1] md:text-8xl cursor-default text-6xl font-medium tracking-tighter font-manrope mb-8">
+          <span class="inline-blox leading-[1.3] bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50 opacity-100">
+            Simple,
+          </span>
+          <span class="inline-blox leading-[1.3] bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50 opacity-100">
+            transparent
+          </span>
+          <span class="inline-blox leading-[1.3] bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50 opacity-100 text-[#ef233c]">
+            pricing
+          </span>
+        </h1>
+
+        <!-- Subtext -->
+        <p class="[animation:fadeSlideIn_1s_ease-out_1.2s_both] leading-relaxed md:text-2xl animate text-xl font-medium text-gray-400 tracking-normal font-manrope max-w-3xl mr-auto mb-12 ml-auto">
+          Choose the perfect plan for your business needs. No hidden fees. Pause
+          or cancel anytime.
+        </p>
+
+        <!-- Animated Shiny CTA Button -->
+        <div class="[animation:fadeSlideIn_1s_ease-out_1.4s_both] flex flex-col md:flex-row animate mb-12 gap-x-6 gap-y-6 items-center justify-center">
+          <button onclick="document.getElementById('pricing-section').scrollIntoView({behavior: 'smooth'})" class="group flex min-w-[180px] decoration-0 transition-transform active:scale-95 cursor-pointer outline-none w-auto h-[50px] rounded-none pr-6 pl-6 relative items-center justify-center" type="button" style="background-color: rgba(255, 255, 255, 0.05); border-radius: 0px; opacity: 1; border: none">
+            <div class="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <div class="rounded-none absolute top-[1px] right-[1px] bottom-[1px] left-[1px] bg-black"></div>
+            <div class="relative z-20 flex items-center justify-center gap-2 opacity-100">
+              <span class="font-sans text-[15px] font-medium text-white tracking-wide">
+                View Plans
+              </span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-down transition-transform duration-300 group-hover:translate-y-1">
+                <path d="M12 5v14"></path>
+                <path d="m19 12-7 7-7-7"></path>
+              </svg>
+            </div>
+          </button>
+          <button class="group inline-flex min-w-[180px] h-[50px] overflow-hidden transition-transform active:scale-95 cursor-pointer outline-none rounded-none relative items-center justify-center" style="background-color: rgba(255, 255, 255, 0.05)" type="button">
+            <span class="absolute inset-0 border border-zinc-800"></span>
+            <span class="z-10 bg-black rounded-none absolute top-[1px] right-[1px] bottom-[1px] left-[1px]"></span>
+            <span class="relative z-20 flex items-center justify-center gap-2 text-xs font-medium text-white tracking-wide uppercase">
+              <span>Contact Sales</span>
+            </span>
+          </button>
+        </div>
+
+        <!-- Secondary Link -->
+      </div>
+
+      <!-- Logos Footer -->
+
+      <div class="[animation:fadeSlideIn_1s_ease-out_1s_both] animate-on-scroll animate md:pb-20 md:pt-20 w-full max-w-6xl z-20 mr-auto ml-auto pt-20 pr-6 pb-20 pl-6 relative">
+        <div class="w-full inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)] opacity-40 grayscale hover:grayscale-0 transition-all duration-700 group">
+          <style>
+            @keyframes infinite-scroll {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(-50%); }
+            }
+            .animate-infinite-scroll {
+                animation: infinite-scroll 40s linear infinite;
+            }
+            /* Pause animation on hover */
+            .group:hover .animate-infinite-scroll {
+                animation-play-state: paused;
+            }
+          </style>
+          <div class="flex items-center justify-center md:justify-start [&amp;_div]:mx-8 w-max animate-infinite-scroll">
+            <!-- Original Items -->
+            <div class="group flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="simple-icons:git" class="iconify text-2xl text-white iconify--simple-icons">
+                <path fill="currentColor" d="M23.546 10.93L13.067.452a1.55 1.55 0 0 0-2.188 0L8.708 2.627l2.76 2.76a1.838 1.838 0 0 1 2.327 2.341l2.658 2.66a1.838 1.838 0 0 1 1.9 3.039a1.837 1.837 0 0 1-2.6 0a1.85 1.85 0 0 1-.404-1.996L12.86 8.955v6.525c.176.086.342.203.488.348a1.85 1.85 0 0 1 0 2.6a1.844 1.844 0 0 1-2.609 0a1.834 1.834 0 0 1 0-2.598c.182-.18.387-.316.605-.406V8.835a1.834 1.834 0 0 1-.996-2.41L7.636 3.7L.45 10.881c-.6.605-.6 1.584 0 2.189l10.48 10.477a1.545 1.545 0 0 0 2.186 0l10.43-10.43a1.544 1.544 0 0 0 0-2.187" class=""></path>
+              </svg>
+              <span class="font-medium text-lg text-white font-sans">git</span>
+            </div>
+            <div class="group flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="simple-icons:npm" class="iconify text-3xl text-white iconify--simple-icons">
+                <path fill="currentColor" d="M1.763 0C.786 0 0 .786 0 1.763v20.474C0 23.214.786 24 1.763 24h20.474c.977 0 1.763-.786 1.763-1.763V1.763C24 .786 23.214 0 22.237 0zM5.13 5.323l13.837.019l-.009 13.836h-3.464l.01-10.382h-3.456L12.04 19.17H5.113z" class=""></path>
+              </svg>
+            </div>
+            <div class="group flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="simple-icons:lucid" class="iconify text-xl text-white iconify--simple-icons">
+                <path fill="currentColor" d="M12 0L3.694 4.8V24L12 19.2Zm0 19.2v4.502h8.305V14.4Z" class=""></path>
+              </svg>
+              <span class="font-medium text-lg text-white font-sans">
+                Lucidchart
+              </span>
+            </div>
+            <div class="group flex items-center gap-2">
+              <span class="iconify text-xl text-white" data-icon="simple-icons:wrike"></span>
+              <span class="font-medium text-lg text-white font-sans">
+                wrike
+              </span>
+            </div>
+            <div class="group flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="simple-icons:jquery" class="iconify text-xl text-white iconify--simple-icons">
+                <path fill="currentColor" d="M1.525 5.87c-2.126 3.054-1.862 7.026-.237 10.269q.057.117.118.229q.035.076.077.15q.021.042.047.082q.04.078.081.152l.157.266c.03.049.057.097.09.146c.056.094.12.187.178.281q.037.06.079.117a6 6 0 0 0 .31.445q.115.16.24.315l.086.115l.22.269c.028.03.055.067.084.099q.148.176.306.35l.005.006a3 3 0 0 0 .425.44q.119.125.245.245l.101.097q.165.158.34.309q.002 0 .005.003l.057.05q.153.135.31.26l.125.105l.26.2l.137.105c.093.07.192.139.287.207q.052.038.106.073l.03.023l.28.185l.12.08q.221.14.44.272q.063.031.123.068q.164.095.329.183q.09.05.184.094q.113.062.234.125a.3.3 0 0 1 .056.023l.096.047q.18.09.375.175q.037.014.076.034q.215.094.438.182c.034.01.07.027.105.04q.204.078.411.152l.05.018q.23.078.46.15l.111.033c.16.048.314.105.474.137c10.273 1.872 13.258-6.177 13.258-6.177c-2.508 3.266-6.958 4.127-11.174 3.169c-.156-.036-.312-.086-.47-.132a14 14 0 0 1-.567-.182l-.062-.024q-.202-.07-.4-.148l-.11-.04q-.22-.09-.433-.184c-.031-.01-.057-.024-.088-.036l-.362-.17l-.106-.052c-.094-.044-.188-.095-.28-.143a4 4 0 0 1-.187-.096c-.114-.06-.227-.125-.34-.187q-.052-.035-.112-.066a16 16 0 0 1-.439-.27a2 2 0 0 1-.118-.078a6 6 0 0 1-.312-.207l-.103-.073a10 10 0 0 1-.295-.212q-.064-.05-.132-.1c-.088-.07-.177-.135-.265-.208l-.118-.095a11 11 0 0 1-.335-.28l-.037-.031l-.347-.316l-.1-.094q-.123-.125-.25-.246l-.098-.1a9 9 0 0 1-.309-.323l-.015-.016q-.159-.174-.313-.355q-.04-.046-.08-.097l-.227-.277a21 21 0 0 1-.34-.449C2.152 11.79 1.306 7.384 3.177 3.771m4.943-.473c-1.54 2.211-1.454 5.169-.254 7.508a9 9 0 0 0 .678 1.133c.23.33.484.721.793.988q.162.181.344.36l.09.09q.172.164.35.325l.016.013a10 10 0 0 0 .414.342c.034.023.063.05.096.073q.21.161.428.316l.015.009q.093.066.198.13c.028.018.06.042.09.06q.158.1.318.197l.048.023c.09.055.188.108.282.157c.033.02.065.035.1.054q.1.05.197.102l.032.014q.204.1.408.19q.05.02.092.039q.167.072.336.137c.05.017.097.037.144.052c.102.038.21.073.31.108l.14.045c.147.045.295.104.449.13C22.164 17.206 24 11.098 24 11.098c-1.653 2.38-4.852 3.513-8.261 2.628a8 8 0 0 1-.449-.13c-.048-.014-.09-.029-.136-.043c-.104-.036-.211-.07-.312-.109l-.144-.054c-.113-.045-.227-.087-.336-.135c-.034-.015-.065-.025-.091-.04q-.211-.093-.418-.192l-.206-.107l-.119-.06a6 6 0 0 1-.265-.15l-.062-.035c-.106-.066-.217-.13-.318-.198q-.05-.03-.097-.062l-.208-.136c-.144-.1-.285-.208-.428-.313q-.048-.042-.094-.079c-1.499-1.178-2.681-2.79-3.242-4.613c-.59-1.897-.46-4.023.56-5.75m4.292-.147c-.909 1.334-.996 2.99-.37 4.46c.665 1.563 2.024 2.79 3.608 3.37q.096.036.196.07l.088.027c.092.03.185.063.28.084c4.381.845 5.567-2.25 5.886-2.704c-1.043 1.498-2.792 1.857-4.938 1.335a5 5 0 0 1-.516-.16a6 6 0 0 1-.618-.254a6.5 6.5 0 0 1-1.082-.66c-1.922-1.457-3.113-4.236-1.859-6.5"></path>
+              </svg>
+              <span class="font-medium text-lg text-white font-sans">
+                jQuery
+              </span>
+            </div>
+            <div class="group flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="simple-icons:openstack" class="iconify text-xl text-white iconify--simple-icons">
+                <path fill="currentColor" d="M18.575 9.29h5.418v5.42h-5.418zM0 9.29h5.419v5.42H0zm18.575 7.827a1.207 1.207 0 0 1-1.206 1.206H6.623a1.207 1.207 0 0 1-1.205-1.206v-.858H0v5.252a2.236 2.236 0 0 0 2.229 2.23h19.53A2.237 2.237 0 0 0 24 21.512V16.26h-5.425zM21.763.258H2.233a2.236 2.236 0 0 0-2.23 2.23V7.74h5.419v-.858a1.206 1.206 0 0 1 1.205-1.206h10.746a1.206 1.206 0 0 1 1.205 1.206v.858H24V2.487A2.237 2.237 0 0 0 21.763.258" class=""></path>
+              </svg>
+              <span class="font-medium text-lg text-white font-sans">
+                openstack
+              </span>
+            </div>
+            <div class="group flex items-center gap-2">
+              <span class="iconify text-xl text-white" data-icon="simple-icons:servicenow"></span>
+              <span class="font-medium text-lg text-white tracking-tight font-sans">
+                servicenow
+              </span>
+            </div>
+            <div class="group flex items-center gap-2">
+              <span class="font-bold text-xl text-white tracking-tight font-sans">
+                paysafe:
+              </span>
+            </div>
+
+            <!-- Duplicate Items -->
+            <div class="group flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="simple-icons:git" class="iconify text-2xl text-white iconify--simple-icons">
+                <path fill="currentColor" d="M23.546 10.93L13.067.452a1.55 1.55 0 0 0-2.188 0L8.708 2.627l2.76 2.76a1.838 1.838 0 0 1 2.327 2.341l2.658 2.66a1.838 1.838 0 0 1 1.9 3.039a1.837 1.837 0 0 1-2.6 0a1.85 1.85 0 0 1-.404-1.996L12.86 8.955v6.525c.176.086.342.203.488.348a1.85 1.85 0 0 1 0 2.6a1.844 1.844 0 0 1-2.609 0a1.834 1.834 0 0 1 0-2.598c.182-.18.387-.316.605-.406V8.835a1.834 1.834 0 0 1-.996-2.41L7.636 3.7L.45 10.881c-.6.605-.6 1.584 0 2.189l10.48 10.477a1.545 1.545 0 0 0 2.186 0l10.43-10.43a1.544 1.544 0 0 0 0-2.187"></path>
+              </svg>
+              <span class="font-medium text-lg text-white font-sans">git</span>
+            </div>
+            <div class="group flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="simple-icons:npm" class="iconify text-3xl text-white iconify--simple-icons">
+                <path fill="currentColor" d="M1.763 0C.786 0 0 .786 0 1.763v20.474C0 23.214.786 24 1.763 24h20.474c.977 0 1.763-.786 1.763-1.763V1.763C24 .786 23.214 0 22.237 0zM5.13 5.323l13.837.019l-.009 13.836h-3.464l.01-10.382h-3.456L12.04 19.17H5.113z"></path>
+              </svg>
+            </div>
+            <div class="group flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="simple-icons:lucid" class="iconify text-xl text-white iconify--simple-icons">
+                <path fill="currentColor" d="M12 0L3.694 4.8V24L12 19.2Zm0 19.2v4.502h8.305V14.4Z"></path>
+              </svg>
+              <span class="font-medium text-lg text-white font-sans">
+                Lucidchart
+              </span>
+            </div>
+            <div class="group flex items-center gap-2">
+              <span class="iconify text-xl text-white" data-icon="simple-icons:wrike"></span>
+              <span class="font-medium text-lg text-white font-sans">
+                wrike
+              </span>
+            </div>
+            <div class="group flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="simple-icons:jquery" class="iconify text-xl text-white iconify--simple-icons">
+                <path fill="currentColor" d="M1.525 5.87c-2.126 3.054-1.862 7.026-.237 10.269q.057.117.118.229q.035.076.077.15q.021.042.047.082q.04.078.081.152l.157.266c.03.049.057.097.09.146c.056.094.12.187.178.281q.037.06.079.117a6 6 0 0 0 .31.445q.115.16.24.315l.086.115l.22.269c.028.03.055.067.084.099q.148.176.306.35l.005.006a3 3 0 0 0 .425.44q.119.125.245.245l.101.097q.165.158.34.309q.002 0 .005.003l.057.05q.153.135.31.26l.125.105l.26.2l.137.105c.093.07.192.139.287.207q.052.038.106.073l.03.023l.28.185l.12.08q.221.14.44.272q.063.031.123.068q.164.095.329.183q.09.05.184.094q.113.062.234.125a.3.3 0 0 1 .056.023l.096.047q.18.09.375.175q.037.014.076.034q.215.094.438.182c.034.01.07.027.105.04q.204.078.411.152l.05.018q.23.078.46.15l.111.033c.16.048.314.105.474.137c10.273 1.872 13.258-6.177 13.258-6.177c-2.508 3.266-6.958 4.127-11.174 3.169c-.156-.036-.312-.086-.47-.132a14 14 0 0 1-.567-.182l-.062-.024q-.202-.07-.4-.148l-.11-.04q-.22-.09-.433-.184c-.031-.01-.057-.024-.088-.036l-.362-.17l-.106-.052c-.094-.044-.188-.095-.28-.143a4 4 0 0 1-.187-.096c-.114-.06-.227-.125-.34-.187q-.052-.035-.112-.066a16 16 0 0 1-.439-.27a2 2 0 0 1-.118-.078a6 6 0 0 1-.312-.207l-.103-.073a10 10 0 0 1-.295-.212q-.064-.05-.132-.1c-.088-.07-.177-.135-.265-.208l-.118-.095a11 11 0 0 1-.335-.28l-.037-.031l-.347-.316l-.1-.094q-.123-.125-.25-.246l-.098-.1a9 9 0 0 1-.309-.323l-.015-.016q-.159-.174-.313-.355q-.04-.046-.08-.097l-.227-.277a21 21 0 0 1-.34-.449C2.152 11.79 1.306 7.384 3.177 3.771m4.943-.473c-1.54 2.211-1.454 5.169-.254 7.508a9 9 0 0 0 .678 1.133c.23.33.484.721.793.988q.162.181.344.36l.09.09q.172.164.35.325l.016.013a10 10 0 0 0 .414.342c.034.023.063.05.096.073q.21.161.428.316l.015.009q.093.066.198.13c.028.018.06.042.09.06q.158.1.318.197l.048.023c.09.055.188.108.282.157c.033.02.065.035.1.054q.1.05.197.102l.032.014q.204.1.408.19q.05.02.092.039q.167.072.336.137c.05.017.097.037.144.052c.102.038.21.073.31.108l.14.045c.147.045.295.104.449.13C22.164 17.206 24 11.098 24 11.098c-1.653 2.38-4.852 3.513-8.261 2.628a8 8 0 0 1-.449-.13c-.048-.014-.09-.029-.136-.043c-.104-.036-.211-.07-.312-.109l-.144-.054c-.113-.045-.227-.087-.336-.135c-.034-.015-.065-.025-.091-.04q-.211-.093-.418-.192l-.206-.107l-.119-.06a6 6 0 0 1-.265-.15l-.062-.035c-.106-.066-.217-.13-.318-.198q-.05-.03-.097-.062l-.208-.136c-.144-.1-.285-.208-.428-.313q-.048-.042-.094-.079c-1.499-1.178-2.681-2.79-3.242-4.613c-.59-1.897-.46-4.023.56-5.75m4.292-.147c-.909 1.334-.996 2.99-.37 4.46c.665 1.563 2.024 2.79 3.608 3.37q.096.036.196.07l.088.027c.092.03.185.063.28.084c4.381.845 5.567-2.25 5.886-2.704c-1.043 1.498-2.792 1.857-4.938 1.335a5 5 0 0 1-.516-.16a6 6 0 0 1-.618-.254a6.5 6.5 0 0 1-1.082-.66c-1.922-1.457-3.113-4.236-1.859-6.5"></path>
+              </svg>
+              <span class="font-medium text-lg text-white font-sans">
+                jQuery
+              </span>
+            </div>
+            <div class="group flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="simple-icons:openstack" class="iconify text-xl text-white iconify--simple-icons">
+                <path fill="currentColor" d="M18.575 9.29h5.418v5.42h-5.418zM0 9.29h5.419v5.42H0zm18.575 7.827a1.207 1.207 0 0 1-1.206 1.206H6.623a1.207 1.207 0 0 1-1.205-1.206v-.858H0v5.252a2.236 2.236 0 0 0 2.229 2.23h19.53A2.237 2.237 0 0 0 24 21.512V16.26h-5.425zM21.763.258H2.233a2.236 2.236 0 0 0-2.23 2.23V7.74h5.419v-.858a1.206 1.206 0 0 1 1.205-1.206h10.746a1.206 1.206 0 0 1 1.205 1.206v.858H24V2.487A2.237 2.237 0 0 0 21.763.258"></path>
+              </svg>
+              <span class="font-medium text-lg text-white font-sans">
+                openstack
+              </span>
+            </div>
+            <div class="group flex items-center gap-2">
+              <span class="iconify text-xl text-white" data-icon="simple-icons:servicenow"></span>
+              <span class="font-medium text-lg text-white tracking-tight font-sans">
+                servicenow
+              </span>
+            </div>
+            <div class="group flex items-center gap-2">
+              <span class="font-bold text-xl text-white tracking-tight font-sans">
+                paysafe:
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="[animation:fadeSlideIn_1s_ease-out_1s_both] animate-on-scroll z-20 w-full max-w-7xl mt-24 mr-auto mb-24 ml-auto pt-6 pr-6 pb-6 pl-6 relative" id="pricing-section">
+  <div class="flex flex-col md:flex-row md:items-end w-full mt-0 mb-12 relative gap-x-8 gap-y-0 justify-between">
+    <div class="flex flex-col max-w-3xl gap-x-6 gap-y-6">
+      <div class="flex items-center gap-3 animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.2s_both]">
+        <span class="uppercase text-sm font-medium text-gray-500 tracking-widest">
+          01. PRICING
+        </span>
+      </div>
+      <div class="flex flex-col gap-x-6 gap-y-6 animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.4s_both]">
+        <h2 class="md:text-6xl text-5xl font-medium text-white tracking-tighter font-manrope">
+          Compare our
+          <span class="bg-clip-text text-transparent bg-[#ef233c]">
+            plans
+          </span>
+        </h2>
+        <p class="leading-relaxed text-lg font-light text-gray-400 max-w-xl">
+          Detailed transparency for every business stage. No hidden costs, just world-class design delivery.
+        </p>
+      </div>
+    </div>
+    <div class="pointer-events-none absolute left-0 right-0 -bottom-6 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+  </div>
+
+  <!-- Pricing Cards -->
+  <div class="grid grid-cols-1 lg:grid-cols-12 mb-20 pt-4 pr-4 pb-4 pl-4 gap-x-6 gap-y-6">
+    <div class="lg:col-span-4 flex flex-col h-full bg-black border p-8 md:p-10 hover:border-zinc-700 transition-colors duration-300 border-dashed border-zinc-800 [animation:fadeSlideIn_1s_ease-out_0.4s_both] animate-on-scroll">
+      <div class="mb-auto">
+        <h3 class="text-3xl font-medium text-white tracking-tight font-manrope mb-4">
+          Growth
+        </h3>
+        <p class="text-zinc-400 text-base font-sans leading-relaxed mb-8 h-12">
+          Perfect for startups needing high-velocity design output.
+        </p>
+        <div class="flex items-baseline gap-2 mb-8">
+          <span class="text-[1.5rem] align-top text-zinc-400 font-medium translate-y-2">$</span>
+          <span class="text-6xl font-medium text-white tracking-tighter font-manrope">3,000</span>
+          <span class="text-zinc-500 text-lg font-normal font-sans">/ mo</span>
+        </div>
+        <button class="group flex items-center justify-center gap-2 px-6 py-3 border border-zinc-700 text-white text-sm font-medium font-sans hover:bg-zinc-800 transition-all w-full">
+          Get Started
+        </button>
+      </div>
+      <div class="border-t border-zinc-800/80 my-10 w-full"></div>
+      <div>
+        <h4 class="text-sm font-medium text-white font-manrope mb-6 uppercase tracking-wider">Top Features</h4>
+        <div class="space-y-4">
+          <div class="flex items-start gap-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check" class="lucide lucide-check text-red-600 shrink-0 mt-0.5 w-4 h-4"><path d="M20 6 9 17l-5-5"></path></svg>
+            <span class="text-sm text-zinc-300 font-sans">45 hours dedicated design time</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check" class="lucide lucide-check text-red-600 shrink-0 mt-0.5 w-4 h-4"><path d="M20 6 9 17l-5-5"></path></svg>
+            <span class="text-sm text-zinc-300 font-sans">2 active projects at a time</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check" class="lucide lucide-check text-red-600 shrink-0 mt-0.5 w-4 h-4"><path d="M20 6 9 17l-5-5"></path></svg>
+            <span class="text-sm text-zinc-300 font-sans">Standard 48h turnaround</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lg:col-span-4 flex flex-col h-full bg-zinc-900/30 border p-8 md:p-10 relative overflow-hidden transition-colors duration-300 border-dashed border-zinc-800 hover:border-zinc-700 [animation:fadeSlideIn_1s_ease-out_0.5s_both] animate-on-scroll">
+      <div class="absolute -top-24 -right-24 w-64 h-64 bg-[#ef233c]/10 blur-[90px] rounded-full pointer-events-none"></div>
+      <div class="mb-auto relative z-10">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-3xl font-medium text-white tracking-tight font-manrope">Scale</h3>
+          <span class="text-[10px] uppercase font-medium text-white tracking-wider bg-[#ef233c] rounded-sm px-2 py-1 shadow-[0_0_10px_rgba(239,35,60,0.35)]">Most Popular</span>
+        </div>
+        <p class="text-zinc-400 text-base font-sans leading-relaxed mb-8 h-12">
+          For larger teams that need to ship production-ready assets daily.
+        </p>
+        <div class="flex items-baseline gap-2 mb-8">
+          <span class="text-[1.5rem] text-zinc-400 font-medium translate-y-2">$</span>
+          <span class="text-6xl font-medium text-white tracking-tighter font-manrope">5,000</span>
+          <span class="text-zinc-500 text-lg font-sans">/ mo</span>
+        </div>
+        <button class="flex items-center justify-center gap-2 px-6 py-3 bg-white text-black text-sm font-semibold font-sans hover:bg-zinc-200 transition-all w-full">
+          Get Started
+        </button>
+      </div>
+      <div class="border-t border-zinc-800/80 my-10 w-full relative z-10"></div>
+      <div class="relative z-10">
+        <h4 class="text-sm font-medium text-white font-manrope mb-6 uppercase tracking-wider">Everything in Growth, plus:</h4>
+        <div class="space-y-4">
+          <div class="flex items-start gap-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check" class="lucide lucide-check text-[#ef233c] shrink-0 mt-0.5 w-4 h-4"><path d="M20 6 9 17l-5-5"></path></svg>
+            <span class="text-sm text-zinc-300">100 hours dedicated design time</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check" class="lucide lucide-check text-[#ef233c] shrink-0 mt-0.5 w-4 h-4"><path d="M20 6 9 17l-5-5"></path></svg>
+            <span class="text-sm text-zinc-300">Unlimited active projects</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check" class="lucide lucide-check text-[#ef233c] shrink-0 mt-0.5 w-4 h-4"><path d="M20 6 9 17l-5-5"></path></svg>
+            <span class="text-sm text-zinc-300">Priority 24h turnaround</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lg:col-span-4 flex flex-col bg-black border p-8 md:p-10 hover:border-zinc-700 transition-colors duration-300 border-dashed border-zinc-800 [animation:fadeSlideIn_1s_ease-out_0.6s_both] animate-on-scroll">
+      <h3 class="text-3xl font-medium text-white tracking-tight font-manrope mb-4">Custom</h3>
+      <p class="text-zinc-400 text-base font-sans leading-relaxed mb-auto">
+        Tailored solutions for complex enterprise infrastructure and long-term brand building.
+      </p>
+      <div class="mt-8">
+        <p class="text-zinc-500 text-sm font-sans mb-1 uppercase tracking-wide font-medium">Starts at</p>
+        <div class="flex items-baseline gap-1 mb-8">
+          <span class="text-[1.5rem] align-top text-zinc-400 font-medium translate-y-2">$</span>
+          <span class="text-6xl font-medium text-white tracking-tighter font-manrope">8k</span>
+        </div>
+        <button class="group flex items-center justify-center gap-2 px-5 py-3 border border-zinc-700 text-white text-sm font-medium font-sans hover:bg-zinc-900 transition-all w-full">
+          Book a Consultation
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Detailed Comparison Table -->
+  <div class="w-full mt-12 bg-zinc-950/50 border border-zinc-800/50 rounded-sm overflow-hidden [animation:fadeSlideIn_1s_ease-out_0.8s_both] animate-on-scroll">
+    <div class="overflow-x-auto">
+      <table class="w-full text-left border-collapse">
+        <thead class="">
+          <tr class="border-b border-zinc-800">
+            <th class="p-6 text-sm font-medium text-zinc-400 uppercase tracking-widest font-manrope">Features</th>
+            <th class="p-6 text-sm font-medium text-white uppercase tracking-widest font-manrope">Growth</th>
+            <th class="p-6 text-sm font-medium text-white uppercase tracking-widest font-manrope bg-white/5">Scale</th>
+            <th class="p-6 text-sm font-medium text-white uppercase tracking-widest font-manrope">Enterprise</th>
+          </tr>
+        </thead>
+        <tbody class="text-sm font-sans">
+          <tr class="border-b border-zinc-900 hover:bg-white/[0.02] transition-colors">
+            <td class="p-6 text-zinc-300">Design Hours / Month</td>
+            <td class="p-6 text-zinc-400">45 Hours</td>
+            <td class="p-6 text-zinc-200 bg-white/5">100 Hours</td>
+            <td class="p-6 text-zinc-400">Unlimited</td>
+          </tr>
+          <tr class="border-b border-zinc-900 hover:bg-white/[0.02] transition-colors">
+            <td class="p-6 text-zinc-300">Average Turnaround</td>
+            <td class="p-6 text-zinc-400">48 Hours</td>
+            <td class="p-6 text-zinc-200 bg-white/5">24 Hours</td>
+            <td class="p-6 text-zinc-400">Priority Same-Day</td>
+          </tr>
+          <tr class="border-b border-zinc-900 hover:bg-white/[0.02] transition-colors">
+            <td class="p-6 text-zinc-300">Active Task Limit</td>
+            <td class="p-6 text-zinc-400">2 Tasks</td>
+            <td class="p-6 text-zinc-200 bg-white/5">Unlimited</td>
+            <td class="p-6 text-zinc-400">Unlimited</td>
+          </tr>
+          <tr class="border-b border-zinc-900 hover:bg-white/[0.02] transition-colors">
+            <td class="p-6 text-zinc-300">Revisions</td>
+            <td class="p-6 text-zinc-400">Unlimited</td>
+            <td class="p-6 text-zinc-200 bg-white/5">Unlimited</td>
+            <td class="p-6 text-zinc-400">Unlimited</td>
+          </tr>
+          <tr class="border-b border-zinc-900 hover:bg-white/[0.02] transition-colors">
+            <td class="p-6 text-zinc-300">Dedicated Slack Channel</td>
+            <td class="p-6 text-zinc-400"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="minus" class="lucide lucide-minus w-4 h-4 text-zinc-700"><path d="M5 12h14"></path></svg></td>
+            <td class="p-6 text-zinc-200 bg-white/5"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check" class="lucide lucide-check w-4 h-4 text-[#ef233c]"><path d="M20 6 9 17l-5-5"></path></svg></td>
+            <td class="p-6 text-zinc-400"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check" class="lucide lucide-check w-4 h-4 text-[#ef233c]"><path d="M20 6 9 17l-5-5"></path></svg></td>
+          </tr>
+          <tr class="border-b border-zinc-900 hover:bg-white/[0.02] transition-colors">
+            <td class="p-6 text-zinc-300">Weekly Progress Syncs</td>
+            <td class="p-6 text-zinc-400"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check" class="lucide lucide-check w-4 h-4 text-zinc-500"><path d="M20 6 9 17l-5-5"></path></svg></td>
+            <td class="p-6 text-zinc-200 bg-white/5"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check" class="lucide lucide-check w-4 h-4 text-[#ef233c]"><path d="M20 6 9 17l-5-5"></path></svg></td>
+            <td class="p-6 text-zinc-400">Daily Syncs</td>
+          </tr>
+          <tr class="border-b border-zinc-900 hover:bg-white/[0.02] transition-colors">
+            <td class="p-6 text-zinc-300">Source Files (Figma)</td>
+            <td class="p-6 text-zinc-400"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check" class="lucide lucide-check w-4 h-4 text-[#ef233c]"><path d="M20 6 9 17l-5-5"></path></svg></td>
+            <td class="p-6 text-zinc-200 bg-white/5"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check" class="lucide lucide-check w-4 h-4 text-[#ef233c]"><path d="M20 6 9 17l-5-5"></path></svg></td>
+            <td class="p-6 text-zinc-400"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check" class="lucide lucide-check w-4 h-4 text-[#ef233c]"><path d="M20 6 9 17l-5-5"></path></svg></td>
+          </tr>
+          <tr class="hover:bg-white/[0.02] transition-colors">
+            <td class="p-6 text-zinc-300">Support Response</td>
+            <td class="p-6 text-zinc-400">24h Response</td>
+            <td class="p-6 text-zinc-200 bg-white/5">4h Response</td>
+            <td class="p-6 text-zinc-400">Instant (Slack)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+    <div class="mx-auto max-w-7xl"></div>
+    <section class="overflow-hidden [animation:fadeSlideIn_1s_ease-out_1s_both] animate-on-scroll w-full max-w-7xl z-20 mt-0 mr-auto mb-32 ml-auto pt-20 pb-20 relative">
+      <!-- Background Large Typography -->
+
+      <!-- Background Glows -->
+
+      <div class="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px] pointer-events-none select-none -z-10 mix-blend-screen"></div>
+
+      <div class="z-10 pr-6 pl-6 relative" style="">
+        <!-- Section Header (Higher Z-Index to prevent overlap) -->
+        <div class="flex flex-col md:flex-row md:items-end w-full mt-0 mb-12 relative gap-x-8 gap-y-0 justify-between z-30" style="">
+          <div class="flex flex-col max-w-3xl gap-x-6 gap-y-6">
+            <!-- Eyebrow -->
+            <div class="flex gap-3 gap-x-3 gap-y-3 items-center animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.2s_both]" style="animation-play-state: running">
+              <span class="uppercase text-sm font-medium text-gray-500 tracking-widest">
+                03. TESTIMONIALS
+              </span>
+            </div>
+
+            <!-- Text container (h2 + p together) -->
+            <div class="flex flex-col gap-x-6 gap-y-6 animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.4s_both]" style="animation-play-state: running;">
+              <h2 class="md:text-6xl text-5xl font-medium text-white tracking-tighter font-manrope">
+                Loved by
+                <span class="bg-clip-text text-transparent bg-[#ef233c]">
+                  passionate
+                </span>
+              </h2>
+
+              <p class="leading-relaxed text-lg font-light text-gray-400 max-w-xl">
+                Everything you need to create, collaborate, and convert. Built
+                for modern teams.
+              </p>
+            </div>
+          </div>
+
+          <button class="group flex min-w-[180px] decoration-0 transition-transform active:scale-95 cursor-pointer outline-none w-auto h-[50px] rounded-none pr-6 pl-6 relative items-center justify-center" type="button" style="background-color: rgba(255, 255, 255, 0.05); border-radius: 0px; opacity: 1; border: none" data-framer-name="desktop">
+            <!-- Glow Layer -->
+            <div class="pointer-events-none transition-opacity ease-in-out duration-[1200ms] group-hover:opacity-0 opacity-100 absolute inset-0" data-framer-name="Glow" style="background: radial-gradient(15% 50% at 50% 100%, rgb(255, 255, 255) 0%, rgba(255, 255, 255, 0) 100%); border-radius: 0px; filter: blur(15px)"></div>
+
+            <!-- Glow Hover Layer -->
+            <div class="pointer-events-none transition-opacity ease-in-out duration-[1200ms] group-hover:opacity-100 opacity-0 absolute inset-0" data-framer-name="Glow Hover" style="background: radial-gradient(60.6% 50% at 50% 100%, rgb(255, 255, 255) 0%, rgba(255, 255, 255, 0) 100%); border-radius: 0px; filter: blur(18px)"></div>
+
+            <!-- Stroke Layer -->
+            <div class="pointer-events-none will-change-auto transition-opacity ease-in-out duration-[1200ms] group-hover:opacity-0 opacity-100 absolute inset-0" data-framer-name="Stroke" style="background: radial-gradient(10.7% 50% at 50% 100%, rgb(255, 255, 255) 0%, rgba(255, 255, 255, 0) 100%); border-radius: 0px"></div>
+
+            <!-- Stroke Hover Layer -->
+            <div class="pointer-events-none will-change-auto transition-opacity ease-in-out duration-[1200ms] group-hover:opacity-100 opacity-0 absolute inset-0" data-framer-name="Stroke Hover" style="background: radial-gradient(60.1% 50% at 50% 100%, rgb(255, 255, 255) 0%, rgba(255, 255, 255, 0) 100%); border-radius: 0px"></div>
+
+            <!-- Border Beam Animation -->
+            <div class="absolute inset-0 rounded-none overflow-hidden pointer-events-none">
+              <div class="absolute -inset-[300%] animate-[spin_4s_linear_infinite]" style="background: conic-gradient(from 90deg at 50% 50%, transparent 0%, transparent 90%, #ffffff 100%);"></div>
+            </div>
+
+            <!-- Fill Layer -->
+            <div class="rounded-none absolute top-[1px] right-[1px] bottom-[1px] left-[1px]" data-framer-name="Fill" style="background-color: rgb(0, 0, 0); opacity: 1"></div>
+
+            <!-- Content Layer -->
+            <div class="relative z-20 flex items-center justify-center gap-2 opacity-100" data-framer-name="text content">
+              <span class="m-0 p-0 font-sans text-[15px] font-medium text-white tracking-wide" style="-webkit-font-smoothing: antialiased; text-shadow: 0 1px 2px rgba(0,0,0,0.5);">
+                View Portfolio
+              </span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right transition-transform duration-300 group-hover:translate-x-1">
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg>
+            </div>
+          </button>
+
+          <!-- Bottom separator line (edge-fade) -->
+          <div class="pointer-events-none absolute left-0 right-0 -bottom-6 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+
+          <!-- Optional soft glow under the line -->
+          <div class="pointer-events-none absolute left-0 right-0 -bottom-6 h-6 bg-gradient-to-r from-transparent via-white/10 to-transparent blur-md"></div>
+        </div>
+
+        <!-- Parallax Region Wrapper (Clipping & Padding) -->
+        <div class="overflow-hidden z-20 bg-black w-full h-[800px] relative animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.6s_both]" id="marquee-wrapper">
+          <!-- Gradient Masks -->
+          <div class="z-10 pointer-events-none bg-gradient-to-b from-black to-transparent w-full h-32 absolute top-0 left-0" style=""></div>
+          <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black to-transparent z-10 pointer-events-none"></div>
+
+          <!-- Grid Layout -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 h-full max-w-7xl mr-auto ml-auto pr-6 pl-6 gap-x-6" style="mask-image: linear-gradient(180deg, transparent, black 30%, black 60%, transparent); -webkit-mask-image: linear-gradient(180deg, transparent, black 30%, black 60%, transparent);">
+            <!-- Column 1 (Scrolls Up) -->
+            <div class="h-full overflow-hidden relative">
+              <div class="marquee-track flex flex-col gap-6 will-change-transform" data-direction="up" data-speed="0.5" style="transform: translate3d(0px, -7.25px, 0px);">
+                <!-- Content Set 1 -->
+                <div class="p-8 border border-zinc-800 border-dashed bg-zinc-900/20 backdrop-blur-sm">
+                  <div class="flex gap-1 text-zinc-500 mb-4">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" class=""></path>
+                    </svg>
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                    </svg>
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                    </svg>
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                    </svg>
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                    </svg>
+                  </div>
+                  <p class="text-zinc-300 font-medium font-sans mb-6">
+                    "This platform completely changed how we approach design
+                    systems. The speed and consistency is mind-blowing."
+                  </p>
+                  <div class="flex items-center gap-3">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&amp;h=100&amp;fit=crop" class="w-8 h-8 rounded-full border border-white/10" alt="Sarah">
+                    <div class="">
+                      <div class="text-sm text-white font-semibold font-manrope">
+                        Sarah Jenkins
+                      </div>
+                      <div class="text-xs text-zinc-500 font-medium">
+                        Stripe
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="p-8 border border-white/5 bg-zinc-900/40 backdrop-blur-sm">
+                  <p class="text-zinc-400 italic mb-4 font-sans text-sm">
+                    "Just shipped my portfolio using the new components. Detail
+                    is insane. 🚀"
+                  </p>
+                  <div class="flex items-center gap-2">
+                    <div class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-[10px] font-bold">
+                      JD
+                    </div>
+                    <span class="text-xs text-zinc-500 font-mono">
+                      @jamesbuilds
+                    </span>
+                  </div>
+                </div>
+
+                <div class="p-8 border border-zinc-800 border-dashed bg-black/50">
+                  <p class="text-zinc-300 mb-6 font-sans">
+                    "Accessibility features saved us weeks. Rare to find a kit
+                    this robust."
+                  </p>
+                  <div class="flex items-center gap-3">
+                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&amp;h=100&amp;fit=crop" class="w-8 h-8 rounded-full border border-white/10" alt="Marcus">
+                    <div>
+                      <div class="text-sm text-white font-semibold font-manrope">
+                        Marcus T.
+                      </div>
+                      <div class="text-xs text-zinc-500 font-medium">
+                        Linear
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Duplicate Set 1 -->
+                <div class="p-8 border border-zinc-800 border-dashed bg-zinc-900/20 backdrop-blur-sm">
+                  <div class="flex gap-1 text-zinc-500 mb-4">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                    </svg>
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                    </svg>
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                    </svg>
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                    </svg>
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                    </svg>
+                  </div>
+                  <p class="text-zinc-300 font-medium font-sans mb-6">
+                    "This platform completely changed how we approach design
+                    systems. The speed and consistency is mind-blowing."
+                  </p>
+                  <div class="flex items-center gap-3">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&amp;h=100&amp;fit=crop" class="w-8 h-8 rounded-full border border-white/10" alt="Sarah">
+                    <div>
+                      <div class="text-sm text-white font-semibold font-manrope">
+                        Sarah Jenkins
+                      </div>
+                      <div class="text-xs text-zinc-500 font-medium">
+                        Stripe
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="p-8 border border-white/5 bg-zinc-900/40 backdrop-blur-sm">
+                  <p class="text-zinc-400 italic mb-4 font-sans text-sm">
+                    "Just shipped my portfolio using the new components. Detail
+                    is insane. 🚀"
+                  </p>
+                  <div class="flex items-center gap-2">
+                    <div class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-[10px] font-bold">
+                      JD
+                    </div>
+                    <span class="text-xs text-zinc-500 font-mono">
+                      @jamesbuilds
+                    </span>
+                  </div>
+                </div>
+                <div class="p-8 border border-zinc-800 border-dashed bg-black/50">
+                  <p class="text-zinc-300 mb-6 font-sans">
+                    "Accessibility features saved us weeks. Rare to find a kit
+                    this robust."
+                  </p>
+                  <div class="flex items-center gap-3">
+                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&amp;h=100&amp;fit=crop" class="w-8 h-8 rounded-full border border-white/10" alt="Marcus">
+                    <div>
+                      <div class="text-sm text-white font-semibold font-manrope">
+                        Marcus T.
+                      </div>
+                      <div class="text-xs text-zinc-500 font-medium">
+                        Linear
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Column 2 (Scrolls Down) -->
+            <div class="h-full overflow-hidden relative hidden md:block" style="">
+              <div class="marquee-track flex flex-col gap-6 will-change-transform gap-x-6 gap-y-6" data-direction="down" data-speed="0.6" style="transform: translate3d(0px, -660.15px, 0px);">
+                <!-- Content Set 1 -->
+                <div class="p-8 border border-zinc-700 bg-black shadow-2xl relative group">
+                  <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  <p class="text-xl text-white font-medium mb-6 leading-relaxed font-manrope">
+                    "I've used every UI kit out there. Nothing comes close to
+                    the polish and flexibility of this one."
+                  </p>
+                  <div class="flex items-center gap-3">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&amp;h=100&amp;fit=crop" class="w-10 h-10 rounded-full border border-white/20" alt="Michael">
+                    <div>
+                      <div class="text-sm text-white font-semibold font-manrope">
+                        Michael Chen
+                      </div>
+                      <div class="text-xs text-zinc-500 font-medium">
+                        CTO at Vercel
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="p-8 border border-white/5 bg-zinc-900/40">
+                  <p class="text-zinc-300 mb-6 font-sans">
+                    "Finally, a tool that bridges the gap between design and
+                    code perfectly."
+                  </p>
+                  <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-purple-500/10 text-purple-400 flex items-center justify-center text-xs font-bold border border-purple-500/20">
+                      EL
+                    </div>
+                    <div>
+                      <div class="text-sm text-white font-semibold font-manrope">
+                        Elena Rodriguez
+                      </div>
+                      <div class="text-xs text-zinc-500 font-medium">
+                        Frontend Lead
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="p-8 border border-zinc-800 border-dashed bg-black/50">
+                  <div class="flex gap-1 text-zinc-600 mb-4">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                    </svg>
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                    </svg>
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                    </svg>
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                    </svg>
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                    </svg>
+                  </div>
+                  <p class="text-zinc-300 mb-6 font-sans">
+                    "Refactoring legacy apps was daunting until we adopted this
+                    system."
+                  </p>
+                  <div class="flex items-center gap-3">
+                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&amp;h=100&amp;fit=crop" class="w-8 h-8 rounded-full border border-white/10" alt="Sofia">
+                    <div>
+                      <div class="text-sm text-white font-semibold font-manrope">
+                        Sofia Davis
+                      </div>
+                      <div class="text-xs text-zinc-500 font-medium">
+                        Notion
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Duplicate Set 2 -->
+                <div class="p-8 border border-zinc-700 bg-black shadow-2xl relative group">
+                  <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  <p class="text-xl text-white font-medium mb-6 leading-relaxed font-manrope">
+                    "I've used every UI kit out there. Nothing comes close to
+                    the polish and flexibility of this one."
+                  </p>
+                  <div class="flex items-center gap-3">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&amp;h=100&amp;fit=crop" class="w-10 h-10 rounded-full border border-white/20" alt="Michael">
+                    <div>
+                      <div class="text-sm text-white font-semibold font-manrope">
+                        Michael Chen
+                      </div>
+                      <div class="text-xs text-zinc-500 font-medium">
+                        CTO at Vercel
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="p-8 border border-white/5 bg-zinc-900/40">
+                  <p class="text-zinc-300 mb-6 font-sans">
+                    "Finally, a tool that bridges the gap between design and
+                    code perfectly."
+                  </p>
+                  <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-purple-500/10 text-purple-400 flex items-center justify-center text-xs font-bold border border-purple-500/20">
+                      EL
+                    </div>
+                    <div>
+                      <div class="text-sm text-white font-semibold font-manrope">
+                        Elena Rodriguez
+                      </div>
+                      <div class="text-xs text-zinc-500 font-medium">
+                        Frontend Lead
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="p-8 border border-zinc-800 border-dashed bg-black/50">
+                  <div class="flex gap-1 text-zinc-600 mb-4">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                    </svg>
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                    </svg>
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                    </svg>
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                    </svg>
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                    </svg>
+                  </div>
+                  <p class="text-zinc-300 mb-6 font-sans">
+                    "Refactoring legacy apps was daunting until we adopted this
+                    system."
+                  </p>
+                  <div class="flex items-center gap-3">
+                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&amp;h=100&amp;fit=crop" class="w-8 h-8 rounded-full border border-white/10" alt="Sofia">
+                    <div>
+                      <div class="text-sm text-white font-semibold font-manrope">
+                        Sofia Davis
+                      </div>
+                      <div class="text-xs text-zinc-500 font-medium">
+                        Notion
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Column 3 (Scrolls Up) -->
+            <div class="h-full overflow-hidden relative hidden lg:block">
+              <div class="marquee-track flex flex-col gap-6 will-change-transform" data-direction="up" data-speed="0.55" style="transform: translate3d(0px, -7.3px, 0px);">
+                <!-- Content Set 3 -->
+                <div class="bg-zinc-900/40 border-white/5 border pt-8 pr-8 pb-8 pl-8">
+                  <p class="text-zinc-300 mb-6 font-sans">
+                    "We redesigned our entire SaaS dashboard in a weekend.
+                    Robust and accessible."
+                  </p>
+                  <div class="flex items-center gap-3">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&amp;h=100&amp;fit=crop" class="w-8 h-8 rounded-full border border-white/10" alt="David">
+                    <div>
+                      <div class="text-sm text-white font-semibold font-manrope">
+                        David Kim
+                      </div>
+                      <div class="text-xs text-zinc-500 font-medium">Stack</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="p-8 border border-white/5 bg-zinc-900/40">
+                  <p class="text-zinc-300 mb-6 font-sans">
+                    "Best investment we made for our design team this year. ROI
+                    was immediate."
+                  </p>
+                  <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xs font-bold border border-emerald-500/20">
+                      AK
+                    </div>
+                    <div>
+                      <div class="text-sm text-white font-semibold font-manrope">
+                        Anna K.
+                      </div>
+                      <div class="text-xs text-zinc-500 font-medium">
+                        Product Director
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="p-8 border border-zinc-800 border-dashed bg-black/50">
+                  <p class="text-zinc-300 mb-6 font-sans">
+                    "I've cancelled 3 other subscriptions. This is the only UI
+                    kit I need."
+                  </p>
+                  <div class="flex items-center gap-3">
+                    <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=100&amp;h=100&amp;fit=crop" class="w-8 h-8 rounded-full border border-white/10" alt="Alex">
+                    <div class="">
+                      <div class="text-sm text-white font-semibold font-manrope">
+                        Alex Morgan
+                      </div>
+                      <div class="text-xs text-zinc-500 font-medium">
+                        Indie Dev
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Duplicate Set 3 -->
+                <div class="p-8 border border-white/5 bg-zinc-900/40">
+                  <p class="text-zinc-300 mb-6 font-sans">
+                    "We redesigned our entire SaaS dashboard in a weekend.
+                    Robust and accessible."
+                  </p>
+                  <div class="flex items-center gap-3">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&amp;h=100&amp;fit=crop" class="w-8 h-8 rounded-full border border-white/10" alt="David">
+                    <div>
+                      <div class="text-sm text-white font-semibold font-manrope">
+                        David Kim
+                      </div>
+                      <div class="text-xs text-zinc-500 font-medium">Stack</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="p-8 border border-white/5 bg-zinc-900/40">
+                  <p class="text-zinc-300 mb-6 font-sans">
+                    "Best investment we made for our design team this year. ROI
+                    was immediate."
+                  </p>
+                  <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xs font-bold border border-emerald-500/20">
+                      AK
+                    </div>
+                    <div>
+                      <div class="text-sm text-white font-semibold font-manrope">
+                        Anna K.
+                      </div>
+                      <div class="text-xs text-zinc-500 font-medium">
+                        Product Director
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="p-8 border border-zinc-800 border-dashed bg-black/50">
+                  <p class="text-zinc-300 mb-6 font-sans">
+                    "I've cancelled 3 other subscriptions. This is the only UI
+                    kit I need."
+                  </p>
+                  <div class="flex items-center gap-3">
+                    <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=100&amp;h=100&amp;fit=crop" class="w-8 h-8 rounded-full border border-white/10" alt="Alex">
+                    <div>
+                      <div class="text-sm text-white font-semibold font-manrope">
+                        Alex Morgan
+                      </div>
+                      <div class="text-xs text-zinc-500 font-medium">
+                        Indie Dev
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <script class="">
+            (function() {
+                if (typeof window === 'undefined') return;
+
+                const tracks = document.querySelectorAll('.marquee-track');
+                if (!tracks.length) return;
+
+                let scrollSpeed = 0;
+                let lastScrollY = window.scrollY;
+                let rafId = null;
+
+                // State for each track
+                const trackStates = Array.from(tracks).map(track => {
+                    const direction = track.getAttribute('data-direction') || 'up';
+                    const baseSpeed = parseFloat(track.getAttribute('data-speed') || '0.5');
+                    return {
+                        element: track,
+                        direction: direction === 'up' ? -1 : 1,
+                        baseSpeed: baseSpeed,
+                        currentPos: 0,
+                        contentHeight: 0
+                    };
+                });
+
+                function init() {
+                    trackStates.forEach(state => {
+                        // Content is doubled, so wrap height is half the total height
+                        state.contentHeight = state.element.offsetHeight / 2;
+                    });
+                }
+
+                function update() {
+                    // Decay scroll speed influence
+                    scrollSpeed *= 0.9;
+                    if (Math.abs(scrollSpeed) < 0.01) scrollSpeed = 0;
+
+                    trackStates.forEach(state => {
+                        const speed = state.baseSpeed + (scrollSpeed * 0.5);
+
+                        state.currentPos += speed * state.direction;
+
+                        // Wrap Logic:
+                        if (state.direction === -1 && state.currentPos <= -state.contentHeight) {
+                            state.currentPos += state.contentHeight;
+                        }
+                        if (state.direction === 1) {
+                           if (state.currentPos >= 0) {
+                               state.currentPos -= state.contentHeight;
+                           }
+                        }
+
+                        state.element.style.transform = `translate3d(0, ${state.currentPos}px, 0)`;
+                    });
+
+                    rafId = requestAnimationFrame(update);
+                }
+
+                window.addEventListener('scroll', () => {
+                    const currentScrollY = window.scrollY;
+                    const delta = Math.abs(currentScrollY - lastScrollY);
+                    lastScrollY = currentScrollY;
+
+                    scrollSpeed += delta * 0.15;
+                    if (scrollSpeed > 15) scrollSpeed = 15;
+                }, { passive: true });
+
+                setTimeout(() => {
+                    init();
+                    trackStates.forEach(state => {
+                        if (state.direction === 1) {
+                            // Start 'Down' tracks shifted up so they have content to scroll down from
+                            state.currentPos = -state.contentHeight;
+                        }
+                    });
+                    update();
+                }, 100);
+
+                window.addEventListener('resize', () => {
+                    init();
+                });
+            })();
+          </script>
+        </div>
+      </div>
+    </section>
+    <section class="w-full max-w-5xl mx-auto py-24 px-6 relative z-10 [animation:fadeSlideIn_1s_ease-out_1s_both] animate-on-scroll animate">
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-6">
+          <span class="w-2 h-2 rounded-full bg-[#ef233c]"></span>
+          <span class="text-xs font-medium text-zinc-300 uppercase tracking-wider">
+            Support
+          </span>
+        </div>
+        <h2 class="text-3xl md:text-5xl font-medium text-white font-manrope mb-4 tracking-tight">
+          Frequently Asked Questions
+        </h2>
+        <p class="text-zinc-400 max-w-lg mx-auto">
+          Everything you need to know about our pricing and services.
+        </p>
+      </div>
+      <div class="space-y-4 max-w-3xl mx-auto">
+        <details class="group border border-zinc-800 bg-black/50 open:bg-zinc-900/30 transition-all duration-300">
+          <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+            <span class="text-lg font-medium text-white font-manrope">
+              Can I pause my subscription?
+            </span>
+            <span class="transition group-open:rotate-180 text-zinc-500">
+              <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24">
+                <path d="M6 9l6 6 6-6"></path>
+              </svg>
+            </span>
+          </summary>
+          <div class="px-6 pb-6 text-zinc-400 leading-relaxed font-sans">
+            Yes, you can pause your subscription at any time. We understand that
+            workload fluctuates, so we make it easy to pause and resume whenever
+            you need.
+          </div>
+        </details>
+        <details class="group border border-zinc-800 bg-black/50 open:bg-zinc-900/30 transition-all duration-300">
+          <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+            <span class="text-lg font-medium text-white font-manrope">
+              What is your turnaround time?
+            </span>
+            <span class="transition group-open:rotate-180 text-zinc-500">
+              <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24">
+                <path d="M6 9l6 6 6-6"></path>
+              </svg>
+            </span>
+          </summary>
+          <div class="px-6 pb-6 text-zinc-400 leading-relaxed font-sans">
+            Most requests are completed within 24-48 hours. Larger projects are
+            broken down into smaller milestones to ensure steady progress.
+          </div>
+        </details>
+        <details class="group border border-zinc-800 bg-black/50 open:bg-zinc-900/30 transition-all duration-300">
+          <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+            <span class="text-lg font-medium text-white font-manrope">
+              Do you offer refunds?
+            </span>
+            <span class="transition group-open:rotate-180 text-zinc-500">
+              <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24">
+                <path d="M6 9l6 6 6-6"></path>
+              </svg>
+            </span>
+          </summary>
+          <div class="px-6 pb-6 text-zinc-400 leading-relaxed font-sans">
+            Due to the high quality nature of the work, there will be no refunds
+            issued. However, we iterate on the designs until you are 100%
+            satisfied.
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section class="[animation:fadeSlideIn_1s_ease-out_1s_both] animate-on-scroll w-full max-w-7xl z-20 mt-32 mr-auto mb-32 ml-auto pr-6 pl-6 relative">
+      <div class="grid lg:grid-cols-12 gap-16 items-start">
+        <!-- CTA Text Side -->
+        <div class="lg:col-span-5 pt-4 [animation:fadeSlideIn_1s_ease-out_0.2s_both] animate-on-scroll animate">
+          <h2 class="text-5xl md:text-6xl font-medium text-white tracking-tighter font-manrope mb-6 leading-[1.1]">
+            Ready to launch your
+            <span class="bg-clip-text text-transparent bg-[#ef233c]">
+              vision?
+            </span>
+          </h2>
+          <p class="text-lg text-zinc-400 font-sans leading-relaxed max-w-md">
+            I work with brands that believe in quality design. Let's build
+            something amazing together.
+          </p>
+        </div>
+
+        <!-- Form Side -->
+        <div class="lg:col-span-7 [animation:fadeSlideIn_1s_ease-out_0.4s_both] animate-on-scroll animate">
+          <form class="space-y-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+              <div class="group relative">
+                <input type="text" id="name" required="" class="peer w-full bg-transparent border-b border-white/10 py-3 text-white placeholder-transparent focus:border-red-600 focus:outline-none transition-colors font-sans text-lg" placeholder="Name">
+                <label for="name" class="absolute left-0 -top-5 text-xs text-zinc-500 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-zinc-400 peer-placeholder-shown:top-3 peer-focus:-top-5 peer-focus:text-[10px] peer-focus:text-red-600 font-sans uppercase tracking-wider font-medium">
+                  Name
+                </label>
+              </div>
+              <div class="group relative">
+                <input type="email" id="email" required="" class="peer w-full bg-transparent border-b border-white/10 py-3 text-white placeholder-transparent focus:border-red-600 focus:outline-none transition-colors font-sans text-lg" placeholder="Email">
+                <label for="email" class="absolute left-0 -top-5 text-xs text-zinc-500 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-zinc-400 peer-placeholder-shown:top-3 peer-focus:-top-5 peer-focus:text-[10px] peer-focus:text-red-600 font-sans uppercase tracking-wider font-medium">
+                  Email
+                </label>
+              </div>
+            </div>
+
+            <div class="group relative">
+              <input type="text" id="project" class="peer w-full bg-transparent border-b border-white/10 py-3 text-white placeholder-transparent focus:border-red-600 focus:outline-none transition-colors font-sans text-lg" placeholder="Project Type / Budget">
+              <label for="project" class="absolute left-0 -top-5 text-xs text-zinc-500 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-zinc-400 peer-placeholder-shown:top-3 peer-focus:-top-5 peer-focus:text-[10px] peer-focus:text-red-600 font-sans uppercase tracking-wider font-medium">
+                Project Type / Budget
+              </label>
+            </div>
+
+            <div class="group relative">
+              <textarea id="message" rows="1" class="peer w-full bg-transparent border-b border-white/10 py-3 text-white placeholder-transparent focus:border-red-600 focus:outline-none transition-colors font-sans text-lg resize-none" placeholder="Anything we should know?"></textarea>
+              <label for="message" class="absolute left-0 -top-5 text-xs text-zinc-500 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-zinc-400 peer-placeholder-shown:top-3 peer-focus:-top-5 peer-focus:text-[10px] peer-focus:text-red-600 font-sans uppercase tracking-wider font-medium">
+                Anything we should know?
+              </label>
+            </div>
+
+            <div class="flex justify-end pt-8">
+              <button type="button" class="group flex min-w-[180px] decoration-0 transition-transform active:scale-95 cursor-pointer outline-none w-auto h-[50px] px-6 relative items-center justify-center" style="background-color: rgba(255, 255, 255, 0.05); border-radius: 8px; opacity: 1; border: none">
+                <!-- Glow Layer -->
+                <div class="absolute inset-0 pointer-events-none transition-opacity ease-in-out duration-[1200ms] opacity-100 group-hover:opacity-0" style="background: radial-gradient(15% 50% at 50% 100%, rgb(255, 255, 255) 0%, rgba(255, 255, 255, 0) 100%); border-radius: 8px; filter: blur(15px);"></div>
+
+                <!-- Glow Hover Layer -->
+                <div class="absolute inset-0 pointer-events-none transition-opacity ease-in-out duration-[1200ms] opacity-0 group-hover:opacity-100" style="background: radial-gradient(60.6% 50% at 50% 100%, rgb(255, 255, 255) 0%, rgba(255, 255, 255, 0) 100%); border-radius: 8px; filter: blur(18px);"></div>
+
+                <!-- Stroke Layer -->
+                <div class="absolute inset-0 pointer-events-none will-change-auto transition-opacity ease-in-out duration-[1200ms] opacity-100 group-hover:opacity-0" style="background: radial-gradient(10.7% 50% at 50% 100%, rgb(255, 255, 255) 0%, rgba(255, 255, 255, 0) 100%); border-radius: 8px;"></div>
+
+                <!-- Stroke Hover Layer -->
+                <div class="absolute inset-0 pointer-events-none will-change-auto transition-opacity ease-in-out duration-[1200ms] opacity-0 group-hover:opacity-100" style="background: radial-gradient(60.1% 50% at 50% 100%, rgb(255, 255, 255) 0%, rgba(255, 255, 255, 0) 100%); border-radius: 8px;"></div>
+
+                <!-- Fill Layer -->
+                <div class="absolute inset-[1px] pointer-events-none z-10 rounded-[7px]" style="background-color: rgb(0, 0, 0); opacity: 1;"></div>
+
+                <!-- Content Layer -->
+                <div class="relative z-20 flex items-center justify-center gap-2 opacity-100">
+                  <span class="m-0 p-0 font-sans text-[15px] font-medium text-white tracking-wide" style="-webkit-font-smoothing: antialiased; text-shadow: 0 1px 2px rgba(0,0,0,0.5);">
+                    Start Conversation
+                  </span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right transition-transform duration-300 group-hover:translate-x-1">
+                    <path d="M5 12h14"></path>
+                    <path d="m12 5 7 7-7 7"></path>
+                  </svg>
+                </div>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+    <footer class="overflow-hidden border-dashed [animation:fadeSlideIn_1s_ease-out_1s_both] animate-on-scroll text-white bg-black w-full border-zinc-800 border-t relative">
+      <!-- Main Content Wrapper -->
+      <div class="w-full max-w-7xl mx-auto border-x border-dashed border-zinc-800">
+        <!-- Top Section: Grid -->
+        <div class="grid lg:grid-cols-12">
+          <!-- Left Brand Section -->
+          <div class="lg:col-span-5 p-8 md:p-12 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-dashed border-zinc-800 relative min-h-[360px] [animation:fadeSlideIn_1s_ease-out_0.2s_both] animate-on-scroll animate">
+            <div class="">
+              <!-- Logo -->
+              <div class="flex mb-8 gap-x-3 gap-y-3 items-center">
+                <div class="grid grid-cols-2 gap-1 w-8 h-8 opacity-90">
+                  <div class="bg-[#ef233c] w-full h-full rounded-sm"></div>
+                  <div class="w-full h-full bg-zinc-700 rounded-sm [animation:fadeSlideIn_1s_ease-out_0.3s_both] animate-on-scroll animate"></div>
+                  <div class="w-full h-full bg-zinc-800 rounded-sm"></div>
+                  <div class="w-full h-full bg-white rounded-sm shadow-[0_0_10px_rgba(255,255,255,0.4)]"></div>
+                </div>
+                <span class="text-2xl font-bold tracking-tight text-white font-manrope">
+                  Creative
+                </span>
+              </div>
+
+              <p class="text-zinc-400 max-w-sm text-sm leading-relaxed mb-12 font-medium">
+                We offer clarity and collaboration tools to help teams
+                effectively plan, track, and launch digital products.
+              </p>
+            </div>
+
+            <!-- Social Icons -->
+            <div class="flex items-center gap-3 mt-auto">
+              <a href="#" class="w-10 h-10 flex items-center justify-center border border-dashed border-zinc-700 hover:border-red-600 hover:bg-red-600/10 hover:text-red-600 transition-all duration-300 rounded text-zinc-400 group">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram">
+                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+                </svg>
+              </a>
+              <a href="#" class="w-10 h-10 flex items-center justify-center border border-dashed border-zinc-700 hover:border-red-600 hover:bg-red-600/10 hover:text-red-600 transition-all duration-300 rounded text-zinc-400 group">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-twitter">
+                  <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+                </svg>
+              </a>
+              <a href="#" class="w-10 h-10 flex items-center justify-center border border-dashed border-zinc-700 hover:border-red-600 hover:bg-red-600/10 hover:text-red-600 transition-all duration-300 rounded text-zinc-400 group">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-globe">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+                  <path d="M2 12h20"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Links Section -->
+          <div class="lg:col-span-7 p-8 md:p-12 bg-black/50">
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-10 h-full content-start">
+              <!-- Column 1 -->
+              <div class="flex flex-col gap-8">
+                <h4 class="uppercase text-xs font-bold text-[#ef233c] tracking-widest font-manrope">
+                  Map
+                </h4>
+                <div class="flex flex-col gap-5">
+                  <a href="#" class="group flex items-center justify-between text-xs font-medium text-zinc-400 hover:text-white transition-colors">
+                    FEATURES
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-red-600">
+                      <path d="m9 18 6-6-6-6" class=""></path>
+                    </svg>
+                  </a>
+                  <a href="#" class="group flex items-center justify-between text-xs font-medium text-zinc-400 hover:text-white transition-colors">
+                    SERVICES
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-red-600">
+                      <path d="m9 18 6-6-6-6"></path>
+                    </svg>
+                  </a>
+                  <a href="#" class="group flex items-center justify-between text-xs font-medium text-zinc-400 hover:text-white transition-colors">
+                    REVIEWS
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-red-600">
+                      <path d="m9 18 6-6-6-6"></path>
+                    </svg>
+                  </a>
+                  <a href="#" class="group flex items-center justify-between text-xs font-medium text-zinc-400 hover:text-white transition-colors">
+                    FAQS
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-red-600">
+                      <path d="m9 18 6-6-6-6"></path>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Column 2 -->
+              <div class="flex flex-col gap-8">
+                <h4 class="uppercase text-xs font-bold text-[#ef233c] tracking-widest font-manrope">
+                  Company
+                </h4>
+                <div class="flex flex-col gap-5">
+                  <a href="#" class="group flex items-center justify-between text-xs font-medium text-zinc-400 hover:text-white transition-colors">
+                    HOME
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-red-600">
+                      <path d="m9 18 6-6-6-6"></path>
+                    </svg>
+                  </a>
+                  <a href="#" class="group flex items-center justify-between text-xs font-medium text-zinc-400 hover:text-white transition-colors">
+                    ABOUT
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-red-600">
+                      <path d="m9 18 6-6-6-6"></path>
+                    </svg>
+                  </a>
+                  <a href="#" class="group flex items-center justify-between text-xs font-medium text-zinc-400 hover:text-white transition-colors">
+                    PRICING
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-red-600">
+                      <path d="m9 18 6-6-6-6"></path>
+                    </svg>
+                  </a>
+                  <a href="#" class="group flex items-center justify-between text-xs font-medium text-zinc-400 hover:text-white transition-colors">
+                    CONTACT
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-red-600">
+                      <path d="m9 18 6-6-6-6"></path>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Column 3 -->
+              <div class="flex flex-col gap-8">
+                <h4 class="uppercase text-xs font-bold text-[#ef233c] tracking-widest font-manrope">
+                  Legal
+                </h4>
+                <div class="flex flex-col gap-5">
+                  <a href="#" class="group flex items-center justify-between text-xs font-medium text-zinc-400 hover:text-white transition-colors">
+                    PRIVACY POLICY
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-red-600">
+                      <path d="m9 18 6-6-6-6"></path>
+                    </svg>
+                  </a>
+                  <a href="#" class="group flex items-center justify-between text-xs font-medium text-zinc-400 hover:text-white transition-colors">
+                    TERMS &amp; CONDITIONS
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-red-600">
+                      <path d="m9 18 6-6-6-6"></path>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Middle Divider -->
+        <div class="w-full border-t border-dashed border-zinc-800"></div>
+
+        <!-- Big Brand Text -->
+        <div class="w-full h-auto py-12 md:py-24 px-4 overflow-hidden flex justify-center items-center relative bg-black select-none [animation:fadeSlideIn_1s_ease-out_0.4s_both] animate-on-scroll animate">
+          <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,black_40%,transparent_100%)] pointer-events-none"></div>
+
+          <h2 class="text-[14vw] leading-[0.8] font-bold text-transparent tracking-tighter pointer-events-none font-manrope" style="-webkit-text-stroke: 1px rgba(63, 63, 70, 0.5);">
+            CREATIVE
+          </h2>
+
+          <!-- Glow Overlay -->
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10"></div>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="w-full py-8 text-center border-t border-dashed border-zinc-800 bg-black z-20 relative [animation:fadeSlideIn_1s_ease-out_0.5s_both] animate-on-scroll animate">
+        <p class="text-[10px] text-zinc-600 font-bold uppercase tracking-[0.2em] font-sans">
+          Made with love by
+          <a href="#" class="hover:text-white transition-colors text-[#ef233c]">
+            Creative Team
+          </a>
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      lucide.createIcons();
+    </script>
+  
+</body></html>
