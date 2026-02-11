@@ -200,8 +200,26 @@ body { font-family: 'Inter', sans-serif; }
   background-size: 60px 60px;
 }
 
-/* Select dropdown arrow fix */
-select option { background: #000; }
+/* Modal Styles */
+.modal-overlay {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  backdrop-filter: blur(8px);
+}
+.modal-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+.modal-content {
+  transform: scale(0.95) translateY(10px);
+  opacity: 0;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+.modal-overlay.open .modal-content {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
 </style>
 <script>
 (function () {
@@ -254,172 +272,215 @@ select option { background: #000; }
 
 
   <!-- ============================================================ -->
-  <!-- SECTION 1: HERO + FORM (side by side on desktop)             -->
+  <!-- SECTION 1: HERO (Centered) + MODAL TRIGGER                   -->
   <!-- ============================================================ -->
-  <section id="get-access-form" class="min-h-screen flex flex-col pt-28 md:pt-36 pb-16 overflow-hidden w-full relative items-center justify-start bg-grid">
+  <section id="get-access-form" class="min-h-screen flex flex-col pt-32 md:pt-48 pb-20 overflow-hidden w-full relative items-center justify-start bg-grid">
     <!-- Subtle radial glow -->
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[700px] pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(239,35,60,0.07) 0%, transparent 70%);"></div>
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[700px] pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(239,35,60,0.15) 0%, transparent 70%);"></div>
 
     <!-- Aurora Background Animation -->
     <div class="absolute inset-0 z-0 h-full overflow-hidden pointer-events-none" style="mask-image: linear-gradient(to bottom, transparent, black 5%, black 75%, transparent);">
-      <div class="absolute inset-0" style="background: radial-gradient(ellipse 80% 50% at 20% 40%, rgba(239,35,60,0.08) 0%, transparent 60%), radial-gradient(ellipse 60% 60% at 75% 60%, rgba(248,113,113,0.06) 0%, transparent 60%); animation: auroraShift1 8s ease-in-out infinite alternate;"></div>
-      <div class="absolute inset-0" style="background: radial-gradient(ellipse 70% 50% at 60% 30%, rgba(220,38,38,0.06) 0%, transparent 55%), radial-gradient(ellipse 50% 70% at 30% 70%, rgba(239,35,60,0.04) 0%, transparent 60%); animation: auroraShift2 12s ease-in-out infinite alternate-reverse;"></div>
+      <div class="absolute inset-0" style="background: radial-gradient(ellipse 80% 50% at 20% 40%, rgba(239,35,60,0.1) 0%, transparent 60%), radial-gradient(ellipse 60% 60% at 75% 60%, rgba(248,113,113,0.08) 0%, transparent 60%); animation: auroraShift1 8s ease-in-out infinite alternate;"></div>
+      <div class="absolute inset-0" style="background: radial-gradient(ellipse 70% 50% at 60% 30%, rgba(220,38,38,0.08) 0%, transparent 55%), radial-gradient(ellipse 50% 70% at 30% 70%, rgba(239,35,60,0.06) 0%, transparent 60%); animation: auroraShift2 12s ease-in-out infinite alternate-reverse;"></div>
     </div>
 
-    <div class="z-10 w-full max-w-6xl mx-auto px-6 relative">
-      <div class="flex flex-col lg:flex-row gap-10 lg:gap-14 items-start">
-
-        <!-- LEFT: Hero Copy -->
-        <div class="flex-1 lg:pt-8">
-          <!-- Badge -->
-          <div class="[animation:fadeSlideIn_1s_ease-out_0.8s_both] inline-flex transition-transform hover:scale-105 cursor-default group bg-gradient-to-b from-white/10 to-white/0 rounded-none mb-6 pt-1.5 pr-4 pb-1.5 pl-3 backdrop-blur-sm gap-x-2 items-center border border-dashed border-zinc-700">
-            <span class="flex h-2 w-2 rounded-full pulse-dot bg-red-500 shadow-[0_0_10px_rgba(239,35,60,0.6)]"></span>
-            <span class="text-xs font-semibold tracking-widest uppercase font-geist-mono text-red-200/90">Free for Event Attendees</span>
-          </div>
-
-          <!-- Headline -->
-          <h1 class="[animation:fadeSlideIn_1s_ease-out_1s_both] leading-[1.2] md:text-5xl lg:text-[3.5rem] text-4xl font-bold tracking-tight font-manrope mb-8">
-            <span class="bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50 opacity-60">Steal&nbsp;My </span>
-            <span class="bg-clip-text text-transparent bg-gradient-to-b from-red-400 via-red-300 to-red-500">Offer&nbsp;MBA</span>
-            <br class="hidden lg:block">
-            <span class="bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50 opacity-60">&nbsp;+&nbsp;</span>
-            <span class="bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50">728,000,000&nbsp;Leads</span>
-          </h1>
-
-          <!-- Subhead -->
-          <p class="[animation:fadeSlideIn_1s_ease-out_1.2s_both] leading-relaxed md:text-lg text-base font-medium text-zinc-400 tracking-normal font-manrope max-w-xl mb-10">
-            Build a 7&#8209;figure&#8209;ready offer in about an hour, then plug it into 728,000,000 pre&#8209;built&nbsp;leads&hellip; and use my most ruthless copy GPT to turn it into content, emails,&nbsp;and&nbsp;sales.
-          </p>
-
-          <!-- Authority -->
-          <div class="[animation:fadeSlideIn_1s_ease-out_1.4s_both] flex flex-col sm:flex-row gap-6 items-start sm:items-center mb-8">
-            <div class="flex items-center gap-3">
-              <div class="w-14 h-14 rounded-none overflow-hidden border border-dashed border-zinc-700 relative shrink-0">
-                <img src="Andrew Naegele Headshot B&W.png" alt="Andrew Naegele" class="w-full h-full object-cover object-top grayscale">
-              </div>
-              <div>
-                <p class="text-sm font-semibold text-white font-manrope">Andrew&nbsp;Naegele</p>
-                <p class="text-xs text-zinc-600">Founder, CallVault&nbsp;AI</p>
-              </div>
-            </div>
-            <div class="flex items-center gap-3">
-              <div class="w-14 h-14 rounded-none overflow-hidden border border-dashed border-zinc-700 relative shrink-0">
-                <img src="los-silva-headshot.png" alt="Los Silva" class="w-full h-full object-cover object-top grayscale">
-              </div>
-              <div>
-                <p class="text-sm font-semibold text-white font-manrope">Los&nbsp;Silva</p>
-                <p class="text-xs text-zinc-600">$300M+ in exits&nbsp;advised</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Social proof line -->
-          <p class="[animation:fadeSlideIn_1s_ease-out_1.6s_both] text-xs text-zinc-600 font-geist-mono tracking-wide">
-            Trusted by founders behind $400M+ in combined revenue
-          </p>
-        </div>
-
-        <!-- RIGHT: Form -->
-        <div class="w-full lg:w-[440px] shrink-0 [animation:fadeSlideIn_1s_ease-out_1.2s_both]">
-          <div class="bg-black border border-dashed border-zinc-700 rounded-none p-6 md:p-8 relative group hover:border-red-500/40 transition-all duration-700">
-            <!-- Corner accents -->
-            <div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-red-500"></div>
-            <div class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-red-500"></div>
-            <div class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-red-500"></div>
-            <div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-red-500"></div>
-
-            <!-- Glow effect -->
-            <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(239,35,60,0.06) 0%, transparent 70%);"></div>
-
-            <!-- Form title -->
-            <h2 class="text-lg font-bold font-manrope text-white mb-1 relative z-10">Get Instant Access:</h2>
-            <div class="flex items-center gap-2 mb-5 relative z-10">
-              <span class="flex h-1.5 w-1.5 rounded-full pulse-dot bg-red-500"></span>
-              <span class="text-xs font-geist-mono tracking-wide text-red-300/80 uppercase">Limited &mdash; event attendees only</span>
-            </div>
-
-            <form action="#" method="POST" class="relative z-10 space-y-4">
-              <!-- Name -->
-              <div>
-                <label for="name" class="block text-xs font-geist-mono tracking-widest uppercase text-zinc-500 mb-1.5">Name</label>
-                <input type="text" id="name" name="name" required placeholder="Your name"
-                  class="form-input-glow w-full bg-zinc-950 border border-zinc-800 rounded-none px-3.5 py-3 text-white text-sm placeholder:text-zinc-600 focus:outline-none focus:border-red-500 transition-all duration-300">
-              </div>
-
-              <!-- Email -->
-              <div>
-                <label for="email" class="block text-xs font-geist-mono tracking-widest uppercase text-zinc-500 mb-1.5">Email</label>
-                <input type="email" id="email" name="email" required placeholder="Your best email"
-                  class="form-input-glow w-full bg-zinc-950 border border-zinc-800 rounded-none px-3.5 py-3 text-white text-sm placeholder:text-zinc-600 focus:outline-none focus:border-red-500 transition-all duration-300">
-              </div>
-
-              <!-- Business Name -->
-              <div>
-                <label for="business-name" class="block text-xs font-geist-mono tracking-widest uppercase text-zinc-500 mb-1.5">Business Name</label>
-                <input type="text" id="business-name" name="business_name" placeholder="Your business or brand"
-                  class="form-input-glow w-full bg-zinc-950 border border-zinc-800 rounded-none px-3.5 py-3 text-white text-sm placeholder:text-zinc-600 focus:outline-none focus:border-red-500 transition-all duration-300">
-              </div>
-
-              <!-- Website -->
-              <div>
-                <label for="website" class="block text-xs font-geist-mono tracking-widest uppercase text-zinc-500 mb-1.5">Website</label>
-                <input type="url" id="website" name="website" placeholder="https://yourbrand.com"
-                  class="form-input-glow w-full bg-zinc-950 border border-zinc-800 rounded-none px-3.5 py-3 text-white text-sm placeholder:text-zinc-600 focus:outline-none focus:border-red-500 transition-all duration-300">
-              </div>
-
-              <!-- Current Monthly Revenue -->
-              <div>
-                <label for="revenue" class="block text-xs font-geist-mono tracking-widest uppercase text-zinc-500 mb-1.5">Current Monthly Revenue</label>
-                <input type="text" id="revenue" name="revenue" placeholder="e.g. $10K, $50K, $250K+"
-                  class="form-input-glow w-full bg-zinc-950 border border-zinc-800 rounded-none px-3.5 py-3 text-white text-sm placeholder:text-zinc-600 focus:outline-none focus:border-red-500 transition-all duration-300">
-              </div>
-
-              <!-- Main Acquisition Channel -->
-              <div>
-                <label for="channel" class="block text-xs font-geist-mono tracking-widest uppercase text-zinc-500 mb-1.5">Main Acquisition Channel</label>
-                <input type="text" id="channel" name="channel" placeholder="Cold email, Paid ads, Organic, Referrals..."
-                  class="form-input-glow w-full bg-zinc-950 border border-zinc-800 rounded-none px-3.5 py-3 text-white text-sm placeholder:text-zinc-600 focus:outline-none focus:border-red-500 transition-all duration-300">
-              </div>
-
-              <!-- Implementation Help Dropdown -->
-              <div>
-                <label for="help" class="block text-xs font-geist-mono tracking-widest uppercase text-zinc-500 mb-1.5">Want help wiring this into your pipeline in 30 days?</label>
-                <select id="help" name="implementation_help"
-                  class="form-input-glow w-full bg-zinc-950 border border-zinc-800 rounded-none px-3.5 py-3 text-white text-sm focus:outline-none focus:border-red-500 transition-all duration-300 appearance-none cursor-pointer"
-                  style="background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2371717a' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E&quot;); background-repeat: no-repeat; background-position: right 0.75rem center;">
-                  <option value="">Select one</option>
-                  <option value="yes">Yes</option>
-                  <option value="no">Not right now</option>
-                </select>
-              </div>
-
-              <!-- CTA Button -->
-              <div class="pt-1">
-                <button type="submit" class="shiny-cta w-full text-center">
-                  <span class="flex items-center justify-center gap-2 text-[13px] font-bold tracking-wide uppercase font-manrope whitespace-nowrap">
-                    Send&nbsp;Me&nbsp;The&nbsp;Offer&nbsp;MBA&nbsp;&amp;&nbsp;Lead&nbsp;Vault
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                  </span>
-                </button>
-              </div>
-
-              <!-- Microcopy -->
-              <p class="text-center text-xs text-zinc-600 pt-0.5">
-                You'll get instant access on the next page + an email with everything.
-              </p>
-
-              <!-- Implementation Call link -->
-              <p class="text-center text-xs">
-                <span class="text-zinc-600">Prefer to talk live?</span>
-                <a href="#implementation" class="text-red-500 hover:text-red-400 transition-colors font-medium ml-1">Book an Implementation Call &darr;</a>
-              </p>
-            </form>
-          </div>
-        </div>
-
+    <div class="z-10 w-full max-w-5xl mx-auto px-6 relative text-center">
+      
+      <!-- Badge -->
+      <div class="[animation:fadeSlideIn_1s_ease-out_0.8s_both] inline-flex transition-transform hover:scale-105 cursor-default group bg-gradient-to-b from-white/10 to-white/0 rounded-full mb-8 pt-1.5 pr-4 pb-1.5 pl-3 backdrop-blur-sm gap-x-2 items-center border border-white/10 shadow-[0_0_20px_rgba(239,35,60,0.2)]">
+        <span class="flex h-2 w-2 rounded-full pulse-dot bg-[#ef233c] shadow-[0_0_10px_rgba(239,35,60,0.8)]"></span>
+        <span class="text-xs font-semibold tracking-widest uppercase font-geist-mono text-white/90">Free for Event Attendees</span>
       </div>
+
+      <!-- Headline -->
+      <h1 class="[animation:fadeSlideIn_1s_ease-out_1s_both] leading-[1.1] md:text-7xl lg:text-[5rem] text-5xl font-bold tracking-tighter font-manrope mb-8">
+        <span class="bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50 opacity-100">Steal&nbsp;My </span>
+        <span class="bg-clip-text text-transparent bg-gradient-to-b from-[#ef233c] via-red-400 to-[#ef233c] drop-shadow-[0_0_30px_rgba(239,35,60,0.4)]">Offer&nbsp;MBA</span>
+        <br>
+        <span class="bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50 opacity-100">+ 728,000,000&nbsp;Leads</span>
+      </h1>
+
+      <!-- Subhead -->
+      <p class="[animation:fadeSlideIn_1s_ease-out_1.2s_both] leading-relaxed md:text-2xl text-xl font-medium text-zinc-300 tracking-normal font-manrope max-w-3xl mx-auto mb-12">
+        Build a 7&#8209;figure&#8209;ready offer in about an hour, then plug it into the largest pre&#8209;built lead vault we've ever released.
+      </p>
+
+      <!-- CTA Trigger -->
+      <div class="[animation:fadeSlideIn_1s_ease-out_1.4s_both] flex flex-col items-center justify-center gap-6">
+        <button onclick="openModal()" class="shiny-cta min-w-[280px] md:min-w-[320px] rounded-full text-lg">
+          <span class="flex items-center justify-center gap-2 font-bold tracking-wide uppercase font-manrope whitespace-nowrap">
+            Send&nbsp;Me&nbsp;The&nbsp;Vault
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </span>
+        </button>
+        
+        <p class="text-xs text-zinc-500 font-geist-mono">
+          <span class="text-[#ef233c]">*</span> Instant Access via Email
+        </p>
+      </div>
+
+      <!-- Authority / Social Proof -->
+      <div class="[animation:fadeSlideIn_1s_ease-out_1.6s_both] mt-16 pt-8 border-t border-dashed border-white/10 max-w-2xl mx-auto flex flex-col sm:flex-row gap-8 items-center justify-center">
+        <div class="flex items-center gap-3">
+          <div class="flex -space-x-3">
+            <div class="w-10 h-10 rounded-full border-2 border-black overflow-hidden bg-zinc-800">
+              <img src="Andrew Naegele Headshot B&W.png" alt="Andrew" class="w-full h-full object-cover grayscale">
+            </div>
+            <div class="w-10 h-10 rounded-full border-2 border-black overflow-hidden bg-zinc-800">
+              <img src="los-silva-headshot.png" alt="Los" class="w-full h-full object-cover grayscale">
+            </div>
+          </div>
+          <div class="text-left">
+            <p class="text-sm font-semibold text-white font-manrope">Andrew &amp; Los</p>
+            <p class="text-[10px] text-zinc-500 uppercase tracking-wider font-geist-mono">Creators</p>
+          </div>
+        </div>
+        <div class="h-8 w-px bg-white/10 hidden sm:block"></div>
+        <p class="text-xs text-zinc-400 font-manrope">
+          Trusted by founders behind <span class="text-white font-semibold">$400M+</span> in combined revenue.
+        </p>
+      </div>
+
     </div>
   </section>
+
+  <!-- MODAL -->
+  <div id="leadModal" class="modal-overlay fixed inset-0 z-[100] flex items-center justify-center px-4 bg-black/80">
+    <div class="absolute inset-0" onclick="closeModal()"></div>
+    
+    <div class="modal-content relative w-full max-w-md bg-[#0a0a0a] border border-zinc-800 rounded-2xl shadow-2xl overflow-hidden">
+      <!-- Glow -->
+      <div class="absolute inset-0 pointer-events-none opacity-20" style="background: radial-gradient(circle at top, rgba(239,35,60,0.3) 0%, transparent 60%);"></div>
+      
+      <!-- Close Button -->
+      <button onclick="closeModal()" class="absolute top-4 right-4 text-zinc-500 hover:text-white transition-colors z-20">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 18 18"/></svg>
+      </button>
+
+      <div class="relative z-10 p-8">
+        <div class="text-center mb-6">
+          <h3 class="text-xl font-bold font-manrope text-white mb-2">Where should we send it?</h3>
+          <p class="text-sm text-zinc-400">Enter your details to get the Offer MBA + 728M Lead Vault sent to your inbox instantly.</p>
+        </div>
+
+        <form action="#" method="POST" class="space-y-4">
+          <!-- Name -->
+          <div>
+            <label for="name" class="sr-only">Name</label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-zinc-600"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </div>
+              <input type="text" id="name" name="name" required placeholder="Your Name"
+                class="w-full bg-zinc-900/50 border border-zinc-800 rounded-lg pl-10 pr-4 py-3 text-white text-sm placeholder:text-zinc-600 focus:outline-none focus:border-[#ef233c] focus:ring-1 focus:ring-[#ef233c] transition-all duration-300">
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div>
+            <label for="email" class="sr-only">Email</label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-zinc-600"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              </div>
+              <input type="email" id="email" name="email" required placeholder="Your Best Email"
+                class="w-full bg-zinc-900/50 border border-zinc-800 rounded-lg pl-10 pr-4 py-3 text-white text-sm placeholder:text-zinc-600 focus:outline-none focus:border-[#ef233c] focus:ring-1 focus:ring-[#ef233c] transition-all duration-300">
+            </div>
+          </div>
+
+          <!-- Business Name -->
+          <div>
+            <label for="business-name" class="sr-only">Business Name</label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-zinc-600"><path d="M3 21h18"/><path d="M5 21V7l8-4 8 4v14"/><path d="M17 21v-8.5a1.5 1.5 0 0 0-1.5-1.5h-5a1.5 1.5 0 0 0-1.5 1.5V21"/><path d="M9 10a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2"/></svg>
+              </div>
+              <input type="text" id="business-name" name="business_name" placeholder="Business Name"
+                class="w-full bg-zinc-900/50 border border-zinc-800 rounded-lg pl-10 pr-4 py-3 text-white text-sm placeholder:text-zinc-600 focus:outline-none focus:border-[#ef233c] focus:ring-1 focus:ring-[#ef233c] transition-all duration-300">
+            </div>
+          </div>
+
+          <!-- Website -->
+          <div>
+            <label for="website" class="sr-only">Website</label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-zinc-600"><circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              </div>
+              <input type="url" id="website" name="website" placeholder="Website URL"
+                class="w-full bg-zinc-900/50 border border-zinc-800 rounded-lg pl-10 pr-4 py-3 text-white text-sm placeholder:text-zinc-600 focus:outline-none focus:border-[#ef233c] focus:ring-1 focus:ring-[#ef233c] transition-all duration-300">
+            </div>
+          </div>
+
+          <!-- Revenue -->
+          <div>
+            <label for="revenue" class="sr-only">Monthly Revenue</label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <span class="text-zinc-600 font-bold text-sm">$</span>
+              </div>
+              <input type="text" id="revenue" name="revenue" placeholder="Monthly Revenue"
+                class="w-full bg-zinc-900/50 border border-zinc-800 rounded-lg pl-10 pr-4 py-3 text-white text-sm placeholder:text-zinc-600 focus:outline-none focus:border-[#ef233c] focus:ring-1 focus:ring-[#ef233c] transition-all duration-300">
+            </div>
+          </div>
+
+          <!-- Implementation Help Dropdown -->
+          <div class="pt-2">
+            <label for="help" class="block text-xs font-medium text-zinc-400 mb-2">Want help wiring this into your pipeline?</label>
+            <div class="relative">
+              <select id="help" name="implementation_help"
+                class="w-full bg-zinc-900/50 border border-zinc-800 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-[#ef233c] focus:ring-1 focus:ring-[#ef233c] transition-all duration-300 appearance-none cursor-pointer">
+                <option value="" class="bg-black">Select an option...</option>
+                <option value="yes" class="bg-black">Yes, fast-track me</option>
+                <option value="no" class="bg-black">No, I'll do it myself</option>
+              </select>
+              <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-zinc-500"><path d="m6 9 6 6 6-6"/></svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- CTA Button -->
+          <div class="pt-2">
+            <button type="submit" class="shiny-cta w-full text-center rounded-lg">
+              <span class="flex items-center justify-center gap-2 text-[13px] font-bold tracking-wide uppercase font-manrope whitespace-nowrap">
+                Unlock Access Now
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openModal() {
+      const modal = document.getElementById('leadModal');
+      modal.classList.remove('hidden');
+      // Trigger reflow to enable transition
+      void modal.offsetWidth; 
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('leadModal');
+      modal.classList.remove('open');
+      setTimeout(() => {
+        // modal.classList.add('hidden'); // Optional: hide after transition
+      }, 300);
+      document.body.style.overflow = '';
+    }
+    
+    // Close on Escape key
+    document.addEventListener('keydown', function(event) {
+      if (event.key === "Escape") {
+        closeModal();
+      }
+    });
+  </script>
+
 
 
   <!-- ============================================================ -->
