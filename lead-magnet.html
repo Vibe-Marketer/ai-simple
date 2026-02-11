@@ -57,12 +57,12 @@ body { font-family: 'Inter', sans-serif; }
 @property --gradient-angle { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
 @property --gradient-angle-offset { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
 @property --gradient-percent { syntax: "<percentage>"; initial-value: 20%; inherits: false; }
-@property --gradient-shine { syntax: "<color>"; initial-value: #f97316; inherits: false; }
+@property --gradient-shine { syntax: "<color>"; initial-value: #ef233c; inherits: false; }
 .shiny-cta {
   --gradient-angle: 0deg;
   --gradient-angle-offset: 0deg;
   --gradient-percent: 20%;
-  --gradient-shine: #f97316;
+  --gradient-shine: #ef233c;
   position: relative;
   overflow: hidden;
   border-radius: 0;
@@ -73,7 +73,7 @@ body { font-family: 'Inter', sans-serif; }
   color: #ffffff;
   background: linear-gradient(#000000, #000000) padding-box,
     conic-gradient(from calc(var(--gradient-angle) - var(--gradient-angle-offset)),
-    transparent 0%, #f97316 5%, var(--gradient-shine) 15%, #f97316 30%, transparent 40%, transparent 100%) border-box;
+    transparent 0%, #ef233c 5%, var(--gradient-shine) 15%, #ef233c 30%, transparent 40%, transparent 100%) border-box;
   border: 2px solid transparent;
   box-shadow: inset 0 0 0 1px #1a1818;
   outline: none;
@@ -116,7 +116,7 @@ body { font-family: 'Inter', sans-serif; }
   z-index: 1;
   width: 100%;
   aspect-ratio: 1;
-  background: linear-gradient(-50deg, transparent, #f97316, transparent);
+  background: linear-gradient(-50deg, transparent, #ef233c, transparent);
   mask-image: radial-gradient(circle at bottom, transparent 40%, black);
   opacity: 0.6;
   animation: shimmer 4s linear infinite;
@@ -132,7 +132,7 @@ body { font-family: 'Inter', sans-serif; }
   --size: calc(100% + 1rem);
   width: var(--size);
   height: var(--size);
-  box-shadow: inset 0 -1ex 2rem 4px #f97316;
+  box-shadow: inset 0 -1ex 2rem 4px #ef233c;
   opacity: 0;
   border-radius: inherit;
   transition: opacity 800ms cubic-bezier(0.25, 1, 0.5, 1);
@@ -185,7 +185,7 @@ body { font-family: 'Inter', sans-serif; }
 
 /* Form input focus glow */
 .form-input-glow:focus {
-  box-shadow: 0 0 0 1px #f97316, 0 0 20px rgba(249, 115, 22, 0.15);
+  box-shadow: 0 0 0 1px #ef233c, 0 0 20px rgba(249, 115, 22, 0.15);
 }
 
 /* Subtle background grid */
@@ -221,7 +221,7 @@ select option { background: #000; }
 </script>
 </head>
 
-<body class="antialiased overflow-x-hidden selection:bg-orange-600/30 selection:text-orange-200 text-white bg-black">
+<body class="antialiased overflow-x-hidden selection:bg-red-600/30 selection:text-red-200 text-white bg-black">
 
   <!-- Progressive Blur Top -->
   <div class="gradient-blur" style="height: 120px;">
@@ -233,7 +233,7 @@ select option { background: #000; }
     <nav class="shadow-black/50 flex md:w-auto bg-black/60 w-full max-w-6xl rounded-none pt-2 pr-4 pb-2 pl-3 shadow-2xl backdrop-blur-lg items-center justify-between" style="position: relative; --border-gradient: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0), rgba(255,255,255,0.2)); --border-radius-before: 0">
       <a href="index.html" class="flex gap-x-3 items-center group">
         <div class="grid grid-cols-2 opacity-90 w-6 h-6 gap-1">
-          <div class="bg-orange-500 w-full h-full rounded-sm"></div>
+          <div class="bg-red-500 w-full h-full rounded-sm"></div>
           <div class="w-full h-full bg-zinc-700 rounded-sm"></div>
           <div class="w-full h-full bg-zinc-800 rounded-sm"></div>
           <div class="w-full h-full bg-white rounded-sm shadow-[0_0_10px_rgba(255,255,255,0.4)]"></div>
@@ -253,12 +253,12 @@ select option { background: #000; }
   <!-- ============================================================ -->
   <section id="get-access-form" class="min-h-screen flex flex-col pt-28 md:pt-36 pb-16 overflow-hidden w-full relative items-center justify-start bg-grid">
     <!-- Subtle radial glow -->
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[700px] pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(249,115,22,0.07) 0%, transparent 70%);"></div>
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[700px] pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(239,35,60,0.07) 0%, transparent 70%);"></div>
 
     <!-- Aurora Background Animation -->
     <div class="absolute inset-0 z-0 h-full overflow-hidden pointer-events-none" style="mask-image: linear-gradient(to bottom, transparent, black 5%, black 75%, transparent);">
-      <div class="absolute inset-0" style="background: radial-gradient(ellipse 80% 50% at 20% 40%, rgba(249,115,22,0.08) 0%, transparent 60%), radial-gradient(ellipse 60% 60% at 75% 60%, rgba(251,146,60,0.06) 0%, transparent 60%); animation: auroraShift1 8s ease-in-out infinite alternate;"></div>
-      <div class="absolute inset-0" style="background: radial-gradient(ellipse 70% 50% at 60% 30%, rgba(234,88,12,0.06) 0%, transparent 55%), radial-gradient(ellipse 50% 70% at 30% 70%, rgba(249,115,22,0.04) 0%, transparent 60%); animation: auroraShift2 12s ease-in-out infinite alternate-reverse;"></div>
+      <div class="absolute inset-0" style="background: radial-gradient(ellipse 80% 50% at 20% 40%, rgba(239,35,60,0.08) 0%, transparent 60%), radial-gradient(ellipse 60% 60% at 75% 60%, rgba(248,113,113,0.06) 0%, transparent 60%); animation: auroraShift1 8s ease-in-out infinite alternate;"></div>
+      <div class="absolute inset-0" style="background: radial-gradient(ellipse 70% 50% at 60% 30%, rgba(220,38,38,0.06) 0%, transparent 55%), radial-gradient(ellipse 50% 70% at 30% 70%, rgba(239,35,60,0.04) 0%, transparent 60%); animation: auroraShift2 12s ease-in-out infinite alternate-reverse;"></div>
     </div>
 
     <div class="z-10 w-full max-w-6xl mx-auto px-6 relative">
@@ -268,14 +268,14 @@ select option { background: #000; }
         <div class="flex-1 lg:pt-8">
           <!-- Badge -->
           <div class="[animation:fadeSlideIn_1s_ease-out_0.8s_both] inline-flex transition-transform hover:scale-105 cursor-default group bg-gradient-to-b from-white/10 to-white/0 rounded-none mb-6 pt-1.5 pr-4 pb-1.5 pl-3 backdrop-blur-sm gap-x-2 items-center border border-dashed border-zinc-700">
-            <span class="flex h-2 w-2 rounded-full pulse-dot bg-orange-500 shadow-[0_0_10px_rgba(249,115,22,0.6)]"></span>
-            <span class="text-xs font-semibold tracking-widest uppercase font-geist-mono text-orange-200/90">Free for Event Attendees</span>
+            <span class="flex h-2 w-2 rounded-full pulse-dot bg-red-500 shadow-[0_0_10px_rgba(239,35,60,0.6)]"></span>
+            <span class="text-xs font-semibold tracking-widest uppercase font-geist-mono text-red-200/90">Free for Event Attendees</span>
           </div>
 
           <!-- Headline -->
           <h1 class="[animation:fadeSlideIn_1s_ease-out_1s_both] leading-[1.2] md:text-5xl lg:text-[3.5rem] text-4xl font-bold tracking-tight font-manrope mb-8">
             <span class="bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50 opacity-60">Steal&nbsp;My </span>
-            <span class="bg-clip-text text-transparent bg-gradient-to-b from-orange-400 via-orange-300 to-orange-500">Offer&nbsp;MBA</span>
+            <span class="bg-clip-text text-transparent bg-gradient-to-b from-red-400 via-red-300 to-red-500">Offer&nbsp;MBA</span>
             <br class="hidden lg:block">
             <span class="bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50 opacity-60">&nbsp;+&nbsp;</span>
             <span class="bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50">728,000,000&nbsp;Leads</span>
@@ -316,21 +316,21 @@ select option { background: #000; }
 
         <!-- RIGHT: Form -->
         <div class="w-full lg:w-[440px] shrink-0 [animation:fadeSlideIn_1s_ease-out_1.2s_both]">
-          <div class="bg-black border border-dashed border-zinc-700 rounded-none p-6 md:p-8 relative group hover:border-orange-500/40 transition-all duration-700">
+          <div class="bg-black border border-dashed border-zinc-700 rounded-none p-6 md:p-8 relative group hover:border-red-500/40 transition-all duration-700">
             <!-- Corner accents -->
-            <div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-orange-500"></div>
-            <div class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-orange-500"></div>
-            <div class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-orange-500"></div>
-            <div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-orange-500"></div>
+            <div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-red-500"></div>
+            <div class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-red-500"></div>
+            <div class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-red-500"></div>
+            <div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-red-500"></div>
 
             <!-- Glow effect -->
-            <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(249,115,22,0.06) 0%, transparent 70%);"></div>
+            <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(239,35,60,0.06) 0%, transparent 70%);"></div>
 
             <!-- Form title -->
             <h2 class="text-lg font-bold font-manrope text-white mb-1 relative z-10">Get Instant Access:</h2>
             <div class="flex items-center gap-2 mb-5 relative z-10">
-              <span class="flex h-1.5 w-1.5 rounded-full pulse-dot bg-orange-500"></span>
-              <span class="text-xs font-geist-mono tracking-wide text-orange-300/80 uppercase">Limited &mdash; event attendees only</span>
+              <span class="flex h-1.5 w-1.5 rounded-full pulse-dot bg-red-500"></span>
+              <span class="text-xs font-geist-mono tracking-wide text-red-300/80 uppercase">Limited &mdash; event attendees only</span>
             </div>
 
             <form action="#" method="POST" class="relative z-10 space-y-4">
@@ -338,49 +338,49 @@ select option { background: #000; }
               <div>
                 <label for="name" class="block text-xs font-geist-mono tracking-widest uppercase text-zinc-500 mb-1.5">Name</label>
                 <input type="text" id="name" name="name" required placeholder="Your name"
-                  class="form-input-glow w-full bg-zinc-950 border border-zinc-800 rounded-none px-3.5 py-3 text-white text-sm placeholder:text-zinc-600 focus:outline-none focus:border-orange-500 transition-all duration-300">
+                  class="form-input-glow w-full bg-zinc-950 border border-zinc-800 rounded-none px-3.5 py-3 text-white text-sm placeholder:text-zinc-600 focus:outline-none focus:border-red-500 transition-all duration-300">
               </div>
 
               <!-- Email -->
               <div>
                 <label for="email" class="block text-xs font-geist-mono tracking-widest uppercase text-zinc-500 mb-1.5">Email</label>
                 <input type="email" id="email" name="email" required placeholder="Your best email"
-                  class="form-input-glow w-full bg-zinc-950 border border-zinc-800 rounded-none px-3.5 py-3 text-white text-sm placeholder:text-zinc-600 focus:outline-none focus:border-orange-500 transition-all duration-300">
+                  class="form-input-glow w-full bg-zinc-950 border border-zinc-800 rounded-none px-3.5 py-3 text-white text-sm placeholder:text-zinc-600 focus:outline-none focus:border-red-500 transition-all duration-300">
               </div>
 
               <!-- Business Name -->
               <div>
                 <label for="business-name" class="block text-xs font-geist-mono tracking-widest uppercase text-zinc-500 mb-1.5">Business Name</label>
                 <input type="text" id="business-name" name="business_name" placeholder="Your business or brand"
-                  class="form-input-glow w-full bg-zinc-950 border border-zinc-800 rounded-none px-3.5 py-3 text-white text-sm placeholder:text-zinc-600 focus:outline-none focus:border-orange-500 transition-all duration-300">
+                  class="form-input-glow w-full bg-zinc-950 border border-zinc-800 rounded-none px-3.5 py-3 text-white text-sm placeholder:text-zinc-600 focus:outline-none focus:border-red-500 transition-all duration-300">
               </div>
 
               <!-- Website -->
               <div>
                 <label for="website" class="block text-xs font-geist-mono tracking-widest uppercase text-zinc-500 mb-1.5">Website</label>
                 <input type="url" id="website" name="website" placeholder="https://yourbrand.com"
-                  class="form-input-glow w-full bg-zinc-950 border border-zinc-800 rounded-none px-3.5 py-3 text-white text-sm placeholder:text-zinc-600 focus:outline-none focus:border-orange-500 transition-all duration-300">
+                  class="form-input-glow w-full bg-zinc-950 border border-zinc-800 rounded-none px-3.5 py-3 text-white text-sm placeholder:text-zinc-600 focus:outline-none focus:border-red-500 transition-all duration-300">
               </div>
 
               <!-- Current Monthly Revenue -->
               <div>
                 <label for="revenue" class="block text-xs font-geist-mono tracking-widest uppercase text-zinc-500 mb-1.5">Current Monthly Revenue</label>
                 <input type="text" id="revenue" name="revenue" placeholder="e.g. $10K, $50K, $250K+"
-                  class="form-input-glow w-full bg-zinc-950 border border-zinc-800 rounded-none px-3.5 py-3 text-white text-sm placeholder:text-zinc-600 focus:outline-none focus:border-orange-500 transition-all duration-300">
+                  class="form-input-glow w-full bg-zinc-950 border border-zinc-800 rounded-none px-3.5 py-3 text-white text-sm placeholder:text-zinc-600 focus:outline-none focus:border-red-500 transition-all duration-300">
               </div>
 
               <!-- Main Acquisition Channel -->
               <div>
                 <label for="channel" class="block text-xs font-geist-mono tracking-widest uppercase text-zinc-500 mb-1.5">Main Acquisition Channel</label>
                 <input type="text" id="channel" name="channel" placeholder="Cold email, Paid ads, Organic, Referrals..."
-                  class="form-input-glow w-full bg-zinc-950 border border-zinc-800 rounded-none px-3.5 py-3 text-white text-sm placeholder:text-zinc-600 focus:outline-none focus:border-orange-500 transition-all duration-300">
+                  class="form-input-glow w-full bg-zinc-950 border border-zinc-800 rounded-none px-3.5 py-3 text-white text-sm placeholder:text-zinc-600 focus:outline-none focus:border-red-500 transition-all duration-300">
               </div>
 
               <!-- Implementation Help Dropdown -->
               <div>
                 <label for="help" class="block text-xs font-geist-mono tracking-widest uppercase text-zinc-500 mb-1.5">Want help wiring this into your pipeline in 30 days?</label>
                 <select id="help" name="implementation_help"
-                  class="form-input-glow w-full bg-zinc-950 border border-zinc-800 rounded-none px-3.5 py-3 text-white text-sm focus:outline-none focus:border-orange-500 transition-all duration-300 appearance-none cursor-pointer"
+                  class="form-input-glow w-full bg-zinc-950 border border-zinc-800 rounded-none px-3.5 py-3 text-white text-sm focus:outline-none focus:border-red-500 transition-all duration-300 appearance-none cursor-pointer"
                   style="background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2371717a' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E&quot;); background-repeat: no-repeat; background-position: right 0.75rem center;">
                   <option value="">Select one</option>
                   <option value="yes">Yes</option>
@@ -406,7 +406,7 @@ select option { background: #000; }
               <!-- Implementation Call link -->
               <p class="text-center text-xs">
                 <span class="text-zinc-600">Prefer to talk live?</span>
-                <a href="#implementation" class="text-orange-500 hover:text-orange-400 transition-colors font-medium ml-1">Book an Implementation Call &darr;</a>
+                <a href="#implementation" class="text-red-500 hover:text-red-400 transition-colors font-medium ml-1">Book an Implementation Call &darr;</a>
               </p>
             </form>
           </div>
@@ -423,7 +423,7 @@ select option { background: #000; }
   <section class="py-20 md:py-28 px-6 relative border-t border-dashed border-zinc-800/60">
     <div class="max-w-4xl mx-auto">
       <div class="text-center mb-14 animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.1s_both]">
-        <span class="text-xs font-geist-mono tracking-widest uppercase text-orange-500 mb-4 block">What You're Getting</span>
+        <span class="text-xs font-geist-mono tracking-widest uppercase text-red-500 mb-4 block">What You're Getting</span>
         <h2 class="text-3xl md:text-5xl font-bold tracking-tight font-manrope bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60">
           The Offer MBA: 7 AI Conversion Keys
         </h2>
@@ -435,53 +435,53 @@ select option { background: #000; }
       <!-- 7 Keys Grid -->
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
         <!-- CORE -->
-        <div class="animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.1s_both] group bg-black border border-dashed border-zinc-800 relative p-6 hover:border-orange-500/50 transition-all duration-500 rounded-none">
-          <div class="absolute top-0 left-0 w-2.5 h-2.5 border-t border-l border-orange-500"></div>
-          <div class="absolute bottom-0 right-0 w-2.5 h-2.5 border-b border-r border-orange-500"></div>
-          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(249,115,22,0.04) 0%, transparent 70%);"></div>
-          <span class="text-xs font-geist-mono tracking-widest uppercase text-orange-500/70 mb-2 block">01</span>
+        <div class="animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.1s_both] group bg-black border border-dashed border-zinc-800 relative p-6 hover:border-red-500/50 transition-all duration-500 rounded-none">
+          <div class="absolute top-0 left-0 w-2.5 h-2.5 border-t border-l border-red-500"></div>
+          <div class="absolute bottom-0 right-0 w-2.5 h-2.5 border-b border-r border-red-500"></div>
+          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(239,35,60,0.04) 0%, transparent 70%);"></div>
+          <span class="text-xs font-geist-mono tracking-widest uppercase text-red-500/70 mb-2 block">01</span>
           <h3 class="text-base font-bold font-manrope text-white mb-1.5">CORE</h3>
           <p class="text-zinc-500 text-sm leading-relaxed">What you actually sell, how it works, who it's for.</p>
         </div>
 
         <!-- INTEL -->
-        <div class="animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.15s_both] group bg-black border border-dashed border-zinc-800 relative p-6 hover:border-orange-500/50 transition-all duration-500 rounded-none">
-          <div class="absolute top-0 left-0 w-2.5 h-2.5 border-t border-l border-orange-500"></div>
-          <div class="absolute bottom-0 right-0 w-2.5 h-2.5 border-b border-r border-orange-500"></div>
-          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(249,115,22,0.04) 0%, transparent 70%);"></div>
-          <span class="text-xs font-geist-mono tracking-widest uppercase text-orange-500/70 mb-2 block">02</span>
+        <div class="animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.15s_both] group bg-black border border-dashed border-zinc-800 relative p-6 hover:border-red-500/50 transition-all duration-500 rounded-none">
+          <div class="absolute top-0 left-0 w-2.5 h-2.5 border-t border-l border-red-500"></div>
+          <div class="absolute bottom-0 right-0 w-2.5 h-2.5 border-b border-r border-red-500"></div>
+          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(239,35,60,0.04) 0%, transparent 70%);"></div>
+          <span class="text-xs font-geist-mono tracking-widest uppercase text-red-500/70 mb-2 block">02</span>
           <h3 class="text-base font-bold font-manrope text-white mb-1.5">INTEL</h3>
           <p class="text-zinc-500 text-sm leading-relaxed">Exactly who's worth chasing (and who isn't).</p>
         </div>
 
         <!-- MIND & RAW -->
-        <div class="animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.2s_both] group bg-black border border-dashed border-zinc-800 relative p-6 hover:border-orange-500/50 transition-all duration-500 rounded-none">
-          <div class="absolute top-0 left-0 w-2.5 h-2.5 border-t border-l border-orange-500"></div>
-          <div class="absolute bottom-0 right-0 w-2.5 h-2.5 border-b border-r border-orange-500"></div>
-          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(249,115,22,0.04) 0%, transparent 70%);"></div>
-          <span class="text-xs font-geist-mono tracking-widest uppercase text-orange-500/70 mb-2 block">03 + 04</span>
+        <div class="animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.2s_both] group bg-black border border-dashed border-zinc-800 relative p-6 hover:border-red-500/50 transition-all duration-500 rounded-none">
+          <div class="absolute top-0 left-0 w-2.5 h-2.5 border-t border-l border-red-500"></div>
+          <div class="absolute bottom-0 right-0 w-2.5 h-2.5 border-b border-r border-red-500"></div>
+          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(239,35,60,0.04) 0%, transparent 70%);"></div>
+          <span class="text-xs font-geist-mono tracking-widest uppercase text-red-500/70 mb-2 block">03 + 04</span>
           <h3 class="text-base font-bold font-manrope text-white mb-1.5">MIND &amp; RAW</h3>
           <p class="text-zinc-500 text-sm leading-relaxed">Their fears, desires, late-night thoughts, and the language they actually use.</p>
         </div>
 
         <!-- EDGE & IDEA -->
-        <div class="animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.25s_both] group bg-black border border-dashed border-zinc-800 relative p-6 hover:border-orange-500/50 transition-all duration-500 rounded-none">
-          <div class="absolute top-0 left-0 w-2.5 h-2.5 border-t border-l border-orange-500"></div>
-          <div class="absolute bottom-0 right-0 w-2.5 h-2.5 border-b border-r border-orange-500"></div>
-          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(249,115,22,0.04) 0%, transparent 70%);"></div>
-          <span class="text-xs font-geist-mono tracking-widest uppercase text-orange-500/70 mb-2 block">05 + 06</span>
+        <div class="animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.25s_both] group bg-black border border-dashed border-zinc-800 relative p-6 hover:border-red-500/50 transition-all duration-500 rounded-none">
+          <div class="absolute top-0 left-0 w-2.5 h-2.5 border-t border-l border-red-500"></div>
+          <div class="absolute bottom-0 right-0 w-2.5 h-2.5 border-b border-r border-red-500"></div>
+          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(239,35,60,0.04) 0%, transparent 70%);"></div>
+          <span class="text-xs font-geist-mono tracking-widest uppercase text-red-500/70 mb-2 block">05 + 06</span>
           <h3 class="text-base font-bold font-manrope text-white mb-1.5">EDGE &amp; IDEA</h3>
           <p class="text-zinc-500 text-sm leading-relaxed">Why you win vs competitors and the unique mechanism that makes your offer uncopyable.</p>
         </div>
 
         <!-- POWER (spans 2 cols on sm+) -->
-        <div class="animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.3s_both] sm:col-span-2 lg:col-span-2 group bg-black border border-dashed border-orange-500/40 relative p-6 hover:border-orange-500/70 transition-all duration-500 rounded-none">
-          <div class="absolute top-0 left-0 w-3 h-3 border-t border-l border-orange-500"></div>
-          <div class="absolute top-0 right-0 w-3 h-3 border-t border-r border-orange-500"></div>
-          <div class="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-orange-500"></div>
-          <div class="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-orange-500"></div>
-          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(249,115,22,0.05) 0%, transparent 70%);"></div>
-          <span class="text-xs font-geist-mono tracking-widest uppercase text-orange-500/70 mb-2 block">07</span>
+        <div class="animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.3s_both] sm:col-span-2 lg:col-span-2 group bg-black border border-dashed border-red-500/40 relative p-6 hover:border-red-500/70 transition-all duration-500 rounded-none">
+          <div class="absolute top-0 left-0 w-3 h-3 border-t border-l border-red-500"></div>
+          <div class="absolute top-0 right-0 w-3 h-3 border-t border-r border-red-500"></div>
+          <div class="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-red-500"></div>
+          <div class="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-red-500"></div>
+          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(239,35,60,0.05) 0%, transparent 70%);"></div>
+          <span class="text-xs font-geist-mono tracking-widest uppercase text-red-500/70 mb-2 block">07</span>
           <h3 class="text-base font-bold font-manrope text-white mb-1.5">POWER</h3>
           <p class="text-zinc-500 text-sm leading-relaxed">Hooks and angles that stop the scroll and force the click.</p>
         </div>
@@ -491,7 +491,7 @@ select option { background: #000; }
       <div class="animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.4s_both] text-center">
         <p class="text-base text-zinc-400 leading-relaxed max-w-2xl mx-auto">
           End result: <span class="text-white font-semibold">One Master Offer Playbook</span> you can hand to any writer, media buyer, or closer and say:<br>
-          <span class="text-orange-400 font-medium italic">"Use this. Don't improvise."</span>
+          <span class="text-red-400 font-medium italic">"Use this. Don't improvise."</span>
         </p>
       </div>
     </div>
@@ -506,7 +506,7 @@ select option { background: #000; }
       <div class="flex flex-col lg:flex-row gap-10 lg:gap-16 items-start">
         <!-- Left: Copy -->
         <div class="flex-1 animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.1s_both]">
-          <span class="text-xs font-geist-mono tracking-widest uppercase text-orange-500 mb-4 block">The Data Spine</span>
+          <span class="text-xs font-geist-mono tracking-widest uppercase text-red-500 mb-4 block">The Data Spine</span>
           <h2 class="text-3xl md:text-4xl font-bold tracking-tight font-manrope bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60 mb-6">
             The 728,000,000 Lead Vault
           </h2>
@@ -515,49 +515,49 @@ select option { background: #000; }
           </p>
           <ul class="space-y-4 mb-6">
             <li class="flex items-start gap-3">
-              <span class="text-orange-500 mt-1 text-sm">&#9656;</span>
+              <span class="text-red-500 mt-1 text-sm">&#9656;</span>
               <p class="text-zinc-400 text-sm leading-relaxed"><span class="text-white font-semibold">728,000,000+ mapped leads</span> across LinkedIn, Instagram, and high-intent segments (homeowners, ecom, Skool owners, and more).</p>
             </li>
             <li class="flex items-start gap-3">
-              <span class="text-orange-500 mt-1 text-sm">&#9656;</span>
+              <span class="text-red-500 mt-1 text-sm">&#9656;</span>
               <p class="text-zinc-400 text-sm leading-relaxed">Pre-built data you can <span class="text-white font-medium">search, filter, and deploy</span> into outbound, retargeting, and content.</p>
             </li>
           </ul>
           <p class="text-zinc-500 text-sm leading-relaxed">
             You&rsquo;re not &ldquo;building&nbsp;lists.&rdquo;<br>
-            You&rsquo;re deciding <span class="text-orange-400 font-semibold">who</span> you want and <span class="text-orange-400 font-semibold">how&nbsp;fast</span> you want&nbsp;to&nbsp;go.
+            You&rsquo;re deciding <span class="text-red-400 font-semibold">who</span> you want and <span class="text-red-400 font-semibold">how&nbsp;fast</span> you want&nbsp;to&nbsp;go.
           </p>
         </div>
 
         <!-- Right: Stats card -->
         <div class="w-full lg:w-80 shrink-0 animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.3s_both]">
-          <div class="bg-black border border-dashed border-zinc-800 rounded-none p-8 relative group hover:border-orange-500/50 transition-all duration-500">
-            <div class="absolute top-0 left-0 w-3 h-3 border-t border-l border-orange-500"></div>
-            <div class="absolute top-0 right-0 w-3 h-3 border-t border-r border-orange-500"></div>
-            <div class="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-orange-500"></div>
-            <div class="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-orange-500"></div>
-            <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(249,115,22,0.05) 0%, transparent 70%);"></div>
+          <div class="bg-black border border-dashed border-zinc-800 rounded-none p-8 relative group hover:border-red-500/50 transition-all duration-500">
+            <div class="absolute top-0 left-0 w-3 h-3 border-t border-l border-red-500"></div>
+            <div class="absolute top-0 right-0 w-3 h-3 border-t border-r border-red-500"></div>
+            <div class="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-red-500"></div>
+            <div class="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-red-500"></div>
+            <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(239,35,60,0.05) 0%, transparent 70%);"></div>
             <div class="text-center relative z-10">
               <p class="text-5xl md:text-6xl font-bold font-manrope text-white mb-2">728M</p>
-              <p class="text-xs font-geist-mono tracking-widest uppercase text-orange-500/70 mb-6">Pre-Built Leads</p>
+              <p class="text-xs font-geist-mono tracking-widest uppercase text-red-500/70 mb-6">Pre-Built Leads</p>
               <div class="space-y-3 text-left">
                 <div class="flex items-center gap-2 text-xs text-zinc-500">
-                  <span class="w-1.5 h-1.5 rounded-full bg-orange-500/60"></span> LinkedIn
+                  <span class="w-1.5 h-1.5 rounded-full bg-red-500/60"></span> LinkedIn
                 </div>
                 <div class="flex items-center gap-2 text-xs text-zinc-500">
-                  <span class="w-1.5 h-1.5 rounded-full bg-orange-500/60"></span> Instagram
+                  <span class="w-1.5 h-1.5 rounded-full bg-red-500/60"></span> Instagram
                 </div>
                 <div class="flex items-center gap-2 text-xs text-zinc-500">
-                  <span class="w-1.5 h-1.5 rounded-full bg-orange-500/60"></span> Homeowners
+                  <span class="w-1.5 h-1.5 rounded-full bg-red-500/60"></span> Homeowners
                 </div>
                 <div class="flex items-center gap-2 text-xs text-zinc-500">
-                  <span class="w-1.5 h-1.5 rounded-full bg-orange-500/60"></span> Ecom brands
+                  <span class="w-1.5 h-1.5 rounded-full bg-red-500/60"></span> Ecom brands
                 </div>
                 <div class="flex items-center gap-2 text-xs text-zinc-500">
-                  <span class="w-1.5 h-1.5 rounded-full bg-orange-500/60"></span> Skool owners
+                  <span class="w-1.5 h-1.5 rounded-full bg-red-500/60"></span> Skool owners
                 </div>
                 <div class="flex items-center gap-2 text-xs text-zinc-500">
-                  <span class="w-1.5 h-1.5 rounded-full bg-orange-500/60"></span> And more...
+                  <span class="w-1.5 h-1.5 rounded-full bg-red-500/60"></span> And more...
                 </div>
               </div>
             </div>
@@ -573,15 +573,15 @@ select option { background: #000; }
   <!-- ============================================================ -->
   <section class="py-20 md:py-28 px-6 relative border-t border-dashed border-zinc-800/60">
     <div class="max-w-4xl mx-auto animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.1s_both]">
-      <div class="bg-black border border-dashed border-zinc-800 rounded-none p-8 md:p-10 relative group hover:border-orange-500/50 transition-all duration-500">
-        <div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-orange-500"></div>
-        <div class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-orange-500"></div>
-        <div class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-orange-500"></div>
-        <div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-orange-500"></div>
-        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(249,115,22,0.04) 0%, transparent 70%);"></div>
+      <div class="bg-black border border-dashed border-zinc-800 rounded-none p-8 md:p-10 relative group hover:border-red-500/50 transition-all duration-500">
+        <div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-red-500"></div>
+        <div class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-red-500"></div>
+        <div class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-red-500"></div>
+        <div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-red-500"></div>
+        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(239,35,60,0.04) 0%, transparent 70%);"></div>
 
         <div class="relative z-10">
-          <span class="text-xs font-geist-mono tracking-widest uppercase text-orange-500 mb-4 block">Bonus</span>
+          <span class="text-xs font-geist-mono tracking-widest uppercase text-red-500 mb-4 block">Bonus</span>
           <h2 class="text-2xl md:text-4xl font-bold tracking-tight font-manrope text-white mb-4">
             The Direct Copywriter GPT
           </h2>
@@ -593,22 +593,22 @@ select option { background: #000; }
           </p>
           <ul class="space-y-3 mb-8 max-w-2xl">
             <li class="flex items-start gap-3">
-              <span class="text-orange-500 mt-0.5 text-sm">&#9656;</span>
+              <span class="text-red-500 mt-0.5 text-sm">&#9656;</span>
               <p class="text-zinc-400 text-sm leading-relaxed">Tears apart your pages, emails, and posts with <span class="text-white font-medium">brutal honesty</span></p>
             </li>
             <li class="flex items-start gap-3">
-              <span class="text-orange-500 mt-0.5 text-sm">&#9656;</span>
+              <span class="text-red-500 mt-0.5 text-sm">&#9656;</span>
               <p class="text-zinc-400 text-sm leading-relaxed">Shows you exactly where you're weak and where you're <span class="text-white font-medium">leaving money on the table</span></p>
             </li>
             <li class="flex items-start gap-3">
-              <span class="text-orange-500 mt-0.5 text-sm">&#9656;</span>
+              <span class="text-red-500 mt-0.5 text-sm">&#9656;</span>
               <p class="text-zinc-400 text-sm leading-relaxed">Rebuilds it into <span class="text-white font-medium">punchy, conversion-ready copy</span> on demand</p>
             </li>
           </ul>
           <p class="text-zinc-400 text-sm leading-relaxed mb-4 max-w-2xl">
             Drop in your Offer Playbook, paste whatever you&rsquo;re working on, ask for posts, emails, or&nbsp;pages&hellip; and it <span class="text-white font-semibold">cranks out assets</span> until there&rsquo;s nothing left to &ldquo;think&nbsp;about,&rdquo; only&nbsp;publish.
           </p>
-          <p class="text-orange-400 font-semibold text-sm font-manrope">
+          <p class="text-red-400 font-semibold text-sm font-manrope">
             This is your execution engine.
           </p>
         </div>
@@ -622,7 +622,7 @@ select option { background: #000; }
   <!-- ============================================================ -->
   <section class="py-16 md:py-20 px-6 border-t border-dashed border-zinc-800/60">
     <div class="max-w-3xl mx-auto text-center animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.1s_both]">
-      <span class="text-xs font-geist-mono tracking-widest uppercase text-orange-500 mb-4 block">Who This Is For</span>
+      <span class="text-xs font-geist-mono tracking-widest uppercase text-red-500 mb-4 block">Who This Is For</span>
       <h2 class="text-2xl md:text-3xl font-bold tracking-tight font-manrope text-white mb-6">
         This is for:
       </h2>
@@ -632,15 +632,15 @@ select option { background: #000; }
         </p>
         <ul class="space-y-3 mb-8">
           <li class="flex items-start gap-3">
-            <span class="text-orange-500 mt-0.5 text-sm">&#9656;</span>
+            <span class="text-red-500 mt-0.5 text-sm">&#9656;</span>
             <p class="text-zinc-400 text-sm leading-relaxed">Already sell something online</p>
           </li>
           <li class="flex items-start gap-3">
-            <span class="text-orange-500 mt-0.5 text-sm">&#9656;</span>
+            <span class="text-red-500 mt-0.5 text-sm">&#9656;</span>
             <p class="text-zinc-400 text-sm leading-relaxed">Want more booked calls / demos</p>
           </li>
           <li class="flex items-start gap-3">
-            <span class="text-orange-500 mt-0.5 text-sm">&#9656;</span>
+            <span class="text-red-500 mt-0.5 text-sm">&#9656;</span>
             <p class="text-zinc-400 text-sm leading-relaxed">And are tired of "ideas" without infrastructure</p>
           </li>
         </ul>
@@ -651,7 +651,7 @@ select option { background: #000; }
 
       <!-- Back to form CTA -->
       <div class="mt-8">
-        <a href="#get-access-form" class="inline-flex items-center gap-2 text-orange-500 hover:text-orange-400 transition-colors text-sm font-semibold font-manrope group">
+        <a href="#get-access-form" class="inline-flex items-center gap-2 text-red-500 hover:text-red-400 transition-colors text-sm font-semibold font-manrope group">
           <span>Get the vault now</span>
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover:-translate-y-0.5"><path d="m18 15-6-6-6 6"/></svg>
         </a>
@@ -665,14 +665,14 @@ select option { background: #000; }
   <!-- ============================================================ -->
   <section id="implementation" class="py-20 md:py-28 px-6 border-t border-dashed border-zinc-800/60 relative">
     <!-- Background glow -->
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(249,115,22,0.05) 0%, transparent 60%);"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(239,35,60,0.05) 0%, transparent 60%);"></div>
 
     <div class="max-w-3xl mx-auto relative z-10 animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.1s_both]">
       <div class="text-center mb-10">
         <div class="flex items-center justify-center gap-3 mb-6">
-          <div class="h-px w-12 bg-gradient-to-r from-transparent to-orange-500/40"></div>
-          <span class="text-xs font-geist-mono tracking-widest uppercase text-orange-500/70">Done-With-You</span>
-          <div class="h-px w-12 bg-gradient-to-l from-transparent to-orange-500/40"></div>
+          <div class="h-px w-12 bg-gradient-to-r from-transparent to-red-500/40"></div>
+          <span class="text-xs font-geist-mono tracking-widest uppercase text-red-500/70">Done-With-You</span>
+          <div class="h-px w-12 bg-gradient-to-l from-transparent to-red-500/40"></div>
         </div>
 
         <h2 class="text-2xl md:text-4xl font-bold tracking-tight font-manrope text-white mb-4">
@@ -684,31 +684,31 @@ select option { background: #000; }
       </div>
 
       <!-- What happens on the call -->
-      <div class="bg-black border border-dashed border-zinc-800 rounded-none p-8 relative mb-10 group hover:border-orange-500/40 transition-all duration-500">
-        <div class="absolute top-0 left-0 w-3 h-3 border-t border-l border-orange-500"></div>
-        <div class="absolute top-0 right-0 w-3 h-3 border-t border-r border-orange-500"></div>
-        <div class="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-orange-500"></div>
-        <div class="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-orange-500"></div>
-        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(249,115,22,0.04) 0%, transparent 70%);"></div>
+      <div class="bg-black border border-dashed border-zinc-800 rounded-none p-8 relative mb-10 group hover:border-red-500/40 transition-all duration-500">
+        <div class="absolute top-0 left-0 w-3 h-3 border-t border-l border-red-500"></div>
+        <div class="absolute top-0 right-0 w-3 h-3 border-t border-r border-red-500"></div>
+        <div class="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-red-500"></div>
+        <div class="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-red-500"></div>
+        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(239,35,60,0.04) 0%, transparent 70%);"></div>
 
-        <p class="text-xs font-geist-mono tracking-widest uppercase text-orange-500/70 mb-6 relative z-10">On a short Implementation Call, we will:</p>
+        <p class="text-xs font-geist-mono tracking-widest uppercase text-red-500/70 mb-6 relative z-10">On a short Implementation Call, we will:</p>
         <ol class="space-y-5 relative z-10">
           <li class="flex items-start gap-4">
-            <span class="text-orange-500 font-bold font-geist-mono text-lg mt-0.5 shrink-0">01</span>
+            <span class="text-red-500 font-bold font-geist-mono text-lg mt-0.5 shrink-0">01</span>
             <div>
               <p class="text-white font-medium text-sm mb-1">Look at your Offer MBA Playbook and current funnel</p>
               <p class="text-zinc-600 text-xs">We'll see where you are and what's already working.</p>
             </div>
           </li>
           <li class="flex items-start gap-4">
-            <span class="text-orange-500 font-bold font-geist-mono text-lg mt-0.5 shrink-0">02</span>
+            <span class="text-red-500 font-bold font-geist-mono text-lg mt-0.5 shrink-0">02</span>
             <div>
               <p class="text-white font-medium text-sm mb-1">Choose the fastest-path segment from the 728M Lead Vault</p>
               <p class="text-zinc-600 text-xs">We pick the exact audience to hit first for fastest ROI.</p>
             </div>
           </li>
           <li class="flex items-start gap-4">
-            <span class="text-orange-500 font-bold font-geist-mono text-lg mt-0.5 shrink-0">03</span>
+            <span class="text-red-500 font-bold font-geist-mono text-lg mt-0.5 shrink-0">03</span>
             <div>
               <p class="text-white font-medium text-sm mb-1">Map a 7-day outbound + content sprint using your new assets</p>
               <p class="text-zinc-600 text-xs">You walk away with a concrete plan you can execute immediately.</p>
@@ -725,10 +725,10 @@ select option { background: #000; }
       <div class="text-center">
         <a href="#" class="inline-block">
           <button type="button" class="group relative flex h-[54px] items-center justify-center overflow-hidden rounded-none px-10 outline-none cursor-pointer transition-transform active:scale-95" style="background-color: rgba(255,255,255,0.05);">
-            <span class="absolute inset-[-100%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,transparent_75%,#f97316_100%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
+            <span class="absolute inset-[-100%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,transparent_75%,#ef233c_100%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
             <span class="absolute inset-0 rounded-none bg-zinc-800 transition-opacity duration-300 group-hover:opacity-0"></span>
             <span class="absolute inset-[1px] rounded-none bg-black z-10"></span>
-            <span class="absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-500 group-hover:opacity-100 z-10" style="background: radial-gradient(50% 50% at 50% 100%, rgba(249,115,22,0.2) 0%, transparent 100%);"></span>
+            <span class="absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-500 group-hover:opacity-100 z-10" style="background: radial-gradient(50% 50% at 50% 100%, rgba(239,35,60,0.2) 0%, transparent 100%);"></span>
             <span class="relative z-20 flex items-center justify-center gap-2 text-xs font-medium text-white tracking-wide uppercase">
               <span>Claim an Event-Only Implementation Call</span>
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 group-hover:translate-x-0.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
@@ -739,14 +739,14 @@ select option { background: #000; }
 
       <!-- Testimonial -->
       <div class="max-w-lg mx-auto mt-12 bg-black/50 border border-dashed border-zinc-800/60 rounded-none p-6 relative">
-        <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-orange-500/50"></div>
-        <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-orange-500/50"></div>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" class="text-orange-500/20 mb-3"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V21c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg>
+        <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-red-500/50"></div>
+        <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-red-500/50"></div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" class="text-red-500/20 mb-3"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V21c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg>
         <p class="text-sm text-zinc-400 italic leading-relaxed mb-3">
           "By far the BEST AI EXPERT I've had a chance to talk to... the very FIRST person that I now not WALK, but RUN to for AI advice."
         </p>
         <cite class="not-italic text-xs text-zinc-600">
-          <span class="text-orange-400/80 font-semibold">Anik Singal</span> &mdash; Founder of Lurn &amp; Complily, $200M+ in online sales
+          <span class="text-red-400/80 font-semibold">Anik Singal</span> &mdash; Founder of Lurn &amp; Complily, $200M+ in online sales
         </cite>
       </div>
     </div>
@@ -758,7 +758,7 @@ select option { background: #000; }
     <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
       <div class="flex items-center gap-2">
         <div class="grid grid-cols-2 opacity-60 w-4 h-4 gap-0.5">
-          <div class="bg-orange-500 w-full h-full rounded-sm"></div>
+          <div class="bg-red-500 w-full h-full rounded-sm"></div>
           <div class="w-full h-full bg-zinc-700 rounded-sm"></div>
           <div class="w-full h-full bg-zinc-800 rounded-sm"></div>
           <div class="w-full h-full bg-white rounded-sm"></div>

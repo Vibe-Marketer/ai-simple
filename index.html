@@ -50,12 +50,12 @@ body { font-family: 'Inter', sans-serif; }
 @property --gradient-angle { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
 @property --gradient-angle-offset { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
 @property --gradient-percent { syntax: "<percentage>"; initial-value: 20%; inherits: false; }
-@property --gradient-shine { syntax: "<color>"; initial-value: #f97316; inherits: false; }
+@property --gradient-shine { syntax: "<color>"; initial-value: #ef233c; inherits: false; }
 .shiny-cta {
   --gradient-angle: 0deg;
   --gradient-angle-offset: 0deg;
   --gradient-percent: 20%;
-  --gradient-shine: #f97316;
+  --gradient-shine: #ef233c;
   position: relative;
   overflow: hidden;
   border-radius: 0px;
@@ -66,7 +66,7 @@ body { font-family: 'Inter', sans-serif; }
   color: #ffffff;
   background: linear-gradient(#000000, #000000) padding-box,
     conic-gradient(from calc(var(--gradient-angle) - var(--gradient-angle-offset)),
-    transparent 0%, #f97316 5%, var(--gradient-shine) 15%, #f97316 30%, transparent 40%, transparent 100%) border-box;
+    transparent 0%, #ef233c 5%, var(--gradient-shine) 15%, #ef233c 30%, transparent 40%, transparent 100%) border-box;
   border: 2px solid transparent;
   box-shadow: inset 0 0 0 1px #1a1818;
   outline: none;
@@ -107,7 +107,7 @@ body { font-family: 'Inter', sans-serif; }
   z-index: 1;
   width: 100%;
   aspect-ratio: 1;
-  background: linear-gradient(-50deg, transparent, #f97316, transparent);
+  background: linear-gradient(-50deg, transparent, #ef233c, transparent);
   mask-image: radial-gradient(circle at bottom, transparent 40%, black);
   opacity: 0.6;
   animation: shimmer 4s linear infinite;
@@ -122,7 +122,7 @@ body { font-family: 'Inter', sans-serif; }
   z-index: -1;
   --size: calc(100% + 1rem);
   width: var(--size); height: var(--size);
-  box-shadow: inset 0 -1ex 2rem 4px #f97316;
+  box-shadow: inset 0 -1ex 2rem 4px #ef233c;
   opacity: 0;
   border-radius: inherit;
   transition: opacity 800ms cubic-bezier(0.25, 1, 0.5, 1);
@@ -243,7 +243,7 @@ tailwind.config = {
 </script>
 </head>
 
-<body class="antialiased overflow-x-hidden selection:bg-orange-600/30 selection:text-orange-200 text-white bg-black">
+<body class="antialiased overflow-x-hidden selection:bg-red-600/30 selection:text-red-200 text-white bg-black">
 
 <!-- Progressive Blur Top -->
 <div class="gradient-blur" style="height: 120px;">
@@ -258,7 +258,7 @@ tailwind.config = {
     <div class="flex gap-2 shrink-0 items-center">
       <a href="/" class="flex gap-x-3 items-center">
         <div class="grid grid-cols-2 opacity-90 w-6 h-6 gap-x-1 gap-y-1">
-          <div class="bg-[#f97316] w-full h-full rounded-sm"></div>
+          <div class="bg-[#ef233c] w-full h-full rounded-sm"></div>
           <div class="w-full h-full bg-zinc-700 rounded-sm"></div>
           <div class="w-full h-full bg-zinc-800 rounded-sm"></div>
           <div class="w-full h-full bg-white rounded-sm shadow-[0_0_10px_rgba(255,255,255,0.4)]"></div>
@@ -269,29 +269,29 @@ tailwind.config = {
     <div class="hidden md:flex items-center gap-6">
       <a href="#about" class="group hover:text-white transition-colors text-sm font-medium text-gray-400 font-sans py-1 relative">
         About
-        <span class="absolute -bottom-3 left-1/2 w-0 h-[1px] bg-gradient-to-r from-transparent via-[#f97316] to-transparent group-hover:w-full group-hover:opacity-100 transition-all duration-300 ease-out -translate-x-1/2 shadow-[0_0_10px_rgba(249,115,22,0.8)]"></span>
+        <span class="absolute -bottom-3 left-1/2 w-0 h-[1px] bg-gradient-to-r from-transparent via-[#ef233c] to-transparent group-hover:w-full group-hover:opacity-100 transition-all duration-300 ease-out -translate-x-1/2 shadow-[0_0_10px_rgba(239,35,60,0.8)]"></span>
       </a>
       <a href="#results" class="group hover:text-white transition-colors text-sm font-medium text-gray-400 font-sans py-1 relative">
         Results
-        <span class="absolute -bottom-3 left-1/2 w-0 h-[1px] bg-gradient-to-r from-transparent via-[#f97316] to-transparent group-hover:w-full group-hover:opacity-100 transition-all duration-300 ease-out -translate-x-1/2 shadow-[0_0_10px_rgba(249,115,22,0.8)]"></span>
+        <span class="absolute -bottom-3 left-1/2 w-0 h-[1px] bg-gradient-to-r from-transparent via-[#ef233c] to-transparent group-hover:w-full group-hover:opacity-100 transition-all duration-300 ease-out -translate-x-1/2 shadow-[0_0_10px_rgba(239,35,60,0.8)]"></span>
       </a>
       <a href="#how-we-work" class="group hover:text-white transition-colors text-sm font-medium text-gray-400 font-sans py-1 relative">
         How We Work
-        <span class="absolute -bottom-3 left-1/2 w-0 h-[1px] bg-gradient-to-r from-transparent via-[#f97316] to-transparent group-hover:w-full group-hover:opacity-100 transition-all duration-300 ease-out -translate-x-1/2 shadow-[0_0_10px_rgba(249,115,22,0.8)]"></span>
+        <span class="absolute -bottom-3 left-1/2 w-0 h-[1px] bg-gradient-to-r from-transparent via-[#ef233c] to-transparent group-hover:w-full group-hover:opacity-100 transition-all duration-300 ease-out -translate-x-1/2 shadow-[0_0_10px_rgba(239,35,60,0.8)]"></span>
       </a>
     </div>
     <div class="flex gap-3 shrink-0 items-center">
       <!-- Offer MBA + 728M Leads - Standout Button -->
-      <a href="lead-magnet.html" class="hidden md:inline-flex items-center gap-2 rounded-none px-4 py-2.5 text-xs font-bold tracking-wide uppercase bg-[#f97316] text-black hover:bg-orange-400 transition-colors cursor-pointer whitespace-nowrap">
+      <a href="lead-magnet.html" class="hidden md:inline-flex items-center gap-2 rounded-none px-4 py-2.5 text-xs font-bold tracking-wide uppercase bg-[#ef233c] text-black hover:bg-red-400 transition-colors cursor-pointer whitespace-nowrap">
         <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         Offer MBA + 728M Leads (Free)
       </a>
       <!-- Work With Us -->
       <a href="#how-we-work" class="group inline-flex overflow-hidden transition-transform active:scale-95 cursor-pointer outline-none rounded-none pt-2.5 pr-5 pb-2.5 pl-5 relative items-center justify-center" style="background-color: rgba(255,255,255,0.05)">
-        <span class="absolute inset-[-100%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,transparent_75%,#f97316_100%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
+        <span class="absolute inset-[-100%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,transparent_75%,#ef233c_100%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
         <span class="absolute inset-0 rounded-none bg-zinc-800 transition-opacity duration-300 group-hover:opacity-0"></span>
         <span class="bg-black z-10 rounded-none absolute top-[1px] right-[1px] bottom-[1px] left-[1px]"></span>
-        <div class="absolute inset-0 pointer-events-none transition-opacity duration-500 opacity-0 group-hover:opacity-100 z-10" style="background: radial-gradient(50% 50% at 50% 100%, rgba(249,115,22,0.2) 0%, transparent 100%);"></div>
+        <div class="absolute inset-0 pointer-events-none transition-opacity duration-500 opacity-0 group-hover:opacity-100 z-10" style="background: radial-gradient(50% 50% at 50% 100%, rgba(239,35,60,0.2) 0%, transparent 100%);"></div>
         <span class="relative z-20 flex items-center justify-center gap-2 text-xs font-medium text-white tracking-wide uppercase">
           <span>Work With Us</span>
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 group-hover:translate-x-0.5"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
@@ -306,7 +306,7 @@ tailwind.config = {
 <!-- ============================================================ -->
 <section class="h-auto min-h-[800px] flex flex-col overflow-hidden w-full pt-32 md:pt-20 relative items-center justify-start">
   <!-- Subtle background gradient -->
-  <div class="absolute inset-0 bg-gradient-to-b from-orange-950/10 via-transparent to-transparent pointer-events-none"></div>
+  <div class="absolute inset-0 bg-gradient-to-b from-red-950/10 via-transparent to-transparent pointer-events-none"></div>
 
   <!-- Unicorn Studio Aura Background -->
   <div class="aura-background-component -z-10 w-full top-0 absolute h-[800px]" data-alpha-mask="80" style="mask-image: linear-gradient(transparent, black 0%, black 80%, transparent);">
@@ -318,16 +318,16 @@ tailwind.config = {
   <div class="z-20 text-center max-w-5xl mt-24 mr-auto mb-12 ml-auto pr-6 pl-6 relative">
     <!-- Badge -->
     <div class="[animation:fadeSlideIn_1s_ease-out_0.8s_both] inline-flex transition-transform hover:scale-105 cursor-pointer group bg-gradient-to-b from-white/10 to-white/0 rounded-none mb-10 pt-1.5 pr-4 pb-1.5 pl-3 backdrop-blur-sm gap-x-2 items-center border border-zinc-800 border-dashed">
-      <span class="flex h-1.5 w-1.5 rounded-full animate-pulse bg-orange-500 shadow-[0_0_10px_rgba(249,115,22,0.5)]"></span>
-      <span class="text-xs font-medium tracking-wide font-mono text-orange-100/80 uppercase">
+      <span class="flex h-1.5 w-1.5 rounded-full animate-pulse bg-red-500 shadow-[0_0_10px_rgba(239,35,60,0.5)]"></span>
+      <span class="text-xs font-medium tracking-wide font-mono text-red-100/80 uppercase">
         AI Strategists for 8 &amp; 9-Figure Brands
       </span>
     </div>
 
     <!-- Heading — 3 lines: "Build Offers, Brands &" / "AI Systems That Actually" / "Move the Needle" -->
-    <h1 class="[animation:fadeSlideIn_1s_ease-out_1s_both] leading-[1.15] md:text-7xl lg:text-8xl cursor-default text-4xl font-medium tracking-tighter font-manrope mb-8 text-center">
-      <span class="bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50 opacity-60">Build </span><span class="bg-clip-text text-transparent bg-gradient-to-b from-orange-400 via-orange-500 to-orange-600/50">Offers, </span><span class="bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50">Brands </span><span class="bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50 opacity-60">&amp;</span><br>
-      <span class="bg-clip-text text-transparent bg-gradient-to-b from-orange-400 via-orange-500 to-orange-600/50">AI&nbsp;Systems </span><span class="bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50 opacity-60">That Actually</span><br>
+    <h1 class="[animation:fadeSlideIn_1s_ease-out_1s_both] leading-[1.15] md:text-7xl lg:text-7xl cursor-default text-4xl font-medium tracking-tighter font-manrope mb-8 text-center">
+      <span class="bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50 opacity-60">Build </span><span class="bg-clip-text text-transparent bg-gradient-to-b from-red-400 via-red-500 to-red-600/50">Offers, </span><span class="bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50">Brands </span><span class="bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50 opacity-60">&amp;</span><br>
+      <span class="bg-clip-text text-transparent bg-gradient-to-b from-red-400 via-red-500 to-red-600/50">AI&nbsp;Systems </span><span class="bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50 opacity-60">That Actually</span><br>
       <span class="bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50">Move&nbsp;the&nbsp;Needle</span>
     </h1>
 
@@ -337,7 +337,7 @@ tailwind.config = {
     </p>
 
     <!-- Support line teasing the lead magnet -->
-    <p class="[animation:fadeSlideIn_1s_ease-out_1.3s_both] text-sm md:text-base text-orange-300/80 font-medium font-manrope max-w-2xl mr-auto mb-12 ml-auto">
+    <p class="[animation:fadeSlideIn_1s_ease-out_1.3s_both] text-sm md:text-base text-red-300/80 font-medium font-manrope max-w-2xl mr-auto mb-12 ml-auto">
       Plus: get our Offer MBA (7&nbsp;AI&nbsp;agents), 728,000,000+ lead vault, and Direct Copywriter GPT free when you hit the&nbsp;button&nbsp;below.
     </p>
 
@@ -361,10 +361,10 @@ tailwind.config = {
 
       <!-- Button 2: Get the AI Lead Vault (orange beam) -->
       <a href="lead-magnet.html" class="group relative inline-flex min-w-[180px] h-[50px] items-center justify-center overflow-hidden rounded-none outline-none cursor-pointer transition-transform active:scale-95 no-underline" style="background-color: rgba(255,255,255,0.05);">
-        <span class="absolute inset-[-100%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,transparent_75%,#f97316_100%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
+        <span class="absolute inset-[-100%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,transparent_75%,#ef233c_100%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
         <span class="absolute inset-0 rounded-none bg-zinc-800 transition-opacity duration-300 group-hover:opacity-0"></span>
         <span class="absolute inset-[1px] rounded-none bg-black z-10"></span>
-        <span class="absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-500 group-hover:opacity-100 z-10" style="background: radial-gradient(50% 50% at 50% 100%, rgba(249,115,22,0.2) 0%, transparent 100%);"></span>
+        <span class="absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-500 group-hover:opacity-100 z-10" style="background: radial-gradient(50% 50% at 50% 100%, rgba(239,35,60,0.2) 0%, transparent 100%);"></span>
         <span class="relative z-20 flex items-center justify-center gap-2 text-xs font-medium text-white tracking-wide uppercase">
           <span>Get Offer MBA &amp; 728M Leads Free</span>
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 group-hover:translate-x-0.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
@@ -375,7 +375,7 @@ tailwind.config = {
 
   <!-- Inline tease -->
   <p class="[animation:fadeSlideIn_1s_ease-out_1.6s_both] text-xs md:text-sm text-zinc-500 font-medium max-w-2xl text-center mx-auto px-6 mb-4">
-    Founders from this page also grab our free <a href="lead-magnet.html" class="text-orange-400 hover:text-orange-300 transition-colors">Offer&nbsp;MBA&nbsp;+&nbsp;728M&nbsp;Leads&nbsp;Vault</a> to deploy in their own&nbsp;business.
+    Founders from this page also grab our free <a href="lead-magnet.html" class="text-red-400 hover:text-red-300 transition-colors">Offer&nbsp;MBA&nbsp;+&nbsp;728M&nbsp;Leads&nbsp;Vault</a> to deploy in their own&nbsp;business.
   </p>
 
   <!-- ============================================================ -->
@@ -384,12 +384,12 @@ tailwind.config = {
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-6xl mt-8 mr-auto mb-8 ml-auto relative px-6">
 
     <!-- Card 1: Offer Architecture -->
-    <div class="bg-black border border-zinc-800 border-dashed rounded-none p-8 group hover:border-[#f97316]/50 transition-all duration-500 relative animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.2s_both]">
-      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#f97316]"></div>
-      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#f97316]"></div>
+    <div class="bg-black border border-zinc-800 border-dashed rounded-none p-8 group hover:border-[#ef233c]/50 transition-all duration-500 relative animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.2s_both]">
+      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#ef233c]"></div>
+      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#ef233c]"></div>
       <div class="flex items-center gap-3 mb-5">
-        <div class="w-8 h-8 border border-zinc-700 rounded-none flex items-center justify-center group-hover:border-[#f97316]/50 transition-colors">
-          <i data-lucide="target" class="w-4 h-4 text-[#f97316]"></i>
+        <div class="w-8 h-8 border border-zinc-700 rounded-none flex items-center justify-center group-hover:border-[#ef233c]/50 transition-colors">
+          <i data-lucide="target" class="w-4 h-4 text-[#ef233c]"></i>
         </div>
       </div>
       <h3 class="text-lg font-semibold text-white font-manrope tracking-tight mb-3 group-hover:translate-x-1 transition-transform duration-300">Offer Architecture</h3>
@@ -397,12 +397,12 @@ tailwind.config = {
     </div>
 
     <!-- Card 2: Brand & Content Systems -->
-    <div class="bg-black border border-zinc-800 border-dashed rounded-none p-8 group hover:border-[#f97316]/50 transition-all duration-500 relative animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.3s_both]">
-      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#f97316]"></div>
-      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#f97316]"></div>
+    <div class="bg-black border border-zinc-800 border-dashed rounded-none p-8 group hover:border-[#ef233c]/50 transition-all duration-500 relative animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.3s_both]">
+      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#ef233c]"></div>
+      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#ef233c]"></div>
       <div class="flex items-center gap-3 mb-5">
-        <div class="w-8 h-8 border border-zinc-700 rounded-none flex items-center justify-center group-hover:border-[#f97316]/50 transition-colors">
-          <i data-lucide="megaphone" class="w-4 h-4 text-[#f97316]"></i>
+        <div class="w-8 h-8 border border-zinc-700 rounded-none flex items-center justify-center group-hover:border-[#ef233c]/50 transition-colors">
+          <i data-lucide="megaphone" class="w-4 h-4 text-[#ef233c]"></i>
         </div>
       </div>
       <h3 class="text-lg font-semibold text-white font-manrope tracking-tight mb-3 group-hover:translate-x-1 transition-transform duration-300">Brand &amp; Content Systems</h3>
@@ -410,12 +410,12 @@ tailwind.config = {
     </div>
 
     <!-- Card 3: AI & Automation -->
-    <div class="bg-black border border-zinc-800 border-dashed rounded-none p-8 group hover:border-[#f97316]/50 transition-all duration-500 relative animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.4s_both]">
-      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#f97316]"></div>
-      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#f97316]"></div>
+    <div class="bg-black border border-zinc-800 border-dashed rounded-none p-8 group hover:border-[#ef233c]/50 transition-all duration-500 relative animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.4s_both]">
+      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#ef233c]"></div>
+      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#ef233c]"></div>
       <div class="flex items-center gap-3 mb-5">
-        <div class="w-8 h-8 border border-zinc-700 rounded-none flex items-center justify-center group-hover:border-[#f97316]/50 transition-colors">
-          <i data-lucide="cpu" class="w-4 h-4 text-[#f97316]"></i>
+        <div class="w-8 h-8 border border-zinc-700 rounded-none flex items-center justify-center group-hover:border-[#ef233c]/50 transition-colors">
+          <i data-lucide="cpu" class="w-4 h-4 text-[#ef233c]"></i>
         </div>
       </div>
       <h3 class="text-lg font-semibold text-white font-manrope tracking-tight mb-3 group-hover:translate-x-1 transition-transform duration-300">AI &amp; Automation</h3>
@@ -423,12 +423,12 @@ tailwind.config = {
     </div>
 
     <!-- Card 4: Private Founder Advisory -->
-    <div class="bg-black border border-zinc-800 border-dashed rounded-none p-8 group hover:border-[#f97316]/50 transition-all duration-500 relative animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.5s_both]">
-      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#f97316]"></div>
-      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#f97316]"></div>
+    <div class="bg-black border border-zinc-800 border-dashed rounded-none p-8 group hover:border-[#ef233c]/50 transition-all duration-500 relative animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.5s_both]">
+      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#ef233c]"></div>
+      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#ef233c]"></div>
       <div class="flex items-center gap-3 mb-5">
-        <div class="w-8 h-8 border border-zinc-700 rounded-none flex items-center justify-center group-hover:border-[#f97316]/50 transition-colors">
-          <i data-lucide="shield-check" class="w-4 h-4 text-[#f97316]"></i>
+        <div class="w-8 h-8 border border-zinc-700 rounded-none flex items-center justify-center group-hover:border-[#ef233c]/50 transition-colors">
+          <i data-lucide="shield-check" class="w-4 h-4 text-[#ef233c]"></i>
         </div>
       </div>
       <h3 class="text-lg font-semibold text-white font-manrope tracking-tight mb-3 group-hover:translate-x-1 transition-transform duration-300">Private Founder Advisory</h3>
@@ -437,15 +437,17 @@ tailwind.config = {
   </div>
 </section>
 
+<div class="pointer-events-none w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+
 <!-- ============================================================ -->
 <!-- STATS / PROOF SECTION -->
 <!-- ============================================================ -->
 <section class="w-full max-w-6xl mx-auto px-6 py-20 relative animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.3s_both]">
   <div class="border border-zinc-800 border-dashed rounded-none bg-black relative overflow-hidden">
-    <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#f97316]"></div>
-    <div class="absolute top-0 right-0 w-2 h-2 border-t border-r border-[#f97316]"></div>
-    <div class="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-[#f97316]"></div>
-    <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#f97316]"></div>
+    <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#ef233c]"></div>
+    <div class="absolute top-0 right-0 w-2 h-2 border-t border-r border-[#ef233c]"></div>
+    <div class="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-[#ef233c]"></div>
+    <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#ef233c]"></div>
 
     <!-- Stats Row -->
     <div class="grid grid-cols-2 md:grid-cols-4 border-b border-zinc-800 border-dashed">
@@ -470,7 +472,7 @@ tailwind.config = {
     <!-- Logos / Names -->
     <div class="p-6">
       <div class="flex items-center gap-3 mb-5">
-        <span class="font-mono text-[10px] text-[#f97316] tracking-widest uppercase font-bold">[ Trusted By ]</span>
+        <span class="font-mono text-[10px] text-[#ef233c] tracking-widest uppercase font-bold">[ Trusted By ]</span>
       </div>
       <div class="flex flex-wrap gap-6 md:gap-10 items-center justify-center md:justify-start">
         <span class="text-sm font-manrope font-semibold text-zinc-400 hover:text-white transition-colors">Anik Singal</span>
@@ -494,6 +496,8 @@ tailwind.config = {
   </div>
 </section>
 
+<div class="pointer-events-none w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+
 <!-- ============================================================ -->
 <!-- WHO WE ARE - Side by Side Bios -->
 <!-- ============================================================ -->
@@ -502,10 +506,10 @@ tailwind.config = {
   <div class="flex flex-col md:flex-row md:items-end w-full mb-16 gap-x-8 gap-y-6 justify-between animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.2s_both]">
     <div class="flex flex-col max-w-3xl gap-y-6">
       <div class="flex items-center gap-3">
-        <span class="uppercase text-sm font-medium text-[#f97316] tracking-widest font-mono">01. Who We Are</span>
+        <span class="uppercase text-sm font-medium text-[#ef233c] tracking-widest font-mono">01. Who We Are</span>
       </div>
       <h2 class="md:text-6xl text-4xl font-medium text-white tracking-tighter font-manrope">
-        Meet the <span class="bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-orange-600">Team</span>
+        Meet the <span class="bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-red-600">Team</span>
       </h2>
       <p class="leading-relaxed text-lg font-light text-gray-400 max-w-xl">
         Two operators who&rsquo;ve built, scaled, and exited businesses across every vertical &mdash; now building AI systems that do the heavy lifting.
@@ -518,18 +522,18 @@ tailwind.config = {
   <!-- Bio Cards -->
   <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
     <!-- Andrew Naegele -->
-    <div class="bg-black border border-zinc-800 border-dashed rounded-none relative group hover:border-[#f97316]/50 transition-all duration-500 animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.3s_both]">
-      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#f97316]"></div>
-      <div class="absolute top-0 right-0 w-2 h-2 border-t border-r border-[#f97316]"></div>
-      <div class="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-[#f97316]"></div>
-      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#f97316]"></div>
+    <div class="bg-black border border-zinc-800 border-dashed rounded-none relative group hover:border-[#ef233c]/50 transition-all duration-500 animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.3s_both]">
+      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#ef233c]"></div>
+      <div class="absolute top-0 right-0 w-2 h-2 border-t border-r border-[#ef233c]"></div>
+      <div class="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-[#ef233c]"></div>
+      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#ef233c]"></div>
       <div class="w-full h-96 overflow-hidden border-b border-zinc-800">
         <img src="Andrew Naegele Headshot B&W.png" alt="Andrew Naegele" class="w-full h-full object-cover object-[center_20%] grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105">
       </div>
       <div class="p-8">
         <div class="flex items-center gap-3 mb-4">
-          <span class="w-1.5 h-1.5 bg-[#f97316]"></span>
-          <span class="font-mono text-[10px] text-[#f97316] tracking-widest uppercase font-bold">The AI Architect</span>
+          <span class="w-1.5 h-1.5 bg-[#ef233c]"></span>
+          <span class="font-mono text-[10px] text-[#ef233c] tracking-widest uppercase font-bold">The AI Architect</span>
         </div>
         <h3 class="text-3xl font-semibold text-white font-manrope tracking-tight mb-4">Andrew Naegele</h3>
         <p class="text-sm text-zinc-400 leading-relaxed mb-6">
@@ -545,18 +549,18 @@ tailwind.config = {
     </div>
 
     <!-- Los Silva -->
-    <div class="bg-black border border-zinc-800 border-dashed rounded-none relative group hover:border-[#f97316]/50 transition-all duration-500 animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.5s_both]">
-      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#f97316]"></div>
-      <div class="absolute top-0 right-0 w-2 h-2 border-t border-r border-[#f97316]"></div>
-      <div class="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-[#f97316]"></div>
-      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#f97316]"></div>
+    <div class="bg-black border border-zinc-800 border-dashed rounded-none relative group hover:border-[#ef233c]/50 transition-all duration-500 animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.5s_both]">
+      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#ef233c]"></div>
+      <div class="absolute top-0 right-0 w-2 h-2 border-t border-r border-[#ef233c]"></div>
+      <div class="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-[#ef233c]"></div>
+      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#ef233c]"></div>
       <div class="w-full h-96 overflow-hidden border-b border-zinc-800">
         <img src="los-silva-headshot.png" alt="Los Silva" class="w-full h-full object-cover object-[center_20%] grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105">
       </div>
       <div class="p-8">
         <div class="flex items-center gap-3 mb-4">
-          <span class="w-1.5 h-1.5 bg-[#f97316]"></span>
-          <span class="font-mono text-[10px] text-[#f97316] tracking-widest uppercase font-bold">The Scale Operator</span>
+          <span class="w-1.5 h-1.5 bg-[#ef233c]"></span>
+          <span class="font-mono text-[10px] text-[#ef233c] tracking-widest uppercase font-bold">The Scale Operator</span>
         </div>
         <h3 class="text-3xl font-semibold text-white font-manrope tracking-tight mb-4">Los Silva</h3>
         <p class="text-sm text-zinc-400 leading-relaxed mb-6">
@@ -573,23 +577,25 @@ tailwind.config = {
   </div>
 </section>
 
+<div class="pointer-events-none w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+
 <!-- ============================================================ -->
 <!-- FEATURED TESTIMONIAL -->
 <!-- ============================================================ -->
 <section class="w-full max-w-6xl mx-auto px-6 py-12 relative animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.3s_both]">
   <div class="border border-zinc-800 border-dashed rounded-none bg-black relative overflow-hidden p-8 md:p-12">
-    <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#f97316]"></div>
-    <div class="absolute top-0 right-0 w-2 h-2 border-t border-r border-[#f97316]"></div>
-    <div class="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-[#f97316]"></div>
-    <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#f97316]"></div>
+    <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#ef233c]"></div>
+    <div class="absolute top-0 right-0 w-2 h-2 border-t border-r border-[#ef233c]"></div>
+    <div class="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-[#ef233c]"></div>
+    <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#ef233c]"></div>
     <div class="flex gap-4 items-start">
-      <span class="text-[#f97316] text-5xl font-manrope leading-none shrink-0">&ldquo;</span>
+      <span class="text-[#ef233c] text-5xl font-manrope leading-none shrink-0">&ldquo;</span>
       <div>
         <p class="text-lg md:text-xl text-zinc-200 leading-relaxed font-light italic">
           By far the BEST AI EXPERT I've had a chance to talk to... the very FIRST person that I now not WALK, but RUN to for AI advice. He solved some of the toughest AI problems in our company in under 24 hours &mdash; work that would have taken my internal team weeks.
         </p>
         <div class="flex items-center gap-3 mt-6">
-          <div class="w-px h-6 bg-[#f97316]"></div>
+          <div class="w-px h-6 bg-[#ef233c]"></div>
           <div>
             <p class="text-white font-semibold font-manrope text-sm">Anik Singal</p>
             <p class="text-zinc-500 text-xs font-mono">Founder of Lurn &amp; Complily &middot; $200M+ in online sales</p>
@@ -600,6 +606,8 @@ tailwind.config = {
   </div>
 </section>
 
+<div class="pointer-events-none w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+
 <!-- ============================================================ -->
 <!-- RESULTS / MINI CASE STUDIES -->
 <!-- ============================================================ -->
@@ -608,10 +616,10 @@ tailwind.config = {
   <div class="flex flex-col md:flex-row md:items-end w-full mb-16 gap-x-8 gap-y-6 justify-between animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.2s_both]">
     <div class="flex flex-col max-w-3xl gap-y-6">
       <div class="flex items-center gap-3">
-        <span class="uppercase text-sm font-medium text-[#f97316] tracking-widest font-mono">02. Results</span>
+        <span class="uppercase text-sm font-medium text-[#ef233c] tracking-widest font-mono">02. Results</span>
       </div>
       <h2 class="md:text-6xl text-4xl font-medium text-white tracking-tighter font-manrope">
-        Case <span class="bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-orange-600">Studies</span>
+        Case <span class="bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-red-600">Studies</span>
       </h2>
       <p class="leading-relaxed text-lg font-light text-gray-400 max-w-xl">
         Real outcomes from real businesses. Here&rsquo;s what happens when you install the right systems.
@@ -624,72 +632,72 @@ tailwind.config = {
   <!-- Mini Case Studies -->
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     <!-- Case Study 1 -->
-    <div class="bg-black border border-zinc-800 border-dashed rounded-none p-8 group hover:border-[#f97316]/50 transition-all duration-500 relative flex flex-col animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.1s_both]">
-      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#f97316]"></div>
-      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#f97316]"></div>
+    <div class="bg-black border border-zinc-800 border-dashed rounded-none p-8 group hover:border-[#ef233c]/50 transition-all duration-500 relative flex flex-col animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.1s_both]">
+      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#ef233c]"></div>
+      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#ef233c]"></div>
       <p class="text-3xl font-bold text-white font-manrope tracking-tighter mb-1">5x Revenue in 10 Months</p>
       <p class="text-sm text-zinc-400 leading-relaxed mt-3 mb-6 flex-1">Scaled a cold-email brand from &lt;$50K to $250K+/mo using AI-powered prospecting and offer optimization.</p>
-      <a href="#" class="inline-flex items-center gap-2 text-[#f97316] text-xs font-mono uppercase tracking-wider hover:text-orange-400 transition-colors group/link">
+      <a href="#" class="inline-flex items-center gap-2 text-[#ef233c] text-xs font-mono uppercase tracking-wider hover:text-red-400 transition-colors group/link">
         See Breakdown
         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 group-hover/link:translate-x-1"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
       </a>
     </div>
 
     <!-- Case Study 2 -->
-    <div class="bg-black border border-zinc-800 border-dashed rounded-none p-8 group hover:border-[#f97316]/50 transition-all duration-500 relative flex flex-col animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.2s_both]">
-      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#f97316]"></div>
-      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#f97316]"></div>
+    <div class="bg-black border border-zinc-800 border-dashed rounded-none p-8 group hover:border-[#ef233c]/50 transition-all duration-500 relative flex flex-col animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.2s_both]">
+      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#ef233c]"></div>
+      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#ef233c]"></div>
       <p class="text-3xl font-bold text-white font-manrope tracking-tighter mb-1">$68K MRR in 28 Days</p>
       <p class="text-sm text-zinc-400 leading-relaxed mt-3 mb-6 flex-1">Took a coaching offer from zero to $68K MRR with engineered positioning, AI content, and automated outreach.</p>
-      <a href="#" class="inline-flex items-center gap-2 text-[#f97316] text-xs font-mono uppercase tracking-wider hover:text-orange-400 transition-colors group/link">
+      <a href="#" class="inline-flex items-center gap-2 text-[#ef233c] text-xs font-mono uppercase tracking-wider hover:text-red-400 transition-colors group/link">
         See Breakdown
         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 group-hover/link:translate-x-1"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
       </a>
     </div>
 
     <!-- Case Study 3 -->
-    <div class="bg-black border border-zinc-800 border-dashed rounded-none p-8 group hover:border-[#f97316]/50 transition-all duration-500 relative flex flex-col animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.3s_both]">
-      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#f97316]"></div>
-      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#f97316]"></div>
+    <div class="bg-black border border-zinc-800 border-dashed rounded-none p-8 group hover:border-[#ef233c]/50 transition-all duration-500 relative flex flex-col animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.3s_both]">
+      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#ef233c]"></div>
+      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#ef233c]"></div>
       <p class="text-3xl font-bold text-white font-manrope tracking-tighter mb-1">$6M Startup Saved in 8 Hours</p>
       <p class="text-sm text-zinc-400 leading-relaxed mt-3 mb-6 flex-1">Resurrected a dying $6M/year startup by systematizing founder knowledge into AI-driven processes.</p>
-      <a href="#" class="inline-flex items-center gap-2 text-[#f97316] text-xs font-mono uppercase tracking-wider hover:text-orange-400 transition-colors group/link">
+      <a href="#" class="inline-flex items-center gap-2 text-[#ef233c] text-xs font-mono uppercase tracking-wider hover:text-red-400 transition-colors group/link">
         See Breakdown
         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 group-hover/link:translate-x-1"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
       </a>
     </div>
 
     <!-- Case Study 4 -->
-    <div class="bg-black border border-zinc-800 border-dashed rounded-none p-8 group hover:border-[#f97316]/50 transition-all duration-500 relative flex flex-col animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.4s_both]">
-      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#f97316]"></div>
-      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#f97316]"></div>
+    <div class="bg-black border border-zinc-800 border-dashed rounded-none p-8 group hover:border-[#ef233c]/50 transition-all duration-500 relative flex flex-col animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.4s_both]">
+      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#ef233c]"></div>
+      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#ef233c]"></div>
       <p class="text-3xl font-bold text-white font-manrope tracking-tighter mb-1">$19K Deal in 36 Hours</p>
       <p class="text-sm text-zinc-400 leading-relaxed mt-3 mb-6 flex-1">One LinkedIn post, engineered with our content system, closed a $19K deal within 36 hours.</p>
-      <a href="#" class="inline-flex items-center gap-2 text-[#f97316] text-xs font-mono uppercase tracking-wider hover:text-orange-400 transition-colors group/link">
+      <a href="#" class="inline-flex items-center gap-2 text-[#ef233c] text-xs font-mono uppercase tracking-wider hover:text-red-400 transition-colors group/link">
         See Breakdown
         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 group-hover/link:translate-x-1"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
       </a>
     </div>
 
     <!-- Case Study 5 -->
-    <div class="bg-black border border-zinc-800 border-dashed rounded-none p-8 group hover:border-[#f97316]/50 transition-all duration-500 relative flex flex-col animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.5s_both]">
-      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#f97316]"></div>
-      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#f97316]"></div>
+    <div class="bg-black border border-zinc-800 border-dashed rounded-none p-8 group hover:border-[#ef233c]/50 transition-all duration-500 relative flex flex-col animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.5s_both]">
+      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#ef233c]"></div>
+      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#ef233c]"></div>
       <p class="text-3xl font-bold text-white font-manrope tracking-tighter mb-1">$20K/mo Recovered by AI</p>
       <p class="text-sm text-zinc-400 leading-relaxed mt-3 mb-6 flex-1">AI agents autonomously recovering $20K/month in late payments with zero human touchpoints.</p>
-      <a href="#" class="inline-flex items-center gap-2 text-[#f97316] text-xs font-mono uppercase tracking-wider hover:text-orange-400 transition-colors group/link">
+      <a href="#" class="inline-flex items-center gap-2 text-[#ef233c] text-xs font-mono uppercase tracking-wider hover:text-red-400 transition-colors group/link">
         See Breakdown
         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 group-hover/link:translate-x-1"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
       </a>
     </div>
 
     <!-- Case Study 6 -->
-    <div class="bg-black border border-zinc-800 border-dashed rounded-none p-8 group hover:border-[#f97316]/50 transition-all duration-500 relative flex flex-col animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.6s_both]">
-      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#f97316]"></div>
-      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#f97316]"></div>
+    <div class="bg-black border border-zinc-800 border-dashed rounded-none p-8 group hover:border-[#ef233c]/50 transition-all duration-500 relative flex flex-col animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.6s_both]">
+      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#ef233c]"></div>
+      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#ef233c]"></div>
       <p class="text-3xl font-bold text-white font-manrope tracking-tighter mb-1">38% Cold Outreach Reply Rate</p>
       <p class="text-sm text-zinc-400 leading-relaxed mt-3 mb-6 flex-1">Fully AI-powered cold outreach system running at 38% reply rates across multiple campaigns.</p>
-      <a href="#" class="inline-flex items-center gap-2 text-[#f97316] text-xs font-mono uppercase tracking-wider hover:text-orange-400 transition-colors group/link">
+      <a href="#" class="inline-flex items-center gap-2 text-[#ef233c] text-xs font-mono uppercase tracking-wider hover:text-red-400 transition-colors group/link">
         See Breakdown
         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 group-hover/link:translate-x-1"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
       </a>
@@ -698,45 +706,277 @@ tailwind.config = {
 </section>
 
 <!-- ============================================================ -->
-<!-- TESTIMONIALS -->
+<!-- TESTIMONIALS — MARQUEE SCROLL -->
 <!-- ============================================================ -->
-<section class="w-full max-w-6xl mx-auto px-6 py-16 relative">
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-    <!-- Testimonial 1: Anik Singal -->
-    <div class="bg-black border border-zinc-800 border-dashed rounded-none p-8 relative group hover:border-[#f97316]/50 transition-all duration-500 animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.2s_both]">
-      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#f97316]"></div>
-      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#f97316]"></div>
-      <span class="text-[#f97316] text-4xl font-manrope leading-none">&ldquo;</span>
-      <p class="text-zinc-200 leading-relaxed mt-4 mb-6 italic">
-        The knowledge, the ideas, the way he looks at things... He is literally the very FIRST person that I now not WALK, but RUN to for AI advice. He solved some of the toughest AI problems in our company in under 24 hours.
-      </p>
+<div class="pointer-events-none w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+
+<section class="w-full py-24 relative">
+  <div class="max-w-6xl mx-auto px-6 mb-16">
+    <div class="flex flex-col gap-y-6 animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.2s_both]">
       <div class="flex items-center gap-3">
-        <div class="w-px h-6 bg-[#f97316]"></div>
-        <div>
-          <p class="text-white font-semibold font-manrope text-sm">Anik Singal</p>
-          <p class="text-zinc-500 text-xs font-mono">Founder, Lurn &amp; Complily &middot; $200M+ in online sales</p>
+        <span class="uppercase text-sm font-medium text-[#ef233c] tracking-widest font-mono">Proof</span>
+      </div>
+      <h2 class="md:text-6xl text-4xl font-medium text-white tracking-tighter font-manrope">
+        What They <span class="bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-red-600">Say</span>
+      </h2>
+    </div>
+  </div>
+
+  <div class="overflow-hidden z-20 bg-black w-full h-[800px] relative animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.6s_both]" id="marquee-wrapper">
+    <div class="z-10 pointer-events-none bg-gradient-to-b from-black to-transparent w-full h-32 absolute top-0 left-0"></div>
+    <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black to-transparent z-10 pointer-events-none"></div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 h-full max-w-7xl mx-auto px-6 gap-x-6" style="mask-image: linear-gradient(180deg, transparent, black 20%, black 80%, transparent); -webkit-mask-image: linear-gradient(180deg, transparent, black 20%, black 80%, transparent);">
+
+      <!-- Column 1 (Scrolls Up) -->
+      <div class="h-full overflow-hidden relative">
+        <div class="marquee-track flex flex-col gap-6 will-change-transform" data-direction="up" data-speed="0.5">
+          <div class="p-8 border border-zinc-800 border-dashed bg-zinc-900/20 backdrop-blur-sm">
+            <div class="flex gap-1 text-zinc-500 mb-4"><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+            <p class="text-zinc-300 font-medium font-sans mb-6">&ldquo;By far the BEST AI EXPERT I&rsquo;ve had a chance to talk to&hellip; the very FIRST person that I now not WALK, but RUN to for AI&nbsp;advice.&rdquo;</p>
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-red-500/10 text-red-400 flex items-center justify-center text-xs font-bold border border-red-500/20">AS</div>
+              <div><div class="text-sm text-white font-semibold font-manrope">Anik Singal</div><div class="text-xs text-zinc-500 font-medium">Founder, Lurn &amp; Complily</div></div>
+            </div>
+          </div>
+          <div class="p-8 border border-white/5 bg-zinc-900/40 backdrop-blur-sm">
+            <p class="text-zinc-300 mb-6 font-sans">&ldquo;Thanks to Los &amp; his team we blew Jawzrsize to the moon. <span class="text-white font-semibold">In the first 3 months, we 13X&rsquo;d total&nbsp;sales!</span>&rdquo;</p>
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-red-500/10 text-red-400 flex items-center justify-center text-xs font-bold border border-red-500/20">BH</div>
+              <div><div class="text-sm text-white font-semibold font-manrope">Brandon Harris</div><div class="text-xs text-zinc-500 font-medium">CEO of Jawzrsize</div></div>
+            </div>
+          </div>
+          <div class="p-8 border border-zinc-800 border-dashed bg-black/50">
+            <p class="text-zinc-300 mb-6 font-sans">&ldquo;One LinkedIn post, engineered with Andrew&rsquo;s system, closed a <span class="text-white font-semibold">$19,000 build&#8209;out</span> in 36&nbsp;hours.&rdquo;</p>
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-red-500/10 text-red-400 flex items-center justify-center text-xs font-bold border border-red-500/20">JP</div>
+              <div><div class="text-sm text-white font-semibold font-manrope">Jessica Pereira</div><div class="text-xs text-zinc-500 font-medium">Founder</div></div>
+            </div>
+          </div>
+          <div class="p-8 border border-zinc-800 border-dashed bg-zinc-900/20 backdrop-blur-sm">
+            <div class="flex gap-1 text-zinc-500 mb-4"><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+            <p class="text-zinc-300 font-medium font-sans mb-6">&ldquo;I&rsquo;ve generated nearly <span class="text-white font-semibold">$100M online</span> and couldn&rsquo;t have done it without Los! Pull the trigger &amp; get in the&nbsp;game.&rdquo;</p>
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-red-500/10 text-red-400 flex items-center justify-center text-xs font-bold border border-red-500/20">KC</div>
+              <div><div class="text-sm text-white font-semibold font-manrope">Kent Clothier</div><div class="text-xs text-zinc-500 font-medium">CEO, Real Estate Worldwide</div></div>
+            </div>
+          </div>
+          <div class="p-8 border border-white/5 bg-zinc-900/40 backdrop-blur-sm">
+            <p class="text-zinc-300 mb-6 font-sans">&ldquo;I finally launched&hellip; I closed deals. I got clarity. If you&rsquo;re on the fence, just&nbsp;go.&rdquo;</p>
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-red-500/10 text-red-400 flex items-center justify-center text-xs font-bold border border-red-500/20">DB</div>
+              <div><div class="text-sm text-white font-semibold font-manrope">David Barton</div><div class="text-xs text-zinc-500 font-medium">Founder</div></div>
+            </div>
+          </div>
+          <!-- Duplicate for infinite scroll -->
+          <div class="p-8 border border-zinc-800 border-dashed bg-zinc-900/20 backdrop-blur-sm">
+            <div class="flex gap-1 text-zinc-500 mb-4"><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+            <p class="text-zinc-300 font-medium font-sans mb-6">&ldquo;By far the BEST AI EXPERT I&rsquo;ve had a chance to talk to&hellip; the very FIRST person that I now not WALK, but RUN to for AI&nbsp;advice.&rdquo;</p>
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-red-500/10 text-red-400 flex items-center justify-center text-xs font-bold border border-red-500/20">AS</div>
+              <div><div class="text-sm text-white font-semibold font-manrope">Anik Singal</div><div class="text-xs text-zinc-500 font-medium">Founder, Lurn &amp; Complily</div></div>
+            </div>
+          </div>
+          <div class="p-8 border border-white/5 bg-zinc-900/40 backdrop-blur-sm">
+            <p class="text-zinc-300 mb-6 font-sans">&ldquo;Thanks to Los &amp; his team we blew Jawzrsize to the moon. <span class="text-white font-semibold">In the first 3 months, we 13X&rsquo;d total&nbsp;sales!</span>&rdquo;</p>
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-red-500/10 text-red-400 flex items-center justify-center text-xs font-bold border border-red-500/20">BH</div>
+              <div><div class="text-sm text-white font-semibold font-manrope">Brandon Harris</div><div class="text-xs text-zinc-500 font-medium">CEO of Jawzrsize</div></div>
+            </div>
+          </div>
+          <div class="p-8 border border-zinc-800 border-dashed bg-black/50">
+            <p class="text-zinc-300 mb-6 font-sans">&ldquo;One LinkedIn post, engineered with Andrew&rsquo;s system, closed a <span class="text-white font-semibold">$19,000 build&#8209;out</span> in 36&nbsp;hours.&rdquo;</p>
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-red-500/10 text-red-400 flex items-center justify-center text-xs font-bold border border-red-500/20">JP</div>
+              <div><div class="text-sm text-white font-semibold font-manrope">Jessica Pereira</div><div class="text-xs text-zinc-500 font-medium">Founder</div></div>
+            </div>
+          </div>
+          <div class="p-8 border border-zinc-800 border-dashed bg-zinc-900/20 backdrop-blur-sm">
+            <div class="flex gap-1 text-zinc-500 mb-4"><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+            <p class="text-zinc-300 font-medium font-sans mb-6">&ldquo;I&rsquo;ve generated nearly <span class="text-white font-semibold">$100M online</span> and couldn&rsquo;t have done it without Los! Pull the trigger &amp; get in the&nbsp;game.&rdquo;</p>
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-red-500/10 text-red-400 flex items-center justify-center text-xs font-bold border border-red-500/20">KC</div>
+              <div><div class="text-sm text-white font-semibold font-manrope">Kent Clothier</div><div class="text-xs text-zinc-500 font-medium">CEO, Real Estate Worldwide</div></div>
+            </div>
+          </div>
+          <div class="p-8 border border-white/5 bg-zinc-900/40 backdrop-blur-sm">
+            <p class="text-zinc-300 mb-6 font-sans">&ldquo;I finally launched&hellip; I closed deals. I got clarity. If you&rsquo;re on the fence, just&nbsp;go.&rdquo;</p>
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-red-500/10 text-red-400 flex items-center justify-center text-xs font-bold border border-red-500/20">DB</div>
+              <div><div class="text-sm text-white font-semibold font-manrope">David Barton</div><div class="text-xs text-zinc-500 font-medium">Founder</div></div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Testimonial 2: Los Silva about Andrew -->
-    <div class="bg-black border border-zinc-800 border-dashed rounded-none p-8 relative group hover:border-[#f97316]/50 transition-all duration-500 animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.3s_both]">
-      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#f97316]"></div>
-      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#f97316]"></div>
-      <span class="text-[#f97316] text-4xl font-manrope leading-none">&ldquo;</span>
-      <p class="text-zinc-200 leading-relaxed mt-4 mb-6 italic">
-        Andrew is the monstrosity here on AI by leaps and bounds. I don't think there's many people out there that can top Andrew. His ability to see the problem, build the system, and deploy it &mdash; usually during the same call &mdash; is unlike anything I've seen in 20+ years.
-      </p>
-      <div class="flex items-center gap-3">
-        <div class="w-px h-6 bg-[#f97316]"></div>
-        <div>
-          <p class="text-white font-semibold font-manrope text-sm">Los Silva</p>
-          <p class="text-zinc-500 text-xs font-mono">CEO, SVG Media &middot; $100M+ in ad spend</p>
+      <!-- Column 2 (Scrolls Down) -->
+      <div class="h-full overflow-hidden relative hidden md:block">
+        <div class="marquee-track flex flex-col gap-6 will-change-transform" data-direction="down" data-speed="0.6">
+          <div class="p-8 border border-zinc-700 bg-black shadow-2xl relative group">
+            <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <p class="text-xl text-white font-medium mb-6 leading-relaxed font-manrope">&ldquo;Andrew is the monstrosity here on AI by leaps and bounds. I don&rsquo;t think there&rsquo;s many people that can even touch&nbsp;Andrew.&rdquo;</p>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-red-500/10 text-red-400 flex items-center justify-center text-xs font-bold border border-red-500/20">LS</div>
+              <div><div class="text-sm text-white font-semibold font-manrope">Los Silva</div><div class="text-xs text-zinc-500 font-medium">CEO, SVG Media &middot; $100M+ ad&nbsp;spend</div></div>
+            </div>
+          </div>
+          <div class="p-8 border border-white/5 bg-zinc-900/40">
+            <p class="text-zinc-300 mb-6 font-sans">&ldquo;<span class="text-white font-semibold">$23,000</span> from 5 strong responses after Andrew refined my copy and outreach&nbsp;system.&rdquo;</p>
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-red-500/10 text-red-400 flex items-center justify-center text-xs font-bold border border-red-500/20">PT</div>
+              <div><div class="text-sm text-white font-semibold font-manrope">Phill Tomlinson</div><div class="text-xs text-zinc-500 font-medium">Business Owner</div></div>
+            </div>
+          </div>
+          <div class="p-8 border border-zinc-800 border-dashed bg-black/50">
+            <p class="text-zinc-300 mb-6 font-sans">&ldquo;I&rsquo;m entering a new chapter of my life as a consultant, and there&rsquo;s been <span class="text-white font-semibold">nobody better</span> to turn to than&nbsp;Los.&rdquo;</p>
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-red-500/10 text-red-400 flex items-center justify-center text-xs font-bold border border-red-500/20">RD</div>
+              <div><div class="text-sm text-white font-semibold font-manrope">Rick Dempsey</div><div class="text-xs text-zinc-500 font-medium">SVP, Walt Disney Studios</div></div>
+            </div>
+          </div>
+          <div class="p-8 border border-zinc-800 border-dashed bg-zinc-900/20 backdrop-blur-sm">
+            <div class="flex gap-1 text-zinc-500 mb-4"><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+            <p class="text-zinc-300 font-medium font-sans mb-6">&ldquo;I&rsquo;m mind blown. The knowledge is insane. This community is a gold&nbsp;mine.&rdquo;</p>
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-red-500/10 text-red-400 flex items-center justify-center text-xs font-bold border border-red-500/20">EB</div>
+              <div><div class="text-sm text-white font-semibold font-manrope">Eddy Bautista</div><div class="text-xs text-zinc-500 font-medium">Entrepreneur</div></div>
+            </div>
+          </div>
+          <div class="p-8 border border-white/5 bg-zinc-900/40">
+            <p class="text-zinc-300 mb-6 font-sans">&ldquo;We closed out a <span class="text-white font-semibold">$100k week</span> after our first call with Los. Additionally we <span class="text-white font-semibold">landed the NFL</span> as a&nbsp;client!&rdquo;</p>
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-red-500/10 text-red-400 flex items-center justify-center text-xs font-bold border border-red-500/20">KI</div>
+              <div><div class="text-sm text-white font-semibold font-manrope">Kota Ivers</div><div class="text-xs text-zinc-500 font-medium">CSO, GR8FL Solar</div></div>
+            </div>
+          </div>
+          <!-- Duplicate for infinite scroll -->
+          <div class="p-8 border border-zinc-700 bg-black shadow-2xl relative group">
+            <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <p class="text-xl text-white font-medium mb-6 leading-relaxed font-manrope">&ldquo;Andrew is the monstrosity here on AI by leaps and bounds. I don&rsquo;t think there&rsquo;s many people that can even touch&nbsp;Andrew.&rdquo;</p>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-red-500/10 text-red-400 flex items-center justify-center text-xs font-bold border border-red-500/20">LS</div>
+              <div><div class="text-sm text-white font-semibold font-manrope">Los Silva</div><div class="text-xs text-zinc-500 font-medium">CEO, SVG Media &middot; $100M+ ad&nbsp;spend</div></div>
+            </div>
+          </div>
+          <div class="p-8 border border-white/5 bg-zinc-900/40">
+            <p class="text-zinc-300 mb-6 font-sans">&ldquo;<span class="text-white font-semibold">$23,000</span> from 5 strong responses after Andrew refined my copy and outreach&nbsp;system.&rdquo;</p>
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-red-500/10 text-red-400 flex items-center justify-center text-xs font-bold border border-red-500/20">PT</div>
+              <div><div class="text-sm text-white font-semibold font-manrope">Phill Tomlinson</div><div class="text-xs text-zinc-500 font-medium">Business Owner</div></div>
+            </div>
+          </div>
+          <div class="p-8 border border-zinc-800 border-dashed bg-black/50">
+            <p class="text-zinc-300 mb-6 font-sans">&ldquo;I&rsquo;m entering a new chapter of my life as a consultant, and there&rsquo;s been <span class="text-white font-semibold">nobody better</span> to turn to than&nbsp;Los.&rdquo;</p>
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-red-500/10 text-red-400 flex items-center justify-center text-xs font-bold border border-red-500/20">RD</div>
+              <div><div class="text-sm text-white font-semibold font-manrope">Rick Dempsey</div><div class="text-xs text-zinc-500 font-medium">SVP, Walt Disney Studios</div></div>
+            </div>
+          </div>
+          <div class="p-8 border border-zinc-800 border-dashed bg-zinc-900/20 backdrop-blur-sm">
+            <div class="flex gap-1 text-zinc-500 mb-4"><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+            <p class="text-zinc-300 font-medium font-sans mb-6">&ldquo;I&rsquo;m mind blown. The knowledge is insane. This community is a gold&nbsp;mine.&rdquo;</p>
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-red-500/10 text-red-400 flex items-center justify-center text-xs font-bold border border-red-500/20">EB</div>
+              <div><div class="text-sm text-white font-semibold font-manrope">Eddy Bautista</div><div class="text-xs text-zinc-500 font-medium">Entrepreneur</div></div>
+            </div>
+          </div>
+          <div class="p-8 border border-white/5 bg-zinc-900/40">
+            <p class="text-zinc-300 mb-6 font-sans">&ldquo;We closed out a <span class="text-white font-semibold">$100k week</span> after our first call with Los. Additionally we <span class="text-white font-semibold">landed the NFL</span> as a&nbsp;client!&rdquo;</p>
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-red-500/10 text-red-400 flex items-center justify-center text-xs font-bold border border-red-500/20">KI</div>
+              <div><div class="text-sm text-white font-semibold font-manrope">Kota Ivers</div><div class="text-xs text-zinc-500 font-medium">CSO, GR8FL Solar</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Column 3 (Scrolls Up) -->
+      <div class="h-full overflow-hidden relative hidden lg:block">
+        <div class="marquee-track flex flex-col gap-6 will-change-transform" data-direction="up" data-speed="0.55">
+          <div class="p-8 border border-white/5 bg-zinc-900/40">
+            <p class="text-zinc-300 mb-6 font-sans">&ldquo;Andrew <span class="text-white font-semibold">10x&rsquo;d my quality, effort, and delivery speed.</span> Complete game&nbsp;changer.&rdquo;</p>
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-red-500/10 text-red-400 flex items-center justify-center text-xs font-bold border border-red-500/20">TC</div>
+              <div><div class="text-sm text-white font-semibold font-manrope">Terry Chenowith</div><div class="text-xs text-zinc-500 font-medium">Entrepreneur</div></div>
+            </div>
+          </div>
+          <div class="p-8 border border-zinc-800 border-dashed bg-zinc-900/20 backdrop-blur-sm">
+            <div class="flex gap-1 text-zinc-500 mb-4"><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+            <p class="text-zinc-300 font-medium font-sans mb-6">&ldquo;Los is one of the <span class="text-white font-semibold">smartest guys in marketing</span> that I know! If you get a chance to work with Los, do&nbsp;it!&rdquo;</p>
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-red-500/10 text-red-400 flex items-center justify-center text-xs font-bold border border-red-500/20">BC</div>
+              <div><div class="text-sm text-white font-semibold font-manrope">Brandon Carter</div><div class="text-xs text-zinc-500 font-medium">Founder, High Ticket Trainer</div></div>
+            </div>
+          </div>
+          <div class="p-8 border border-zinc-800 border-dashed bg-black/50">
+            <p class="text-zinc-300 mb-6 font-sans">&ldquo;He doesn&rsquo;t BS. He doesn&rsquo;t sugarcoat&hellip; <span class="text-white font-semibold">hire Andrew, he&rsquo;s the guy. Stop&nbsp;looking.</span>&rdquo;</p>
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-red-500/10 text-red-400 flex items-center justify-center text-xs font-bold border border-red-500/20">JL</div>
+              <div><div class="text-sm text-white font-semibold font-manrope">Jake Lockwood</div><div class="text-xs text-zinc-500 font-medium">Founder</div></div>
+            </div>
+          </div>
+          <div class="p-8 border border-white/5 bg-zinc-900/40">
+            <p class="text-zinc-300 mb-6 font-sans">&ldquo;Bar none, one of the <span class="text-white font-semibold">best people that I&rsquo;ve worked with</span> in this&nbsp;space.&rdquo;</p>
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-red-500/10 text-red-400 flex items-center justify-center text-xs font-bold border border-red-500/20">KM</div>
+              <div><div class="text-sm text-white font-semibold font-manrope">Kevin Mabry</div><div class="text-xs text-zinc-500 font-medium">Business Owner</div></div>
+            </div>
+          </div>
+          <div class="p-8 border border-zinc-700 bg-black shadow-2xl relative group">
+            <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <p class="text-xl text-white font-medium mb-6 leading-relaxed font-manrope">&ldquo;Takes things to a whole new level you weren&rsquo;t even going to go to. Mind&#8209;blowing&nbsp;execution.&rdquo;</p>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-red-500/10 text-red-400 flex items-center justify-center text-xs font-bold border border-red-500/20">SI</div>
+              <div><div class="text-sm text-white font-semibold font-manrope">Sean Ingram</div><div class="text-xs text-zinc-500 font-medium">Entrepreneur</div></div>
+            </div>
+          </div>
+          <!-- Duplicate for infinite scroll -->
+          <div class="p-8 border border-white/5 bg-zinc-900/40">
+            <p class="text-zinc-300 mb-6 font-sans">&ldquo;Andrew <span class="text-white font-semibold">10x&rsquo;d my quality, effort, and delivery speed.</span> Complete game&nbsp;changer.&rdquo;</p>
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-red-500/10 text-red-400 flex items-center justify-center text-xs font-bold border border-red-500/20">TC</div>
+              <div><div class="text-sm text-white font-semibold font-manrope">Terry Chenowith</div><div class="text-xs text-zinc-500 font-medium">Entrepreneur</div></div>
+            </div>
+          </div>
+          <div class="p-8 border border-zinc-800 border-dashed bg-zinc-900/20 backdrop-blur-sm">
+            <div class="flex gap-1 text-zinc-500 mb-4"><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+            <p class="text-zinc-300 font-medium font-sans mb-6">&ldquo;Los is one of the <span class="text-white font-semibold">smartest guys in marketing</span> that I know! If you get a chance to work with Los, do&nbsp;it!&rdquo;</p>
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-red-500/10 text-red-400 flex items-center justify-center text-xs font-bold border border-red-500/20">BC</div>
+              <div><div class="text-sm text-white font-semibold font-manrope">Brandon Carter</div><div class="text-xs text-zinc-500 font-medium">Founder, High Ticket Trainer</div></div>
+            </div>
+          </div>
+          <div class="p-8 border border-zinc-800 border-dashed bg-black/50">
+            <p class="text-zinc-300 mb-6 font-sans">&ldquo;He doesn&rsquo;t BS. He doesn&rsquo;t sugarcoat&hellip; <span class="text-white font-semibold">hire Andrew, he&rsquo;s the guy. Stop&nbsp;looking.</span>&rdquo;</p>
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-red-500/10 text-red-400 flex items-center justify-center text-xs font-bold border border-red-500/20">JL</div>
+              <div><div class="text-sm text-white font-semibold font-manrope">Jake Lockwood</div><div class="text-xs text-zinc-500 font-medium">Founder</div></div>
+            </div>
+          </div>
+          <div class="p-8 border border-white/5 bg-zinc-900/40">
+            <p class="text-zinc-300 mb-6 font-sans">&ldquo;Bar none, one of the <span class="text-white font-semibold">best people that I&rsquo;ve worked with</span> in this&nbsp;space.&rdquo;</p>
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-red-500/10 text-red-400 flex items-center justify-center text-xs font-bold border border-red-500/20">KM</div>
+              <div><div class="text-sm text-white font-semibold font-manrope">Kevin Mabry</div><div class="text-xs text-zinc-500 font-medium">Business Owner</div></div>
+            </div>
+          </div>
+          <div class="p-8 border border-zinc-700 bg-black shadow-2xl relative group">
+            <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <p class="text-xl text-white font-medium mb-6 leading-relaxed font-manrope">&ldquo;Takes things to a whole new level you weren&rsquo;t even going to go to. Mind&#8209;blowing&nbsp;execution.&rdquo;</p>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-red-500/10 text-red-400 flex items-center justify-center text-xs font-bold border border-red-500/20">SI</div>
+              <div><div class="text-sm text-white font-semibold font-manrope">Sean Ingram</div><div class="text-xs text-zinc-500 font-medium">Entrepreneur</div></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<div class="pointer-events-none w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+
+<div class="pointer-events-none w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
 
 <!-- ============================================================ -->
 <!-- HOW WE WORK -->
@@ -745,10 +985,10 @@ tailwind.config = {
   <!-- Section Header -->
   <div class="flex flex-col mb-16 gap-y-6 animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.2s_both]">
     <div class="flex items-center gap-3">
-      <span class="uppercase text-sm font-medium text-[#f97316] tracking-widest font-mono">03. How We Work</span>
+      <span class="uppercase text-sm font-medium text-[#ef233c] tracking-widest font-mono">03. How We Work</span>
     </div>
     <h2 class="md:text-6xl text-4xl font-medium text-white tracking-tighter font-manrope">
-      The <span class="bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-orange-600">Process</span>
+      The <span class="bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-red-600">Process</span>
     </h2>
     <p class="leading-relaxed text-lg font-light text-gray-400 max-w-xl">
       No fluff. No 12-month retainers. A clear path from strategy to execution.
@@ -760,33 +1000,33 @@ tailwind.config = {
   <!-- 3 Steps -->
   <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
     <!-- Step 1 -->
-    <div class="bg-black border border-zinc-800 border-dashed rounded-none p-8 group hover:border-[#f97316]/50 transition-all duration-500 relative animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.2s_both]">
-      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#f97316]"></div>
-      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#f97316]"></div>
+    <div class="bg-black border border-zinc-800 border-dashed rounded-none p-8 group hover:border-[#ef233c]/50 transition-all duration-500 relative animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.2s_both]">
+      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#ef233c]"></div>
+      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#ef233c]"></div>
       <div class="flex items-center gap-3 mb-6">
-        <span class="text-4xl font-bold text-[#f97316] font-manrope tracking-tighter">01</span>
+        <span class="text-4xl font-bold text-[#ef233c] font-manrope tracking-tighter">01</span>
       </div>
       <h3 class="text-xl font-semibold text-white font-manrope tracking-tight mb-3">Strategy Day</h3>
       <p class="text-sm text-zinc-400 leading-relaxed">We audit your offer, systems, and bottlenecks. You leave with a clear roadmap for what to build, fix, and automate &mdash; plus the priority order.</p>
     </div>
 
     <!-- Step 2 -->
-    <div class="bg-black border border-zinc-800 border-dashed rounded-none p-8 group hover:border-[#f97316]/50 transition-all duration-500 relative animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.3s_both]">
-      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#f97316]"></div>
-      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#f97316]"></div>
+    <div class="bg-black border border-zinc-800 border-dashed rounded-none p-8 group hover:border-[#ef233c]/50 transition-all duration-500 relative animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.3s_both]">
+      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#ef233c]"></div>
+      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#ef233c]"></div>
       <div class="flex items-center gap-3 mb-6">
-        <span class="text-4xl font-bold text-[#f97316] font-manrope tracking-tighter">02</span>
+        <span class="text-4xl font-bold text-[#ef233c] font-manrope tracking-tighter">02</span>
       </div>
       <h3 class="text-xl font-semibold text-white font-manrope tracking-tight mb-3">90-Day Build</h3>
       <p class="text-sm text-zinc-400 leading-relaxed">We install the offers, content systems, and AI automations. You get weekly builds, live implementation, and measurable results within 90 days.</p>
     </div>
 
     <!-- Step 3 -->
-    <div class="bg-black border border-zinc-800 border-dashed rounded-none p-8 group hover:border-[#f97316]/50 transition-all duration-500 relative animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.4s_both]">
-      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#f97316]"></div>
-      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#f97316]"></div>
+    <div class="bg-black border border-zinc-800 border-dashed rounded-none p-8 group hover:border-[#ef233c]/50 transition-all duration-500 relative animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.4s_both]">
+      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#ef233c]"></div>
+      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#ef233c]"></div>
       <div class="flex items-center gap-3 mb-6">
-        <span class="text-4xl font-bold text-[#f97316] font-manrope tracking-tighter">03</span>
+        <span class="text-4xl font-bold text-[#ef233c] font-manrope tracking-tighter">03</span>
       </div>
       <h3 class="text-xl font-semibold text-white font-manrope tracking-tight mb-3">Long-Term Advisory</h3>
       <p class="text-sm text-zinc-400 leading-relaxed">Ongoing strategic guidance, system optimization, and direct access to Los and Andrew as your business scales to the next level.</p>
@@ -801,20 +1041,22 @@ tailwind.config = {
   </div>
 </section>
 
+<div class="pointer-events-none w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+
 <!-- ============================================================ -->
 <!-- LEAD MAGNET CTA -->
 <!-- ============================================================ -->
 <section id="resources" class="w-full max-w-4xl mx-auto px-6 py-24 relative animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.3s_both]">
   <div class="border border-zinc-800 border-dashed rounded-none bg-black relative p-12 md:p-16 text-center overflow-hidden">
-    <div class="absolute top-0 left-0 w-3 h-3 border-t border-l border-[#f97316]"></div>
-    <div class="absolute top-0 right-0 w-3 h-3 border-t border-r border-[#f97316]"></div>
-    <div class="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-[#f97316]"></div>
-    <div class="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-[#f97316]"></div>
-    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(249,115,22,0.05) 0%, transparent 70%);"></div>
+    <div class="absolute top-0 left-0 w-3 h-3 border-t border-l border-[#ef233c]"></div>
+    <div class="absolute top-0 right-0 w-3 h-3 border-t border-r border-[#ef233c]"></div>
+    <div class="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-[#ef233c]"></div>
+    <div class="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-[#ef233c]"></div>
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(239,35,60,0.05) 0%, transparent 70%);"></div>
     <div class="relative z-10">
       <div class="flex items-center justify-center gap-3 mb-6">
-        <span class="w-1.5 h-1.5 bg-[#f97316] animate-pulse"></span>
-        <span class="font-mono text-[10px] text-[#f97316] tracking-widest uppercase font-bold">Free &mdash; No Catch</span>
+        <span class="w-1.5 h-1.5 bg-[#ef233c] animate-pulse"></span>
+        <span class="font-mono text-[10px] text-[#ef233c] tracking-widest uppercase font-bold">Free &mdash; No Catch</span>
       </div>
       <h2 class="text-3xl md:text-5xl font-bold text-white font-manrope tracking-tighter mb-6">
         Get The Offer MBA &amp; 728M Lead&nbsp;Vault&nbsp;(Free)
@@ -823,15 +1065,15 @@ tailwind.config = {
         <p class="text-base text-zinc-400 leading-relaxed mb-5">Inside, you&rsquo;ll&nbsp;get:</p>
         <ul class="space-y-4 mb-6">
           <li class="flex items-start gap-3">
-            <span class="text-orange-500 mt-1 text-sm shrink-0">&#9656;</span>
+            <span class="text-red-500 mt-1 text-sm shrink-0">&#9656;</span>
             <p class="text-sm text-zinc-400 leading-relaxed"><span class="text-white font-semibold">Offer MBA:</span> 7 linked GPTs that build your Master Offer Playbook in about&nbsp;an&nbsp;hour</p>
           </li>
           <li class="flex items-start gap-3">
-            <span class="text-orange-500 mt-1 text-sm shrink-0">&#9656;</span>
+            <span class="text-red-500 mt-1 text-sm shrink-0">&#9656;</span>
             <p class="text-sm text-zinc-400 leading-relaxed"><span class="text-white font-semibold">728,000,000+ mapped leads</span> across LinkedIn, Instagram, and key buyer&nbsp;segments</p>
           </li>
           <li class="flex items-start gap-3">
-            <span class="text-orange-500 mt-1 text-sm shrink-0">&#9656;</span>
+            <span class="text-red-500 mt-1 text-sm shrink-0">&#9656;</span>
             <p class="text-sm text-zinc-400 leading-relaxed"><span class="text-white font-semibold">The Direct Copywriter:</span> our most ruthless copy GPT to turn your Playbook into posts, pages, and emails that actually&nbsp;convert</p>
           </li>
         </ul>
@@ -846,24 +1088,26 @@ tailwind.config = {
   </div>
 </section>
 
+<div class="pointer-events-none w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+
 <!-- ============================================================ -->
 <!-- BOOK A CALL CTA -->
 <!-- ============================================================ -->
 <section id="book" class="w-full max-w-4xl mx-auto px-6 py-24 relative animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.3s_both]">
   <div class="text-center">
     <div class="flex items-center justify-center gap-3 mb-6">
-      <span class="font-mono text-[10px] text-[#f97316] tracking-widest uppercase font-bold">[ Ready to Scale? ]</span>
+      <span class="font-mono text-[10px] text-[#ef233c] tracking-widest uppercase font-bold">[ Ready to Scale? ]</span>
     </div>
     <h2 class="text-4xl md:text-6xl font-bold text-white font-manrope tracking-tighter mb-6">
-      Let&rsquo;s Build Your <span class="bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-orange-600">AI Engine</span>
+      Let&rsquo;s Build Your <span class="bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-red-600">AI Engine</span>
     </h2>
     <p class="text-lg text-zinc-400 leading-relaxed max-w-2xl mx-auto mb-10">
       Apply for a free strategy call. We&rsquo;ll map out the offers, content systems, and AI automations that will move the needle fastest in your business.
     </p>
     <a href="#book" class="group relative inline-flex min-w-[220px] h-[56px] items-center justify-center overflow-hidden rounded-none outline-none cursor-pointer transition-transform active:scale-95 no-underline" style="background-color: rgba(255,255,255,0.05);">
-      <span class="absolute inset-[-100%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,transparent_75%,#f97316_100%)] opacity-100"></span>
+      <span class="absolute inset-[-100%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,transparent_75%,#ef233c_100%)] opacity-100"></span>
       <span class="absolute inset-[1px] rounded-none bg-black z-10"></span>
-      <span class="absolute inset-0 pointer-events-none opacity-100 z-10" style="background: radial-gradient(50% 50% at 50% 100%, rgba(249,115,22,0.15) 0%, transparent 100%);"></span>
+      <span class="absolute inset-0 pointer-events-none opacity-100 z-10" style="background: radial-gradient(50% 50% at 50% 100%, rgba(239,35,60,0.15) 0%, transparent 100%);"></span>
       <span class="relative z-20 flex items-center justify-center gap-2 text-sm font-semibold text-white tracking-wide uppercase px-8">
         <span>Apply for a Strategy Call</span>
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 group-hover:translate-x-1"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
@@ -882,7 +1126,7 @@ tailwind.config = {
       <div class="flex flex-col gap-6">
         <div class="flex items-center gap-3">
           <div class="grid grid-cols-2 opacity-90 w-6 h-6 gap-x-1 gap-y-1">
-            <div class="bg-[#f97316] w-full h-full rounded-sm"></div>
+            <div class="bg-[#ef233c] w-full h-full rounded-sm"></div>
             <div class="w-full h-full bg-zinc-700 rounded-sm"></div>
             <div class="w-full h-full bg-zinc-800 rounded-sm"></div>
             <div class="w-full h-full bg-white rounded-sm shadow-[0_0_10px_rgba(255,255,255,0.4)]"></div>
@@ -934,7 +1178,7 @@ tailwind.config = {
   <div class="w-full py-8 text-center border-t border-dashed border-zinc-800 bg-black z-20 relative">
     <p class="text-[10px] text-zinc-600 font-bold uppercase tracking-[0.2em] font-sans">
       &copy; 2026
-      <a href="/" class="hover:text-white transition-colors text-[#f97316]">AI Simple</a>
+      <a href="/" class="hover:text-white transition-colors text-[#ef233c]">AI Simple</a>
       &mdash; Built with systems, not&nbsp;hustle.
     </p>
   </div>
@@ -947,6 +1191,49 @@ tailwind.config = {
       lucide.createIcons();
     }
   });
+</script>
+
+<!-- Marquee Scroll Animation -->
+<script>
+(function() {
+    if (typeof window === 'undefined') return;
+    const tracks = document.querySelectorAll('.marquee-track');
+    if (!tracks.length) return;
+    let scrollSpeed = 0;
+    let lastScrollY = window.scrollY;
+    const trackStates = Array.from(tracks).map(track => {
+        const direction = track.getAttribute('data-direction') || 'up';
+        const baseSpeed = parseFloat(track.getAttribute('data-speed') || '0.5');
+        return { element: track, direction: direction === 'up' ? -1 : 1, baseSpeed: baseSpeed, currentPos: 0, contentHeight: 0 };
+    });
+    function init() {
+        trackStates.forEach(state => { state.contentHeight = state.element.offsetHeight / 2; });
+    }
+    function update() {
+        scrollSpeed *= 0.9;
+        if (Math.abs(scrollSpeed) < 0.01) scrollSpeed = 0;
+        trackStates.forEach(state => {
+            const speed = state.baseSpeed + (scrollSpeed * 0.5);
+            state.currentPos += speed * state.direction;
+            if (state.direction === -1 && state.currentPos <= -state.contentHeight) { state.currentPos += state.contentHeight; }
+            if (state.direction === 1 && state.currentPos >= 0) { state.currentPos -= state.contentHeight; }
+            state.element.style.transform = 'translate3d(0,' + state.currentPos + 'px,0)';
+        });
+        requestAnimationFrame(update);
+    }
+    window.addEventListener('scroll', () => {
+        const currentScrollY = window.scrollY;
+        const delta = Math.abs(currentScrollY - lastScrollY);
+        lastScrollY = currentScrollY;
+        scrollSpeed += delta * 0.15;
+        if (scrollSpeed > 15) scrollSpeed = 15;
+    }, { passive: true });
+    setTimeout(() => {
+        init();
+        trackStates.forEach(state => { if (state.direction === 1) state.currentPos = -state.contentHeight; });
+        update();
+    }, 500);
+})();
 </script>
 
 <!-- Unicorn Studio Background Init -->
