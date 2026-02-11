@@ -253,7 +253,7 @@ body { font-family: 'Inter', sans-serif; }
 
   <!-- Navigation -->
   <div class="fixed flex [animation:fadeSlideIn_1s_ease-out_0.5s_both] w-full z-50 pt-6 pr-4 pl-4 top-0 left-0 justify-center">
-    <nav class="shadow-black/50 flex md:w-auto bg-black/60 w-full max-w-6xl rounded-none pt-2 pr-4 pb-2 pl-3 shadow-2xl backdrop-blur-lg items-center justify-between" style="position: relative; --border-gradient: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0), rgba(255,255,255,0.2)); --border-radius-before: 0">
+    <nav class="shadow-black/50 flex md:w-auto bg-black/60 w-full max-w-[90rem] rounded-none pt-2 pr-4 pb-2 pl-3 shadow-2xl backdrop-blur-lg items-center justify-between" style="position: relative; --border-gradient: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0), rgba(255,255,255,0.2)); --border-radius-before: 0">
       <a href="index.html" class="flex gap-x-3 items-center group">
         <div class="grid grid-cols-2 opacity-90 w-6 h-6 gap-1">
           <div class="bg-red-500 w-full h-full rounded-sm"></div>
@@ -274,7 +274,7 @@ body { font-family: 'Inter', sans-serif; }
   <!-- ============================================================ -->
   <!-- SECTION 1: HERO (Centered) + MODAL TRIGGER                   -->
   <!-- ============================================================ -->
-  <section id="get-access-form" class="min-h-screen flex flex-col pt-32 md:pt-48 pb-20 overflow-hidden w-full relative items-center justify-start bg-grid">
+  <section id="get-access-form" class="min-h-screen flex flex-col pt-24 md:pt-32 pb-20 overflow-hidden w-full relative items-center justify-start bg-grid">
     <!-- Subtle radial glow -->
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[700px] pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(239,35,60,0.15) 0%, transparent 70%);"></div>
 
@@ -284,25 +284,22 @@ body { font-family: 'Inter', sans-serif; }
       <div class="absolute inset-0" style="background: radial-gradient(ellipse 70% 50% at 60% 30%, rgba(220,38,38,0.08) 0%, transparent 55%), radial-gradient(ellipse 50% 70% at 30% 70%, rgba(239,35,60,0.06) 0%, transparent 60%); animation: auroraShift2 12s ease-in-out infinite alternate-reverse;"></div>
     </div>
 
-    <div class="z-10 w-full max-w-5xl mx-auto px-6 relative text-center">
+    <div class="z-10 w-full max-w-7xl mx-auto px-6 relative text-center">
       
       <!-- Badge -->
-      <div class="[animation:fadeSlideIn_1s_ease-out_0.8s_both] inline-flex transition-transform hover:scale-105 cursor-default group bg-gradient-to-br from-white/10 to-white/0 bg-gradient-to-b from-white/20 via-white/0 to-white/10 rounded-full mb-8 pt-1.5 pr-4 pb-1.5 pl-3 backdrop-blur-sm gap-x-2 items-center" style="position: relative; --border-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.1)); --border-radius-before: 9999px">
+      <div class="[animation:fadeSlideIn_1s_ease-out_0.8s_both] inline-flex transition-transform hover:scale-105 cursor-default group bg-gradient-to-br from-white/10 to-white/0 bg-gradient-to-b from-white/20 via-white/0 to-white/10 rounded-full mb-6 pt-1.5 pr-4 pb-1.5 pl-3 backdrop-blur-sm gap-x-2 items-center" style="position: relative; --border-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.1)); --border-radius-before: 9999px">
         <span class="flex h-2 w-2 rounded-full pulse-dot bg-[#ef233c] shadow-[0_0_10px_rgba(239,35,60,0.8)]"></span>
         <span class="text-xs font-semibold tracking-widest uppercase font-geist-mono text-white/90">Free for Event Attendees</span>
       </div>
 
       <!-- Headline -->
-      <h1 class="[animation:fadeSlideIn_1s_ease-out_1s_both] leading-none md:leading-[0.9] text-6xl md:text-8xl lg:text-[7rem] xl:text-[8rem] font-bold tracking-tighter font-manrope mb-10 max-w-6xl mx-auto flex flex-wrap justify-center gap-x-[0.25em] gap-y-2">
-        <span class="inline-block leading-[1.3] bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50 opacity-100">Steal</span>
-        <span class="inline-block leading-[1.3] bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50 opacity-60">My</span>
-        <span class="w-full md:w-auto"></span>
-        <span class="inline-block leading-[1.3] bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50 opacity-100">Offer</span>
-        <span class="inline-block leading-[1.3] bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50 opacity-100">MBA</span>
-        <span class="w-full md:w-auto"></span>
-        <span class="inline-block leading-[1.3] bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50 opacity-60">+</span>
-        <span class="inline-block leading-[1.3] bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50 opacity-100 md:text-[0.8em]">728,000,000</span>
-        <span class="inline-block leading-[1.3] bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50 opacity-100 md:text-[0.8em]">Leads</span>
+      <h1 class="[animation:fadeSlideIn_1s_ease-out_1s_both] leading-[0.95] text-5xl md:text-7xl lg:text-[6.5rem] font-bold tracking-tighter font-manrope mb-8 max-w-6xl mx-auto">
+        <span class="bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50 opacity-100">Steal My </span>
+        <span class="bg-clip-text text-transparent bg-gradient-to-b from-[#ef233c] via-red-400 to-[#ef233c] drop-shadow-[0_0_30px_rgba(239,35,60,0.4)]">Offer MBA</span>
+        <span class="bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50 opacity-100"> + </span>
+        <br class="hidden lg:block">
+        <span class="bg-clip-text text-transparent bg-gradient-to-b from-[#ef233c] via-red-400 to-[#ef233c] drop-shadow-[0_0_30px_rgba(239,35,60,0.4)]">728,000,000</span>
+        <span class="bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50 opacity-100"> Leads</span>
       </h1>
 
       <!-- Subhead -->
