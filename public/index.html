@@ -804,11 +804,23 @@ tailwind.config = {
     </div>
   </div>
 
-  <div class="overflow-hidden z-20 bg-black w-full h-[800px] relative animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.6s_both]" id="marquee-wrapper">
-    <div class="z-10 pointer-events-none bg-gradient-to-b from-black to-transparent w-full h-32 absolute top-0 left-0"></div>
-    <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black to-transparent z-10 pointer-events-none"></div>
+  <style>
+    .perspective-wrapper {
+      perspective: 1000px;
+      overflow: hidden;
+    }
+    .marquee-3d-grid {
+      transform: rotateX(15deg) rotateY(-5deg) rotateZ(5deg) scale(1.1);
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+  </style>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 h-full max-w-7xl mx-auto px-6 gap-x-6" style="mask-image: linear-gradient(180deg, transparent, black 20%, black 80%, transparent); -webkit-mask-image: linear-gradient(180deg, transparent, black 20%, black 80%, transparent);">
+  <div class="overflow-hidden z-20 bg-black w-full h-[800px] relative animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.6s_both] perspective-wrapper" id="marquee-wrapper">
+    <div class="z-10 pointer-events-none bg-gradient-to-b from-black via-black/80 to-transparent w-full h-40 absolute top-0 left-0"></div>
+    <div class="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-black via-black/80 to-transparent z-10 pointer-events-none"></div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 h-full max-w-7xl mx-auto px-6 gap-x-6 marquee-3d-grid" style="mask-image: linear-gradient(180deg, transparent, black 10%, black 90%, transparent); -webkit-mask-image: linear-gradient(180deg, transparent, black 10%, black 90%, transparent);">
 
       <!-- Column 1 (Scrolls Up) -->
       <div class="h-full overflow-hidden relative">
