@@ -551,30 +551,70 @@ tailwind.config = {
 <!-- ============================================================ -->
 <!-- BRAND MARQUEE (Enhanced with perspective tilt) -->
 <!-- ============================================================ -->
-<div class="animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.3s_both] w-full max-w-6xl z-20 mx-auto py-12 px-6 relative">
-  <div class="w-full inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)] opacity-40 hover:opacity-70 transition-all duration-700 group">
-    <div class="flex items-center justify-center md:justify-start [&_div]:mx-8 w-max animate-infinite-scroll">
-      <div class="flex items-center gap-3"><img src="img/lurn.png" alt="Lurn" class="brand-logo brand-logo-white"></div>
-      <div class="flex items-center gap-3"><img src="img/complily.png" alt="Complily" class="brand-logo brand-logo-white"></div>
-      <div class="flex items-center gap-3"><img src="img/jawzrsize.jpg" alt="Jawzrsize" class="brand-logo brand-logo-white"></div>
-      <div class="flex items-center gap-3"><img src="img/nfl.svg" alt="NFL" class="brand-logo brand-logo-white"></div>
-      <div class="flex items-center gap-3"><img src="img/disney.png" alt="Disney" class="brand-logo brand-logo-white"></div>
-      <div class="flex items-center gap-3"><img src="img/entrepreneur.svg" alt="Entrepreneur" class="brand-logo brand-logo-white"></div>
-      <div class="flex items-center gap-3"><img src="img/techcrunch.svg" alt="TechCrunch" class="brand-logo brand-logo-white"></div>
-      <div class="flex items-center gap-3"><img src="img/app-sumo.svg" alt="AppSumo" class="brand-logo brand-logo-white"></div>
-      <div class="flex items-center gap-3"><img src="img/gr8fl-solar.png" alt="GR8FL Solar" class="brand-logo brand-logo-white"></div>
-      <div class="flex items-center gap-3"><img src="img/corner-capital.jpg" alt="Corner Capital" class="brand-logo brand-logo-white"></div>
-      <!-- Duplicate for seamless loop -->
-      <div class="flex items-center gap-3"><img src="img/lurn.png" alt="Lurn" class="brand-logo brand-logo-white"></div>
-      <div class="flex items-center gap-3"><img src="img/complily.png" alt="Complily" class="brand-logo brand-logo-white"></div>
-      <div class="flex items-center gap-3"><img src="img/jawzrsize.jpg" alt="Jawzrsize" class="brand-logo brand-logo-white"></div>
-      <div class="flex items-center gap-3"><img src="img/nfl.svg" alt="NFL" class="brand-logo brand-logo-white"></div>
-      <div class="flex items-center gap-3"><img src="img/disney.png" alt="Disney" class="brand-logo brand-logo-white"></div>
-      <div class="flex items-center gap-3"><img src="img/entrepreneur.svg" alt="Entrepreneur" class="brand-logo brand-logo-white"></div>
-      <div class="flex items-center gap-3"><img src="img/techcrunch.svg" alt="TechCrunch" class="brand-logo brand-logo-white"></div>
-      <div class="flex items-center gap-3"><img src="img/app-sumo.svg" alt="AppSumo" class="brand-logo brand-logo-white"></div>
-      <div class="flex items-center gap-3"><img src="img/gr8fl-solar.png" alt="GR8FL Solar" class="brand-logo brand-logo-white"></div>
-      <div class="flex items-center gap-3"><img src="img/corner-capital.jpg" alt="Corner Capital" class="brand-logo brand-logo-white"></div>
+<div class="[animation:fadeSlideIn_1s_ease-out_1.1s_both] animate-on-scroll animate w-full max-w-6xl z-20 mx-auto py-12 px-6 relative">
+    <div class="w-full inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)] opacity-40 hover:opacity-70 transition-all duration-700 group">
+      <style>
+        @keyframes infinite-scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-infinite-scroll {
+            animation: infinite-scroll 40s linear infinite;
+        }
+        .group:hover .animate-infinite-scroll {
+            animation-play-state: paused;
+        }
+        .brand-logo {
+            height: 28px;
+            width: auto;
+            object-fit: contain;
+            max-width: 120px;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        .brand-logo:hover {
+            opacity: 1;
+        }
+        /* Filter for colored/black logos to make them white */
+        .logo-white { filter: brightness(0) invert(1); }
+        /* Filter for logos with white backgrounds (JPGs) */
+        .logo-invert { filter: invert(1) grayscale(1) contrast(1.5); mix-blend-mode: normal; }
+      </style>
+      <div class="flex items-center justify-center md:justify-start [&_div]:mx-8 w-max animate-infinite-scroll">
+        <!-- Original Items -->
+        <div class="flex items-center"><img src="img/disney.png" alt="Disney" class="brand-logo logo-white"></div>
+        <div class="flex items-center"><img src="img/nfl.svg" alt="NFL" class="brand-logo logo-white"></div>
+        <div class="flex items-center"><img src="img/jawzrsize.jpg" alt="Jawzrsize" class="brand-logo logo-invert"></div>
+        <div class="flex items-center"><img src="img/gr8fl-solar.png" alt="Gr8fl Solar" class="brand-logo logo-white"></div>
+        <div class="flex items-center"><img src="img/lurn.png" alt="Lurn" class="brand-logo logo-white"></div>
+        <div class="flex items-center"><img src="img/entrepreneur.svg" alt="Entrepreneur" class="brand-logo logo-white"></div>
+        <div class="flex items-center"><img src="img/techcrunch.svg" alt="TechCrunch" class="brand-logo logo-white"></div>
+        <div class="flex items-center"><img src="img/app-sumo.svg" alt="AppSumo" class="brand-logo logo-white"></div>
+        <div class="flex items-center"><img src="img/mixergy.png" alt="Mixergy" class="brand-logo logo-white"></div>
+        <div class="flex items-center"><img src="img/high-ticket-trainer.png" alt="High Ticket Trainer" class="brand-logo" style="height: 36px;"></div>
+        <div class="flex items-center"><img src="img/corner-capital.jpg" alt="Corner Capital" class="brand-logo logo-invert"></div>
+        <div class="flex items-center"><img src="img/complily.png" alt="Complily" class="brand-logo logo-white"></div>
+        <div class="flex items-center"><img src="img/bnsn.png" alt="BNSN" class="brand-logo logo-white"></div>
+        <div class="flex items-center"><img src="img/bc-logo.png" alt="BC" class="brand-logo logo-white"></div>
+
+        <!-- Duplicate Items for infinite scroll -->
+        <div class="flex items-center"><img src="img/disney.png" alt="Disney" class="brand-logo logo-white"></div>
+        <div class="flex items-center"><img src="img/nfl.svg" alt="NFL" class="brand-logo logo-white"></div>
+        <div class="flex items-center"><img src="img/jawzrsize.jpg" alt="Jawzrsize" class="brand-logo logo-invert"></div>
+        <div class="flex items-center"><img src="img/gr8fl-solar.png" alt="Gr8fl Solar" class="brand-logo logo-white"></div>
+        <div class="flex items-center"><img src="img/lurn.png" alt="Lurn" class="brand-logo logo-white"></div>
+        <div class="flex items-center"><img src="img/entrepreneur.svg" alt="Entrepreneur" class="brand-logo logo-white"></div>
+        <div class="flex items-center"><img src="img/techcrunch.svg" alt="TechCrunch" class="brand-logo logo-white"></div>
+        <div class="flex items-center"><img src="img/app-sumo.svg" alt="AppSumo" class="brand-logo logo-white"></div>
+        <div class="flex items-center"><img src="img/mixergy.png" alt="Mixergy" class="brand-logo logo-white"></div>
+        <div class="flex items-center"><img src="img/high-ticket-trainer.png" alt="High Ticket Trainer" class="brand-logo" style="height: 36px;"></div>
+        <div class="flex items-center"><img src="img/corner-capital.jpg" alt="Corner Capital" class="brand-logo logo-invert"></div>
+        <div class="flex items-center"><img src="img/complily.png" alt="Complily" class="brand-logo logo-white"></div>
+        <div class="flex items-center"><img src="img/bnsn.png" alt="BNSN" class="brand-logo logo-white"></div>
+        <div class="flex items-center"><img src="img/bc-logo.png" alt="BC" class="brand-logo logo-white"></div>
+      </div>
+    </div>
+  </div>
     </div>
   </div>
 </div>
