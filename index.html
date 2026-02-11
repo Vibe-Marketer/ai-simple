@@ -43,7 +43,11 @@ body { font-family: 'Inter', sans-serif; }
 .delay-7 { animation-delay: 0.7s; }
 
 /* Animation on Scroll State Management */
-.animate-on-scroll { animation-play-state: paused !important; }
+.animate-on-scroll { 
+  animation-play-state: paused !important; 
+  will-change: transform, opacity, filter;
+  transform: translateZ(0);
+}
 .animate-on-scroll.animate { animation-play-state: running !important; }
 
 /* Animated Shiny CTA Button Styles */
@@ -141,6 +145,7 @@ body { font-family: 'Inter', sans-serif; }
   inset: 0 0 auto 0;
   height: 12%;
   pointer-events: none;
+  transform: translateZ(0);
 }
 .gradient-blur>div, .gradient-blur::before, .gradient-blur::after { position: absolute; inset: 0; }
 .gradient-blur::before { content: ""; z-index: 1; backdrop-filter: blur(0.5px); mask: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 12.5%, rgba(0,0,0,1) 25%, rgba(0,0,0,0) 37.5%); }
@@ -436,6 +441,109 @@ tailwind.config = {
     </div>
   </div>
 </section>
+
+<!-- ============================================================ -->
+<!-- BRAND MARQUEE -->
+<!-- ============================================================ -->
+<div class="[animation:fadeSlideIn_1s_ease-out_1.1s_both] animate-on-scroll animate w-full max-w-6xl z-20 mx-auto py-12 px-6 relative">
+    <div class="w-full inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)] opacity-40 hover:opacity-70 transition-all duration-700 group">
+      <style>
+        @keyframes infinite-scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-infinite-scroll {
+            animation: infinite-scroll 35s linear infinite;
+        }
+        .group:hover .animate-infinite-scroll {
+            animation-play-state: paused;
+        }
+        .brand-logo {
+            filter: brightness(0) invert(1);
+            height: 28px;
+            width: auto;
+            object-fit: contain;
+        }
+      </style>
+      <div class="flex items-center justify-center md:justify-start [&amp;_div]:mx-8 w-max animate-infinite-scroll">
+        <!-- Original Items -->
+        <div class="flex items-center">
+          <img src="img/disney.png" alt="Walt Disney Studios" class="brand-logo" style="height: 32px;">
+        </div>
+        <div class="flex items-center">
+          <img src="img/nfl.svg" alt="NFL" class="brand-logo" style="height: 22px;">
+        </div>
+        <div class="flex items-center">
+          <span class="font-bold text-xl text-white tracking-tight font-manrope whitespace-nowrap uppercase">Jawzrsize</span>
+        </div>
+        <div class="flex items-center">
+          <span class="font-bold text-lg text-white tracking-tight font-manrope whitespace-nowrap">Real Estate Worldwide</span>
+        </div>
+        <div class="flex items-center">
+          <span class="font-bold text-lg text-white tracking-tight font-manrope whitespace-nowrap uppercase">GR8FL Solar</span>
+        </div>
+        <div class="flex items-center">
+          <span class="font-bold text-xl text-white tracking-tight font-manrope whitespace-nowrap uppercase">Lurn</span>
+        </div>
+        <div class="flex items-center">
+          <img src="img/entrepreneur.svg" alt="Entrepreneur" class="brand-logo" style="height: 20px;">
+        </div>
+        <div class="flex items-center">
+          <img src="img/techcrunch.svg" alt="TechCrunch" class="brand-logo" style="height: 24px;">
+        </div>
+        <div class="flex items-center">
+          <span class="font-bold text-xl text-white tracking-tight font-manrope whitespace-nowrap">AppSumo</span>
+        </div>
+        <div class="flex items-center">
+          <span class="font-bold text-lg text-white tracking-tight font-manrope whitespace-nowrap">Mixergy</span>
+        </div>
+        <div class="flex items-center">
+          <span class="font-bold text-lg text-white tracking-tight font-manrope whitespace-nowrap">High Ticket Trainer</span>
+        </div>
+        <div class="flex items-center">
+          <span class="font-bold text-lg text-white tracking-tight font-manrope whitespace-nowrap">Corner Capital</span>
+        </div>
+
+        <!-- Duplicate Items for infinite scroll -->
+        <div class="flex items-center">
+          <img src="img/disney.png" alt="Walt Disney Studios" class="brand-logo" style="height: 32px;">
+        </div>
+        <div class="flex items-center">
+          <img src="img/nfl.svg" alt="NFL" class="brand-logo" style="height: 22px;">
+        </div>
+        <div class="flex items-center">
+          <span class="font-bold text-xl text-white tracking-tight font-manrope whitespace-nowrap uppercase">Jawzrsize</span>
+        </div>
+        <div class="flex items-center">
+          <span class="font-bold text-lg text-white tracking-tight font-manrope whitespace-nowrap">Real Estate Worldwide</span>
+        </div>
+        <div class="flex items-center">
+          <span class="font-bold text-lg text-white tracking-tight font-manrope whitespace-nowrap uppercase">GR8FL Solar</span>
+        </div>
+        <div class="flex items-center">
+          <span class="font-bold text-xl text-white tracking-tight font-manrope whitespace-nowrap uppercase">Lurn</span>
+        </div>
+        <div class="flex items-center">
+          <img src="img/entrepreneur.svg" alt="Entrepreneur" class="brand-logo" style="height: 20px;">
+        </div>
+        <div class="flex items-center">
+          <img src="img/techcrunch.svg" alt="TechCrunch" class="brand-logo" style="height: 24px;">
+        </div>
+        <div class="flex items-center">
+          <span class="font-bold text-xl text-white tracking-tight font-manrope whitespace-nowrap">AppSumo</span>
+        </div>
+        <div class="flex items-center">
+          <span class="font-bold text-lg text-white tracking-tight font-manrope whitespace-nowrap">Mixergy</span>
+        </div>
+        <div class="flex items-center">
+          <span class="font-bold text-lg text-white tracking-tight font-manrope whitespace-nowrap">High Ticket Trainer</span>
+        </div>
+        <div class="flex items-center">
+          <span class="font-bold text-lg text-white tracking-tight font-manrope whitespace-nowrap">Corner Capital</span>
+        </div>
+      </div>
+    </div>
+</div>
 
 <div class="pointer-events-none w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
 

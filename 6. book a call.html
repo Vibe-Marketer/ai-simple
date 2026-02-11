@@ -52,7 +52,11 @@
       /*
       Animation on Scroll State Management
       */
-      .animate-on-scroll { animation-play-state: paused !important; }
+      .animate-on-scroll { 
+        animation-play-state: paused !important; 
+        will-change: transform, opacity, filter;
+        transform: translateZ(0);
+      }
       .animate-on-scroll.animate { animation-play-state: running !important; }
       /* Animated Shiny CTA Button Styles */
       @property --gradient-angle { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
@@ -152,6 +156,7 @@
       inset: 0 0 auto 0;
       height: 12%;
       pointer-events: none;
+      transform: translateZ(0);
       }
       .gradient-blur>div, .gradient-blur::before, .gradient-blur::after { position: absolute; inset: 0; }
       .gradient-blur::before { content: ""; z-index: 1; backdrop-filter: blur(0.5px); mask: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 12.5%, rgba(0, 0, 0, 1) 25%, rgba(0, 0, 0, 0) 37.5%); }
