@@ -3,243 +3,114 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Free Offer MBA + 728M Lead Vault | AI Simple</title>
-<meta name="description" content="Steal the Offer MBA (7 AI Conversion Keys) + 728,000,000 pre-built leads. Build a 7-figure-ready offer in about an hour, then plug it into the largest lead vault we've ever released.">
+<title>Offer MBA + 728M Lead Vault (Free) — AI Simple</title>
+<meta name="description" content="Build a 7-figure-ready offer in about an hour, then plug it into 728,000,000 pre-built leads and use our most ruthless copy GPT to turn it into content, emails, and sales.">
 <link rel="icon" href="img/ai-simple-logo.png" type="image/png">
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://unpkg.com/lucide@latest"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
-<script>
-tailwind.config = {
-  theme: {
-    extend: {}
-  }
-};
-</script>
+<script>tailwind.config = { theme: { extend: {} } };</script>
 <style>
 body { font-family: 'Inter', sans-serif; }
 .font-manrope { font-family: 'Manrope', sans-serif !important; }
 .font-geist-mono { font-family: 'Geist Mono', monospace !important; }
 
-/* Animation Keyframe: Content Fade In */
-@keyframes fadeSlideIn {
-  0% { opacity: 0; transform: translateY(30px); filter: blur(8px); }
-  100% { opacity: 1; transform: translateY(0); filter: blur(0px); }
-}
+/* ========== ANIMATIONS ========== */
+@keyframes fadeSlideIn { 0% { opacity: 0; transform: translateY(30px); filter: blur(8px); } 100% { opacity: 1; transform: translateY(0); filter: blur(0px); } }
+@keyframes columnReveal { 0% { clip-path: inset(0 0 100% 0); opacity: 0; } 100% { clip-path: inset(0 0 0% 0); opacity: 1; } }
+@keyframes border-spin { to { --gradient-angle: 360deg; } }
+@keyframes shimmer { to { transform: translate(-50%, -50%) rotate(360deg); } }
+@keyframes breathe { 0%, 100% { transform: translate(-50%, -50%) scale(1); } 50% { transform: translate(-50%, -50%) scale(1.20); } }
+@keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
+@keyframes scan-line { 0% { top: -2px; } 100% { top: 100%; } }
+@keyframes text-shimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
+@keyframes check-pop { 0% { transform: scale(0); opacity: 0; } 50% { transform: scale(1.2); } 100% { transform: scale(1); opacity: 1; } }
+@keyframes pulse-dot { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.5); } }
+@keyframes auroraShift1 { 0% { transform: translateX(-8%) translateY(-3%) scale(1); opacity: 0.7; } 50% { transform: translateX(8%) translateY(3%) scale(1.1); opacity: 1; } 100% { transform: translateX(-8%) translateY(-3%) scale(1); opacity: 0.7; } }
+@keyframes auroraShift2 { 0% { transform: translateX(5%) translateY(5%) scale(1.05); opacity: 0.8; } 50% { transform: translateX(-5%) translateY(-5%) scale(1); opacity: 0.6; } 100% { transform: translateX(5%) translateY(5%) scale(1.05); opacity: 0.8; } }
 
-/* Aurora Background Keyframes */
-@keyframes auroraShift1 {
-  0% { transform: translateX(-8%) translateY(-3%) scale(1); opacity: 0.7; }
-  50% { transform: translateX(8%) translateY(3%) scale(1.1); opacity: 1; }
-  100% { transform: translateX(-8%) translateY(-3%) scale(1); opacity: 0.7; }
-}
-@keyframes auroraShift2 {
-  0% { transform: translateX(5%) translateY(5%) scale(1.05); opacity: 0.8; }
-  50% { transform: translateX(-5%) translateY(-5%) scale(1); opacity: 0.6; }
-  100% { transform: translateX(5%) translateY(5%) scale(1.05); opacity: 0.8; }
-}
-
-/* Animation Keyframe: Column Clip Reveal */
-@keyframes columnReveal {
-  0% { clip-path: inset(0 0 100% 0); opacity: 0; }
-  100% { clip-path: inset(0 0 0% 0); opacity: 1; }
-}
 .col-anim { animation: columnReveal 1.4s cubic-bezier(0.16, 1, 0.3, 1) backwards; will-change: clip-path; }
-.delay-1 { animation-delay: 0.1s; }
-.delay-2 { animation-delay: 0.2s; }
-.delay-3 { animation-delay: 0.3s; }
-.delay-4 { animation-delay: 0.4s; }
+.delay-1 { animation-delay: 0.1s; } .delay-2 { animation-delay: 0.2s; } .delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; } .delay-5 { animation-delay: 0.5s; } .delay-6 { animation-delay: 0.6s; }
+.delay-7 { animation-delay: 0.7s; }
 
-/* Animation on Scroll State Management */
-.animate-on-scroll { 
-  animation-play-state: paused !important; 
-  will-change: transform, opacity, filter;
-  transform: translateZ(0);
-}
+.animate-on-scroll { animation-play-state: paused !important; will-change: transform, opacity, filter; transform: translateZ(0); }
 .animate-on-scroll.animate { animation-play-state: running !important; }
 
-/* Animated Shiny CTA Button Styles (Orange) */
+/* ========== SHINY CTA ========== */
 @property --gradient-angle { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
 @property --gradient-angle-offset { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
 @property --gradient-percent { syntax: "<percentage>"; initial-value: 20%; inherits: false; }
 @property --gradient-shine { syntax: "<color>"; initial-value: #ef233c; inherits: false; }
 .shiny-cta {
-  --gradient-angle: 0deg;
-  --gradient-angle-offset: 0deg;
-  --gradient-percent: 20%;
-  --gradient-shine: #ef233c;
-  position: relative;
-  overflow: hidden;
-  border-radius: 0;
-  padding: 1rem 2rem;
-  font-size: 1rem;
-  line-height: 1.2;
-  font-weight: 600;
-  color: #ffffff;
-  background: linear-gradient(#000000, #000000) padding-box,
-    conic-gradient(from calc(var(--gradient-angle) - var(--gradient-angle-offset)),
-    transparent 0%, #ef233c 5%, var(--gradient-shine) 15%, #ef233c 30%, transparent 40%, transparent 100%) border-box;
-  border: 2px solid transparent;
-  box-shadow: inset 0 0 0 1px #1a1818;
-  outline: none;
-  transition: --gradient-angle-offset 800ms cubic-bezier(0.25, 1, 0.5, 1),
-    --gradient-percent 800ms cubic-bezier(0.25, 1, 0.5, 1),
-    --gradient-shine 800ms cubic-bezier(0.25, 1, 0.5, 1),
-    box-shadow 0.3s;
-  cursor: pointer;
-  isolation: isolate;
-  z-index: 0;
-  animation: border-spin 2.5s linear infinite;
+  --gradient-angle: 0deg; --gradient-angle-offset: 0deg; --gradient-percent: 20%; --gradient-shine: #ef233c;
+  position: relative; overflow: hidden; border-radius: 0; padding: 1.25rem 2.5rem; font-size: 1rem; line-height: 1.2; font-weight: 600; color: #fff;
+  background: linear-gradient(#000, #000) padding-box, conic-gradient(from calc(var(--gradient-angle) - var(--gradient-angle-offset)), transparent 0%, #ef233c 5%, var(--gradient-shine) 15%, #ef233c 30%, transparent 40%, transparent 100%) border-box;
+  border: 2px solid transparent; box-shadow: inset 0 0 0 1px #1a1818; outline: none;
+  transition: --gradient-angle-offset 800ms cubic-bezier(0.25, 1, 0.5, 1), --gradient-percent 800ms cubic-bezier(0.25, 1, 0.5, 1), --gradient-shine 800ms cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s;
+  cursor: pointer; isolation: isolate; z-index: 0; animation: border-spin 2.5s linear infinite; width: 100%;
 }
-@keyframes border-spin { to { --gradient-angle: 360deg; } }
 .shiny-cta:active { transform: translateY(1px); }
-.shiny-cta::before {
-  content: '';
-  pointer-events: none;
-  position: absolute;
-  left: 50%; top: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 0;
-  --size: calc(100% - 6px);
-  --position: 2px;
-  --space: 4px;
-  width: var(--size);
-  height: var(--size);
-  background: radial-gradient(circle at var(--position) var(--position), white 0.5px, transparent 0) padding-box;
-  background-size: var(--space) var(--space);
-  background-repeat: space;
-  mask-image: conic-gradient(from calc(var(--gradient-angle) + 45deg), black, transparent 10% 90%, black);
-  border-radius: inherit;
-  opacity: 0.4;
-}
-.shiny-cta::after {
-  content: '';
-  pointer-events: none;
-  position: absolute;
-  left: 50%; top: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1;
-  width: 100%;
-  aspect-ratio: 1;
-  background: linear-gradient(-50deg, transparent, #ef233c, transparent);
-  mask-image: radial-gradient(circle at bottom, transparent 40%, black);
-  opacity: 0.6;
-  animation: shimmer 4s linear infinite;
-}
+.shiny-cta::before { content: ''; pointer-events: none; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 0; --size: calc(100% - 6px); width: var(--size); height: var(--size); background: radial-gradient(circle at 2px 2px, white 0.5px, transparent 0) padding-box; background-size: 4px 4px; background-repeat: space; mask-image: conic-gradient(from calc(var(--gradient-angle) + 45deg), black, transparent 10% 90%, black); border-radius: inherit; opacity: 0.4; }
+.shiny-cta::after { content: ''; pointer-events: none; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 1; width: 100%; aspect-ratio: 1; background: linear-gradient(-50deg, transparent, #ef233c, transparent); mask-image: radial-gradient(circle at bottom, transparent 40%, black); opacity: 0.6; animation: shimmer 4s linear infinite; }
 .shiny-cta span { position: relative; z-index: 2; display: inline-block; }
-.shiny-cta span::before {
-  content: '';
-  pointer-events: none;
-  position: absolute;
-  left: 50%; top: 50%;
-  transform: translate(-50%, -50%);
-  z-index: -1;
-  --size: calc(100% + 1rem);
-  width: var(--size);
-  height: var(--size);
-  box-shadow: inset 0 -1ex 2rem 4px #ef233c;
-  opacity: 0;
-  border-radius: inherit;
-  transition: opacity 800ms cubic-bezier(0.25, 1, 0.5, 1);
-  animation: breathe 4.5s linear infinite;
-}
-@keyframes shimmer { to { transform: translate(-50%, -50%) rotate(360deg); } }
-@keyframes breathe {
-  0%, 100% { transform: translate(-50%, -50%) scale(1); }
-  50% { transform: translate(-50%, -50%) scale(1.20); }
-}
+.shiny-cta span::before { content: ''; pointer-events: none; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: -1; --size: calc(100% + 1rem); width: var(--size); height: var(--size); box-shadow: inset 0 -1ex 2rem 4px #ef233c; opacity: 0; border-radius: inherit; transition: opacity 800ms cubic-bezier(0.25, 1, 0.5, 1); animation: breathe 4.5s linear infinite; }
 
-/* Progressive Blur CSS */
-.gradient-blur {
-  position: fixed;
-  z-index: 5;
-  inset: 0 0 auto 0;
-  height: 12%;
-  pointer-events: none;
-  transform: translateZ(0);
-}
-.gradient-blur > div, .gradient-blur::before, .gradient-blur::after { position: absolute; inset: 0; }
+/* ========== GRADIENT BORDER ========== */
+[style*="--border-gradient"]::before { content: ""; position: absolute; inset: 0; padding: 1px; border-radius: var(--border-radius-before, inherit); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; background: var(--border-gradient); pointer-events: none; }
+
+/* ========== PROGRESSIVE BLUR ========== */
+.gradient-blur { position: fixed; z-index: 5; inset: 0 0 auto 0; height: 12%; pointer-events: none; transform: translateZ(0); }
+.gradient-blur>div, .gradient-blur::before, .gradient-blur::after { position: absolute; inset: 0; }
 .gradient-blur::before { content: ""; z-index: 1; backdrop-filter: blur(0.5px); mask: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 12.5%, rgba(0,0,0,1) 25%, rgba(0,0,0,0) 37.5%); }
-.gradient-blur > div:nth-of-type(1) { z-index: 2; backdrop-filter: blur(1px); mask: linear-gradient(to top, rgba(0,0,0,0) 12.5%, rgba(0,0,0,1) 25%, rgba(0,0,0,1) 37.5%, rgba(0,0,0,0) 50%); }
-.gradient-blur > div:nth-of-type(2) { z-index: 3; backdrop-filter: blur(2px); mask: linear-gradient(to top, rgba(0,0,0,0) 25%, rgba(0,0,0,1) 37.5%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 62.5%); }
-.gradient-blur > div:nth-of-type(3) { z-index: 4; backdrop-filter: blur(4px); mask: linear-gradient(to top, rgba(0,0,0,0) 37.5%, rgba(0,0,0,1) 50%, rgba(0,0,0,1) 62.5%, rgba(0,0,0,0) 75%); }
-.gradient-blur > div:nth-of-type(4) { z-index: 5; backdrop-filter: blur(8px); mask: linear-gradient(to top, rgba(0,0,0,0) 50%, rgba(0,0,0,1) 62.5%, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 87.5%); }
-.gradient-blur > div:nth-of-type(5) { z-index: 6; backdrop-filter: blur(16px); mask: linear-gradient(to top, rgba(0,0,0,0) 62.5%, rgba(0,0,0,1) 75%, rgba(0,0,0,1) 87.5%, rgba(0,0,0,0) 100%); }
-.gradient-blur > div:nth-of-type(6) { z-index: 7; backdrop-filter: blur(32px); mask: linear-gradient(to top, rgba(0,0,0,0) 75%, rgba(0,0,0,1) 87.5%, rgba(0,0,0,1) 100%); }
+.gradient-blur>div:nth-of-type(1) { z-index: 2; backdrop-filter: blur(1px); mask: linear-gradient(to top, rgba(0,0,0,0) 12.5%, rgba(0,0,0,1) 25%, rgba(0,0,0,1) 37.5%, rgba(0,0,0,0) 50%); }
+.gradient-blur>div:nth-of-type(2) { z-index: 3; backdrop-filter: blur(2px); mask: linear-gradient(to top, rgba(0,0,0,0) 25%, rgba(0,0,0,1) 37.5%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 62.5%); }
+.gradient-blur>div:nth-of-type(3) { z-index: 4; backdrop-filter: blur(4px); mask: linear-gradient(to top, rgba(0,0,0,0) 37.5%, rgba(0,0,0,1) 50%, rgba(0,0,0,1) 62.5%, rgba(0,0,0,0) 75%); }
+.gradient-blur>div:nth-of-type(4) { z-index: 5; backdrop-filter: blur(8px); mask: linear-gradient(to top, rgba(0,0,0,0) 50%, rgba(0,0,0,1) 62.5%, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 87.5%); }
+.gradient-blur>div:nth-of-type(5) { z-index: 6; backdrop-filter: blur(16px); mask: linear-gradient(to top, rgba(0,0,0,0) 62.5%, rgba(0,0,0,1) 75%, rgba(0,0,0,1) 87.5%, rgba(0,0,0,0) 100%); }
+.gradient-blur>div:nth-of-type(6) { z-index: 7; backdrop-filter: blur(32px); mask: linear-gradient(to top, rgba(0,0,0,0) 75%, rgba(0,0,0,1) 87.5%, rgba(0,0,0,1) 100%); }
 .gradient-blur::after { content: ""; z-index: 8; backdrop-filter: blur(64px); mask: linear-gradient(to top, rgba(0,0,0,0) 87.5%, rgba(0,0,0,1) 100%); }
 
-/* Gradient Border */
-[style*="--border-gradient"]::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  padding: 1px;
-  border-radius: var(--border-radius-before, inherit);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  background: var(--border-gradient);
-  pointer-events: none;
-}
+/* ========== HOVER GLOW ========== */
+.hover-glow-card { transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+.hover-glow-card:hover { border-color: rgba(239,35,60,0.5) !important; box-shadow: 0 0 30px rgba(239,35,60,0.08), inset 0 0 30px rgba(239,35,60,0.03); }
 
-/* Pulsing dot */
-@keyframes pulse-dot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(1.5); }
-}
+/* ========== GRID ========== */
+.bg-grid { background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 60px 60px; }
+
+/* ========== TEXT SHIMMER ========== */
+.text-shimmer { background: linear-gradient(90deg, #fff 0%, #ef233c 25%, #fff 50%, #ef233c 75%, #fff 100%); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: text-shimmer 4s linear infinite; }
+
+/* ========== FORM STYLES ========== */
+.form-input { background: rgba(255,255,255,0.03); border: 1px dashed rgba(63,63,70,0.8); padding: 14px 16px; color: white; width: 100%; outline: none; font-size: 14px; transition: all 0.3s ease; font-family: 'Inter', sans-serif; border-radius: 0; }
+.form-input:focus { border-color: #ef233c; box-shadow: 0 0 0 1px rgba(239,35,60,0.3), 0 0 20px rgba(239,35,60,0.1); background: rgba(239,35,60,0.03); }
+.form-input::placeholder { color: rgba(161,161,170,0.5); }
+.form-input option { background: #0a0a0a; color: white; }
+select.form-input { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23a1a1aa' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; }
+
+/* ========== PARTICLES ========== */
+.particle { position: absolute; width: 2px; height: 2px; background: rgba(239,35,60,0.4); border-radius: 50%; animation: float 6s ease-in-out infinite; pointer-events: none; }
+
+/* ========== SCAN LINE ========== */
+.scan-line { position: relative; overflow: hidden; }
+.scan-line::after { content: ''; position: absolute; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(239,35,60,0.3), transparent); animation: scan-line 8s linear infinite; pointer-events: none; z-index: 1; }
+
+/* ========== STICKY BAR ========== */
+.sticky-cta-bar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 100; background: rgba(0,0,0,0.9); backdrop-filter: blur(20px); border-top: 1px solid rgba(239,35,60,0.3); transform: translateY(100%); transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); padding: 12px 24px; }
+.sticky-cta-bar.visible { transform: translateY(0); }
+
+/* ========== PULSE DOT ========== */
 .pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
-
-/* Form input focus glow */
-.form-input-glow:focus {
-  box-shadow: 0 0 0 1px #ef233c, 0 0 20px rgba(249, 115, 22, 0.15);
-}
-
-/* Subtle background grid */
-.bg-grid {
-  background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-  background-size: 60px 60px;
-}
-
-/* Modal Styles */
-.modal-overlay {
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-  backdrop-filter: blur(8px);
-}
-.modal-overlay.open {
-  opacity: 1;
-  pointer-events: auto;
-}
-.modal-content {
-  transform: scale(0.95) translateY(10px);
-  opacity: 0;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
-}
-.modal-overlay.open .modal-content {
-  transform: scale(1) translateY(0);
-  opacity: 1;
-}
 </style>
+
 <script>
 (function () {
-  const once = true;
   if (!window.__inViewIO) {
     window.__inViewIO = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("animate");
-          if (once) window.__inViewIO.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15, rootMargin: "0px 0px -5% 0px" });
+      entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add("animate"); window.__inViewIO.unobserve(entry.target); } });
+    }, { threshold: 0.1, rootMargin: "0px 0px -5% 0px" });
   }
-  window.initInViewAnimations = function (selector = ".animate-on-scroll") {
-    document.querySelectorAll(selector).forEach((el) => {
-      window.__inViewIO.observe(el);
-    });
-  };
+  window.initInViewAnimations = function (selector = ".animate-on-scroll") { document.querySelectorAll(selector).forEach((el) => { window.__inViewIO.observe(el); }); };
   document.addEventListener("DOMContentLoaded", () => initInViewAnimations());
 })();
 </script>
@@ -247,80 +118,111 @@ body { font-family: 'Inter', sans-serif; }
 
 <body class="antialiased overflow-x-hidden selection:bg-red-600/30 selection:text-red-200 text-white bg-black">
 
-  <!-- Progressive Blur Top -->
-  <div class="gradient-blur" style="height: 120px;">
-    <div></div><div></div><div></div><div></div><div></div><div></div>
+<!-- Progressive Blur -->
+<div class="gradient-blur" style="height: 120px;"><div></div><div></div><div></div><div></div><div></div><div></div></div>
+
+<!-- ============================================================ -->
+<!-- NAVIGATION -->
+<!-- ============================================================ -->
+<div class="fixed flex [animation:fadeSlideIn_1s_ease-out_0.5s_both] w-full z-50 pt-6 pr-4 pl-4 top-0 left-0 justify-center">
+  <nav class="shadow-black/50 flex md:gap-8 md:w-auto bg-black/60 w-full max-w-5xl rounded-none pt-2 pr-2 pb-2 pl-3 shadow-2xl backdrop-blur-lg gap-x-4 gap-y-4 items-center justify-between" style="position: relative; --border-gradient: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0), rgba(255,255,255,0.2)); --border-radius-before: 0">
+    <a href="index.html" class="flex gap-x-3 items-center">
+      <img src="img/ai-simple-logo.svg" alt="AI Simple" class="h-8 w-auto drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">
+      <span class="text-xl font-bold text-white tracking-tight font-manrope">AI Simple</span>
+    </a>
+    <a href="index.html" class="group inline-flex overflow-hidden transition-transform active:scale-95 cursor-pointer outline-none rounded-none pt-2.5 pr-5 pb-2.5 pl-5 relative items-center justify-center" style="background-color: rgba(255,255,255,0.05)">
+      <span class="absolute inset-0 rounded-none bg-zinc-800"></span>
+      <span class="bg-black z-10 rounded-none absolute top-[1px] right-[1px] bottom-[1px] left-[1px]"></span>
+      <span class="relative z-20 flex items-center justify-center gap-2 text-xs font-medium text-white tracking-wide uppercase">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        <span>Back to Site</span>
+      </span>
+    </a>
+  </nav>
+</div>
+
+<!-- ============================================================ -->
+<!-- HERO + INLINE FORM -->
+<!-- ============================================================ -->
+<section id="hero" class="min-h-screen flex flex-col overflow-hidden w-full pt-32 md:pt-24 relative items-center justify-start bg-grid">
+  <!-- Aurora Background -->
+  <div class="absolute inset-0 z-0 h-full overflow-hidden pointer-events-none" style="mask-image: linear-gradient(to bottom, transparent, black 5%, black 75%, transparent);">
+    <div class="absolute inset-0" style="background: radial-gradient(ellipse 80% 50% at 20% 40%, rgba(239,35,60,0.1) 0%, transparent 60%), radial-gradient(ellipse 60% 60% at 75% 60%, rgba(248,113,113,0.08) 0%, transparent 60%); animation: auroraShift1 8s ease-in-out infinite alternate;"></div>
+    <div class="absolute inset-0" style="background: radial-gradient(ellipse 70% 50% at 60% 30%, rgba(220,38,38,0.08) 0%, transparent 55%), radial-gradient(ellipse 50% 70% at 30% 70%, rgba(239,35,60,0.06) 0%, transparent 60%); animation: auroraShift2 12s ease-in-out infinite alternate-reverse;"></div>
   </div>
 
-  <!-- Navigation -->
-  <div class="fixed flex [animation:fadeSlideIn_1s_ease-out_0.5s_both] w-full z-50 pt-10 px-6 md:px-10 top-0 left-0 justify-center">
-    <nav class="shadow-black/50 flex w-full max-w-[90rem] rounded-none py-4 px-8 shadow-2xl backdrop-blur-lg items-center justify-between" style="position: relative; --border-gradient: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0), rgba(255,255,255,0.2)); --border-radius-before: 0">
-      <a href="index.html" class="flex gap-x-4 items-center group">
-        <img src="img/ai-simple-logo.svg" alt="AI Simple" class="h-8 w-auto drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">
-        <span class="text-xl font-bold text-white tracking-tight font-manrope">AI Simple</span>
-      </a>
-      <a href="index.html" class="text-sm text-zinc-400 hover:text-white transition-colors font-medium flex items-center gap-2">
-        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
-        Back to Home
-      </a>
-    </nav>
+  <!-- Radial Glow -->
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[700px] pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(239,35,60,0.12) 0%, transparent 70%);"></div>
+
+  <!-- Column Reveal Grid -->
+  <div class="absolute inset-0 flex z-0 pointer-events-none" style="mask-image: linear-gradient(180deg, transparent, black 10%, black 80%, transparent);">
+    <div class="flex-1 border-r border-white/[0.02] col-anim delay-1"></div>
+    <div class="flex-1 border-r border-white/[0.02] col-anim delay-2"></div>
+    <div class="flex-1 border-r border-white/[0.02] col-anim delay-3"></div>
+    <div class="flex-1 border-r border-white/[0.02] col-anim delay-4"></div>
+    <div class="flex-1 border-r border-white/[0.02] col-anim delay-5"></div>
+    <div class="flex-1 border-r border-white/[0.02] col-anim delay-6"></div>
+    <div class="flex-1 col-anim delay-7"></div>
   </div>
 
+  <!-- Particles -->
+  <div class="particle" style="top: 15%; left: 10%; animation-delay: 0s; animation-duration: 7s;"></div>
+  <div class="particle" style="top: 25%; left: 85%; animation-delay: 1s; animation-duration: 5s;"></div>
+  <div class="particle" style="top: 60%; left: 20%; animation-delay: 2s; animation-duration: 8s;"></div>
+  <div class="particle" style="top: 45%; left: 75%; animation-delay: 0.5s; animation-duration: 6s;"></div>
 
-  <!-- ============================================================ -->
-  <!-- SECTION 1: HERO (Centered) + MODAL TRIGGER                   -->
-  <!-- ============================================================ -->
-  <section id="get-access-form" class="min-h-screen flex flex-col pt-40 md:pt-56 pb-20 overflow-hidden w-full relative items-center justify-start bg-grid">
-    <!-- Subtle radial glow -->
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[700px] pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(239,35,60,0.15) 0%, transparent 70%);"></div>
-
-    <!-- Aurora Background Animation -->
-    <div class="absolute inset-0 z-0 h-full overflow-hidden pointer-events-none" style="mask-image: linear-gradient(to bottom, transparent, black 5%, black 75%, transparent);">
-      <div class="absolute inset-0" style="background: radial-gradient(ellipse 80% 50% at 20% 40%, rgba(239,35,60,0.1) 0%, transparent 60%), radial-gradient(ellipse 60% 60% at 75% 60%, rgba(248,113,113,0.08) 0%, transparent 60%); animation: auroraShift1 8s ease-in-out infinite alternate;"></div>
-      <div class="absolute inset-0" style="background: radial-gradient(ellipse 70% 50% at 60% 30%, rgba(220,38,38,0.08) 0%, transparent 55%), radial-gradient(ellipse 50% 70% at 30% 70%, rgba(239,35,60,0.06) 0%, transparent 60%); animation: auroraShift2 12s ease-in-out infinite alternate-reverse;"></div>
+  <!-- Unicorn Studio Aura Background -->
+  <div class="aura-background-component -z-10 w-full top-0 absolute h-[800px]" data-alpha-mask="80" style="mask-image: linear-gradient(transparent, black 0%, black 80%, transparent);">
+    <div class="aura-background-component top-0 w-full -z-10 absolute h-full">
+      <div data-us-project="sajpUiTp7MIKdX6daDCu" class="absolute w-full h-full left-0 top-0 -z-10"></div>
     </div>
+  </div>
 
-    <div class="z-10 w-full max-w-7xl mx-auto px-6 relative text-center">
-      
-      <!-- Badge -->
-      <div class="[animation:fadeSlideIn_1s_ease-out_0.8s_both] inline-flex transition-transform hover:scale-105 cursor-default group bg-gradient-to-br from-white/10 to-white/0 bg-gradient-to-b from-white/20 via-white/0 to-white/10 rounded-full mb-6 pt-1.5 pr-4 pb-1.5 pl-3 backdrop-blur-sm gap-x-2 items-center" style="position: relative; --border-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.1)); --border-radius-before: 9999px">
-        <span class="flex h-2 w-2 rounded-full pulse-dot bg-[#ef233c] shadow-[0_0_10px_rgba(239,35,60,0.8)]"></span>
-        <span class="text-xs font-semibold tracking-widest uppercase font-geist-mono text-white/90">Free for Event Attendees</span>
-      </div>
+  <div class="z-20 w-full max-w-6xl mx-auto px-6 mt-16 md:mt-24 relative">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
 
-      <!-- Headline -->
-      <h1 class="[animation:fadeSlideIn_1s_ease-out_1s_both] leading-[0.95] text-5xl md:text-7xl lg:text-[5.5rem] xl:text-[6.5rem] font-bold tracking-tighter font-manrope mb-8 max-w-[90rem] mx-auto flex flex-wrap justify-center gap-x-[0.25em] gap-y-2">
-        <span class="inline-block px-1 pb-2 leading-[1.1] bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50 opacity-100">Steal</span>
-        <span class="inline-block px-1 pb-2 leading-[1.1] bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50 opacity-60">My</span>
-        <span class="inline-block px-1 pb-2 leading-[1.1] bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50 opacity-100">Offer</span>
-        <span class="inline-block px-1 pb-2 leading-[1.1] bg-clip-text text-transparent bg-gradient-to-b from-[#ef233c] via-red-400 to-[#ef233c] drop-shadow-[0_0_30px_rgba(239,35,60,0.4)]">MBA</span>
-        <span class="inline-block px-1 pb-2 leading-[1.1] bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50 opacity-60">+</span>
-        <span class="inline-block px-1 pb-2 leading-[1.1] bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50 opacity-100">728M</span>
-        <span class="inline-block px-1 pb-2 leading-[1.1] bg-clip-text text-transparent bg-gradient-to-b from-[#ef233c] via-red-400 to-[#ef233c] drop-shadow-[0_0_30px_rgba(239,35,60,0.4)]">Leads</span>
-      </h1>
+      <!-- LEFT: Copy -->
+      <div class="flex flex-col">
+        <!-- Badge -->
+        <div class="[animation:fadeSlideIn_1s_ease-out_0.8s_both] inline-flex transition-transform hover:scale-105 cursor-default group bg-gradient-to-br from-white/10 to-white/0 rounded-full mb-8 pt-1.5 pr-4 pb-1.5 pl-3 backdrop-blur-sm gap-x-2 items-center self-start" style="position: relative; --border-gradient: linear-gradient(180deg, rgba(255,255,255,0.2), rgba(255,255,255,0), rgba(255,255,255,0.1)); --border-radius-before: 9999px">
+          <span class="flex h-2 w-2 rounded-full pulse-dot bg-[#ef233c] shadow-[0_0_10px_rgba(239,35,60,0.8)]"></span>
+          <span class="text-xs font-semibold tracking-widest uppercase font-geist-mono text-white/90">Free for Event Attendees</span>
+        </div>
 
-      <!-- Subhead -->
-      <p class="[animation:fadeSlideIn_1s_ease-out_1.2s_both] leading-relaxed md:text-2xl text-xl font-medium text-zinc-300 tracking-normal font-manrope max-w-3xl mx-auto mb-12">
-        Build a 7&#8209;figure&#8209;ready offer in about an hour, then plug it into the largest pre&#8209;built lead vault we've ever released.
-      </p>
+        <!-- Headline -->
+        <h1 class="[animation:fadeSlideIn_1s_ease-out_1s_both] text-4xl md:text-5xl lg:text-6xl font-bold text-white font-manrope tracking-tighter mb-6 leading-[1.05]">
+          Steal My <span class="text-shimmer">Offer MBA</span> + <span class="text-[#ef233c] drop-shadow-[0_0_20px_rgba(239,35,60,0.4)]">728M</span>&nbsp;Leads
+        </h1>
 
-      <!-- CTA Trigger -->
-      <div class="[animation:fadeSlideIn_1s_ease-out_1.4s_both] flex flex-col items-center justify-center gap-6 w-full px-4">
-        <button onclick="openModal()" class="shiny-cta min-w-[300px] sm:min-w-[340px] md:min-w-[380px] rounded-full text-base sm:text-lg">
-          <span class="flex flex-row flex-nowrap items-center justify-center gap-3 font-bold tracking-wide uppercase font-manrope whitespace-nowrap">
-            Send Me The Vault
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-          </span>
-        </button>
-        
-        <p class="text-xs text-zinc-500 font-geist-mono">
-          <span class="text-[#ef233c]">*</span> Instant Access via Email
+        <!-- Subhead -->
+        <p class="[animation:fadeSlideIn_1s_ease-out_1.2s_both] text-lg md:text-xl text-zinc-300 font-medium font-manrope leading-relaxed mb-8 max-w-lg">
+          Build a 7&#8209;figure&#8209;ready offer in about an hour, then plug it into 728,000,000 pre&#8209;built leads&hellip; and use my most ruthless copy GPT to turn it into content, emails, and&nbsp;sales.
         </p>
-      </div>
 
-      <!-- Authority / Social Proof -->
-      <div class="[animation:fadeSlideIn_1s_ease-out_1.6s_both] mt-16 pt-8 border-t border-dashed border-white/10 max-w-2xl mx-auto flex flex-col sm:flex-row gap-8 items-center justify-center">
-        <div class="flex items-center gap-3">
+        <!-- Quick stats -->
+        <div class="[animation:fadeSlideIn_1s_ease-out_1.4s_both] grid grid-cols-3 gap-4 mb-8">
+          <div class="bg-black border border-dashed border-zinc-800 p-4 relative scan-line hover-glow-card">
+            <div class="absolute top-0 left-0 w-1.5 h-1.5 border-t border-l border-[#ef233c]"></div>
+            <div class="absolute bottom-0 right-0 w-1.5 h-1.5 border-b border-r border-[#ef233c]"></div>
+            <p class="text-2xl font-bold text-white font-manrope tracking-tighter stat-counter" data-target="7" data-suffix="">0</p>
+            <p class="text-[10px] font-geist-mono text-zinc-500 uppercase tracking-wider mt-1">AI Agents</p>
+          </div>
+          <div class="bg-black border border-dashed border-zinc-800 p-4 relative scan-line hover-glow-card">
+            <div class="absolute top-0 left-0 w-1.5 h-1.5 border-t border-l border-[#ef233c]"></div>
+            <div class="absolute bottom-0 right-0 w-1.5 h-1.5 border-b border-r border-[#ef233c]"></div>
+            <p class="text-2xl font-bold text-white font-manrope tracking-tighter stat-counter" data-target="728" data-suffix="M+">0</p>
+            <p class="text-[10px] font-geist-mono text-zinc-500 uppercase tracking-wider mt-1">Leads</p>
+          </div>
+          <div class="bg-black border border-dashed border-zinc-800 p-4 relative scan-line hover-glow-card">
+            <div class="absolute top-0 left-0 w-1.5 h-1.5 border-t border-l border-[#ef233c]"></div>
+            <div class="absolute bottom-0 right-0 w-1.5 h-1.5 border-b border-r border-[#ef233c]"></div>
+            <p class="text-2xl font-bold text-white font-manrope tracking-tighter">$0</p>
+            <p class="text-[10px] font-geist-mono text-zinc-500 uppercase tracking-wider mt-1">Cost</p>
+          </div>
+        </div>
+
+        <!-- Social proof -->
+        <div class="[animation:fadeSlideIn_1s_ease-out_1.6s_both] flex items-center gap-3">
           <div class="flex -space-x-3">
             <div class="w-10 h-10 rounded-full border-2 border-black overflow-hidden bg-zinc-800">
               <img src="Andrew Naegele Headshot B&W.png" alt="Andrew" class="w-full h-full object-cover grayscale">
@@ -331,504 +233,452 @@ body { font-family: 'Inter', sans-serif; }
           </div>
           <div class="text-left">
             <p class="text-sm font-semibold text-white font-manrope">Andrew &amp; Los</p>
-            <p class="text-[10px] text-zinc-500 uppercase tracking-wider font-geist-mono">Creators</p>
+            <p class="text-[10px] text-zinc-500 uppercase tracking-wider font-geist-mono">Trusted by founders behind <span class="text-white">$400M+</span> revenue</p>
           </div>
         </div>
-        <div class="h-8 w-px bg-white/10 hidden sm:block"></div>
-        <p class="text-xs text-zinc-400 font-manrope">
-          Trusted by founders behind <span class="text-white font-semibold">$400M+</span> in combined revenue.
-        </p>
       </div>
 
-    </div>
-  </section>
+      <!-- RIGHT: Inline Form -->
+      <div class="[animation:fadeSlideIn_1s_ease-out_1.2s_both]">
+        <div id="form-container" class="bg-black border border-zinc-800 border-dashed relative overflow-hidden hover-glow-card">
+          <div class="absolute top-0 left-0 w-3 h-3 border-t border-l border-[#ef233c]"></div>
+          <div class="absolute top-0 right-0 w-3 h-3 border-t border-r border-[#ef233c]"></div>
+          <div class="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-[#ef233c]"></div>
+          <div class="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-[#ef233c]"></div>
+          <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 50% 0%, rgba(239,35,60,0.06) 0%, transparent 60%);"></div>
 
-  <!-- MODAL -->
-  <div id="leadModal" class="modal-overlay fixed inset-0 z-[100] flex items-center justify-center px-4 bg-black/80">
-    <div class="absolute inset-0" onclick="closeModal()"></div>
-    
-    <div class="modal-content relative w-full max-w-md bg-[#0a0a0a] border border-zinc-800 rounded-2xl shadow-2xl overflow-hidden">
-      <!-- Glow -->
-      <div class="absolute inset-0 pointer-events-none opacity-20" style="background: radial-gradient(circle at top, rgba(239,35,60,0.3) 0%, transparent 60%);"></div>
-      
-      <!-- Close Button -->
-      <button onclick="closeModal()" class="absolute top-4 right-4 text-zinc-500 hover:text-white transition-colors z-20">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 18 18"/></svg>
-      </button>
+          <div class="p-8 md:p-10 relative z-10">
+            <div class="flex items-center gap-3 mb-6">
+              <span class="w-1.5 h-1.5 bg-[#ef233c] animate-pulse shadow-[0_0_8px_rgba(239,35,60,0.5)]"></span>
+              <span class="font-geist-mono text-[10px] text-[#ef233c] tracking-widest uppercase font-bold">Get Instant Access</span>
+            </div>
 
-      <div class="relative z-10 p-8">
-        <div class="text-center mb-6">
-          <h3 class="text-xl font-bold font-manrope text-white mb-2">Where should we send it?</h3>
-          <p class="text-sm text-zinc-400">Enter your details to get the Offer MBA + 728M Lead Vault sent to your inbox instantly.</p>
+            <form id="lead-form" class="flex flex-col gap-4">
+              <div>
+                <label class="text-[10px] font-geist-mono text-zinc-500 uppercase tracking-wider mb-1.5 block">Full Name *</label>
+                <input type="text" name="name" required class="form-input" placeholder="Jane Smith">
+              </div>
+              <div>
+                <label class="text-[10px] font-geist-mono text-zinc-500 uppercase tracking-wider mb-1.5 block">Email *</label>
+                <input type="email" name="email" required class="form-input" placeholder="jane@company.com">
+              </div>
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="text-[10px] font-geist-mono text-zinc-500 uppercase tracking-wider mb-1.5 block">Business Name</label>
+                  <input type="text" name="business" class="form-input" placeholder="Acme Corp">
+                </div>
+                <div>
+                  <label class="text-[10px] font-geist-mono text-zinc-500 uppercase tracking-wider mb-1.5 block">Website</label>
+                  <input type="url" name="website" class="form-input" placeholder="https://...">
+                </div>
+              </div>
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="text-[10px] font-geist-mono text-zinc-500 uppercase tracking-wider mb-1.5 block">Monthly Revenue</label>
+                  <select name="revenue" class="form-input">
+                    <option value="">Select...</option>
+                    <option value="pre-revenue">Pre-revenue</option>
+                    <option value="0-10k">$0 - $10K</option>
+                    <option value="10k-50k">$10K - $50K</option>
+                    <option value="50k-100k">$50K - $100K</option>
+                    <option value="100k-500k">$100K - $500K</option>
+                    <option value="500k+">$500K+</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="text-[10px] font-geist-mono text-zinc-500 uppercase tracking-wider mb-1.5 block">Acquisition Channel</label>
+                  <select name="channel" class="form-input">
+                    <option value="">Select...</option>
+                    <option value="organic-social">Organic Social</option>
+                    <option value="paid-ads">Paid Ads</option>
+                    <option value="cold-outreach">Cold Outreach</option>
+                    <option value="referrals">Referrals</option>
+                    <option value="seo">SEO / Content</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+              </div>
+              <div>
+                <label class="text-[10px] font-geist-mono text-zinc-500 uppercase tracking-wider mb-1.5 block">Want help wiring this into your pipeline?</label>
+                <select name="help_wanted" class="form-input">
+                  <option value="yes">Yes &mdash; let's do it</option>
+                  <option value="not-now">Not right now</option>
+                </select>
+              </div>
+
+              <button type="submit" class="shiny-cta mt-2 text-center" id="submit-btn">
+                <span class="flex items-center justify-center gap-2 font-bold tracking-wide uppercase font-manrope text-sm">
+                  Send Me The Offer MBA &amp; Lead Vault
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </span>
+              </button>
+
+              <p class="text-[11px] text-zinc-600 text-center mt-1">
+                You&rsquo;ll get instant access on the next page + an email with everything.
+              </p>
+            </form>
+          </div>
         </div>
 
-        <form action="#" method="POST" class="space-y-4">
-          <!-- Name -->
-          <div>
-            <label for="name" class="sr-only">Name</label>
-            <div class="relative">
-              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-zinc-600"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-              </div>
-              <input type="text" id="name" name="name" required placeholder="Your Name"
-                class="w-full bg-zinc-900/50 border border-zinc-800 rounded-lg pl-10 pr-4 py-3 text-white text-sm placeholder:text-zinc-600 focus:outline-none focus:border-[#ef233c] focus:ring-1 focus:ring-[#ef233c] transition-all duration-300">
+        <!-- Success state (hidden by default) -->
+        <div id="form-success" class="hidden bg-black border border-[#ef233c]/30 relative overflow-hidden p-10 md:p-12 text-center">
+          <div class="absolute top-0 left-0 w-3 h-3 border-t border-l border-[#ef233c]"></div>
+          <div class="absolute top-0 right-0 w-3 h-3 border-t border-r border-[#ef233c]"></div>
+          <div class="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-[#ef233c]"></div>
+          <div class="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-[#ef233c]"></div>
+          <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(239,35,60,0.08) 0%, transparent 60%);"></div>
+          <div class="relative z-10" style="animation: fadeSlideIn 0.8s ease-out both;">
+            <div class="w-16 h-16 mx-auto mb-6 border-2 border-[#ef233c] flex items-center justify-center" style="animation: check-pop 0.6s ease-out 0.3s both;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ef233c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
             </div>
+            <h3 class="text-2xl font-bold text-white font-manrope tracking-tight mb-3">You&rsquo;re In.</h3>
+            <p class="text-zinc-400 text-sm leading-relaxed mb-6">Check your inbox for the Offer MBA, 728M Lead Vault, and Direct Copywriter GPT. If you don&rsquo;t see it in 2 minutes, check spam.</p>
+            <a href="#implementation" class="inline-flex items-center gap-2 text-[#ef233c] text-sm font-semibold hover:text-red-400 transition-colors">
+              Want us to wire this into your business?
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+            </a>
           </div>
-
-          <!-- Email -->
-          <div>
-            <label for="email" class="sr-only">Email</label>
-            <div class="relative">
-              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-zinc-600"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-              </div>
-              <input type="email" id="email" name="email" required placeholder="Your Best Email"
-                class="w-full bg-zinc-900/50 border border-zinc-800 rounded-lg pl-10 pr-4 py-3 text-white text-sm placeholder:text-zinc-600 focus:outline-none focus:border-[#ef233c] focus:ring-1 focus:ring-[#ef233c] transition-all duration-300">
-            </div>
-          </div>
-
-          <!-- Business Name -->
-          <div>
-            <label for="business-name" class="sr-only">Business Name</label>
-            <div class="relative">
-              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-zinc-600"><path d="M3 21h18"/><path d="M5 21V7l8-4 8 4v14"/><path d="M17 21v-8.5a1.5 1.5 0 0 0-1.5-1.5h-5a1.5 1.5 0 0 0-1.5 1.5V21"/><path d="M9 10a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2"/></svg>
-              </div>
-              <input type="text" id="business-name" name="business_name" placeholder="Business Name"
-                class="w-full bg-zinc-900/50 border border-zinc-800 rounded-lg pl-10 pr-4 py-3 text-white text-sm placeholder:text-zinc-600 focus:outline-none focus:border-[#ef233c] focus:ring-1 focus:ring-[#ef233c] transition-all duration-300">
-            </div>
-          </div>
-
-          <!-- Website -->
-          <div>
-            <label for="website" class="sr-only">Website</label>
-            <div class="relative">
-              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-zinc-600"><circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-              </div>
-              <input type="url" id="website" name="website" placeholder="Website URL"
-                class="w-full bg-zinc-900/50 border border-zinc-800 rounded-lg pl-10 pr-4 py-3 text-white text-sm placeholder:text-zinc-600 focus:outline-none focus:border-[#ef233c] focus:ring-1 focus:ring-[#ef233c] transition-all duration-300">
-            </div>
-          </div>
-
-          <!-- Revenue -->
-          <div>
-            <label for="revenue" class="sr-only">Monthly Revenue</label>
-            <div class="relative">
-              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <span class="text-zinc-600 font-bold text-sm">$</span>
-              </div>
-              <input type="text" id="revenue" name="revenue" placeholder="Monthly Revenue"
-                class="w-full bg-zinc-900/50 border border-zinc-800 rounded-lg pl-10 pr-4 py-3 text-white text-sm placeholder:text-zinc-600 focus:outline-none focus:border-[#ef233c] focus:ring-1 focus:ring-[#ef233c] transition-all duration-300">
-            </div>
-          </div>
-
-          <!-- Implementation Help Dropdown -->
-          <div class="pt-2">
-            <label for="help" class="block text-xs font-medium text-zinc-400 mb-2">Want help wiring this into your pipeline?</label>
-            <div class="relative">
-              <select id="help" name="implementation_help"
-                class="w-full bg-zinc-900/50 border border-zinc-800 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-[#ef233c] focus:ring-1 focus:ring-[#ef233c] transition-all duration-300 appearance-none cursor-pointer">
-                <option value="" class="bg-black">Select an option...</option>
-                <option value="yes" class="bg-black">Yes, fast-track me</option>
-                <option value="no" class="bg-black">No, I'll do it myself</option>
-              </select>
-              <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-zinc-500"><path d="m6 9 6 6 6-6"/></svg>
-              </div>
-            </div>
-          </div>
-
-          <!-- CTA Button -->
-          <div class="pt-2">
-            <button type="submit" class="shiny-cta w-full text-center rounded-lg">
-              <span class="flex items-center justify-center gap-2 text-[13px] font-bold tracking-wide uppercase font-manrope whitespace-nowrap">
-                Unlock Access Now
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-              </span>
-            </button>
-          </div>
-        </form>
+        </div>
       </div>
     </div>
   </div>
+</section>
 
-  <script>
-    function openModal() {
-      const modal = document.getElementById('leadModal');
-      modal.classList.remove('hidden');
-      // Trigger reflow to enable transition
-      void modal.offsetWidth; 
-      modal.classList.add('open');
-      document.body.style.overflow = 'hidden'; // Prevent background scrolling
-    }
+<div class="pointer-events-none w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
 
-    function closeModal() {
-      const modal = document.getElementById('leadModal');
-      modal.classList.remove('open');
-      setTimeout(() => {
-        // modal.classList.add('hidden'); // Optional: hide after transition
-      }, 300);
-      document.body.style.overflow = '';
-    }
-    
-    // Close on Escape key
-    document.addEventListener('keydown', function(event) {
-      if (event.key === "Escape") {
-        closeModal();
-      }
-    });
-  </script>
+<!-- ============================================================ -->
+<!-- SECTION 2: OFFER MBA — 7 AI CONVERSION KEYS -->
+<!-- ============================================================ -->
+<section class="w-full max-w-6xl mx-auto px-6 py-24 relative">
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-[#ef233c]/3 rounded-full blur-[200px] pointer-events-none"></div>
 
+  <div class="flex flex-col mb-16 gap-y-6 animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.2s_both]">
+    <div class="flex items-center gap-3">
+      <span class="w-8 h-px bg-[#ef233c]"></span>
+      <span class="uppercase text-sm font-medium text-[#ef233c] tracking-widest font-geist-mono">01. What You're Getting</span>
+    </div>
+    <h2 class="md:text-5xl text-3xl font-bold text-white tracking-tighter font-manrope">
+      The Offer MBA: 7 AI Conversion <span class="bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-red-600">Keys</span>
+    </h2>
+    <p class="leading-relaxed text-lg font-light text-gray-400 max-w-2xl">
+      In about an hour, these 7 linked GPTs walk you step&#8209;by&#8209;step through building your Master Offer Playbook &mdash; the single document you can hand to any writer, media buyer, or closer and say: <span class="text-white font-medium">&ldquo;Use this. Don&rsquo;t improvise.&rdquo;</span>
+    </p>
+  </div>
 
+  <!-- 7 GPT Steps -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-8">
+    <div class="bg-black border border-zinc-800 border-dashed p-6 group hover:border-[#ef233c]/50 transition-all duration-500 relative hover-glow-card animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.1s_both]">
+      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#ef233c]"></div>
+      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#ef233c]"></div>
+      <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(239,35,60,0.05) 0%, transparent 70%);"></div>
+      <span class="text-xs font-geist-mono tracking-widest uppercase text-[#ef233c]/70 mb-2 block">01</span>
+      <h3 class="text-base font-bold font-manrope text-white mb-1.5">CORE</h3>
+      <p class="text-zinc-500 text-sm leading-relaxed">What you actually sell, how it works, who it&rsquo;s for.</p>
+    </div>
+    <div class="bg-black border border-zinc-800 border-dashed p-6 group hover:border-[#ef233c]/50 transition-all duration-500 relative hover-glow-card animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.15s_both]">
+      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#ef233c]"></div>
+      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#ef233c]"></div>
+      <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(239,35,60,0.05) 0%, transparent 70%);"></div>
+      <span class="text-xs font-geist-mono tracking-widest uppercase text-[#ef233c]/70 mb-2 block">02</span>
+      <h3 class="text-base font-bold font-manrope text-white mb-1.5">INTEL</h3>
+      <p class="text-zinc-500 text-sm leading-relaxed">Exactly who&rsquo;s worth chasing (and who isn&rsquo;t).</p>
+    </div>
+    <div class="bg-black border border-zinc-800 border-dashed p-6 group hover:border-[#ef233c]/50 transition-all duration-500 relative hover-glow-card animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.2s_both]">
+      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#ef233c]"></div>
+      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#ef233c]"></div>
+      <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(239,35,60,0.05) 0%, transparent 70%);"></div>
+      <span class="text-xs font-geist-mono tracking-widest uppercase text-[#ef233c]/70 mb-2 block">03 + 04</span>
+      <h3 class="text-base font-bold font-manrope text-white mb-1.5">MIND &amp; RAW</h3>
+      <p class="text-zinc-500 text-sm leading-relaxed">Their fears, desires, late&#8209;night thoughts, and the language they actually use.</p>
+    </div>
+    <div class="bg-black border border-zinc-800 border-dashed p-6 group hover:border-[#ef233c]/50 transition-all duration-500 relative hover-glow-card animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.25s_both]">
+      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#ef233c]"></div>
+      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#ef233c]"></div>
+      <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(239,35,60,0.05) 0%, transparent 70%);"></div>
+      <span class="text-xs font-geist-mono tracking-widest uppercase text-[#ef233c]/70 mb-2 block">05 + 06</span>
+      <h3 class="text-base font-bold font-manrope text-white mb-1.5">EDGE &amp; IDEA</h3>
+      <p class="text-zinc-500 text-sm leading-relaxed">Why you win vs competitors and the unique mechanism that makes your offer uncopyable.</p>
+    </div>
+    <div class="lg:col-span-2 bg-black border border-[#ef233c]/20 border-dashed p-6 group hover:border-[#ef233c]/50 transition-all duration-500 relative hover-glow-card animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.3s_both]">
+      <div class="absolute top-0 left-0 w-3 h-3 border-t border-l border-[#ef233c]"></div>
+      <div class="absolute top-0 right-0 w-3 h-3 border-t border-r border-[#ef233c]"></div>
+      <div class="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-[#ef233c]"></div>
+      <div class="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-[#ef233c]"></div>
+      <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(239,35,60,0.05) 0%, transparent 70%);"></div>
+      <span class="text-xs font-geist-mono tracking-widest uppercase text-[#ef233c]/70 mb-2 block">07</span>
+      <h3 class="text-base font-bold font-manrope text-white mb-1.5">POWER</h3>
+      <p class="text-zinc-500 text-sm leading-relaxed">Hooks and angles that stop the scroll and force the click.</p>
+    </div>
+  </div>
 
-  <!-- ============================================================ -->
-  <!-- SECTION 2: WHAT YOU'RE GETTING — Offer MBA: 7 AI Keys        -->
-  <!-- ============================================================ -->
-  <section class="py-20 md:py-28 px-6 relative border-t border-dashed border-zinc-800/60">
-    <div class="max-w-4xl mx-auto">
-      <div class="text-center mb-14 animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.1s_both]">
-        <span class="text-xs font-geist-mono tracking-widest uppercase text-red-500 mb-4 block">What You're Getting</span>
-        <h2 class="text-3xl md:text-5xl font-bold tracking-tight font-manrope bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60">
-          The Offer MBA: 7 AI Conversion Keys
-        </h2>
-        <p class="text-zinc-400 mt-4 max-w-2xl mx-auto text-base leading-relaxed">
-          In about an hour, these 7 GPTs walk you step&#8209;by&#8209;step&nbsp;through:
-        </p>
+  <!-- End result callout -->
+  <div class="bg-black border border-[#ef233c]/20 p-6 relative overflow-hidden animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.4s_both]">
+    <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#ef233c]"></div>
+    <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#ef233c]"></div>
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at left, rgba(239,35,60,0.05) 0%, transparent 50%);"></div>
+    <div class="flex items-start gap-4 relative z-10">
+      <div class="w-10 h-10 border border-[#ef233c]/30 flex items-center justify-center shrink-0">
+        <i data-lucide="file-text" class="w-5 h-5 text-[#ef233c]"></i>
       </div>
-
-      <!-- 7 Keys Grid -->
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
-        <!-- CORE -->
-        <div class="animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.1s_both] group bg-black border border-dashed border-zinc-800 relative p-6 hover:border-red-500/50 transition-all duration-500 rounded-none">
-          <div class="absolute top-0 left-0 w-2.5 h-2.5 border-t border-l border-red-500"></div>
-          <div class="absolute bottom-0 right-0 w-2.5 h-2.5 border-b border-r border-red-500"></div>
-          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(239,35,60,0.04) 0%, transparent 70%);"></div>
-          <span class="text-xs font-geist-mono tracking-widest uppercase text-red-500/70 mb-2 block">01</span>
-          <h3 class="text-base font-bold font-manrope text-white mb-1.5">CORE</h3>
-          <p class="text-zinc-500 text-sm leading-relaxed">What you actually sell, how it works, who it's for.</p>
-        </div>
-
-        <!-- INTEL -->
-        <div class="animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.15s_both] group bg-black border border-dashed border-zinc-800 relative p-6 hover:border-red-500/50 transition-all duration-500 rounded-none">
-          <div class="absolute top-0 left-0 w-2.5 h-2.5 border-t border-l border-red-500"></div>
-          <div class="absolute bottom-0 right-0 w-2.5 h-2.5 border-b border-r border-red-500"></div>
-          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(239,35,60,0.04) 0%, transparent 70%);"></div>
-          <span class="text-xs font-geist-mono tracking-widest uppercase text-red-500/70 mb-2 block">02</span>
-          <h3 class="text-base font-bold font-manrope text-white mb-1.5">INTEL</h3>
-          <p class="text-zinc-500 text-sm leading-relaxed">Exactly who's worth chasing (and who isn't).</p>
-        </div>
-
-        <!-- MIND & RAW -->
-        <div class="animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.2s_both] group bg-black border border-dashed border-zinc-800 relative p-6 hover:border-red-500/50 transition-all duration-500 rounded-none">
-          <div class="absolute top-0 left-0 w-2.5 h-2.5 border-t border-l border-red-500"></div>
-          <div class="absolute bottom-0 right-0 w-2.5 h-2.5 border-b border-r border-red-500"></div>
-          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(239,35,60,0.04) 0%, transparent 70%);"></div>
-          <span class="text-xs font-geist-mono tracking-widest uppercase text-red-500/70 mb-2 block">03 + 04</span>
-          <h3 class="text-base font-bold font-manrope text-white mb-1.5">MIND &amp; RAW</h3>
-          <p class="text-zinc-500 text-sm leading-relaxed">Their fears, desires, late-night thoughts, and the language they actually use.</p>
-        </div>
-
-        <!-- EDGE & IDEA -->
-        <div class="animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.25s_both] group bg-black border border-dashed border-zinc-800 relative p-6 hover:border-red-500/50 transition-all duration-500 rounded-none">
-          <div class="absolute top-0 left-0 w-2.5 h-2.5 border-t border-l border-red-500"></div>
-          <div class="absolute bottom-0 right-0 w-2.5 h-2.5 border-b border-r border-red-500"></div>
-          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(239,35,60,0.04) 0%, transparent 70%);"></div>
-          <span class="text-xs font-geist-mono tracking-widest uppercase text-red-500/70 mb-2 block">05 + 06</span>
-          <h3 class="text-base font-bold font-manrope text-white mb-1.5">EDGE &amp; IDEA</h3>
-          <p class="text-zinc-500 text-sm leading-relaxed">Why you win vs competitors and the unique mechanism that makes your offer uncopyable.</p>
-        </div>
-
-        <!-- POWER (spans 2 cols on sm+) -->
-        <div class="animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.3s_both] sm:col-span-2 lg:col-span-2 group bg-black border border-dashed border-red-500/40 relative p-6 hover:border-red-500/70 transition-all duration-500 rounded-none">
-          <div class="absolute top-0 left-0 w-3 h-3 border-t border-l border-red-500"></div>
-          <div class="absolute top-0 right-0 w-3 h-3 border-t border-r border-red-500"></div>
-          <div class="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-red-500"></div>
-          <div class="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-red-500"></div>
-          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(239,35,60,0.05) 0%, transparent 70%);"></div>
-          <span class="text-xs font-geist-mono tracking-widest uppercase text-red-500/70 mb-2 block">07</span>
-          <h3 class="text-base font-bold font-manrope text-white mb-1.5">POWER</h3>
-          <p class="text-zinc-500 text-sm leading-relaxed">Hooks and angles that stop the scroll and force the click.</p>
-        </div>
-      </div>
-
-      <!-- End result -->
-      <div class="animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.4s_both] text-center">
-        <p class="text-base text-zinc-400 leading-relaxed max-w-2xl mx-auto">
-          End result: <span class="text-white font-semibold">One Master Offer Playbook</span> you can hand to any writer, media buyer, or closer and say:<br>
-          <span class="text-red-400 font-medium italic">"Use this. Don't improvise."</span>
-        </p>
+      <div>
+        <h4 class="text-white font-semibold font-manrope mb-1">End Result: One Master Offer Playbook</h4>
+        <p class="text-sm text-zinc-400 leading-relaxed">A single Google Doc you can hand to any writer, media buyer, or closer. <span class="text-red-400 font-medium italic">&ldquo;Use this. Don&rsquo;t improvise.&rdquo;</span></p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
+<div class="pointer-events-none w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
 
-  <!-- ============================================================ -->
-  <!-- SECTION 3: THE 728,000,000 LEAD VAULT                       -->
-  <!-- ============================================================ -->
-  <section class="py-20 md:py-28 px-6 relative border-t border-dashed border-zinc-800/60">
-    <div class="max-w-4xl mx-auto">
-      <div class="flex flex-col lg:flex-row gap-10 lg:gap-16 items-start">
-        <!-- Left: Copy -->
-        <div class="flex-1 animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.1s_both]">
-          <span class="text-xs font-geist-mono tracking-widest uppercase text-red-500 mb-4 block">The Data Spine</span>
-          <h2 class="text-3xl md:text-4xl font-bold tracking-tight font-manrope bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60 mb-6">
-            The 728,000,000 Lead Vault
-          </h2>
-          <p class="text-zinc-400 text-base leading-relaxed mb-6">
-            Once your offer brain is built, I hand you the body:
-          </p>
-          <ul class="space-y-4 mb-6">
-            <li class="flex items-start gap-3">
-              <span class="text-red-500 mt-1 text-sm">&#9656;</span>
-              <p class="text-zinc-400 text-sm leading-relaxed"><span class="text-white font-semibold">728,000,000+ mapped leads</span> across LinkedIn, Instagram, and high-intent segments (homeowners, ecom, Skool owners, and more).</p>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="text-red-500 mt-1 text-sm">&#9656;</span>
-              <p class="text-zinc-400 text-sm leading-relaxed">Pre-built data you can <span class="text-white font-medium">search, filter, and deploy</span> into outbound, retargeting, and content.</p>
-            </li>
-          </ul>
-          <p class="text-zinc-500 text-sm leading-relaxed">
-            You&rsquo;re not &ldquo;building&nbsp;lists.&rdquo;<br>
-            You&rsquo;re deciding <span class="text-red-400 font-semibold">who</span> you want and <span class="text-red-400 font-semibold">how&nbsp;fast</span> you want&nbsp;to&nbsp;go.
-          </p>
-        </div>
-
-        <!-- Right: Stats card -->
-        <div class="w-full lg:w-80 shrink-0 animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.3s_both]">
-          <div class="bg-black border border-dashed border-zinc-800 rounded-none p-8 relative group hover:border-red-500/50 transition-all duration-500">
-            <div class="absolute top-0 left-0 w-3 h-3 border-t border-l border-red-500"></div>
-            <div class="absolute top-0 right-0 w-3 h-3 border-t border-r border-red-500"></div>
-            <div class="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-red-500"></div>
-            <div class="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-red-500"></div>
-            <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(239,35,60,0.05) 0%, transparent 70%);"></div>
-            <div class="text-center relative z-10">
-              <p class="text-5xl md:text-6xl font-bold font-manrope text-white mb-2">728M</p>
-              <p class="text-xs font-geist-mono tracking-widest uppercase text-red-500/70 mb-6">Pre-Built Leads</p>
-              <div class="space-y-3 text-left">
-                <div class="flex items-center gap-2 text-xs text-zinc-500">
-                  <span class="w-1.5 h-1.5 rounded-full bg-red-500/60"></span> LinkedIn
-                </div>
-                <div class="flex items-center gap-2 text-xs text-zinc-500">
-                  <span class="w-1.5 h-1.5 rounded-full bg-red-500/60"></span> Instagram
-                </div>
-                <div class="flex items-center gap-2 text-xs text-zinc-500">
-                  <span class="w-1.5 h-1.5 rounded-full bg-red-500/60"></span> Homeowners
-                </div>
-                <div class="flex items-center gap-2 text-xs text-zinc-500">
-                  <span class="w-1.5 h-1.5 rounded-full bg-red-500/60"></span> Ecom brands
-                </div>
-                <div class="flex items-center gap-2 text-xs text-zinc-500">
-                  <span class="w-1.5 h-1.5 rounded-full bg-red-500/60"></span> Skool owners
-                </div>
-                <div class="flex items-center gap-2 text-xs text-zinc-500">
-                  <span class="w-1.5 h-1.5 rounded-full bg-red-500/60"></span> And more...
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+<!-- ============================================================ -->
+<!-- SECTION 3: 728M LEAD VAULT -->
+<!-- ============================================================ -->
+<section class="w-full max-w-6xl mx-auto px-6 py-24 relative">
+  <div class="flex flex-col mb-16 gap-y-6 animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.2s_both]">
+    <div class="flex items-center gap-3">
+      <span class="w-8 h-px bg-[#ef233c]"></span>
+      <span class="uppercase text-sm font-medium text-[#ef233c] tracking-widest font-geist-mono">02. The Data Spine</span>
     </div>
-  </section>
+    <h2 class="md:text-5xl text-3xl font-bold text-white tracking-tighter font-manrope">
+      <span class="stat-counter text-[#ef233c] drop-shadow-[0_0_20px_rgba(239,35,60,0.4)]" data-target="728" data-suffix=",000,000+">0</span> Mapped Leads
+    </h2>
+    <p class="leading-relaxed text-lg font-light text-gray-400 max-w-2xl">
+      Once your offer brain is built, I hand you the body. Pre&#8209;built data you can search, filter, and deploy into outbound, retargeting, and content. You&rsquo;re not &ldquo;building lists.&rdquo; You&rsquo;re deciding <span class="text-white font-semibold">who</span> you want and how fast you want to go.
+    </p>
+  </div>
 
-
-  <!-- ============================================================ -->
-  <!-- SECTION 4: BONUS — THE DIRECT COPYWRITER GPT                -->
-  <!-- ============================================================ -->
-  <section class="py-20 md:py-28 px-6 relative border-t border-dashed border-zinc-800/60">
-    <div class="max-w-4xl mx-auto animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.1s_both]">
-      <div class="bg-black border border-dashed border-zinc-800 rounded-none p-8 md:p-10 relative group hover:border-red-500/50 transition-all duration-500">
-        <div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-red-500"></div>
-        <div class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-red-500"></div>
-        <div class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-red-500"></div>
-        <div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-red-500"></div>
-        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(239,35,60,0.04) 0%, transparent 70%);"></div>
-
-        <div class="relative z-10">
-          <span class="text-xs font-geist-mono tracking-widest uppercase text-red-500 mb-4 block">Bonus</span>
-          <h2 class="text-2xl md:text-4xl font-bold tracking-tight font-manrope text-white mb-4">
-            The Direct Copywriter GPT
-          </h2>
-          <p class="text-zinc-400 text-base leading-relaxed mb-6 max-w-2xl">
-            Most people will download this and then procrastinate turning it into money. That&rsquo;s where this&nbsp;comes&nbsp;in.
-          </p>
-          <p class="text-zinc-400 text-base leading-relaxed mb-6 max-w-2xl">
-            <span class="text-white font-semibold">The Direct Copywriter</span> is my most used GPT. It:
-          </p>
-          <ul class="space-y-3 mb-8 max-w-2xl">
-            <li class="flex items-start gap-3">
-              <span class="text-red-500 mt-0.5 text-sm">&#9656;</span>
-              <p class="text-zinc-400 text-sm leading-relaxed">Tears apart your pages, emails, and posts with <span class="text-white font-medium">brutal honesty</span></p>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="text-red-500 mt-0.5 text-sm">&#9656;</span>
-              <p class="text-zinc-400 text-sm leading-relaxed">Shows you exactly where you're weak and where you're <span class="text-white font-medium">leaving money on the table</span></p>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="text-red-500 mt-0.5 text-sm">&#9656;</span>
-              <p class="text-zinc-400 text-sm leading-relaxed">Rebuilds it into <span class="text-white font-medium">punchy, conversion-ready copy</span> on demand</p>
-            </li>
-          </ul>
-          <p class="text-zinc-400 text-sm leading-relaxed mb-4 max-w-2xl">
-            Drop in your Offer Playbook, paste whatever you&rsquo;re working on, ask for posts, emails, or&nbsp;pages&hellip; and it <span class="text-white font-semibold">cranks out assets</span> until there&rsquo;s nothing left to &ldquo;think&nbsp;about,&rdquo; only&nbsp;publish.
-          </p>
-          <p class="text-red-400 font-semibold text-sm font-manrope">
-            This is your execution engine.
-          </p>
-        </div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.4s_both]">
+    <div class="bg-black border border-zinc-800 border-dashed p-8 group hover:border-[#ef233c]/50 transition-all duration-500 relative hover-glow-card">
+      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#ef233c]"></div>
+      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#ef233c]"></div>
+      <div class="w-10 h-10 border border-zinc-700 flex items-center justify-center mb-5 group-hover:border-[#ef233c]/50 transition-colors group-hover:shadow-[0_0_15px_rgba(239,35,60,0.2)]">
+        <i data-lucide="linkedin" class="w-5 h-5 text-[#ef233c]"></i>
       </div>
+      <h3 class="text-lg font-semibold text-white font-manrope tracking-tight mb-2">LinkedIn</h3>
+      <p class="text-sm text-zinc-400 leading-relaxed">Decision-makers, founders, C-suite across every vertical.</p>
     </div>
-  </section>
+    <div class="bg-black border border-zinc-800 border-dashed p-8 group hover:border-[#ef233c]/50 transition-all duration-500 relative hover-glow-card">
+      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#ef233c]"></div>
+      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#ef233c]"></div>
+      <div class="w-10 h-10 border border-zinc-700 flex items-center justify-center mb-5 group-hover:border-[#ef233c]/50 transition-colors group-hover:shadow-[0_0_15px_rgba(239,35,60,0.2)]">
+        <i data-lucide="instagram" class="w-5 h-5 text-[#ef233c]"></i>
+      </div>
+      <h3 class="text-lg font-semibold text-white font-manrope tracking-tight mb-2">Instagram</h3>
+      <p class="text-sm text-zinc-400 leading-relaxed">Influencers, DTC brands, coaches, and high-intent buyers.</p>
+    </div>
+    <div class="bg-black border border-zinc-800 border-dashed p-8 group hover:border-[#ef233c]/50 transition-all duration-500 relative hover-glow-card">
+      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#ef233c]"></div>
+      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#ef233c]"></div>
+      <div class="w-10 h-10 border border-zinc-700 flex items-center justify-center mb-5 group-hover:border-[#ef233c]/50 transition-colors group-hover:shadow-[0_0_15px_rgba(239,35,60,0.2)]">
+        <i data-lucide="database" class="w-5 h-5 text-[#ef233c]"></i>
+      </div>
+      <h3 class="text-lg font-semibold text-white font-manrope tracking-tight mb-2">Key Segments</h3>
+      <p class="text-sm text-zinc-400 leading-relaxed">Homeowners, ecom, Skool owners, and more high-intent verticals.</p>
+    </div>
+  </div>
+</section>
 
+<div class="pointer-events-none w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
 
-  <!-- ============================================================ -->
-  <!-- SECTION 5: WHO THIS IS FOR                                   -->
-  <!-- ============================================================ -->
-  <section class="py-16 md:py-20 px-6 border-t border-dashed border-zinc-800/60">
-    <div class="max-w-3xl mx-auto text-center animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.1s_both]">
-      <span class="text-xs font-geist-mono tracking-widest uppercase text-red-500 mb-4 block">Who This Is For</span>
-      <h2 class="text-2xl md:text-3xl font-bold tracking-tight font-manrope text-white mb-6">
-        This is for:
-      </h2>
-      <div class="max-w-lg mx-auto text-left">
-        <p class="text-zinc-400 text-base leading-relaxed mb-4">
-          Founders, agencies, consultants, and operators who:
+<!-- ============================================================ -->
+<!-- SECTION 4: BONUS — DIRECT COPYWRITER GPT -->
+<!-- ============================================================ -->
+<section class="w-full max-w-6xl mx-auto px-6 py-24 relative">
+  <div class="absolute top-1/2 right-0 w-[400px] h-[400px] bg-[#ef233c]/3 rounded-full blur-[150px] pointer-events-none"></div>
+
+  <div class="flex flex-col mb-12 gap-y-6 animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.2s_both]">
+    <div class="flex items-center gap-3">
+      <span class="w-8 h-px bg-[#ef233c]"></span>
+      <span class="uppercase text-sm font-medium text-[#ef233c] tracking-widest font-geist-mono">03. Bonus</span>
+    </div>
+    <h2 class="md:text-5xl text-3xl font-bold text-white tracking-tighter font-manrope">
+      The Direct <span class="bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-red-600">Copywriter</span> GPT
+    </h2>
+  </div>
+
+  <div class="bg-black border border-[#ef233c]/20 relative overflow-hidden p-8 md:p-12 animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.4s_both] hover-glow-card group">
+    <div class="absolute top-0 left-0 w-3 h-3 border-t border-l border-[#ef233c]"></div>
+    <div class="absolute top-0 right-0 w-3 h-3 border-t border-r border-[#ef233c]"></div>
+    <div class="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-[#ef233c]"></div>
+    <div class="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-[#ef233c]"></div>
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(239,35,60,0.05) 0%, transparent 60%);"></div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
+      <div>
+        <p class="text-lg text-zinc-300 leading-relaxed mb-6">
+          Most people will download this and then procrastinate turning it into money. <span class="text-white font-semibold">That&rsquo;s where this comes in.</span>
         </p>
-        <ul class="space-y-3 mb-8">
+        <ul class="space-y-4">
           <li class="flex items-start gap-3">
-            <span class="text-red-500 mt-0.5 text-sm">&#9656;</span>
-            <p class="text-zinc-400 text-sm leading-relaxed">Already sell something online</p>
+            <span class="text-red-500 mt-1 text-sm shrink-0">&#9656;</span>
+            <p class="text-sm text-zinc-400 leading-relaxed"><span class="text-white font-semibold">Tears apart</span> your pages, emails, and posts with brutal honesty</p>
           </li>
           <li class="flex items-start gap-3">
-            <span class="text-red-500 mt-0.5 text-sm">&#9656;</span>
-            <p class="text-zinc-400 text-sm leading-relaxed">Want more booked calls / demos</p>
+            <span class="text-red-500 mt-1 text-sm shrink-0">&#9656;</span>
+            <p class="text-sm text-zinc-400 leading-relaxed">Shows you exactly where you&rsquo;re <span class="text-white font-semibold">weak</span> and where you&rsquo;re leaving money on the table</p>
           </li>
           <li class="flex items-start gap-3">
-            <span class="text-red-500 mt-0.5 text-sm">&#9656;</span>
-            <p class="text-zinc-400 text-sm leading-relaxed">And are tired of "ideas" without infrastructure</p>
+            <span class="text-red-500 mt-1 text-sm shrink-0">&#9656;</span>
+            <p class="text-sm text-zinc-400 leading-relaxed">Rebuilds it into <span class="text-white font-semibold">punchy, conversion&#8209;ready copy</span> on demand</p>
           </li>
         </ul>
       </div>
-      <p class="text-lg text-white font-medium font-manrope max-w-lg mx-auto">
-        If you can close a call, I can make sure you never run out of people to&nbsp;talk&nbsp;to.
-      </p>
-
-      <!-- Back to form CTA -->
-      <div class="mt-8">
-        <a href="#get-access-form" class="inline-flex items-center gap-2 text-red-500 hover:text-red-400 transition-colors text-sm font-semibold font-manrope group">
-          <span>Get the vault now</span>
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover:-translate-y-0.5"><path d="m18 15-6-6-6 6"/></svg>
-        </a>
+      <div class="flex flex-col justify-center">
+        <div class="bg-zinc-900/50 border border-zinc-800 p-6 relative scan-line">
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-3 h-3 rounded-full bg-red-500/50"></div>
+            <div class="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+            <div class="w-3 h-3 rounded-full bg-green-500/50"></div>
+            <span class="text-[10px] font-geist-mono text-zinc-600 ml-2">direct-copywriter.gpt</span>
+          </div>
+          <div class="font-geist-mono text-xs text-zinc-500 space-y-2">
+            <p><span class="text-[#ef233c]">$</span> Paste your Offer Playbook...</p>
+            <p><span class="text-[#ef233c]">$</span> Drop in your landing page...</p>
+            <p><span class="text-[#ef233c]">$</span> Ask for posts, emails, pages...</p>
+            <p class="text-white font-semibold mt-3"><span class="text-[#ef233c]">&gt;</span> Cranking out assets until there&rsquo;s nothing left to think about, only publish.</p>
+          </div>
+        </div>
+        <p class="text-xs text-zinc-500 mt-4 text-center font-geist-mono">This is your execution engine.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
+<div class="pointer-events-none w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
 
-  <!-- ============================================================ -->
-  <!-- SECTION 6: IMPLEMENTATION CALL CTA                           -->
-  <!-- ============================================================ -->
-  <section id="implementation" class="py-20 md:py-28 px-6 border-t border-dashed border-zinc-800/60 relative">
-    <!-- Background glow -->
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(239,35,60,0.05) 0%, transparent 60%);"></div>
+<!-- ============================================================ -->
+<!-- SECTION 5: WHO THIS IS FOR -->
+<!-- ============================================================ -->
+<section class="w-full max-w-4xl mx-auto px-6 py-24 relative animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.3s_both]">
+  <div class="flex flex-col mb-12 gap-y-6">
+    <div class="flex items-center gap-3">
+      <span class="w-8 h-px bg-[#ef233c]"></span>
+      <span class="uppercase text-sm font-medium text-[#ef233c] tracking-widest font-geist-mono">04. Who This Is For</span>
+    </div>
+    <h2 class="md:text-5xl text-3xl font-bold text-white tracking-tighter font-manrope">
+      Is This <span class="bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-red-600">You?</span>
+    </h2>
+  </div>
 
-    <div class="max-w-3xl mx-auto relative z-10 animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.1s_both]">
-      <div class="text-center mb-10">
-        <div class="flex items-center justify-center gap-3 mb-6">
-          <div class="h-px w-12 bg-gradient-to-r from-transparent to-red-500/40"></div>
-          <span class="text-xs font-geist-mono tracking-widest uppercase text-red-500/70">Done-With-You</span>
-          <div class="h-px w-12 bg-gradient-to-l from-transparent to-red-500/40"></div>
-        </div>
-
-        <h2 class="text-2xl md:text-4xl font-bold tracking-tight font-manrope text-white mb-4">
-          Want Us To Wire This Into Your Business For You?
-        </h2>
-        <p class="text-zinc-500 text-base max-w-lg mx-auto">
-          If you don&rsquo;t want another &ldquo;cool download&rdquo; sitting in Google Drive, we&rsquo;ll help you turn this into a&nbsp;live&nbsp;system.
-        </p>
+  <div class="space-y-4">
+    <div class="flex items-start gap-4 p-6 bg-black border border-zinc-800 border-dashed hover:border-[#ef233c]/50 transition-all duration-500 hover-glow-card group">
+      <div class="w-8 h-8 border border-zinc-700 flex items-center justify-center shrink-0 group-hover:border-[#ef233c]/50 transition-colors">
+        <i data-lucide="check" class="w-4 h-4 text-[#ef233c]"></i>
       </div>
-
-      <!-- What happens on the call -->
-      <div class="bg-black border border-dashed border-zinc-800 rounded-none p-8 relative mb-10 group hover:border-red-500/40 transition-all duration-500">
-        <div class="absolute top-0 left-0 w-3 h-3 border-t border-l border-red-500"></div>
-        <div class="absolute top-0 right-0 w-3 h-3 border-t border-r border-red-500"></div>
-        <div class="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-red-500"></div>
-        <div class="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-red-500"></div>
-        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(239,35,60,0.04) 0%, transparent 70%);"></div>
-
-        <p class="text-xs font-geist-mono tracking-widest uppercase text-red-500/70 mb-6 relative z-10">On a short Implementation Call, we will:</p>
-        <ol class="space-y-5 relative z-10">
-          <li class="flex items-start gap-4">
-            <span class="text-red-500 font-bold font-geist-mono text-lg mt-0.5 shrink-0">01</span>
-            <div>
-              <p class="text-white font-medium text-sm mb-1">Look at your Offer MBA Playbook and current funnel</p>
-              <p class="text-zinc-600 text-xs">We'll see where you are and what's already working.</p>
-            </div>
-          </li>
-          <li class="flex items-start gap-4">
-            <span class="text-red-500 font-bold font-geist-mono text-lg mt-0.5 shrink-0">02</span>
-            <div>
-              <p class="text-white font-medium text-sm mb-1">Choose the fastest-path segment from the 728M Lead Vault</p>
-              <p class="text-zinc-600 text-xs">We pick the exact audience to hit first for fastest ROI.</p>
-            </div>
-          </li>
-          <li class="flex items-start gap-4">
-            <span class="text-red-500 font-bold font-geist-mono text-lg mt-0.5 shrink-0">03</span>
-            <div>
-              <p class="text-white font-medium text-sm mb-1">Map a 7-day outbound + content sprint using your new assets</p>
-              <p class="text-zinc-600 text-xs">You walk away with a concrete plan you can execute immediately.</p>
-            </div>
-          </li>
-        </ol>
+      <p class="text-zinc-300 leading-relaxed">Founders, agencies, consultants, and operators who <span class="text-white font-semibold">already sell something online</span></p>
+    </div>
+    <div class="flex items-start gap-4 p-6 bg-black border border-zinc-800 border-dashed hover:border-[#ef233c]/50 transition-all duration-500 hover-glow-card group">
+      <div class="w-8 h-8 border border-zinc-700 flex items-center justify-center shrink-0 group-hover:border-[#ef233c]/50 transition-colors">
+        <i data-lucide="check" class="w-4 h-4 text-[#ef233c]"></i>
       </div>
+      <p class="text-zinc-300 leading-relaxed">Want <span class="text-white font-semibold">more booked calls and demos</span> without guessing at copy or lists</p>
+    </div>
+    <div class="flex items-start gap-4 p-6 bg-black border border-zinc-800 border-dashed hover:border-[#ef233c]/50 transition-all duration-500 hover-glow-card group">
+      <div class="w-8 h-8 border border-zinc-700 flex items-center justify-center shrink-0 group-hover:border-[#ef233c]/50 transition-colors">
+        <i data-lucide="check" class="w-4 h-4 text-[#ef233c]"></i>
+      </div>
+      <p class="text-zinc-300 leading-relaxed">Tired of <span class="text-white font-semibold">&ldquo;ideas&rdquo; without infrastructure</span> &mdash; you want systems that execute</p>
+    </div>
+  </div>
 
-      <p class="text-center text-zinc-500 text-sm mb-8 max-w-lg mx-auto">
-        If it makes sense, we'll show you what it looks like for us to build and/or run the system with you.
+  <p class="text-lg text-zinc-400 mt-8 leading-relaxed">
+    If you can close a call, I can make sure you <span class="text-white font-semibold">never run out of people to talk to.</span>
+  </p>
+
+  <div class="mt-8">
+    <a href="#hero" onclick="document.getElementById('lead-form').scrollIntoView({behavior:'smooth'}); return false;" class="inline-flex items-center gap-2 text-[#ef233c] hover:text-red-400 transition-colors text-sm font-semibold font-manrope group">
+      <span>Get the vault now</span>
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover:-translate-y-0.5"><path d="m18 15-6-6-6 6"/></svg>
+    </a>
+  </div>
+</section>
+
+<div class="pointer-events-none w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+
+<!-- ============================================================ -->
+<!-- SECTION 6: IMPLEMENTATION CALL CTA -->
+<!-- ============================================================ -->
+<section id="implementation" class="w-full max-w-4xl mx-auto px-6 py-24 relative animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.3s_both]">
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-[#ef233c]/5 rounded-full blur-[120px] pointer-events-none"></div>
+
+  <div class="border border-zinc-800 border-dashed bg-black relative p-12 md:p-16 text-center overflow-hidden hover-glow-card group">
+    <div class="absolute top-0 left-0 w-3 h-3 border-t border-l border-[#ef233c]"></div>
+    <div class="absolute top-0 right-0 w-3 h-3 border-t border-r border-[#ef233c]"></div>
+    <div class="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-[#ef233c]"></div>
+    <div class="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-[#ef233c]"></div>
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(239,35,60,0.05) 0%, transparent 70%);"></div>
+
+    <div class="relative z-10">
+      <div class="flex items-center justify-center gap-3 mb-6">
+        <div class="h-px w-12 bg-gradient-to-r from-transparent to-[#ef233c]/40"></div>
+        <span class="font-geist-mono text-[10px] text-[#ef233c] tracking-widest uppercase font-bold">Done-With-You</span>
+        <div class="h-px w-12 bg-gradient-to-l from-transparent to-[#ef233c]/40"></div>
+      </div>
+      <h2 class="text-3xl md:text-5xl font-bold text-white font-manrope tracking-tighter mb-6">
+        Want Us To Wire This Into Your&nbsp;Business?
+      </h2>
+      <p class="text-zinc-400 leading-relaxed max-w-xl mx-auto mb-8">
+        If you don&rsquo;t want another &ldquo;cool download&rdquo; sitting in Google Drive, we&rsquo;ll help you turn this into a live system.
       </p>
 
-      <!-- Implementation Call CTA -->
-      <div class="text-center">
-        <a href="#" class="inline-block">
-          <button type="button" class="group relative flex h-[54px] items-center justify-center overflow-hidden rounded-none px-10 outline-none cursor-pointer transition-transform active:scale-95" style="background-color: rgba(255,255,255,0.05);">
-            <span class="absolute inset-[-100%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,transparent_75%,#ef233c_100%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
-            <span class="absolute inset-0 rounded-none bg-zinc-800 transition-opacity duration-300 group-hover:opacity-0"></span>
-            <span class="absolute inset-[1px] rounded-none bg-black z-10"></span>
-            <span class="absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-500 group-hover:opacity-100 z-10" style="background: radial-gradient(50% 50% at 50% 100%, rgba(239,35,60,0.2) 0%, transparent 100%);"></span>
-            <span class="relative z-20 flex items-center justify-center gap-2 text-xs font-medium text-white tracking-wide uppercase">
-              <span>Claim an Event-Only Implementation Call</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 group-hover:translate-x-0.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-            </span>
-          </button>
-        </a>
-      </div>
-
-      <!-- Testimonial -->
-      <div class="max-w-lg mx-auto mt-12 bg-black/50 border border-dashed border-zinc-800/60 rounded-none p-6 relative">
-        <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-red-500/50"></div>
-        <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-red-500/50"></div>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" class="text-red-500/20 mb-3"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V21c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg>
-        <p class="text-sm text-zinc-400 italic leading-relaxed mb-3">
-          "By far the BEST AI EXPERT I've had a chance to talk to... the very FIRST person that I now not WALK, but RUN to for AI advice."
-        </p>
-        <cite class="not-italic text-xs text-zinc-600">
-          <span class="text-red-400/80 font-semibold">Anik Singal</span> &mdash; Founder of Lurn &amp; Complily, $200M+ in online sales
-        </cite>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- Footer -->
-  <footer class="py-10 px-6 border-t border-zinc-900">
-    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-      <div class="flex items-center gap-2">
-        <div class="grid grid-cols-2 opacity-60 w-4 h-4 gap-0.5">
-          <div class="bg-red-500 w-full h-full rounded-sm"></div>
-          <div class="w-full h-full bg-zinc-700 rounded-sm"></div>
-          <div class="w-full h-full bg-zinc-800 rounded-sm"></div>
-          <div class="w-full h-full bg-white rounded-sm"></div>
+      <div class="text-left max-w-md mx-auto mb-8 space-y-4">
+        <div class="flex items-start gap-4">
+          <span class="text-[#ef233c] font-bold font-geist-mono text-lg mt-0.5 shrink-0">01</span>
+          <div>
+            <p class="text-white font-medium text-sm mb-1">Look at your Offer MBA Playbook and current funnel</p>
+            <p class="text-zinc-600 text-xs">We&rsquo;ll see where you are and what&rsquo;s already working.</p>
+          </div>
         </div>
-        <span class="text-sm text-zinc-600">AI Simple &copy; 2026</span>
+        <div class="flex items-start gap-4">
+          <span class="text-[#ef233c] font-bold font-geist-mono text-lg mt-0.5 shrink-0">02</span>
+          <div>
+            <p class="text-white font-medium text-sm mb-1">Choose the fastest&#8209;path segment from the 728M Lead Vault</p>
+            <p class="text-zinc-600 text-xs">We pick the exact audience to hit first for fastest ROI.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <span class="text-[#ef233c] font-bold font-geist-mono text-lg mt-0.5 shrink-0">03</span>
+          <div>
+            <p class="text-white font-medium text-sm mb-1">Map a 7&#8209;day outbound + content sprint using your new assets</p>
+            <p class="text-zinc-600 text-xs">You walk away with a concrete plan you can execute immediately.</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="text-sm text-zinc-500 mb-8 max-w-lg mx-auto">If it makes sense, we&rsquo;ll show you what it looks like for us to build and/or run the system with you.</p>
+
+      <a href="#" class="shiny-cta inline-block" style="width: auto; padding: 1.25rem 3rem;">
+        <span class="flex items-center justify-center gap-2 text-sm font-bold tracking-wide uppercase font-manrope whitespace-nowrap">
+          Claim an Event&#8209;Only Implementation Call
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Testimonial -->
+  <div class="max-w-lg mx-auto mt-12 bg-black/50 border border-dashed border-zinc-800/60 p-6 relative hover-glow-card animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.5s_both]">
+    <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#ef233c]/50"></div>
+    <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#ef233c]/50"></div>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" class="text-red-500/20 mb-3"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V21c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg>
+    <p class="text-sm text-zinc-400 italic leading-relaxed mb-3">
+      &ldquo;By far the BEST AI EXPERT I&rsquo;ve had a chance to talk to&hellip; the very FIRST person that I now not WALK, but RUN to for AI advice.&rdquo;
+    </p>
+    <cite class="not-italic text-xs text-zinc-600">
+      <span class="text-[#ef233c]/80 font-semibold">Anik Singal</span> &mdash; Founder of Lurn &amp; Complily, $200M+ in online sales
+    </cite>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- FOOTER -->
+<!-- ============================================================ -->
+<footer class="w-full border-t border-zinc-800 border-dashed mt-12">
+  <div class="max-w-6xl mx-auto px-6 py-12">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="flex items-center gap-3">
+        <img src="img/ai-simple-logo.svg" alt="AI Simple" class="h-6 w-auto drop-shadow-[0_0_5px_rgba(255,255,255,0.3)]">
+        <span class="text-lg font-bold text-white tracking-tight font-manrope">AI Simple</span>
       </div>
       <div class="flex items-center gap-6 text-xs text-zinc-600">
         <a href="index.html" class="hover:text-white transition-colors">Home</a>
@@ -836,26 +686,184 @@ body { font-family: 'Inter', sans-serif; }
         <a href="#" class="hover:text-white transition-colors">Terms</a>
       </div>
     </div>
-  </footer>
+  </div>
+  <div class="w-full py-8 text-center border-t border-dashed border-zinc-800 bg-black">
+    <p class="text-[10px] text-zinc-600 font-bold uppercase tracking-[0.2em] font-sans">
+      &copy; 2026 <a href="/" class="hover:text-white transition-colors text-[#ef233c]">AI Simple</a> &mdash; Built with systems, not&nbsp;hustle.
+    </p>
+  </div>
+</footer>
 
-  <!-- Lucide icons init -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      if (window.lucide) lucide.createIcons();
+<!-- ============================================================ -->
+<!-- STICKY BOTTOM CTA BAR -->
+<!-- ============================================================ -->
+<div class="sticky-cta-bar" id="sticky-bar">
+  <div class="max-w-4xl mx-auto flex items-center justify-between gap-4">
+    <div class="hidden md:block">
+      <p class="text-sm font-semibold text-white font-manrope">Offer MBA + 728M Leads</p>
+      <p class="text-[10px] text-zinc-500 font-geist-mono">FREE &mdash; Instant access</p>
+    </div>
+    <a href="#hero" onclick="document.getElementById('lead-form').scrollIntoView({behavior:'smooth'}); return false;" class="group relative inline-flex h-[44px] items-center justify-center overflow-hidden rounded-none outline-none cursor-pointer transition-transform active:scale-95 no-underline px-6 flex-shrink-0" style="background-color: rgba(255,255,255,0.05);">
+      <span class="absolute inset-[-100%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,transparent_75%,#ef233c_100%)] opacity-100"></span>
+      <span class="absolute inset-[1px] rounded-none bg-black z-10"></span>
+      <span class="absolute inset-0 pointer-events-none opacity-100 z-10" style="background: radial-gradient(50% 50% at 50% 100%, rgba(239,35,60,0.15) 0%, transparent 100%);"></span>
+      <span class="relative z-20 flex items-center justify-center gap-2 text-xs font-bold text-white tracking-wide uppercase whitespace-nowrap">
+        <span>Get Instant Access</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+      </span>
+    </a>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SCRIPTS -->
+<!-- ============================================================ -->
+
+<!-- Lucide Icons -->
+<script>document.addEventListener('DOMContentLoaded', () => { if (typeof lucide !== 'undefined') lucide.createIcons(); });</script>
+
+<!-- Animated Counters -->
+<script>
+(function() {
+  const counters = document.querySelectorAll('.stat-counter');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const target = parseInt(el.getAttribute('data-target'));
+        const suffix = el.getAttribute('data-suffix') || '';
+        let current = 0;
+        const duration = 2000;
+        const increment = target / (duration / 16);
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= target) { current = target; clearInterval(timer); }
+          el.textContent = Math.floor(current) + suffix;
+        }, 16);
+        observer.unobserve(el);
+      }
     });
-  </script>
+  }, { threshold: 0.5 });
+  counters.forEach(c => observer.observe(c));
+})();
+</script>
 
-  <!-- Smooth scroll for anchor links -->
-  <script>
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          e.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+<!-- Sticky CTA Bar -->
+<script>
+(function() {
+  const bar = document.getElementById('sticky-bar');
+  const form = document.getElementById('form-container');
+  if (!bar || !form) return;
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { bar.classList.remove('visible'); }
+      else { bar.classList.add('visible'); }
+    });
+  }, { threshold: 0 });
+  observer.observe(form);
+})();
+</script>
+
+<!-- Form Submission — CRM Integration (localStorage + Google Sheets webhook) -->
+<script>
+document.getElementById('lead-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const form = e.target;
+  const btn = document.getElementById('submit-btn');
+  const formContainer = document.getElementById('form-container');
+  const successEl = document.getElementById('form-success');
+
+  // Disable button
+  btn.disabled = true;
+  btn.querySelector('span').textContent = 'Sending...';
+
+  // Collect data
+  const data = {
+    name: form.name.value,
+    email: form.email.value,
+    business: form.business.value,
+    website: form.website.value,
+    revenue: form.revenue.value,
+    channel: form.channel.value,
+    help_wanted: form.help_wanted.value,
+    submitted_at: new Date().toISOString(),
+    source: 'lead-magnet-page',
+    page_url: window.location.href,
+    user_agent: navigator.userAgent
+  };
+
+  // === CRM INTEGRATION ===
+  // Option 1: Google Sheets webhook (replace URL with your actual Apps Script deployment URL)
+  const WEBHOOK_URL = 'YOUR_GOOGLE_SHEETS_WEBHOOK_URL';
+
+  try {
+    if (WEBHOOK_URL !== 'YOUR_GOOGLE_SHEETS_WEBHOOK_URL') {
+      await fetch(WEBHOOK_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
       });
-    });
-  </script>
+    }
+  } catch (err) {
+    console.log('Webhook delivery attempted:', err);
+  }
+
+  // Option 2: Always save to localStorage as backup CRM
+  try {
+    const existing = JSON.parse(localStorage.getItem('ai_simple_leads') || '[]');
+    existing.push(data);
+    localStorage.setItem('ai_simple_leads', JSON.stringify(existing));
+    console.log('Lead saved to local CRM. Total leads:', existing.length);
+  } catch (err) {
+    console.error('Local save failed:', err);
+  }
+
+  // Show success state
+  formContainer.classList.add('hidden');
+  successEl.classList.remove('hidden');
+
+  // Hide sticky bar
+  document.getElementById('sticky-bar').classList.remove('visible');
+});
+
+// CRM Export utility — run in console: exportLeads()
+window.exportLeads = function() {
+  const leads = JSON.parse(localStorage.getItem('ai_simple_leads') || '[]');
+  if (!leads.length) { console.log('No leads yet.'); return; }
+  const headers = Object.keys(leads[0]);
+  const csv = [headers.join(','), ...leads.map(l => headers.map(h => '"' + (l[h] || '').toString().replace(/"/g, '""') + '"').join(','))].join('\n');
+  const blob = new Blob([csv], { type: 'text/csv' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'ai-simple-leads-' + new Date().toISOString().slice(0,10) + '.csv';
+  a.click(); URL.revokeObjectURL(url);
+  console.log('Exported', leads.length, 'leads to CSV');
+};
+</script>
+
+<!-- Smooth scroll for anchor links -->
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  });
+});
+</script>
+
+<!-- Unicorn Studio Background Init -->
+<script type="text/javascript">
+!function(){
+  if (!window.UnicornStudio) {
+    window.UnicornStudio = { isInitialized: false };
+    var i = document.createElement("script");
+    i.src = "https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.29/dist/unicornStudio.umd.js";
+    i.onload = function () { if (!window.UnicornStudio.isInitialized) { UnicornStudio.init(); window.UnicornStudio.isInitialized = true; } };
+    (document.head || document.body).appendChild(i);
+  }
+}();
+</script>
+
 </body>
 </html>
