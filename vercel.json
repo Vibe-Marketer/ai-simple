@@ -1,0 +1,35 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/lead-magnet", "destination": "/mba", "permanent": true },
+    { "source": "/lead-magnet.html", "destination": "/mba", "permanent": true },
+    { "source": "/vault", "destination": "/mba", "permanent": false },
+    { "source": "/free", "destination": "/mba", "permanent": false },
+    { "source": "/offer", "destination": "/mba", "permanent": false },
+    { "source": "/community", "destination": "https://www.skool.com/vibe-marketing", "permanent": false },
+    { "source": "/skool", "destination": "https://www.skool.com/vibe-marketing", "permanent": false },
+    { "source": "/community-offer", "destination": "/community", "permanent": false },
+    { "source": "/join", "destination": "/community", "permanent": false },
+    { "source": "/upsell", "destination": "/community", "permanent": false },
+    { "source": "/call", "destination": "https://aisimple.co/#book", "permanent": false },
+    { "source": "/book", "destination": "https://aisimple.co/#book", "permanent": false }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "X-XSS-Protection", "value": "1; mode=block" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+      ]
+    },
+    {
+      "source": "/img/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    }
+  ]
+}
