@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Simple — Bento Design Showcase</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #000; color: #fff; overflow-x: hidden; }
+    .font-manrope { font-family: 'Manrope', sans-serif; }
+    .font-mono { font-family: 'Geist Mono', monospace; }
+
+    /* ── Animations ── */
+    @keyframes fadeSlideIn {
+      from { opacity: 0; transform: translateY(24px); filter: blur(4px); }
+      to { opacity: 1; transform: translateY(0); filter: blur(0); }
+    }
+    @keyframes columnReveal {
+      from { clip-path: inset(0 0 100% 0); }
+      to { clip-path: inset(0 0 0% 0); }
+    }
+    @keyframes barGrow {
+      from { transform: scaleY(0); }
+      to { transform: scaleY(1); }
+    }
+    @keyframes pulse-dot { 0%,100% { opacity: .4; } 50% { opacity: 1; } }
+    @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+    @keyframes scanline {
+      0% { top: -4px; }
+      100% { top: 100%; }
+    }
+    @keyframes cursor-path {
+      0% { transform: translate(20px, 20px) scale(1); }
+      25% { transform: translate(-60px, -30px) scale(1); }
+      35% { transform: translate(-60px, -30px) scale(0.9); }
+      38% { transform: translate(-60px, -30px) scale(1); }
+      55% { transform: translate(40px, -10px) scale(1); }
+      100% { transform: translate(20px, 20px) scale(1); }
+    }
+    @keyframes brandLoop {
+      0% { opacity: 0; transform: scale(0.94) translateY(4px); }
+      5% { opacity: 1; transform: scale(1) translateY(0); }
+      55% { opacity: 1; transform: scale(1) translateY(0); }
+      65% { opacity: 0; transform: scale(0.98) translateY(-2px); }
+      100% { opacity: 0; transform: scale(0.94) translateY(4px); }
+    }
+    @keyframes frameUp {
+      0% { transform: translateY(30px); opacity: 0; }
+      18% { transform: translateY(0); opacity: 1; }
+      78% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(30px); opacity: 0; }
+    }
+    @keyframes stepFadeUp {
+      0%,20% { transform: translateY(10px); opacity: 0; }
+      35% { transform: translateY(0); opacity: 1; }
+      78% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(10px); opacity: 0; }
+    }
+    @keyframes infinite-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    @keyframes countUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes aurora1 { 0% { transform: translate(0,0) scale(1); opacity: .15; } 50% { transform: translate(60px,-40px) scale(1.2); opacity: .25; } 100% { transform: translate(0,0) scale(1); opacity: .15; } }
+    @keyframes aurora2 { 0% { transform: translate(0,0) scale(1); opacity: .1; } 50% { transform: translate(-50px,30px) scale(1.3); opacity: .2; } 100% { transform: translate(0,0) scale(1); opacity: .1; } }
+
+    .animate-on-scroll { opacity: 0; }
+    .animate-on-scroll.visible { animation: fadeSlideIn 0.8s ease-out forwards; }
+
+    /* Gradient border pseudo */
+    [style*="--border-gradient"]::before {
+      content: ""; position: absolute; inset: 0; padding: 1px;
+      border-radius: var(--border-radius-before, inherit);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor; mask-composite: exclude;
+      background: var(--border-gradient); pointer-events: none;
+    }
+
+    /* Hover glow on cards */
+    .bento-card { position: relative; transition: all 0.5s ease; }
+    .bento-card::after {
+      content: ''; position: absolute; inset: 0; opacity: 0; transition: opacity 0.5s;
+      background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(239,35,60,0.06), transparent 40%);
+      pointer-events: none;
+    }
+    .bento-card:hover::after { opacity: 1; }
+    .bento-card:hover { border-color: rgba(239,35,60,0.3) !important; }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #000; }
+    ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+
+    /* Section divider */
+    .section-divider {
+      height: 1px; width: 100%;
+      background: linear-gradient(90deg, transparent, rgba(239,35,60,0.3), transparent);
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-red-600/30 selection:text-red-200">
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- FLOATING PARTICLES -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <div id="particles" class="fixed inset-0 pointer-events-none z-0"></div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- NAVIGATION -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <div class="fixed flex z-50 w-full pt-6 px-4 top-0 left-0 justify-center" style="animation: fadeSlideIn 1s ease-out 0.5s both;">
+    <nav class="shadow-black/50 flex md:gap-12 md:w-auto bg-black/60 w-full max-w-7xl rounded-none pt-2 pr-2 pb-2 pl-3 shadow-2xl backdrop-blur-lg items-center justify-between" style="position: relative; --border-gradient: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0), rgba(255,255,255,0.2)); --border-radius-before: 0">
+      <div class="flex gap-3 items-center">
+        <div class="grid grid-cols-2 opacity-90 w-6 h-6 gap-1">
+          <div class="bg-[#ef233c] w-full h-full rounded-sm"></div>
+          <div class="w-full h-full bg-zinc-700 rounded-sm"></div>
+          <div class="w-full h-full bg-zinc-800 rounded-sm"></div>
+          <div class="w-full h-full bg-white rounded-sm shadow-[0_0_10px_rgba(255,255,255,0.4)]"></div>
+        </div>
+        <span class="text-xl text-white tracking-tight font-manrope font-semibold">AI Simple</span>
+      </div>
+      <div class="hidden md:flex items-center gap-6">
+        <a href="index.html" class="group hover:text-white transition-colors text-sm font-medium text-gray-400 relative">Home</a>
+        <a href="lead-magnet.html" class="group hover:text-white transition-colors text-sm font-medium text-gray-400 relative">Lead Vault</a>
+        <a href="#" class="group text-white transition-colors text-sm font-medium relative">Bento Showcase
+          <span class="absolute -bottom-3 left-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-[#ef233c] to-transparent -translate-x-1/2 shadow-[0_0_10px_rgba(239,35,60,0.8)]"></span>
+        </a>
+      </div>
+      <a href="lead-magnet.html" class="group inline-flex overflow-hidden transition-transform active:scale-95 cursor-pointer outline-none rounded-none py-2.5 px-6 relative items-center justify-center" style="background-color: rgba(255,255,255,0.05)">
+        <span class="absolute inset-[-100%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,transparent_75%,#ef233c_100%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
+        <span class="absolute inset-0 rounded-none bg-zinc-800 transition-opacity duration-300 group-hover:opacity-0"></span>
+        <span class="bg-black z-10 rounded-none absolute top-[1px] right-[1px] bottom-[1px] left-[1px]"></span>
+        <span class="relative z-20 flex items-center gap-2 text-xs font-medium text-white tracking-wide uppercase">
+          Get The Vault
+          <i data-lucide="arrow-right" class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5"></i>
+        </span>
+      </a>
+    </nav>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- PAGE HEADER -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <section class="relative pt-40 pb-20 px-6 text-center overflow-hidden">
+    <!-- Aurora BG -->
+    <div class="absolute inset-0 pointer-events-none overflow-hidden">
+      <div class="absolute w-[600px] h-[600px] rounded-full bg-[#ef233c]/10 blur-[120px] -top-40 -left-40" style="animation: aurora1 12s ease-in-out infinite;"></div>
+      <div class="absolute w-[500px] h-[500px] rounded-full bg-[#ef233c]/8 blur-[100px] -bottom-20 -right-20" style="animation: aurora2 15s ease-in-out infinite;"></div>
+    </div>
+
+    <div class="relative z-10 max-w-4xl mx-auto">
+      <div class="inline-flex items-center gap-2 bg-gradient-to-br from-white/10 to-white/0 rounded-full mb-8 py-1.5 px-3 backdrop-blur-sm" style="position: relative; --border-gradient: linear-gradient(180deg, rgba(255,255,255,0.2), rgba(255,255,255,0), rgba(255,255,255,0.1)); --border-radius-before: 9999px; animation: fadeSlideIn 1s ease-out 0.8s both;">
+        <span class="flex h-1.5 w-1.5 rounded-full bg-[#ef233c] shadow-[0_0_10px_rgba(220,38,38,0.5)]" style="animation: pulse-dot 2s infinite;"></span>
+        <span class="text-xs font-medium tracking-wide text-red-100/80">Bento Design Showcase</span>
+      </div>
+
+      <h1 class="text-5xl md:text-7xl font-manrope font-medium tracking-tighter leading-[1.1] mb-6" style="animation: fadeSlideIn 1s ease-out 1s both;">
+        <span class="bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50">Every layout</span>
+        <span class="bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50 opacity-60"> pattern from the </span>
+        <span class="bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50">original templates</span>
+      </h1>
+
+      <p class="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed font-manrope" style="animation: fadeSlideIn 1s ease-out 1.2s both;">
+        Five bento compositions built from the original template DNA — each one adapted to AI Simple's content, benefits, and conversion goals.
+      </p>
+    </div>
+  </section>
+
+  <div class="max-w-7xl mx-auto px-6">
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- BENTO 1: 6-COLUMN SERVICE GRID (Pattern 3)                    -->
+    <!-- Adapted: AI Simple's 3 core services + 2 wide proof cards     -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <section class="mb-32 animate-on-scroll">
+      <div class="mb-12">
+        <span class="text-[10px] font-mono uppercase tracking-widest text-[#ef233c] font-bold">Composition 01</span>
+        <h2 class="text-3xl md:text-4xl font-manrope font-medium tracking-tight text-white mt-2">6-Column Service Bento</h2>
+        <p class="text-zinc-400 mt-2 max-w-xl">Three equal service cards on top, two wide proof cards below. Each card has a live animated demo inside.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-6 gap-6">
+        <!-- Card 1: Offer Architecture — col-span-2 -->
+        <div class="bento-card lg:col-span-2 group overflow-hidden border-dashed bg-black border border-zinc-800 rounded-none p-8 relative backdrop-blur-sm" style="animation: fadeSlideIn 1s ease-out 0.3s both;">
+          <div class="relative z-10 h-full flex flex-col">
+            <div class="mb-8">
+              <h3 class="text-2xl font-medium text-white font-manrope mb-2 tracking-tight">Offer Architecture</h3>
+              <p class="text-sm text-gray-400 leading-relaxed">Grand Slam offers, positioning, and pricing that make your market feel stupid saying no.</p>
+            </div>
+            <!-- Animated brand identity demo -->
+            <div class="overflow-hidden bg-zinc-900/30 w-full h-48 border border-white/5 rounded-none mt-auto relative p-6">
+              <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.03),transparent_70%)]"></div>
+              <div class="flex flex-col h-full justify-between relative z-10">
+                <div class="flex justify-between items-start">
+                  <div class="space-y-1">
+                    <span class="text-5xl font-serif text-white tracking-tighter block leading-none" style="animation: brandLoop 8s cubic-bezier(0.4,0,0.2,1) infinite both; animation-delay: 0.1s;">$72M</span>
+                    <span class="text-[10px] text-zinc-500 font-mono block tracking-widest uppercase" style="animation: brandLoop 8s cubic-bezier(0.4,0,0.2,1) infinite both; animation-delay: 0.2s;">Revenue Influenced</span>
+                  </div>
+                  <div class="flex flex-col gap-2">
+                    <div class="w-6 h-6 rounded-full bg-[#ef233c] shadow-lg ring-1 ring-white/10" style="animation: brandLoop 8s ease infinite; animation-delay: 0.4s;"></div>
+                    <div class="w-6 h-6 rounded-full bg-zinc-200 shadow-lg ring-1 ring-white/10" style="animation: brandLoop 8s ease infinite; animation-delay: 0.5s;"></div>
+                    <div class="w-6 h-6 rounded-full bg-zinc-800 shadow-lg ring-1 ring-white/10" style="animation: brandLoop 8s ease infinite; animation-delay: 0.6s;"></div>
+                  </div>
+                </div>
+                <div class="grid grid-cols-3 gap-2 mt-4">
+                  <div class="h-10 border border-dashed border-white/10 rounded-sm flex items-center justify-center bg-white/5" style="animation: brandLoop 8s ease infinite; animation-delay: 0.9s;">
+                    <i data-lucide="target" class="w-3 h-3 text-white/30"></i>
+                  </div>
+                  <div class="h-10 border border-dashed border-white/10 rounded-sm flex items-center justify-center bg-white/5" style="animation: brandLoop 8s ease infinite; animation-delay: 1.0s;">
+                    <i data-lucide="zap" class="w-3 h-3 text-white/30"></i>
+                  </div>
+                  <div class="h-10 border border-dashed border-white/10 rounded-sm flex items-center justify-center bg-white/5" style="animation: brandLoop 8s ease infinite; animation-delay: 1.1s;">
+                    <i data-lucide="crown" class="w-3 h-3 text-white/30"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Brand & Content Systems — col-span-2 -->
+        <div class="bento-card lg:col-span-2 group overflow-hidden bg-zinc-900/40 border border-white/10 rounded-none p-8 relative backdrop-blur-sm" style="animation: fadeSlideIn 1s ease-out 0.4s both;">
+          <div class="z-10 flex flex-col h-full relative">
+            <div class="mb-8">
+              <h3 class="text-2xl font-semibold text-white font-manrope mb-2 tracking-tight">Brand & Content</h3>
+              <p class="text-sm text-gray-400 leading-relaxed">Repeatable content + social systems that compound attention and authority.</p>
+            </div>
+            <!-- Browser wireframe animation -->
+            <div class="relative overflow-hidden">
+              <div class="w-full bg-[#0a0a0a] border border-white/10 rounded-t-lg shadow-2xl relative" style="animation: frameUp 7s ease-in-out infinite;">
+                <div class="h-7 border-b border-white/5 flex items-center px-3 gap-1.5 bg-white/[0.02]">
+                  <div class="w-2 h-2 rounded-full bg-red-500/40"></div>
+                  <div class="w-2 h-2 rounded-full bg-yellow-500/40"></div>
+                  <div class="w-2 h-2 rounded-full bg-green-500/40"></div>
+                  <div class="ml-auto w-16 h-1.5 bg-white/5 rounded-full"></div>
+                </div>
+                <div class="p-4 space-y-3">
+                  <div class="flex gap-3">
+                    <div class="w-1/3 space-y-2" style="animation: stepFadeUp 7s ease-in-out infinite; animation-delay: 0.15s;">
+                      <div class="h-8 bg-white/10 rounded-sm w-full"></div>
+                      <div class="h-2 bg-white/5 rounded-sm w-2/3"></div>
+                      <div class="h-2 bg-white/5 rounded-sm w-1/2"></div>
+                    </div>
+                    <div class="w-2/3 h-20 bg-gradient-to-br from-zinc-800 to-zinc-900 border border-white/5 rounded-sm relative overflow-hidden" style="animation: stepFadeUp 7s ease-in-out infinite; animation-delay: 0.35s;">
+                      <div class="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.02)_50%,transparent_75%)] bg-[length:250%_250%]" style="animation: shimmer 3s ease-in-out infinite;"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: AI & Automation — col-span-2 -->
+        <div class="bento-card lg:col-span-2 group overflow-hidden bg-zinc-900/40 border border-white/10 rounded-none p-8 relative backdrop-blur-sm" style="animation: fadeSlideIn 1s ease-out 0.5s both;">
+          <div class="relative z-10 h-full flex flex-col">
+            <div class="mb-8">
+              <h3 class="text-2xl font-semibold text-white tracking-tight font-manrope mb-2">AI & Automation</h3>
+              <p class="text-sm text-gray-400 leading-relaxed">Workflows that turn calls, content, and ops into repeatable systems.</p>
+            </div>
+            <!-- UI component with cursor animation -->
+            <div class="flex overflow-hidden bg-zinc-900/30 w-full h-48 border border-white/5 rounded-none mt-auto relative items-center justify-center p-6">
+              <div class="w-full max-w-[240px] bg-[#0F0F11] border border-white/10 rounded-lg p-4 shadow-xl relative group-hover:scale-105 transition-transform duration-500">
+                <div class="flex items-center justify-between mb-4 pb-3 border-b border-white/5">
+                  <span class="text-[10px] font-semibold text-zinc-400 uppercase tracking-wide">AI Agent</span>
+                  <div class="w-6 h-3.5 bg-[#ef233c] rounded-full relative">
+                    <div class="absolute right-0.5 top-0.5 w-2.5 h-2.5 bg-white rounded-full shadow-sm"></div>
+                  </div>
+                </div>
+                <div class="space-y-3">
+                  <div class="flex items-center justify-between gap-3">
+                    <div class="h-2 w-16 bg-zinc-800 rounded-full"></div>
+                    <div class="h-2 flex-1 bg-zinc-800 rounded-full max-w-[60px]"></div>
+                  </div>
+                  <div class="flex gap-2">
+                    <button class="flex-1 py-1.5 bg-white text-black text-[10px] font-semibold rounded shadow">Deploy</button>
+                    <button class="flex-1 py-1.5 bg-zinc-800 text-zinc-300 text-[10px] font-medium rounded border border-white/5">Configure</button>
+                  </div>
+                </div>
+                <!-- Animated cursor -->
+                <div class="absolute -bottom-3 -right-3 text-white drop-shadow-lg z-20 pointer-events-none" style="animation: cursor-path 5s ease-in-out infinite;">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8.5 19.5L5.5 5.5L19.5 11.5L12.5 13.5L8.5 19.5Z" stroke="black" stroke-width="1.5" stroke-linejoin="round"></path></svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4: Strategy + Proof — col-span-3 (animated bar chart) -->
+        <div class="bento-card lg:col-span-3 group overflow-hidden border-dashed bg-black border border-zinc-800 rounded-none p-8 relative backdrop-blur-sm" style="animation: fadeSlideIn 1s ease-out 0.6s both;">
+          <div class="absolute right-0 top-0 w-64 h-64 bg-[#ef233c]/5 rounded-full blur-[100px] pointer-events-none"></div>
+          <div class="relative z-10 h-full flex flex-col">
+            <div class="mb-8 max-w-sm">
+              <h3 class="text-2xl font-semibold text-white tracking-tight font-manrope mb-2">Revenue Impact</h3>
+              <p class="text-sm text-gray-400 leading-relaxed">Data-driven results across every engagement. Real numbers, real clients.</p>
+            </div>
+            <!-- Animated bar chart -->
+            <div class="overflow-hidden flex flex-col bg-zinc-900/30 w-full h-[220px] border border-white/5 rounded-none mt-auto p-6 relative justify-end">
+              <div class="absolute top-4 right-4 flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#ef233c]" style="animation: pulse-dot 2s infinite;"></span>
+                <span class="text-[10px] text-zinc-500 font-mono uppercase tracking-wider">Live Metrics</span>
+              </div>
+              <div class="flex items-end gap-3 h-full pt-8">
+                <div class="flex-1 flex flex-col items-center gap-2">
+                  <div class="w-full bg-gradient-to-t from-[#ef233c] to-[#ef233c]/60 rounded-t-sm origin-bottom" style="height: 65%; animation: barGrow 1.5s ease-out 0.5s both;"></div>
+                  <span class="text-[9px] text-zinc-500 font-mono">Q1</span>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-2">
+                  <div class="w-full bg-gradient-to-t from-[#ef233c] to-[#ef233c]/60 rounded-t-sm origin-bottom" style="height: 45%; animation: barGrow 1.5s ease-out 0.7s both;"></div>
+                  <span class="text-[9px] text-zinc-500 font-mono">Q2</span>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-2">
+                  <div class="w-full bg-gradient-to-t from-[#ef233c] to-[#ef233c]/60 rounded-t-sm origin-bottom" style="height: 80%; animation: barGrow 1.5s ease-out 0.9s both;"></div>
+                  <span class="text-[9px] text-zinc-500 font-mono">Q3</span>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-2">
+                  <div class="w-full bg-gradient-to-t from-white to-white/60 rounded-t-sm origin-bottom" style="height: 95%; animation: barGrow 1.5s ease-out 1.1s both;"></div>
+                  <span class="text-[9px] text-zinc-500 font-mono">Q4</span>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-2">
+                  <div class="w-full bg-gradient-to-t from-[#ef233c] to-[#ef233c]/60 rounded-t-sm origin-bottom" style="height: 55%; animation: barGrow 1.5s ease-out 1.3s both;"></div>
+                  <span class="text-[9px] text-zinc-500 font-mono">Q5</span>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-2">
+                  <div class="w-full bg-gradient-to-t from-[#ef233c] to-[#ef233c]/60 rounded-t-sm origin-bottom" style="height: 70%; animation: barGrow 1.5s ease-out 1.5s both;"></div>
+                  <span class="text-[9px] text-zinc-500 font-mono">Q6</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 5: Development / Code — col-span-3 (terminal) -->
+        <div class="bento-card lg:col-span-3 group overflow-hidden bg-zinc-900/40 border border-white/10 rounded-none p-8 relative backdrop-blur-sm" style="animation: fadeSlideIn 1s ease-out 0.7s both;">
+          <div class="relative z-10 h-full flex flex-col">
+            <div class="mb-8 max-w-sm">
+              <h3 class="text-2xl font-semibold text-white tracking-tight font-manrope mb-2">AI Systems</h3>
+              <p class="text-sm text-gray-400 leading-relaxed">Custom GPTs, lead vaults, and automation pipelines built for your business.</p>
+            </div>
+            <!-- Terminal mockup -->
+            <div class="overflow-hidden bg-[#0a0a0a] w-full h-[220px] border border-white/10 rounded-lg mt-auto relative">
+              <!-- Scan line -->
+              <div class="absolute left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#ef233c]/20 to-transparent pointer-events-none z-20" style="animation: scanline 4s linear infinite;"></div>
+              <div class="h-7 border-b border-white/5 flex items-center px-3 gap-1.5 bg-white/[0.02]">
+                <div class="w-2 h-2 rounded-full bg-red-500/40"></div>
+                <div class="w-2 h-2 rounded-full bg-yellow-500/40"></div>
+                <div class="w-2 h-2 rounded-full bg-green-500/40"></div>
+                <span class="ml-3 text-[10px] text-zinc-500 font-mono">offer-mba-pipeline.sh</span>
+              </div>
+              <div class="p-4 font-mono text-xs space-y-1.5 overflow-hidden">
+                <p><span class="text-[#ef233c]">$</span> <span class="text-zinc-300">ai-simple deploy --offer-mba</span></p>
+                <p class="text-zinc-500">→ Loading 7 AI Conversion Keys...</p>
+                <p class="text-zinc-500">→ CORE ✓ INTEL ✓ MIND ✓ RAW ✓ EDGE ✓ IDEA ✓ POWER ✓</p>
+                <p class="text-green-400/80">✓ Master Offer Playbook generated</p>
+                <p><span class="text-[#ef233c]">$</span> <span class="text-zinc-300">lead-vault connect --records 728000000</span></p>
+                <p class="text-zinc-500">→ Syncing LinkedIn + Instagram segments...</p>
+                <p class="text-green-400/80">✓ 728M leads mapped and ready</p>
+                <p class="text-zinc-600">█<span style="animation: pulse-dot 1s infinite;"> </span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider mb-32"></div>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- BENTO 2: ABOUT PAGE BENTO (Pattern 4)                         -->
+    <!-- Adapted: Los + Andrew hero card, stats, value props            -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <section class="mb-32 animate-on-scroll">
+      <div class="mb-12">
+        <span class="text-[10px] font-mono uppercase tracking-widest text-[#ef233c] font-bold">Composition 02</span>
+        <h2 class="text-3xl md:text-4xl font-manrope font-medium tracking-tight text-white mt-2">About Page Bento</h2>
+        <p class="text-zinc-400 mt-2 max-w-xl">Asymmetric 3-column grid: wide hero card, stacked stats + image, and value proposition cards below.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <!-- Main Hero Card (Span 2) -->
+        <div class="bento-card lg:col-span-2 border-dashed lg:p-12 flex flex-col overflow-hidden group bg-black border border-zinc-800 p-10 relative justify-between">
+          <div class="absolute right-0 top-0 w-96 h-96 bg-[#ef233c]/5 rounded-full blur-[100px] pointer-events-none mix-blend-screen"></div>
+          <div class="relative z-10">
+            <div class="flex items-center gap-3 mb-6">
+              <span class="w-2 h-2 rounded-full bg-[#ef233c] animate-pulse shadow-[0_0_8px_rgba(239,35,60,0.5)]"></span>
+              <span class="text-[#ef233c] font-mono text-xs uppercase tracking-widest font-bold">About AI Simple</span>
+            </div>
+            <h2 class="text-white font-manrope text-4xl md:text-5xl font-medium tracking-tighter leading-[1.1] mb-6">
+              Building the future of
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-white/50">AI-driven growth.</span>
+            </h2>
+            <p class="text-zinc-400 text-lg leading-relaxed max-w-xl">
+              Los Silva and Andrew Naegele are operators, not theorists. Together they've influenced $72M+ in client revenue, generated 518M+ leads, and built AI systems that turn attention into booked calls.
+            </p>
+          </div>
+          <div class="mt-12 flex items-center gap-6 relative z-10">
+            <button class="group flex items-center gap-2 text-sm font-medium text-white hover:text-[#ef233c] transition-colors uppercase tracking-wider">
+              <span>Our Philosophy</span>
+              <i data-lucide="arrow-right" class="w-4 h-4 transition-transform group-hover:translate-x-1"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Right Column Stack (Span 1) -->
+        <div class="lg:col-span-1 grid grid-rows-2 gap-6">
+          <!-- Stats Card -->
+          <div class="bento-card flex flex-col group hover:border-[#ef233c]/30 transition-colors duration-500 text-center bg-zinc-900/20 border border-white/10 p-8 backdrop-blur-sm items-center justify-center">
+            <div class="relative">
+              <span class="text-6xl font-manrope font-medium text-white tracking-tighter block mb-2 group-hover:scale-110 transition-transform duration-500">
+                8<span class="text-[#ef233c] text-4xl align-top">+</span>
+              </span>
+            </div>
+            <span class="text-xs text-zinc-500 font-mono uppercase tracking-widest font-semibold">Industries Served</span>
+          </div>
+
+          <!-- Image Card -->
+          <div class="bento-card relative overflow-hidden border border-zinc-800 border-dashed group min-h-[200px]">
+            <div class="absolute inset-0 bg-gradient-to-br from-[#ef233c]/10 via-black to-black"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-6 left-6 z-10">
+              <div class="flex items-center gap-2 mb-1">
+                <i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#ef233c]"></i>
+                <span class="text-white text-xs font-bold uppercase tracking-wider">Remote-First</span>
+              </div>
+              <span class="text-zinc-400 text-[10px] font-mono">Operating Since 2018</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Row: Value Card (Span 1) -->
+        <div class="bento-card lg:col-span-1 bg-black border border-zinc-800 border-dashed p-8 flex flex-col justify-between relative group hover:bg-zinc-900/20 transition-colors duration-500">
+          <div class="w-10 h-10 bg-[#ef233c]/10 text-[#ef233c] flex items-center justify-center rounded-sm border border-[#ef233c]/20 mb-6 group-hover:scale-110 transition-transform duration-300">
+            <i data-lucide="target" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h3 class="text-xl text-white font-manrope font-medium mb-3">Strategy First</h3>
+            <p class="text-zinc-400 text-sm leading-relaxed">Every system we build starts with your offer. We don't do "cool tech" — we do revenue-generating infrastructure.</p>
+          </div>
+        </div>
+
+        <!-- Bottom Row: Wide Feature (Span 2) -->
+        <div class="bento-card lg:col-span-2 grid grid-cols-1 md:grid-cols-2 bg-zinc-900/10 border border-zinc-800 border-dashed overflow-hidden">
+          <div class="p-8 md:p-10 flex flex-col justify-center">
+            <h3 class="text-white font-manrope text-2xl font-medium mb-4 tracking-tight">Global Impact</h3>
+            <p class="text-zinc-400 text-sm leading-relaxed mb-8">
+              Working across industries to deliver compounding growth. We've helped founders go from zero to booked-solid in 90 days.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1.5 bg-white/5 border border-white/10 rounded-sm text-xs text-zinc-300 font-mono">Offer Design</span>
+              <span class="px-3 py-1.5 bg-white/5 border border-white/10 rounded-sm text-xs text-zinc-300 font-mono">AI Systems</span>
+              <span class="px-3 py-1.5 bg-white/5 border border-white/10 rounded-sm text-xs text-zinc-300 font-mono">Lead Gen</span>
+            </div>
+          </div>
+          <div class="relative min-h-[240px] md:min-h-full border-l border-zinc-800 border-dashed overflow-hidden group">
+            <div class="absolute inset-0 bg-[#ef233c] mix-blend-overlay opacity-20 z-10 pointer-events-none group-hover:opacity-0 transition-opacity duration-500"></div>
+            <div class="absolute inset-0 bg-gradient-to-br from-zinc-900 to-black"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+              <span class="text-8xl font-manrope font-bold text-white/5 tracking-tighter">728M</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider mb-32"></div>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- BENTO 3: 5-COLUMN STATS STRIP (Pattern 9) + MARQUEE           -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <section class="mb-32 animate-on-scroll">
+      <div class="mb-12">
+        <span class="text-[10px] font-mono uppercase tracking-widest text-[#ef233c] font-bold">Composition 03</span>
+        <h2 class="text-3xl md:text-4xl font-manrope font-medium tracking-tight text-white mt-2">5-Column Stats Strip + Brand Marquee</h2>
+        <p class="text-zinc-400 mt-2 max-w-xl">Edge-to-edge stat cards with no gaps, shared borders, and an infinite-scroll brand marquee below.</p>
+      </div>
+
+      <!-- Stats Strip -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-0 bg-black w-full border border-white/10">
+        <div class="bento-card p-8 border-r border-white/5 group hover:bg-zinc-900/30 transition-colors">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#ef233c]" style="animation: pulse-dot 2s infinite;"></span>
+            <span class="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">Revenue</span>
+          </div>
+          <span class="text-4xl font-manrope font-medium text-white tracking-tighter block mb-1 counter" data-target="72">$0M+</span>
+          <p class="text-zinc-500 text-xs">Client revenue influenced</p>
+        </div>
+        <div class="bento-card p-8 border-r border-white/5 group hover:bg-zinc-900/30 transition-colors">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#ef233c]" style="animation: pulse-dot 2s infinite; animation-delay: 0.3s;"></span>
+            <span class="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">Leads</span>
+          </div>
+          <span class="text-4xl font-manrope font-medium text-white tracking-tighter block mb-1 counter" data-target="728">0M+</span>
+          <p class="text-zinc-500 text-xs">Mapped leads in vault</p>
+        </div>
+        <div class="bento-card p-8 border-r border-white/5 group hover:bg-zinc-900/30 transition-colors">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#ef233c]" style="animation: pulse-dot 2s infinite; animation-delay: 0.6s;"></span>
+            <span class="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">Retention</span>
+          </div>
+          <span class="text-4xl font-manrope font-medium text-white tracking-tighter block mb-1 counter" data-target="96">0%</span>
+          <p class="text-zinc-500 text-xs">Client retention rate</p>
+        </div>
+        <div class="bento-card p-8 border-r border-white/5 group hover:bg-zinc-900/30 transition-colors">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#ef233c]" style="animation: pulse-dot 2s infinite; animation-delay: 0.9s;"></span>
+            <span class="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">Industries</span>
+          </div>
+          <span class="text-4xl font-manrope font-medium text-white tracking-tighter block mb-1 counter" data-target="8">0+</span>
+          <p class="text-zinc-500 text-xs">Verticals served</p>
+        </div>
+        <div class="bento-card p-8 group hover:bg-zinc-900/30 transition-colors">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#ef233c]" style="animation: pulse-dot 2s infinite; animation-delay: 1.2s;"></span>
+            <span class="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">GPTs</span>
+          </div>
+          <span class="text-4xl font-manrope font-medium text-white tracking-tighter block mb-1 counter" data-target="7">0</span>
+          <p class="text-zinc-500 text-xs">AI Conversion Keys</p>
+        </div>
+      </div>
+
+      <!-- Brand Marquee -->
+      <div class="border-x border-b border-white/10 overflow-hidden py-8" style="mask-image: linear-gradient(to right, transparent 0, black 128px, black calc(100% - 128px), transparent 100%);">
+        <div class="flex items-center w-max" style="animation: infinite-scroll 30s linear infinite;">
+          <div class="flex items-center gap-16 px-8">
+            <span class="text-xl font-manrope font-bold text-white/30 tracking-tight">Lurn</span>
+            <span class="text-xl font-manrope font-bold text-white/30 tracking-tight">Complily</span>
+            <span class="text-xl font-manrope font-bold text-white/30 tracking-tight">NFL</span>
+            <span class="text-xl font-manrope font-bold text-white/30 tracking-tight">Entrepreneur</span>
+            <span class="text-xl font-manrope font-bold text-white/30 tracking-tight">TechCrunch</span>
+            <span class="text-xl font-manrope font-bold text-white/30 tracking-tight">AppSumo</span>
+            <span class="text-xl font-manrope font-bold text-white/30 tracking-tight">Acquisition.com</span>
+            <span class="text-xl font-manrope font-bold text-white/30 tracking-tight">Skool</span>
+          </div>
+          <div class="flex items-center gap-16 px-8">
+            <span class="text-xl font-manrope font-bold text-white/30 tracking-tight">Lurn</span>
+            <span class="text-xl font-manrope font-bold text-white/30 tracking-tight">Complily</span>
+            <span class="text-xl font-manrope font-bold text-white/30 tracking-tight">NFL</span>
+            <span class="text-xl font-manrope font-bold text-white/30 tracking-tight">Entrepreneur</span>
+            <span class="text-xl font-manrope font-bold text-white/30 tracking-tight">TechCrunch</span>
+            <span class="text-xl font-manrope font-bold text-white/30 tracking-tight">AppSumo</span>
+            <span class="text-xl font-manrope font-bold text-white/30 tracking-tight">Acquisition.com</span>
+            <span class="text-xl font-manrope font-bold text-white/30 tracking-tight">Skool</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider mb-32"></div>
+
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- BENTO 4: 12-COLUMN PROCESS + CAPABILITIES (Patterns 7 & 8)    -->
+    <!-- Adapted: How We Work + Capabilities split                      -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <section class="mb-32 animate-on-scroll">
+      <div class="mb-12">
+        <span class="text-[10px] font-mono uppercase tracking-widest text-[#ef233c] font-bold">Composition 04</span>
+        <h2 class="text-3xl md:text-4xl font-manrope font-medium tracking-tight text-white mt-2">12-Column Process + Capabilities Grid</h2>
+        <p class="text-zinc-400 mt-2 max-w-xl">Asymmetric 5/7 split for process steps, then a 5/7 capabilities grid with animated icons and a logo wall.</p>
+      </div>
+
+      <!-- Process Grid: 5/7 split -->
+      <div class="grid lg:grid-cols-12 gap-16 items-start mb-16">
+        <!-- Left: Section Title -->
+        <div class="lg:col-span-5 pt-4">
+          <div class="flex items-center gap-3 mb-6">
+            <span class="w-2 h-2 rounded-full bg-[#ef233c] animate-pulse"></span>
+            <span class="text-[#ef233c] font-mono text-xs uppercase tracking-widest font-bold">How We Work</span>
+          </div>
+          <h3 class="text-white font-manrope text-3xl md:text-4xl font-medium tracking-tighter leading-tight mb-6">
+            From strategy to <span class="text-transparent bg-clip-text bg-[#ef233c]">revenue</span> in 90 days.
+          </h3>
+          <p class="text-zinc-400 leading-relaxed">
+            We don't do "discovery phases" that last 6 months. Our process is designed to get you from zero to live pipeline as fast as possible.
+          </p>
+        </div>
+
+        <!-- Right: 2x2 Process Steps -->
+        <div class="lg:col-span-7">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+            <!-- Step 1 -->
+            <div class="bento-card group border border-zinc-800 border-dashed p-6 hover:bg-zinc-900/20 transition-all duration-500">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 bg-[#ef233c]/10 text-[#ef233c] flex items-center justify-center rounded-sm border border-[#ef233c]/20 group-hover:scale-110 transition-transform">
+                  <span class="text-sm font-bold font-mono">01</span>
+                </div>
+                <h4 class="text-white font-manrope font-medium">Strategy Day</h4>
+              </div>
+              <p class="text-zinc-400 text-sm leading-relaxed">Deep-dive into your offer, market, and current funnel. We build your Master Offer Playbook using the 7 AI Conversion Keys.</p>
+            </div>
+            <!-- Step 2 -->
+            <div class="bento-card group border border-zinc-800 border-dashed p-6 hover:bg-zinc-900/20 transition-all duration-500">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 bg-[#ef233c]/10 text-[#ef233c] flex items-center justify-center rounded-sm border border-[#ef233c]/20 group-hover:scale-110 transition-transform">
+                  <span class="text-sm font-bold font-mono">02</span>
+                </div>
+                <h4 class="text-white font-manrope font-medium">Lead Vault Setup</h4>
+              </div>
+              <p class="text-zinc-400 text-sm leading-relaxed">We identify your highest-intent segments from 728M+ leads and build targeted lists for outbound, retargeting, and content.</p>
+            </div>
+            <!-- Step 3 -->
+            <div class="bento-card group border border-zinc-800 border-dashed p-6 hover:bg-zinc-900/20 transition-all duration-500">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 bg-[#ef233c]/10 text-[#ef233c] flex items-center justify-center rounded-sm border border-[#ef233c]/20 group-hover:scale-110 transition-transform">
+                  <span class="text-sm font-bold font-mono">03</span>
+                </div>
+                <h4 class="text-white font-manrope font-medium">7-Day Sprint</h4>
+              </div>
+              <p class="text-zinc-400 text-sm leading-relaxed">Outbound + content sprint using your new assets. We deploy the Direct Copywriter GPT to generate all launch materials.</p>
+            </div>
+            <!-- Step 4 -->
+            <div class="bento-card group border border-zinc-800 border-dashed p-6 hover:bg-zinc-900/20 transition-all duration-500">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 bg-[#ef233c]/10 text-[#ef233c] flex items-center justify-center rounded-sm border border-[#ef233c]/20 group-hover:scale-110 transition-transform">
+                  <span class="text-sm font-bold font-mono">04</span>
+                </div>
+                <h4 class="text-white font-manrope font-medium">Scale & Optimize</h4>
+              </div>
+              <p class="text-zinc-400 text-sm leading-relaxed">Long-term advisory and system optimization. We monitor, iterate, and scale what's working across all channels.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Capabilities Grid: 5/7 split -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 border border-zinc-800 border-dashed">
+        <!-- Left: Logo Wall -->
+        <div class="lg:col-span-5 p-8 md:p-12 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-dashed border-zinc-800 relative min-h-[360px]">
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <div class="grid grid-cols-2 gap-1 w-8 h-8 opacity-90">
+                <div class="bg-[#ef233c] w-full h-full rounded-sm"></div>
+                <div class="w-full h-full bg-zinc-700 rounded-sm"></div>
+                <div class="w-full h-full bg-zinc-800 rounded-sm"></div>
+                <div class="w-full h-full bg-white rounded-sm shadow-[0_0_10px_rgba(255,255,255,0.4)]"></div>
+              </div>
+              <span class="text-xl text-white tracking-tight font-manrope font-semibold">AI Simple</span>
+            </div>
+            <p class="text-zinc-400 text-sm leading-relaxed max-w-sm mt-6">
+              Full-stack AI growth infrastructure. We don't just consult — we build, deploy, and operate the systems that generate revenue.
+            </p>
+          </div>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <span class="px-3 py-1.5 bg-white/5 border border-white/10 rounded-sm text-[10px] text-zinc-400 font-mono uppercase tracking-wider">GPT Systems</span>
+            <span class="px-3 py-1.5 bg-white/5 border border-white/10 rounded-sm text-[10px] text-zinc-400 font-mono uppercase tracking-wider">Lead Gen</span>
+            <span class="px-3 py-1.5 bg-white/5 border border-white/10 rounded-sm text-[10px] text-zinc-400 font-mono uppercase tracking-wider">Offer Design</span>
+            <span class="px-3 py-1.5 bg-white/5 border border-white/10 rounded-sm text-[10px] text-zinc-400 font-mono uppercase tracking-wider">Content</span>
+            <span class="px-3 py-1.5 bg-white/5 border border-white/10 rounded-sm text-[10px] text-zinc-400 font-mono uppercase tracking-wider">Automation</span>
+          </div>
+        </div>
+
+        <!-- Right: 3x2 Capability Items -->
+        <div class="lg:col-span-7 p-8 md:p-12 bg-black/50">
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-10 h-full content-start">
+            <div class="group">
+              <div class="w-10 h-10 bg-zinc-900 border border-zinc-800 rounded-sm flex items-center justify-center mb-4 group-hover:border-[#ef233c]/30 group-hover:bg-[#ef233c]/5 transition-all duration-300">
+                <i data-lucide="brain" class="w-5 h-5 text-zinc-400 group-hover:text-[#ef233c] transition-colors"></i>
+              </div>
+              <h4 class="text-white text-sm font-medium mb-1">Offer MBA</h4>
+              <p class="text-zinc-500 text-xs leading-relaxed">7 AI Conversion Keys</p>
+            </div>
+            <div class="group">
+              <div class="w-10 h-10 bg-zinc-900 border border-zinc-800 rounded-sm flex items-center justify-center mb-4 group-hover:border-[#ef233c]/30 group-hover:bg-[#ef233c]/5 transition-all duration-300">
+                <i data-lucide="database" class="w-5 h-5 text-zinc-400 group-hover:text-[#ef233c] transition-colors"></i>
+              </div>
+              <h4 class="text-white text-sm font-medium mb-1">Lead Vault</h4>
+              <p class="text-zinc-500 text-xs leading-relaxed">728M+ mapped leads</p>
+            </div>
+            <div class="group">
+              <div class="w-10 h-10 bg-zinc-900 border border-zinc-800 rounded-sm flex items-center justify-center mb-4 group-hover:border-[#ef233c]/30 group-hover:bg-[#ef233c]/5 transition-all duration-300">
+                <i data-lucide="pen-tool" class="w-5 h-5 text-zinc-400 group-hover:text-[#ef233c] transition-colors"></i>
+              </div>
+              <h4 class="text-white text-sm font-medium mb-1">Copywriter GPT</h4>
+              <p class="text-zinc-500 text-xs leading-relaxed">Brutal audit + rewrite</p>
+            </div>
+            <div class="group">
+              <div class="w-10 h-10 bg-zinc-900 border border-zinc-800 rounded-sm flex items-center justify-center mb-4 group-hover:border-[#ef233c]/30 group-hover:bg-[#ef233c]/5 transition-all duration-300">
+                <i data-lucide="megaphone" class="w-5 h-5 text-zinc-400 group-hover:text-[#ef233c] transition-colors"></i>
+              </div>
+              <h4 class="text-white text-sm font-medium mb-1">Content Systems</h4>
+              <p class="text-zinc-500 text-xs leading-relaxed">Compound attention</p>
+            </div>
+            <div class="group">
+              <div class="w-10 h-10 bg-zinc-900 border border-zinc-800 rounded-sm flex items-center justify-center mb-4 group-hover:border-[#ef233c]/30 group-hover:bg-[#ef233c]/5 transition-all duration-300">
+                <i data-lucide="send" class="w-5 h-5 text-zinc-400 group-hover:text-[#ef233c] transition-colors"></i>
+              </div>
+              <h4 class="text-white text-sm font-medium mb-1">Outbound</h4>
+              <p class="text-zinc-500 text-xs leading-relaxed">Targeted campaigns</p>
+            </div>
+            <div class="group">
+              <div class="w-10 h-10 bg-zinc-900 border border-zinc-800 rounded-sm flex items-center justify-center mb-4 group-hover:border-[#ef233c]/30 group-hover:bg-[#ef233c]/5 transition-all duration-300">
+                <i data-lucide="settings" class="w-5 h-5 text-zinc-400 group-hover:text-[#ef233c] transition-colors"></i>
+              </div>
+              <h4 class="text-white text-sm font-medium mb-1">Automation</h4>
+              <p class="text-zinc-500 text-xs leading-relaxed">AI-powered workflows</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider mb-32"></div>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- BENTO 5: 3-COLUMN SCROLLING TESTIMONIALS (Pattern 10)          -->
+    <!-- + MASONRY GALLERY HYBRID (Pattern 2)                           -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <section class="mb-32 animate-on-scroll">
+      <div class="mb-12">
+        <span class="text-[10px] font-mono uppercase tracking-widest text-[#ef233c] font-bold">Composition 05</span>
+        <h2 class="text-3xl md:text-4xl font-manrope font-medium tracking-tight text-white mt-2">3-Column Scrolling Testimonials + Masonry</h2>
+        <p class="text-zinc-400 mt-2 max-w-xl">Three columns of testimonial cards scrolling at different speeds, with a masonry-style case study grid below.</p>
+      </div>
+
+      <!-- Scrolling Testimonials -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 h-[500px] overflow-hidden relative" style="mask-image: linear-gradient(180deg, transparent, black 10%, black 90%, transparent); -webkit-mask-image: linear-gradient(180deg, transparent, black 10%, black 90%, transparent);">
+        <!-- Column 1 — scrolls up -->
+        <div class="flex flex-col gap-6 testimonial-col" data-speed="25" data-direction="up">
+          <div class="bento-card bg-zinc-900/30 border border-zinc-800 p-6 rounded-none">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-8 h-8 rounded-full bg-gradient-to-br from-[#ef233c] to-red-800 flex items-center justify-center text-white text-xs font-bold">JR</div>
+              <div>
+                <p class="text-white text-sm font-medium">James R.</p>
+                <p class="text-zinc-500 text-xs">SaaS Founder</p>
+              </div>
+            </div>
+            <p class="text-zinc-400 text-sm leading-relaxed">"The Offer MBA completely restructured how we position our product. Close rate went from 12% to 34% in 60 days."</p>
+          </div>
+          <div class="bento-card bg-zinc-900/30 border border-zinc-800 p-6 rounded-none">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-blue-800 flex items-center justify-center text-white text-xs font-bold">SK</div>
+              <div>
+                <p class="text-white text-sm font-medium">Sarah K.</p>
+                <p class="text-zinc-500 text-xs">Agency Owner</p>
+              </div>
+            </div>
+            <p class="text-zinc-400 text-sm leading-relaxed">"728M leads sounds insane until you actually use it. We pulled 12,000 qualified prospects in our first week."</p>
+          </div>
+          <div class="bento-card bg-zinc-900/30 border border-zinc-800 p-6 rounded-none">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-8 h-8 rounded-full bg-gradient-to-br from-green-500 to-green-800 flex items-center justify-center text-white text-xs font-bold">MT</div>
+              <div>
+                <p class="text-white text-sm font-medium">Mike T.</p>
+                <p class="text-zinc-500 text-xs">Consultant</p>
+              </div>
+            </div>
+            <p class="text-zinc-400 text-sm leading-relaxed">"The Direct Copywriter GPT is brutal — in the best way. It tore apart my landing page and rebuilt it. Conversions doubled."</p>
+          </div>
+          <div class="bento-card bg-zinc-900/30 border border-zinc-800 p-6 rounded-none">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-8 h-8 rounded-full bg-gradient-to-br from-purple-500 to-purple-800 flex items-center justify-center text-white text-xs font-bold">AL</div>
+              <div>
+                <p class="text-white text-sm font-medium">Amy L.</p>
+                <p class="text-zinc-500 text-xs">Ecom Brand</p>
+              </div>
+            </div>
+            <p class="text-zinc-400 text-sm leading-relaxed">"We went from 'I think our offer is good' to 'here's exactly why people buy' in one afternoon with the CORE GPT."</p>
+          </div>
+        </div>
+
+        <!-- Column 2 — scrolls down -->
+        <div class="hidden md:flex flex-col gap-6 testimonial-col" data-speed="20" data-direction="down">
+          <div class="bento-card bg-zinc-900/30 border border-zinc-800 p-6 rounded-none">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-8 h-8 rounded-full bg-gradient-to-br from-orange-500 to-orange-800 flex items-center justify-center text-white text-xs font-bold">DM</div>
+              <div>
+                <p class="text-white text-sm font-medium">David M.</p>
+                <p class="text-zinc-500 text-xs">Coach</p>
+              </div>
+            </div>
+            <p class="text-zinc-400 text-sm leading-relaxed">"Los and Andrew don't just hand you tools — they build the entire pipeline. I went from zero outbound to 40 calls/month."</p>
+          </div>
+          <div class="bento-card bg-zinc-900/30 border border-zinc-800 p-6 rounded-none">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-8 h-8 rounded-full bg-gradient-to-br from-pink-500 to-pink-800 flex items-center justify-center text-white text-xs font-bold">LP</div>
+              <div>
+                <p class="text-white text-sm font-medium">Lisa P.</p>
+                <p class="text-zinc-500 text-xs">Real Estate</p>
+              </div>
+            </div>
+            <p class="text-zinc-400 text-sm leading-relaxed">"The homeowner segment in the Lead Vault is gold. We closed 3 listings in the first month from outbound alone."</p>
+          </div>
+          <div class="bento-card bg-zinc-900/30 border border-zinc-800 p-6 rounded-none">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-500 to-cyan-800 flex items-center justify-center text-white text-xs font-bold">RG</div>
+              <div>
+                <p class="text-white text-sm font-medium">Ryan G.</p>
+                <p class="text-zinc-500 text-xs">B2B Services</p>
+              </div>
+            </div>
+            <p class="text-zinc-400 text-sm leading-relaxed">"INTEL + MIND GPTs gave us customer language we never would have found on our own. Our ads now speak their exact words."</p>
+          </div>
+          <div class="bento-card bg-zinc-900/30 border border-zinc-800 p-6 rounded-none">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-8 h-8 rounded-full bg-gradient-to-br from-yellow-500 to-yellow-800 flex items-center justify-center text-white text-xs font-bold">NW</div>
+              <div>
+                <p class="text-white text-sm font-medium">Nina W.</p>
+                <p class="text-zinc-500 text-xs">Skool Community</p>
+              </div>
+            </div>
+            <p class="text-zinc-400 text-sm leading-relaxed">"I used the POWER GPT to generate 30 hooks in 10 minutes. Three of them went viral on LinkedIn. Not kidding."</p>
+          </div>
+        </div>
+
+        <!-- Column 3 — scrolls up (slower) -->
+        <div class="hidden lg:flex flex-col gap-6 testimonial-col" data-speed="30" data-direction="up">
+          <div class="bento-card bg-zinc-900/30 border border-zinc-800 p-6 rounded-none">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-8 h-8 rounded-full bg-gradient-to-br from-teal-500 to-teal-800 flex items-center justify-center text-white text-xs font-bold">BC</div>
+              <div>
+                <p class="text-white text-sm font-medium">Brian C.</p>
+                <p class="text-zinc-500 text-xs">Info Products</p>
+              </div>
+            </div>
+            <p class="text-zinc-400 text-sm leading-relaxed">"The Implementation Call was the best 30 minutes I've spent on my business this year. They mapped my entire Q1 sprint."</p>
+          </div>
+          <div class="bento-card bg-zinc-900/30 border border-zinc-800 p-6 rounded-none">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-8 h-8 rounded-full bg-gradient-to-br from-indigo-500 to-indigo-800 flex items-center justify-center text-white text-xs font-bold">KH</div>
+              <div>
+                <p class="text-white text-sm font-medium">Karen H.</p>
+                <p class="text-zinc-500 text-xs">DTC Brand</p>
+              </div>
+            </div>
+            <p class="text-zinc-400 text-sm leading-relaxed">"We plugged the Offer Playbook into our email sequences and saw a 47% increase in reply rate within two weeks."</p>
+          </div>
+          <div class="bento-card bg-zinc-900/30 border border-zinc-800 p-6 rounded-none">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-8 h-8 rounded-full bg-gradient-to-br from-rose-500 to-rose-800 flex items-center justify-center text-white text-xs font-bold">TJ</div>
+              <div>
+                <p class="text-white text-sm font-medium">Tom J.</p>
+                <p class="text-zinc-500 text-xs">Startup Founder</p>
+              </div>
+            </div>
+            <p class="text-zinc-400 text-sm leading-relaxed">"I've spent $50K+ on marketing consultants. AI Simple delivered more actionable output in one week than all of them combined."</p>
+          </div>
+          <div class="bento-card bg-zinc-900/30 border border-zinc-800 p-6 rounded-none">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-8 h-8 rounded-full bg-gradient-to-br from-amber-500 to-amber-800 flex items-center justify-center text-white text-xs font-bold">EV</div>
+              <div>
+                <p class="text-white text-sm font-medium">Elena V.</p>
+                <p class="text-zinc-500 text-xs">Marketing Agency</p>
+              </div>
+            </div>
+            <p class="text-zinc-400 text-sm leading-relaxed">"We white-labeled the AI systems for our clients. It's now a revenue stream we never expected. Thank you, Los and Andrew."</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Masonry Case Study Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
+        <!-- Column 1 -->
+        <div class="flex flex-col gap-6">
+          <div class="bento-card group overflow-hidden border border-zinc-800 relative h-56 bg-gradient-to-br from-zinc-900 to-black">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-5 z-20">
+              <p class="text-xs text-white/70 font-mono uppercase tracking-wider">SaaS • Offer Rebuild</p>
+              <div class="mt-1 flex items-center justify-between">
+                <h4 class="text-base tracking-tight font-medium text-white font-manrope">3x Close Rate</h4>
+                <span class="inline-flex h-8 w-8 items-center justify-center bg-white/90 text-neutral-900">
+                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="bento-card group overflow-hidden border border-zinc-800 relative h-72 bg-gradient-to-br from-[#ef233c]/5 to-black">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-5 z-20">
+              <p class="text-xs text-white/70 font-mono uppercase tracking-wider">Ecom • Lead Gen</p>
+              <div class="mt-1 flex items-center justify-between">
+                <h4 class="text-base tracking-tight font-medium text-white font-manrope">12K Leads / Week</h4>
+                <span class="inline-flex h-8 w-8 items-center justify-center bg-white/90 text-neutral-900">
+                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Column 2 -->
+        <div class="flex flex-col gap-6">
+          <div class="bento-card group overflow-hidden border border-zinc-800 relative h-64 bg-gradient-to-br from-zinc-800 to-black">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-5 z-20">
+              <p class="text-xs text-white/70 font-mono uppercase tracking-wider">Agency • Content System</p>
+              <div class="mt-1 flex items-center justify-between">
+                <h4 class="text-base tracking-tight font-medium text-white font-manrope">40 Calls / Month</h4>
+                <span class="inline-flex h-8 w-8 items-center justify-center bg-white/90 text-neutral-900">
+                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="bento-card group overflow-hidden border border-zinc-800 relative h-56 bg-gradient-to-br from-zinc-900 to-black">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-5 z-20">
+              <p class="text-xs text-white/70 font-mono uppercase tracking-wider">Real Estate • Outbound</p>
+              <div class="mt-1 flex items-center justify-between">
+                <h4 class="text-base tracking-tight font-medium text-white font-manrope">3 Listings / Month</h4>
+                <span class="inline-flex h-8 w-8 items-center justify-center bg-white/90 text-neutral-900">
+                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Column 3 -->
+        <div class="flex flex-col gap-6">
+          <div class="bento-card group overflow-hidden border border-zinc-800 relative h-72 bg-gradient-to-br from-zinc-900 to-black">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-5 z-20">
+              <p class="text-xs text-white/70 font-mono uppercase tracking-wider">Coaching • Full Build</p>
+              <div class="mt-1 flex items-center justify-between">
+                <h4 class="text-base tracking-tight font-medium text-white font-manrope">$0 → $47K MRR</h4>
+                <span class="inline-flex h-8 w-8 items-center justify-center bg-white/90 text-neutral-900">
+                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="bento-card group overflow-hidden border border-zinc-800 relative h-48 bg-gradient-to-br from-[#ef233c]/5 to-black">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-5 z-20">
+              <p class="text-xs text-white/70 font-mono uppercase tracking-wider">B2B • AI Pipeline</p>
+              <div class="mt-1 flex items-center justify-between">
+                <h4 class="text-base tracking-tight font-medium text-white font-manrope">47% Reply Rate</h4>
+                <span class="inline-flex h-8 w-8 items-center justify-center bg-white/90 text-neutral-900">
+                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /max-w-7xl -->
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- FOOTER -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <footer class="border-t border-zinc-800/50 mt-20 py-12 px-6">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-3">
+        <div class="grid grid-cols-2 opacity-90 w-5 h-5 gap-0.5">
+          <div class="bg-[#ef233c] w-full h-full rounded-sm"></div>
+          <div class="w-full h-full bg-zinc-700 rounded-sm"></div>
+          <div class="w-full h-full bg-zinc-800 rounded-sm"></div>
+          <div class="w-full h-full bg-white rounded-sm"></div>
+        </div>
+        <span class="text-sm text-zinc-500">AI Simple — Bento Showcase</span>
+      </div>
+      <div class="flex gap-6 text-sm text-zinc-500">
+        <a href="index.html" class="hover:text-white transition-colors">Home</a>
+        <a href="lead-magnet.html" class="hover:text-white transition-colors">Lead Vault</a>
+        <a href="https://skool.com/vibe-marketing" target="_blank" class="hover:text-white transition-colors">Community</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- SCRIPTS -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+
+    // ── Intersection Observer for scroll animations ──
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+    // ── Hover glow tracking ──
+    document.querySelectorAll('.bento-card').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty('--mouse-x', ((e.clientX - rect.left) / rect.width * 100) + '%');
+        card.style.setProperty('--mouse-y', ((e.clientY - rect.top) / rect.height * 100) + '%');
+      });
+    });
+
+    // ── Counter animation ──
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.dataset.target);
+          const text = el.textContent;
+          const prefix = text.match(/^[^0-9]*/)[0];
+          const suffix = text.match(/[^0-9]*$/)[0];
+          let current = 0;
+          const duration = 2000;
+          const step = target / (duration / 16);
+          const timer = setInterval(() => {
+            current += step;
+            if (current >= target) {
+              current = target;
+              clearInterval(timer);
+            }
+            el.textContent = prefix + Math.floor(current) + suffix;
+          }, 16);
+          counterObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+
+    // ── Testimonial column scrolling ──
+    document.querySelectorAll('.testimonial-col').forEach(col => {
+      const speed = parseInt(col.dataset.speed) || 25;
+      const direction = col.dataset.direction || 'up';
+      // Clone children for infinite scroll
+      const children = [...col.children];
+      children.forEach(child => {
+        const clone = child.cloneNode(true);
+        col.appendChild(clone);
+      });
+
+      let pos = direction === 'up' ? 0 : -(col.scrollHeight / 2);
+      function scroll() {
+        if (direction === 'up') {
+          pos -= 0.5;
+          if (Math.abs(pos) >= col.scrollHeight / 2) pos = 0;
+        } else {
+          pos += 0.5;
+          if (pos >= 0) pos = -(col.scrollHeight / 2);
+        }
+        col.style.transform = `translateY(${pos}px)`;
+        requestAnimationFrame(scroll);
+      }
+      scroll();
+    });
+
+    // ── Floating particles ──
+    (function() {
+      const canvas = document.getElementById('particles');
+      if (!canvas) return;
+      const container = canvas;
+      for (let i = 0; i < 30; i++) {
+        const dot = document.createElement('div');
+        dot.style.cssText = `
+          position: absolute;
+          width: ${Math.random() * 3 + 1}px;
+          height: ${Math.random() * 3 + 1}px;
+          background: rgba(239,35,60,${Math.random() * 0.3 + 0.1});
+          border-radius: 50%;
+          left: ${Math.random() * 100}%;
+          top: ${Math.random() * 100}%;
+          animation: float ${Math.random() * 6 + 4}s ease-in-out infinite;
+          animation-delay: ${Math.random() * 5}s;
+        `;
+        container.appendChild(dot);
+      }
+    })();
+  </script>
+</body>
+</html>
