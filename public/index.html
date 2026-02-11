@@ -25,22 +25,6 @@ body { font-family: 'Inter', sans-serif; }
   100% { opacity: 1; transform: translateY(0); filter: blur(0px); }
 }
 
-/* Aurora / Waterfall Background Keyframes */
-@keyframes auroraShift1 {
-  0% { transform: translateX(-8%) translateY(-3%) scale(1); opacity: 0.7; }
-  50% { transform: translateX(8%) translateY(3%) scale(1.1); opacity: 1; }
-  100% { transform: translateX(-8%) translateY(-3%) scale(1); opacity: 0.7; }
-}
-@keyframes auroraShift2 {
-  0% { transform: translateX(5%) translateY(5%) scale(1.05); opacity: 0.8; }
-  50% { transform: translateX(-5%) translateY(-5%) scale(1); opacity: 0.6; }
-  100% { transform: translateX(5%) translateY(5%) scale(1.05); opacity: 0.8; }
-}
-@keyframes auroraShift3 {
-  0% { transform: translateX(-3%); opacity: 0.4; }
-  100% { transform: translateX(3%); opacity: 0.7; }
-}
-
 /* Animation Keyframe: Column Clip Reveal */
 @keyframes columnReveal {
   0% { clip-path: inset(0 0 100% 0); opacity: 0; }
@@ -324,23 +308,10 @@ tailwind.config = {
   <!-- Subtle background gradient -->
   <div class="absolute inset-0 bg-gradient-to-b from-orange-950/10 via-transparent to-transparent pointer-events-none"></div>
 
-  <!-- Waterfall / Aurora Background Animation (CSS) -->
-  <div class="absolute top-0 left-0 right-0 z-[1] h-[850px] overflow-hidden pointer-events-none" style="mask-image: linear-gradient(to bottom, transparent, black 3%, black 80%, transparent);">
-    <!-- Primary flowing glow -->
-    <div class="absolute inset-0" style="background: radial-gradient(ellipse 90% 60% at 25% 40%, rgba(249,115,22,0.35) 0%, transparent 55%), radial-gradient(ellipse 70% 70% at 80% 55%, rgba(251,146,60,0.25) 0%, transparent 55%); animation: auroraShift1 8s ease-in-out infinite alternate;"></div>
-    <!-- Secondary flowing glow -->
-    <div class="absolute inset-0" style="background: radial-gradient(ellipse 80% 60% at 65% 30%, rgba(234,88,12,0.28) 0%, transparent 50%), radial-gradient(ellipse 60% 80% at 25% 65%, rgba(249,115,22,0.18) 0%, transparent 55%); animation: auroraShift2 12s ease-in-out infinite alternate-reverse;"></div>
-    <!-- Bright center accent -->
-    <div class="absolute inset-0" style="background: radial-gradient(ellipse 40% 40% at 50% 45%, rgba(251,146,60,0.2) 0%, transparent 70%); animation: auroraShift3 6s ease-in-out infinite alternate;"></div>
-    <!-- Vertical light beams / columns -->
-    <div class="absolute inset-0 flex justify-around px-[8%]" style="animation: auroraShift3 6s ease-in-out infinite alternate;">
-      <div class="w-px h-full bg-gradient-to-b from-transparent via-orange-500/25 to-transparent"></div>
-      <div class="w-px h-full bg-gradient-to-b from-transparent via-white/10 to-transparent"></div>
-      <div class="w-px h-full bg-gradient-to-b from-transparent via-orange-400/20 to-transparent"></div>
-      <div class="w-px h-full bg-gradient-to-b from-transparent via-white/8 to-transparent"></div>
-      <div class="w-px h-full bg-gradient-to-b from-transparent via-orange-500/15 to-transparent"></div>
-      <div class="w-px h-full bg-gradient-to-b from-transparent via-white/6 to-transparent"></div>
-      <div class="w-px h-full bg-gradient-to-b from-transparent via-orange-400/12 to-transparent"></div>
+  <!-- Unicorn Studio Aura Background -->
+  <div class="aura-background-component -z-10 w-full top-0 absolute h-[800px]" data-alpha-mask="80" style="mask-image: linear-gradient(transparent, black 0%, black 80%, transparent);">
+    <div class="aura-background-component top-0 w-full -z-10 absolute h-full">
+      <div data-us-project="sajpUiTp7MIKdX6daDCu" class="absolute w-full h-full left-0 top-0 -z-10"></div>
     </div>
   </div>
 
@@ -353,15 +324,11 @@ tailwind.config = {
       </span>
     </div>
 
-    <!-- Heading -->
-    <h1 class="[animation:fadeSlideIn_1s_ease-out_1s_both] flex flex-wrap justify-center gap-x-[0.25em] gap-y-2 leading-[1.1] md:text-7xl lg:text-8xl cursor-default text-4xl font-medium tracking-tighter font-manrope mb-8">
-      <span class="inline-block leading-[1.3] bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50 opacity-60">Build</span>
-      <span class="inline-block leading-[1.3] bg-clip-text text-transparent bg-gradient-to-b from-orange-400 via-orange-500 to-orange-600/50 opacity-100">Offers,</span>
-      <span class="inline-block leading-[1.3] bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50 opacity-100">Brands</span>
-      <span class="inline-block leading-[1.3] bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50 opacity-60">&amp;</span>
-      <span class="inline-block leading-[1.3] bg-clip-text text-transparent bg-gradient-to-b from-orange-400 via-orange-500 to-orange-600/50 opacity-100">AI&nbsp;Systems</span>
-      <span class="inline-block leading-[1.3] bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50 opacity-60">That&nbsp;Actually</span>
-      <span class="inline-block leading-[1.3] bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50 opacity-100">Move&nbsp;the&nbsp;Needle</span>
+    <!-- Heading — 3 lines: "Build Offers, Brands &" / "AI Systems That Actually" / "Move the Needle" -->
+    <h1 class="[animation:fadeSlideIn_1s_ease-out_1s_both] leading-[1.15] md:text-7xl lg:text-8xl cursor-default text-4xl font-medium tracking-tighter font-manrope mb-8 text-center">
+      <span class="bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50 opacity-60">Build </span><span class="bg-clip-text text-transparent bg-gradient-to-b from-orange-400 via-orange-500 to-orange-600/50">Offers, </span><span class="bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50">Brands </span><span class="bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50 opacity-60">&amp;</span><br>
+      <span class="bg-clip-text text-transparent bg-gradient-to-b from-orange-400 via-orange-500 to-orange-600/50">AI&nbsp;Systems </span><span class="bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50 opacity-60">That Actually</span><br>
+      <span class="bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50">Move&nbsp;the&nbsp;Needle</span>
     </h1>
 
     <!-- Subtext -->
@@ -963,6 +930,24 @@ tailwind.config = {
       lucide.createIcons();
     }
   });
+</script>
+
+<!-- Unicorn Studio Background Init -->
+<script type="text/javascript">
+!function(){
+  if (!window.UnicornStudio) {
+    window.UnicornStudio = { isInitialized: false };
+    var i = document.createElement("script");
+    i.src = "https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.29/dist/unicornStudio.umd.js";
+    i.onload = function () {
+      if (!window.UnicornStudio.isInitialized) {
+        UnicornStudio.init();
+        window.UnicornStudio.isInitialized = true;
+      }
+    };
+    (document.head || document.body).appendChild(i);
+  }
+}();
 </script>
 
 </body>
