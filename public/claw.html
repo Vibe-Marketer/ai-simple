@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Employee Infrastructure &amp; Deployment | AI Simple</title>
+<meta name="description" content="We design, deploy, and maintain a fully isolated OpenClaw-powered AI Employee with its own identity, environment, and guardrails — live in 3–7 days.">
+<link rel="icon" href="img/ai-simple-logo.png" type="image/png">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+
+<style>
+body { font-family: 'Inter', sans-serif; }
+.font-manrope { font-family: 'Manrope', sans-serif !important; }
+.font-geist-mono { font-family: 'Geist Mono', monospace !important; }
+.font-space-mono { font-family: 'Space Mono', monospace !important; }
+
+/* ========== ANIMATION KEYFRAMES ========== */
+@keyframes fadeSlideIn {
+  0% { opacity: 0; transform: translateY(30px); filter: blur(8px); }
+  100% { opacity: 1; transform: translateY(0); filter: blur(0px); }
+}
+@keyframes columnReveal {
+  0% { clip-path: inset(0 0 100% 0); opacity: 0; }
+  100% { clip-path: inset(0 0 0% 0); opacity: 1; }
+}
+@keyframes border-spin { to { --gradient-angle: 360deg; } }
+@keyframes shimmer { to { transform: translate(-50%, -50%) rotate(360deg); } }
+@keyframes breathe {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.20); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 5px rgba(239,35,60,0.3), 0 0 20px rgba(239,35,60,0.1); }
+  50% { box-shadow: 0 0 15px rgba(239,35,60,0.5), 0 0 40px rgba(239,35,60,0.2); }
+}
+@keyframes scan-line {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+@keyframes infinite-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+@keyframes text-shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+@keyframes slide-up-fade {
+  0% { opacity: 0; transform: translateY(40px) scale(0.98); filter: blur(4px); }
+  100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+@keyframes border-beam-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.5); }
+}
+@keyframes auroraShift1 {
+  0% { transform: translateX(-8%) translateY(-3%) scale(1); opacity: 0.7; }
+  50% { transform: translateX(8%) translateY(3%) scale(1.1); opacity: 1; }
+  100% { transform: translateX(-8%) translateY(-3%) scale(1); opacity: 0.7; }
+}
+@keyframes auroraShift2 {
+  0% { transform: translateX(5%) translateY(5%) scale(1.05); opacity: 0.8; }
+  50% { transform: translateX(-5%) translateY(-5%) scale(1); opacity: 0.6; }
+  100% { transform: translateX(5%) translateY(5%) scale(1.05); opacity: 0.8; }
+}
+
+/* Column reveal */
+.col-anim { animation: columnReveal 1.4s cubic-bezier(0.16, 1, 0.3, 1) backwards; will-change: clip-path; }
+.delay-1 { animation-delay: 0.1s; } .delay-2 { animation-delay: 0.2s; } .delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; } .delay-5 { animation-delay: 0.5s; } .delay-6 { animation-delay: 0.6s; }
+.delay-7 { animation-delay: 0.7s; }
+
+/* Scroll-triggered animation */
+.animate-on-scroll { animation-play-state: paused !important; will-change: transform, opacity, filter; transform: translateZ(0); }
+.animate-on-scroll.animate { animation-play-state: running !important; }
+
+/* ========== SHINY CTA BUTTON ========== */
+@property --gradient-angle { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
+@property --gradient-angle-offset { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
+@property --gradient-percent { syntax: "<percentage>"; initial-value: 20%; inherits: false; }
+@property --gradient-shine { syntax: "<color>"; initial-value: #ef233c; inherits: false; }
+.shiny-cta {
+  --gradient-angle: 0deg; --gradient-angle-offset: 0deg; --gradient-percent: 20%; --gradient-shine: #ef233c;
+  position: relative; overflow: hidden; border-radius: 0; padding: 1.25rem 3rem; font-size: 1.125rem; line-height: 1.2; font-weight: 500; color: #fff;
+  background: linear-gradient(#000, #000) padding-box, conic-gradient(from calc(var(--gradient-angle) - var(--gradient-angle-offset)), transparent 0%, #ef233c 5%, var(--gradient-shine) 15%, #ef233c 30%, transparent 40%, transparent 100%) border-box;
+  border: 2px solid transparent; box-shadow: inset 0 0 0 1px #1a1818; outline: none;
+  transition: --gradient-angle-offset 800ms cubic-bezier(0.25, 1, 0.5, 1), --gradient-percent 800ms cubic-bezier(0.25, 1, 0.5, 1), --gradient-shine 800ms cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s;
+  cursor: pointer; isolation: isolate; z-index: 0; animation: border-spin 2.5s linear infinite;
+  text-decoration: none; display: inline-block;
+}
+.shiny-cta:active { transform: translateY(1px); }
+.shiny-cta::before {
+  content: ''; pointer-events: none; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 0;
+  --size: calc(100% - 6px); width: var(--size); height: var(--size);
+  background: radial-gradient(circle at 2px 2px, white 0.5px, transparent 0) padding-box; background-size: 4px 4px; background-repeat: space;
+  mask-image: conic-gradient(from calc(var(--gradient-angle) + 45deg), black, transparent 10% 90%, black); border-radius: inherit; opacity: 0.4;
+}
+.shiny-cta::after {
+  content: ''; pointer-events: none; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 1;
+  width: 100%; aspect-ratio: 1; background: linear-gradient(-50deg, transparent, #ef233c, transparent);
+  mask-image: radial-gradient(circle at bottom, transparent 40%, black); opacity: 0.6; animation: shimmer 4s linear infinite;
+}
+.shiny-cta span { position: relative; z-index: 2; display: inline-block; }
+.shiny-cta span::before {
+  content: ''; pointer-events: none; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: -1;
+  --size: calc(100% + 1rem); width: var(--size); height: var(--size);
+  box-shadow: inset 0 -1ex 2rem 4px #ef233c; opacity: 0; border-radius: inherit;
+  transition: opacity 800ms cubic-bezier(0.25, 1, 0.5, 1); animation: breathe 4.5s linear infinite;
+}
+
+/* ========== PROGRESSIVE BLUR ========== */
+.gradient-blur { position: fixed; z-index: 5; inset: 0 0 auto 0; height: 12%; pointer-events: none; transform: translateZ(0); }
+.gradient-blur>div, .gradient-blur::before, .gradient-blur::after { position: absolute; inset: 0; }
+.gradient-blur::before { content: ""; z-index: 1; backdrop-filter: blur(0.5px); mask: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 12.5%, rgba(0,0,0,1) 25%, rgba(0,0,0,0) 37.5%); }
+.gradient-blur>div:nth-of-type(1) { z-index: 2; backdrop-filter: blur(1px); mask: linear-gradient(to top, rgba(0,0,0,0) 12.5%, rgba(0,0,0,1) 25%, rgba(0,0,0,1) 37.5%, rgba(0,0,0,0) 50%); }
+.gradient-blur>div:nth-of-type(2) { z-index: 3; backdrop-filter: blur(2px); mask: linear-gradient(to top, rgba(0,0,0,0) 25%, rgba(0,0,0,1) 37.5%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 62.5%); }
+.gradient-blur>div:nth-of-type(3) { z-index: 4; backdrop-filter: blur(4px); mask: linear-gradient(to top, rgba(0,0,0,0) 37.5%, rgba(0,0,0,1) 50%, rgba(0,0,0,1) 62.5%, rgba(0,0,0,0) 75%); }
+.gradient-blur>div:nth-of-type(4) { z-index: 5; backdrop-filter: blur(8px); mask: linear-gradient(to top, rgba(0,0,0,0) 50%, rgba(0,0,0,1) 62.5%, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 87.5%); }
+.gradient-blur>div:nth-of-type(5) { z-index: 6; backdrop-filter: blur(16px); mask: linear-gradient(to top, rgba(0,0,0,0) 62.5%, rgba(0,0,0,1) 75%, rgba(0,0,0,1) 87.5%, rgba(0,0,0,0) 100%); }
+.gradient-blur>div:nth-of-type(6) { z-index: 7; backdrop-filter: blur(32px); mask: linear-gradient(to top, rgba(0,0,0,0) 75%, rgba(0,0,0,1) 87.5%, rgba(0,0,0,1) 100%); }
+.gradient-blur::after { content: ""; z-index: 8; backdrop-filter: blur(64px); mask: linear-gradient(to top, rgba(0,0,0,0) 87.5%, rgba(0,0,0,1) 100%); }
+
+/* ========== GRADIENT BORDER ========== */
+[style*="--border-gradient"]::before {
+  content: ""; position: absolute; inset: 0; padding: 1px;
+  border-radius: var(--border-radius-before, inherit);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  background: var(--border-gradient); pointer-events: none;
+}
+
+/* ========== CARD BORDER BEAM ========== */
+.border-beam-card { position: relative; overflow: hidden; }
+.border-beam-card::after {
+  content: ''; position: absolute; inset: -200%; z-index: 0;
+  background: conic-gradient(from 0deg at 50% 50%, transparent 0%, transparent 85%, #ef233c 90%, transparent 95%, transparent 100%);
+  animation: border-beam-rotate 6s linear infinite; opacity: 0; transition: opacity 0.5s;
+}
+.border-beam-card:hover::after { opacity: 1; }
+.border-beam-card > .card-inner { position: relative; z-index: 2; background: black; margin: 1px; }
+
+/* ========== HOVER GLOW CARD ========== */
+.hover-glow-card { transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+.hover-glow-card:hover { border-color: rgba(239,35,60,0.5) !important; box-shadow: 0 0 30px rgba(239,35,60,0.08), inset 0 0 30px rgba(239,35,60,0.03); }
+
+/* ========== SCAN LINE ========== */
+.scan-line { position: relative; overflow: hidden; }
+.scan-line::after {
+  content: ''; position: absolute; left: 0; right: 0; height: 1px; top: 0;
+  background: linear-gradient(90deg, transparent, rgba(239,35,60,0.3), transparent);
+  animation: scan-line 8s linear infinite; pointer-events: none; z-index: 1;
+}
+
+/* ========== BACKGROUND GRID ========== */
+.bg-grid-pattern {
+  background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ========== TEXT SHIMMER ========== */
+.text-shimmer {
+  background: linear-gradient(90deg, #fff 0%, #ef233c 25%, #fff 50%, #ef233c 75%, #fff 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  animation: text-shimmer 4s linear infinite;
+}
+
+/* ========== PARTICLES ========== */
+.particle {
+  position: absolute; width: 2px; height: 2px; background: rgba(239,35,60,0.4); border-radius: 50%;
+  animation: float 6s ease-in-out infinite; pointer-events: none;
+}
+
+/* ========== PRICING CARD LIFT ========== */
+.pricing-card {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.pricing-card:hover {
+  border-color: rgba(239,35,60,0.5) !important;
+  box-shadow: 0 0 40px rgba(239,35,60,0.1), inset 0 0 40px rgba(239,35,60,0.03);
+  transform: translateY(-4px);
+}
+
+/* ========== FAQ ACCORDION ========== */
+.faq-item { border-bottom: 1px dashed rgba(63,63,70,1); }
+.faq-item:last-child { border-bottom: none; }
+.faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s; opacity: 0; }
+.faq-item.open .faq-answer { max-height: 200px; opacity: 1; }
+.faq-item.open .faq-chevron { transform: rotate(180deg); }
+.faq-chevron { transition: transform 0.3s ease; }
+
+/* ========== BRAND MARQUEE ========== */
+.animate-infinite-scroll { animation: infinite-scroll 40s linear infinite; }
+.group:hover .animate-infinite-scroll { animation-play-state: paused; }
+.brand-logo { height: 28px; width: auto; object-fit: contain; max-width: 120px; opacity: 0.8; transition: opacity 0.3s; }
+.brand-logo:hover { opacity: 1; }
+.logo-white { filter: brightness(0) invert(1); }
+.logo-invert { filter: invert(1) grayscale(1) contrast(1.5); mix-blend-mode: normal; }
+</style>
+
+<script>
+tailwind.config = { theme: { extend: {} } };
+</script>
+
+<script>
+(function () {
+  const once = true;
+  if (!window.__inViewIO) {
+    window.__inViewIO = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animate");
+          if (once) window.__inViewIO.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: "0px 0px -5% 0px" });
+  }
+  window.initInViewAnimations = function (selector = ".animate-on-scroll") {
+    document.querySelectorAll(selector).forEach((el) => { window.__inViewIO.observe(el); });
+  };
+  document.addEventListener("DOMContentLoaded", () => initInViewAnimations());
+})();
+</script>
+</head>
+
+<body class="antialiased overflow-x-hidden selection:bg-red-600/30 selection:text-red-200 text-white bg-black">
+
+<!-- Progressive Blur Top -->
+<div class="gradient-blur" style="height: 120px;">
+  <div></div><div></div><div></div><div></div><div></div><div></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- NAVIGATION -->
+<!-- ============================================================ -->
+<div class="fixed flex [animation:fadeSlideIn_1s_ease-out_0.5s_both] w-full z-50 pt-6 pr-4 pl-4 top-0 left-0 justify-center">
+  <nav class="shadow-black/50 flex md:gap-8 md:w-auto bg-black/60 w-full max-w-5xl rounded-none pt-2 pr-2 pb-2 pl-3 shadow-2xl backdrop-blur-lg gap-x-4 gap-y-4 items-center justify-between" style="position: relative; --border-gradient: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0), rgba(255,255,255,0.2)); --border-radius-before: 0">
+    <div class="flex gap-2 shrink-0 items-center">
+      <a href="/" class="flex gap-x-3 items-center">
+        <img src="img/ai-simple-logo.svg" alt="AI Simple" class="h-8 w-auto drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">
+        <span class="text-xl font-bold text-white tracking-tight font-manrope">AI Simple</span>
+      </a>
+    </div>
+    <div class="hidden md:flex items-center gap-6">
+      <a href="#what-you-get" class="group hover:text-white transition-colors text-sm font-medium text-gray-400 font-sans py-1 relative">
+        What You Get
+        <span class="absolute -bottom-3 left-1/2 w-0 h-[1px] bg-gradient-to-r from-transparent via-[#ef233c] to-transparent group-hover:w-full group-hover:opacity-100 transition-all duration-300 ease-out -translate-x-1/2 shadow-[0_0_10px_rgba(239,35,60,0.8)]"></span>
+      </a>
+      <a href="#pricing" class="group hover:text-white transition-colors text-sm font-medium text-gray-400 font-sans py-1 relative">
+        Pricing
+        <span class="absolute -bottom-3 left-1/2 w-0 h-[1px] bg-gradient-to-r from-transparent via-[#ef233c] to-transparent group-hover:w-full group-hover:opacity-100 transition-all duration-300 ease-out -translate-x-1/2 shadow-[0_0_10px_rgba(239,35,60,0.8)]"></span>
+      </a>
+      <a href="#how-it-works" class="group hover:text-white transition-colors text-sm font-medium text-gray-400 font-sans py-1 relative">
+        How It Works
+        <span class="absolute -bottom-3 left-1/2 w-0 h-[1px] bg-gradient-to-r from-transparent via-[#ef233c] to-transparent group-hover:w-full group-hover:opacity-100 transition-all duration-300 ease-out -translate-x-1/2 shadow-[0_0_10px_rgba(239,35,60,0.8)]"></span>
+      </a>
+      <a href="#faq" class="group hover:text-white transition-colors text-sm font-medium text-gray-400 font-sans py-1 relative">
+        FAQ
+        <span class="absolute -bottom-3 left-1/2 w-0 h-[1px] bg-gradient-to-r from-transparent via-[#ef233c] to-transparent group-hover:w-full group-hover:opacity-100 transition-all duration-300 ease-out -translate-x-1/2 shadow-[0_0_10px_rgba(239,35,60,0.8)]"></span>
+      </a>
+    </div>
+    <div class="flex gap-3 shrink-0 items-center">
+      <a href="" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/andrewnaegele/scale-with-us?background_color=0a0a0a&text_color=ffffff&primary_color=ef233c'});return false;" class="group inline-flex overflow-hidden transition-transform active:scale-95 cursor-pointer outline-none rounded-none pt-2.5 pr-5 pb-2.5 pl-5 relative items-center justify-center" style="background-color: rgba(255,255,255,0.05)">
+        <span class="absolute inset-[-100%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,transparent_75%,#ef233c_100%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
+        <span class="absolute inset-0 rounded-none bg-zinc-800 transition-opacity duration-300 group-hover:opacity-0"></span>
+        <span class="bg-black z-10 rounded-none absolute top-[1px] right-[1px] bottom-[1px] left-[1px]"></span>
+        <div class="absolute inset-0 pointer-events-none transition-opacity duration-500 opacity-0 group-hover:opacity-100 z-10" style="background: radial-gradient(50% 50% at 50% 100%, rgba(239,35,60,0.2) 0%, transparent 100%);"></div>
+        <span class="relative z-20 flex items-center justify-center gap-2 text-xs font-medium text-white tracking-wide uppercase whitespace-nowrap">
+          <span>Book a Build Call</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 transition-transform duration-300 group-hover:translate-x-0.5"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+        </span>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<!-- ============================================================ -->
+<!-- HERO SECTION -->
+<!-- ============================================================ -->
+<section class="h-auto min-h-[800px] flex flex-col overflow-hidden w-full pt-32 md:pt-20 relative items-center justify-start">
+  <!-- Animated background grid -->
+  <div class="absolute inset-0 bg-grid-pattern opacity-0 animate-on-scroll [animation:fadeSlideIn_2s_ease-out_0.3s_both]" style="mask-image: radial-gradient(ellipse 80% 80% at 50% 30%, black 30%, transparent 80%);"></div>
+
+  <!-- Floating particles -->
+  <div class="particle" style="top: 15%; left: 10%; animation-delay: 0s; animation-duration: 7s;"></div>
+  <div class="particle" style="top: 25%; left: 85%; animation-delay: 1s; animation-duration: 5s;"></div>
+  <div class="particle" style="top: 60%; left: 20%; animation-delay: 2s; animation-duration: 8s;"></div>
+  <div class="particle" style="top: 45%; left: 75%; animation-delay: 0.5s; animation-duration: 6s;"></div>
+  <div class="particle" style="top: 70%; left: 50%; animation-delay: 3s; animation-duration: 9s;"></div>
+  <div class="particle" style="top: 35%; left: 40%; animation-delay: 1.5s; animation-duration: 7.5s; width: 3px; height: 3px;"></div>
+
+  <!-- Red glow orbs -->
+  <div class="absolute top-20 left-1/4 w-96 h-96 bg-[#ef233c]/5 rounded-full blur-[120px] pointer-events-none animate-on-scroll [animation:fadeSlideIn_3s_ease-out_0.5s_both]"></div>
+  <div class="absolute top-40 right-1/4 w-64 h-64 bg-[#ef233c]/3 rounded-full blur-[100px] pointer-events-none animate-on-scroll [animation:fadeSlideIn_3s_ease-out_1s_both]"></div>
+
+  <!-- Unicorn Studio Aura Background -->
+  <div class="aura-background-component -z-10 w-full top-0 absolute h-[800px]" data-alpha-mask="80" style="mask-image: linear-gradient(transparent, black 0%, black 80%, transparent);">
+    <div class="aura-background-component top-0 w-full -z-10 absolute h-full">
+      <div data-us-project="sajpUiTp7MIKdX6daDCu" class="absolute w-full h-full left-0 top-0 -z-10"></div>
+      <script type="text/javascript">
+        !function(){if(!window.UnicornStudio){window.UnicornStudio={isInitialized:!1};var i=document.createElement("script");i.src="https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.29/dist/unicornStudio.umd.js",i.onload=function(){window.UnicornStudio.isInitialized||(UnicornStudio.init(),window.UnicornStudio.isInitialized=!0)},(document.head || document.body).appendChild(i)}}();
+      </script>
+    </div>
+  </div>
+
+  <!-- Column Reveal Grid Background -->
+  <div class="absolute inset-0 flex z-0 pointer-events-none" style="mask-image: linear-gradient(180deg, transparent, black 10%, black 80%, transparent);">
+    <div class="flex-1 border-r border-white/[0.02] col-anim delay-1"></div>
+    <div class="flex-1 border-r border-white/[0.02] col-anim delay-2"></div>
+    <div class="flex-1 border-r border-white/[0.02] col-anim delay-3"></div>
+    <div class="flex-1 border-r border-white/[0.02] col-anim delay-4"></div>
+    <div class="flex-1 border-r border-white/[0.02] col-anim delay-5"></div>
+    <div class="flex-1 border-r border-white/[0.02] col-anim delay-6"></div>
+    <div class="flex-1 col-anim delay-7"></div>
+  </div>
+
+  <div class="z-20 text-center max-w-5xl mt-24 mr-auto mb-12 ml-auto pr-6 pl-6 relative">
+    <!-- Badge -->
+    <div class="[animation:fadeSlideIn_1s_ease-out_0.8s_both] inline-flex transition-transform hover:scale-105 cursor-pointer group bg-gradient-to-br from-white/10 to-white/0 rounded-full mb-10 pt-1.5 pr-4 pb-1.5 pl-3 backdrop-blur-sm gap-x-2 items-center" style="position: relative; --border-gradient: linear-gradient(180deg, rgba(255,255,255,0.2), rgba(255,255,255,0), rgba(255,255,255,0.1)); --border-radius-before: 9999px">
+      <span class="flex h-1.5 w-1.5 rounded-full animate-pulse bg-red-600 shadow-[0_0_10px_rgba(220,38,38,0.5)]"></span>
+      <span class="text-xs font-medium tracking-wide font-sans text-red-100/80 uppercase">
+        Live in 3&ndash;7 Business Days &bull; Guaranteed
+      </span>
+    </div>
+
+    <!-- Heading -->
+    <h1 class="[animation:fadeSlideIn_1s_ease-out_1s_both] leading-[1.1] md:text-7xl lg:text-7xl cursor-default text-4xl font-medium tracking-tighter font-manrope mb-8 text-center flex flex-wrap justify-center gap-x-[0.25em] gap-y-2 relative z-10">
+      <span class="inline-block px-1 pb-2 leading-[1.3] bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white opacity-100 drop-shadow-[0_0_25px_rgba(255,255,255,0.2)]">Install</span>
+      <span class="inline-block px-1 pb-2 leading-[1.3] bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/70 opacity-70">a</span>
+      <span class="inline-block px-1 pb-2 leading-[1.3] bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white opacity-100 drop-shadow-[0_0_25px_rgba(255,255,255,0.2)]">24/7</span>
+      <span class="inline-block px-1 pb-2 leading-[1.3] text-shimmer opacity-100 drop-shadow-[0_0_25px_rgba(255,255,255,0.2)]">AI Employee</span>
+      <span class="w-full md:w-auto"></span>
+      <span class="inline-block px-1 pb-2 leading-[1.3] bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/70 opacity-70">in</span>
+      <span class="inline-block px-1 pb-2 leading-[1.3] bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white opacity-100 drop-shadow-[0_0_25px_rgba(255,255,255,0.2)]">3&ndash;7</span>
+      <span class="inline-block px-1 pb-2 leading-[1.3] bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white opacity-100 drop-shadow-[0_0_25px_rgba(255,255,255,0.2)]">Days</span>
+    </h1>
+
+    <!-- Subheadline -->
+    <p class="[animation:fadeSlideIn_1s_ease-out_1.2s_both] leading-relaxed md:text-2xl text-lg font-medium text-zinc-300 tracking-normal font-manrope max-w-3xl mr-auto mb-4 ml-auto">
+      We design, deploy, and manage a fully isolated OpenClaw-powered AI&nbsp;Employee with its own identity, environment, and guardrails &mdash; so it can do <strong class="text-white">real work</strong> in your business while you stay out of the&nbsp;weeds.
+    </p>
+
+    <p class="[animation:fadeSlideIn_1s_ease-out_1.3s_both] text-sm md:text-lg text-white/70 font-medium font-manrope max-w-2xl mr-auto mb-12 ml-auto">
+      <span class="text-[#ef233c]">Without</span> exposing your data or touching a&nbsp;terminal.
+    </p>
+
+    <!-- CTA Buttons -->
+    <div class="[animation:fadeSlideIn_1s_ease-out_1.4s_both] flex flex-col md:flex-row mb-12 gap-6 items-center justify-center w-full px-4">
+      <!-- Primary CTA -->
+      <a href="" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/andrewnaegele/scale-with-us?background_color=0a0a0a&text_color=ffffff&primary_color=ef233c'});return false;" class="shiny-cta cursor-pointer" style="padding: 1.25rem 2.5rem;">
+        <span class="flex items-center justify-center gap-2 text-sm font-bold tracking-wide uppercase font-manrope whitespace-nowrap">
+          Book Your AI Employee Build Call
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </span>
+      </a>
+
+      <!-- Secondary CTA -->
+      <a href="#pricing" class="group relative inline-flex min-w-[280px] h-[54px] items-center justify-center overflow-hidden rounded-none outline-none cursor-pointer transition-transform active:scale-95 no-underline" style="background-color: rgba(255,255,255,0.05);">
+        <span class="absolute inset-0 rounded-none bg-zinc-800"></span>
+        <span class="absolute inset-[1px] rounded-none bg-black z-10"></span>
+        <span class="relative z-20 flex items-center justify-center gap-2 text-sm font-bold text-white tracking-wide uppercase whitespace-nowrap">
+          <span>See AI Employee Tiers</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 transition-transform duration-300 group-hover:translate-y-0.5"><path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path></svg>
+        </span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Stat Strip -->
+  <div class="w-full max-w-6xl mx-auto px-6 z-20 mb-8 animate-on-scroll [animation:fadeSlideIn_1s_ease-out_1.6s_both]">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="bg-black border border-dashed border-zinc-800 p-6 relative group hover:border-[#ef233c]/50 transition-all duration-500 hover-glow-card scan-line overflow-hidden">
+        <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#ef233c]"></div>
+        <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#ef233c]"></div>
+        <h3 class="text-zinc-500 text-[10px] font-mono mb-2 uppercase tracking-wider">Deployment Speed</h3>
+        <p class="text-3xl md:text-4xl font-bold text-white font-manrope tracking-tighter">3&ndash;7<span class="text-[#ef233c] text-sm font-mono ml-1">Days</span></p>
+        <div class="flex items-center gap-2 mt-2">
+          <span class="text-[#ef233c] text-xs font-mono">Guaranteed</span>
+          <div class="w-1.5 h-1.5 bg-[#ef233c] animate-pulse rounded-full"></div>
+        </div>
+      </div>
+      <div class="bg-black border border-dashed border-zinc-800 p-6 relative group hover:border-[#ef233c]/50 transition-all duration-500 hover-glow-card scan-line overflow-hidden">
+        <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#ef233c]"></div>
+        <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#ef233c]"></div>
+        <h3 class="text-zinc-500 text-[10px] font-mono mb-2 uppercase tracking-wider">Security Model</h3>
+        <p class="text-3xl md:text-4xl font-bold text-white font-manrope tracking-tighter">100<span class="text-[#ef233c] text-sm font-mono ml-1">%</span></p>
+        <div class="flex items-center gap-2 mt-2">
+          <span class="text-zinc-500 text-xs font-mono">Isolated Env</span>
+        </div>
+      </div>
+      <div class="bg-black border border-dashed border-zinc-800 p-6 relative group hover:border-[#ef233c]/50 transition-all duration-500 hover-glow-card scan-line overflow-hidden">
+        <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#ef233c]"></div>
+        <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#ef233c]"></div>
+        <h3 class="text-zinc-500 text-[10px] font-mono mb-2 uppercase tracking-wider">Uptime Target</h3>
+        <p class="text-3xl md:text-4xl font-bold text-white font-manrope tracking-tighter">24/7</p>
+        <div class="flex items-center gap-2 mt-2">
+          <span class="text-[#ef233c] text-xs font-mono">&#9650; Always On</span>
+          <div class="w-1.5 h-1.5 bg-green-500 animate-pulse rounded-full"></div>
+        </div>
+      </div>
+      <div class="bg-black border border-dashed border-zinc-800 p-6 relative group hover:border-[#ef233c]/50 transition-all duration-500 hover-glow-card scan-line overflow-hidden">
+        <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#ef233c]"></div>
+        <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#ef233c]"></div>
+        <h3 class="text-zinc-500 text-[10px] font-mono mb-2 uppercase tracking-wider">Zero Terminal</h3>
+        <p class="text-3xl md:text-4xl font-bold text-white font-manrope tracking-tighter">0<span class="text-[#ef233c] text-sm font-mono ml-1">Code</span></p>
+        <div class="flex items-center gap-2 mt-2">
+          <span class="text-zinc-500 text-xs font-mono">Required from you</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="pointer-events-none w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+
+<!-- ============================================================ -->
+<!-- WHY YOUR LAST AI BOT DISAPPOINTED -->
+<!-- ============================================================ -->
+<section class="w-full max-w-6xl mx-auto px-6 py-24 relative">
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-[#ef233c]/3 rounded-full blur-[200px] pointer-events-none"></div>
+
+  <div class="flex flex-col md:flex-row md:items-end w-full mb-16 gap-x-8 gap-y-6 justify-between animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.2s_both]">
+    <div class="flex flex-col max-w-3xl gap-y-6">
+      <div class="flex items-center gap-3">
+        <span class="w-8 h-px bg-[#ef233c]"></span>
+        <span class="uppercase text-sm font-medium text-[#ef233c] tracking-widest font-geist-mono">01. The Problem</span>
+      </div>
+      <h2 class="md:text-6xl text-4xl font-medium text-white tracking-tighter font-manrope">
+        Why Your Last <span class="bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-red-600">&ldquo;AI Bot&rdquo;</span> Disappointed
+      </h2>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="border-beam-card rounded-none animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.2s_both]">
+      <div class="card-inner bg-black border border-zinc-800 border-dashed p-8 group hover:border-[#ef233c]/50 transition-all duration-500 relative">
+        <div class="absolute top-0 left-0 w-2.5 h-2.5 border-t border-l border-[#ef233c]"></div>
+        <div class="absolute bottom-0 right-0 w-2.5 h-2.5 border-b border-r border-[#ef233c]"></div>
+        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(239,35,60,0.05) 0%, transparent 70%);"></div>
+        <div class="w-10 h-10 border border-zinc-700 flex items-center justify-center mb-5 group-hover:border-[#ef233c]/50 transition-colors">
+          <i data-lucide="message-square-off" class="w-5 h-5 text-zinc-500"></i>
+        </div>
+        <h3 class="text-lg font-semibold text-white font-manrope tracking-tight mb-3">Glorified Chat Widget</h3>
+        <p class="text-sm text-zinc-400 leading-relaxed">Bolted onto your systems with no memory, no role, and no real autonomy. Dies after a week.</p>
+      </div>
+    </div>
+    <div class="border-beam-card rounded-none animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.3s_both]">
+      <div class="card-inner bg-black border border-zinc-800 border-dashed p-8 group hover:border-[#ef233c]/50 transition-all duration-500 relative">
+        <div class="absolute top-0 left-0 w-2.5 h-2.5 border-t border-l border-[#ef233c]"></div>
+        <div class="absolute bottom-0 right-0 w-2.5 h-2.5 border-b border-r border-[#ef233c]"></div>
+        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(239,35,60,0.05) 0%, transparent 70%);"></div>
+        <div class="w-10 h-10 border border-zinc-700 flex items-center justify-center mb-5 group-hover:border-[#ef233c]/50 transition-colors">
+          <i data-lucide="shield-alert" class="w-5 h-5 text-zinc-500"></i>
+        </div>
+        <h3 class="text-lg font-semibold text-white font-manrope tracking-tight mb-3">Over-Permissioned &ldquo;God Bot&rdquo;</h3>
+        <p class="text-sm text-zinc-400 leading-relaxed">Full access to everything, zero guardrails. Makes your security team lose sleep.</p>
+      </div>
+    </div>
+    <div class="border-beam-card rounded-none animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.4s_both]">
+      <div class="card-inner bg-black border border-zinc-800 border-dashed p-8 group hover:border-[#ef233c]/50 transition-all duration-500 relative">
+        <div class="absolute top-0 left-0 w-2.5 h-2.5 border-t border-l border-[#ef233c]"></div>
+        <div class="absolute bottom-0 right-0 w-2.5 h-2.5 border-b border-r border-[#ef233c]"></div>
+        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(239,35,60,0.05) 0%, transparent 70%);"></div>
+        <div class="w-10 h-10 border border-zinc-700 flex items-center justify-center mb-5 group-hover:border-[#ef233c]/50 transition-colors">
+          <i data-lucide="ghost" class="w-5 h-5 text-zinc-500"></i>
+        </div>
+        <h3 class="text-lg font-semibold text-white font-manrope tracking-tight mb-3">Cool Demo, Dead in a Week</h3>
+        <p class="text-sm text-zinc-400 leading-relaxed">Impressive on a Loom video. Completely useless the moment real complexity shows up.</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="text-center text-xl md:text-2xl text-zinc-300 font-manrope font-medium mt-16 max-w-2xl mx-auto animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.5s_both]">
+    You don&rsquo;t need another toy.<br>
+    You need a <strong class="text-white">reliable AI employee</strong> that shows up every day and does a specific&nbsp;job.
+  </p>
+</section>
+
+<div class="pointer-events-none w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+
+<!-- ============================================================ -->
+<!-- WHAT YOU GET -->
+<!-- ============================================================ -->
+<section id="what-you-get" class="w-full max-w-6xl mx-auto px-6 py-24 relative">
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#ef233c]/5 rounded-full blur-[150px] pointer-events-none"></div>
+
+  <div class="flex flex-col w-full mb-16 gap-y-6 animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.2s_both]">
+    <div class="flex items-center gap-3">
+      <span class="w-8 h-px bg-[#ef233c]"></span>
+      <span class="uppercase text-sm font-medium text-[#ef233c] tracking-widest font-geist-mono">02. What You Get</span>
+    </div>
+    <h2 class="md:text-6xl text-4xl font-medium text-white tracking-tighter font-manrope">
+      Your AI Employee, <span class="bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-red-600">Fully Loaded</span>
+    </h2>
+    <p class="leading-relaxed text-lg font-light text-gray-400 max-w-xl">
+      Not a chatbot. A named, isolated, monitored AI team member with a real job description.
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <!-- A: Real AI Employee Identity -->
+    <div class="border-beam-card rounded-none animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.2s_both]">
+      <div class="card-inner bg-black border border-zinc-800 border-dashed p-8 group hover:border-[#ef233c]/50 transition-all duration-500 relative">
+        <div class="absolute top-0 left-0 w-2.5 h-2.5 border-t border-l border-[#ef233c]"></div>
+        <div class="absolute top-0 right-0 w-2.5 h-2.5 border-t border-r border-[#ef233c]"></div>
+        <div class="absolute bottom-0 left-0 w-2.5 h-2.5 border-b border-l border-[#ef233c]"></div>
+        <div class="absolute bottom-0 right-0 w-2.5 h-2.5 border-b border-r border-[#ef233c]"></div>
+        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(239,35,60,0.05) 0%, transparent 70%);"></div>
+        <div class="flex items-center gap-3 mb-5">
+          <div class="w-10 h-10 border border-zinc-700 rounded-none flex items-center justify-center group-hover:border-[#ef233c]/50 transition-colors group-hover:shadow-[0_0_15px_rgba(239,35,60,0.2)]">
+            <i data-lucide="user-check" class="w-5 h-5 text-[#ef233c]"></i>
+          </div>
+          <span class="text-[10px] font-geist-mono text-[#ef233c]/60 tracking-widest uppercase">A</span>
+        </div>
+        <h3 class="text-lg font-semibold text-white font-manrope tracking-tight mb-3 group-hover:translate-x-1 transition-transform duration-300">A Real AI Employee Identity</h3>
+        <ul class="space-y-2 text-sm text-zinc-400 leading-relaxed">
+          <li class="flex items-start gap-2"><span class="text-[#ef233c] mt-0.5 shrink-0">&bull;</span> Named role and Soul Document (mission, tone, boundaries)</li>
+          <li class="flex items-start gap-2"><span class="text-[#ef233c] mt-0.5 shrink-0">&bull;</span> Dedicated email and communication channels</li>
+          <li class="flex items-start gap-2"><span class="text-[#ef233c] mt-0.5 shrink-0">&bull;</span> Clear job description &mdash; it owns a function, not random tasks</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- B: Isolated Infrastructure -->
+    <div class="border-beam-card rounded-none animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.3s_both]">
+      <div class="card-inner bg-black border border-zinc-800 border-dashed p-8 group hover:border-[#ef233c]/50 transition-all duration-500 relative">
+        <div class="absolute top-0 left-0 w-2.5 h-2.5 border-t border-l border-[#ef233c]"></div>
+        <div class="absolute top-0 right-0 w-2.5 h-2.5 border-t border-r border-[#ef233c]"></div>
+        <div class="absolute bottom-0 left-0 w-2.5 h-2.5 border-b border-l border-[#ef233c]"></div>
+        <div class="absolute bottom-0 right-0 w-2.5 h-2.5 border-b border-r border-[#ef233c]"></div>
+        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(239,35,60,0.05) 0%, transparent 70%);"></div>
+        <div class="flex items-center gap-3 mb-5">
+          <div class="w-10 h-10 border border-zinc-700 rounded-none flex items-center justify-center group-hover:border-[#ef233c]/50 transition-colors group-hover:shadow-[0_0_15px_rgba(239,35,60,0.2)]">
+            <i data-lucide="server" class="w-5 h-5 text-[#ef233c]"></i>
+          </div>
+          <span class="text-[10px] font-geist-mono text-[#ef233c]/60 tracking-widest uppercase">B</span>
+        </div>
+        <h3 class="text-lg font-semibold text-white font-manrope tracking-tight mb-3 group-hover:translate-x-1 transition-transform duration-300">Isolated Infrastructure</h3>
+        <ul class="space-y-2 text-sm text-zinc-400 leading-relaxed">
+          <li class="flex items-start gap-2"><span class="text-[#ef233c] mt-0.5 shrink-0">&bull;</span> Secure cloud instance or dedicated Mac / VM as its &ldquo;desk&rdquo;</li>
+          <li class="flex items-start gap-2"><span class="text-[#ef233c] mt-0.5 shrink-0">&bull;</span> Separate accounts, password manager, and storage</li>
+          <li class="flex items-start gap-2"><span class="text-[#ef233c] mt-0.5 shrink-0">&bull;</span> Cost-optimized model setup to keep usage predictable</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- C: Installed Skills & Integrations -->
+    <div class="border-beam-card rounded-none animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.4s_both]">
+      <div class="card-inner bg-black border border-zinc-800 border-dashed p-8 group hover:border-[#ef233c]/50 transition-all duration-500 relative">
+        <div class="absolute top-0 left-0 w-2.5 h-2.5 border-t border-l border-[#ef233c]"></div>
+        <div class="absolute top-0 right-0 w-2.5 h-2.5 border-t border-r border-[#ef233c]"></div>
+        <div class="absolute bottom-0 left-0 w-2.5 h-2.5 border-b border-l border-[#ef233c]"></div>
+        <div class="absolute bottom-0 right-0 w-2.5 h-2.5 border-b border-r border-[#ef233c]"></div>
+        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(239,35,60,0.05) 0%, transparent 70%);"></div>
+        <div class="flex items-center gap-3 mb-5">
+          <div class="w-10 h-10 border border-zinc-700 rounded-none flex items-center justify-center group-hover:border-[#ef233c]/50 transition-colors group-hover:shadow-[0_0_15px_rgba(239,35,60,0.2)]">
+            <i data-lucide="plug-zap" class="w-5 h-5 text-[#ef233c]"></i>
+          </div>
+          <span class="text-[10px] font-geist-mono text-[#ef233c]/60 tracking-widest uppercase">C</span>
+        </div>
+        <h3 class="text-lg font-semibold text-white font-manrope tracking-tight mb-3 group-hover:translate-x-1 transition-transform duration-300">Installed Skills &amp; Integrations</h3>
+        <ul class="space-y-2 text-sm text-zinc-400 leading-relaxed">
+          <li class="flex items-start gap-2"><span class="text-[#ef233c] mt-0.5 shrink-0">&bull;</span> Full OpenClaw deployment and configuration</li>
+          <li class="flex items-start gap-2"><span class="text-[#ef233c] mt-0.5 shrink-0">&bull;</span> Integrations into your tools (email, CRM, PM, support, etc.)</li>
+          <li class="flex items-start gap-2"><span class="text-[#ef233c] mt-0.5 shrink-0">&bull;</span> Pre-built skills and workflows tuned for your use case</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- D: Ongoing Monitoring & Support -->
+    <div class="border-beam-card rounded-none animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.5s_both]">
+      <div class="card-inner bg-black border border-zinc-800 border-dashed p-8 group hover:border-[#ef233c]/50 transition-all duration-500 relative">
+        <div class="absolute top-0 left-0 w-2.5 h-2.5 border-t border-l border-[#ef233c]"></div>
+        <div class="absolute top-0 right-0 w-2.5 h-2.5 border-t border-r border-[#ef233c]"></div>
+        <div class="absolute bottom-0 left-0 w-2.5 h-2.5 border-b border-l border-[#ef233c]"></div>
+        <div class="absolute bottom-0 right-0 w-2.5 h-2.5 border-b border-r border-[#ef233c]"></div>
+        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(239,35,60,0.05) 0%, transparent 70%);"></div>
+        <div class="flex items-center gap-3 mb-5">
+          <div class="w-10 h-10 border border-zinc-700 rounded-none flex items-center justify-center group-hover:border-[#ef233c]/50 transition-colors group-hover:shadow-[0_0_15px_rgba(239,35,60,0.2)]">
+            <i data-lucide="activity" class="w-5 h-5 text-[#ef233c]"></i>
+          </div>
+          <span class="text-[10px] font-geist-mono text-[#ef233c]/60 tracking-widest uppercase">D</span>
+        </div>
+        <h3 class="text-lg font-semibold text-white font-manrope tracking-tight mb-3 group-hover:translate-x-1 transition-transform duration-300">Ongoing Monitoring &amp; Support</h3>
+        <ul class="space-y-2 text-sm text-zinc-400 leading-relaxed">
+          <li class="flex items-start gap-2"><span class="text-[#ef233c] mt-0.5 shrink-0">&bull;</span> Health checks and behavior monitoring</li>
+          <li class="flex items-start gap-2"><span class="text-[#ef233c] mt-0.5 shrink-0">&bull;</span> Remote access for fixes and tuning</li>
+          <li class="flex items-start gap-2"><span class="text-[#ef233c] mt-0.5 shrink-0">&bull;</span> Simple monthly plan for updates and improvements</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="pointer-events-none w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+
+<!-- ============================================================ -->
+<!-- PRICING: THREE-CARD TIER SECTION -->
+<!-- ============================================================ -->
+<section id="pricing" class="w-full max-w-7xl mx-auto px-6 py-24 relative">
+  <!-- Aurora BG -->
+  <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none" style="mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);">
+    <div class="absolute inset-0" style="background: radial-gradient(ellipse 80% 50% at 20% 40%, rgba(239,35,60,0.08) 0%, transparent 60%), radial-gradient(ellipse 60% 60% at 75% 60%, rgba(248,113,113,0.06) 0%, transparent 60%); animation: auroraShift1 8s ease-in-out infinite alternate;"></div>
+    <div class="absolute inset-0" style="background: radial-gradient(ellipse 70% 50% at 60% 30%, rgba(220,38,38,0.06) 0%, transparent 55%), radial-gradient(ellipse 50% 70% at 30% 70%, rgba(239,35,60,0.04) 0%, transparent 60%); animation: auroraShift2 12s ease-in-out infinite alternate-reverse;"></div>
+  </div>
+
+  <div class="flex flex-col md:flex-row md:items-end w-full mb-16 relative gap-x-8 gap-y-6 justify-between z-10">
+    <div class="flex flex-col max-w-3xl gap-y-6 animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.2s_both]">
+      <div class="flex items-center gap-3">
+        <span class="w-8 h-px bg-[#ef233c]"></span>
+        <span class="uppercase text-sm font-medium text-[#ef233c] tracking-widest font-geist-mono">03. Pricing</span>
+      </div>
+      <h2 class="md:text-6xl text-4xl font-medium text-white tracking-tighter font-manrope">
+        Choose Your <span class="bg-clip-text text-transparent bg-[#ef233c]">AI Employee</span> Level
+      </h2>
+      <p class="leading-relaxed text-lg font-light text-gray-400 max-w-xl">
+        From a powerful cloud assistant to a full-blown AI Employee with its own devices &mdash; pick the tier that fits.
+      </p>
+    </div>
+  </div>
+
+  <!-- Pricing Cards (12-col grid like original template) -->
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 relative z-10">
+
+    <!-- Tier 1: Cloud Operator -->
+    <div class="lg:col-span-4 flex flex-col h-full pricing-card bg-black border border-dashed border-zinc-800 p-8 md:p-10 relative animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.3s_both]">
+      <div class="absolute top-0 left-0 w-3 h-3 border-t border-l border-[#ef233c]"></div>
+      <div class="absolute top-0 right-0 w-3 h-3 border-t border-r border-[#ef233c]"></div>
+      <div class="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-[#ef233c]"></div>
+      <div class="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-[#ef233c]"></div>
+      <div class="mb-auto">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-8 h-8 border border-zinc-700 flex items-center justify-center">
+            <i data-lucide="cloud" class="w-4 h-4 text-[#ef233c]"></i>
+          </div>
+          <span class="text-[10px] font-geist-mono text-[#ef233c]/60 tracking-widest uppercase">Tier 1</span>
+        </div>
+        <h3 class="text-2xl md:text-3xl font-medium text-white tracking-tight font-manrope mb-2">Cloud Operator</h3>
+        <p class="text-sm text-zinc-400 leading-relaxed mb-1 font-medium">Telegram AI Employee</p>
+        <p class="text-zinc-500 text-sm font-sans leading-relaxed mb-8">
+          A secure, cloud-based AI Employee you talk to over Telegram. Works inside your tools, never touches your devices.
+        </p>
+        <div class="flex items-baseline gap-1 mb-2">
+          <span class="text-[1.25rem] text-zinc-400 font-medium translate-y-1">$</span>
+          <span class="text-5xl font-medium text-white tracking-tighter font-manrope">3,500</span>
+        </div>
+        <p class="text-zinc-500 text-sm mb-6">one-time deployment</p>
+        <p class="text-zinc-400 text-sm font-medium mb-8">+ $500&ndash;$1,000<span class="text-zinc-500 font-normal"> / month management</span></p>
+        <a href="" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/andrewnaegele/scale-with-us?background_color=0a0a0a&text_color=ffffff&primary_color=ef233c'});return false;" class="group flex items-center justify-center gap-2 px-6 py-3.5 border border-zinc-700 text-white text-sm font-semibold font-sans hover:bg-zinc-900 hover:border-[#ef233c]/50 transition-all w-full cursor-pointer">
+          Get Started
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 group-hover:translate-x-0.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="border-t border-zinc-800/80 my-8 w-full"></div>
+      <div>
+        <h4 class="text-sm font-medium text-white font-manrope mb-5 uppercase tracking-wider">Includes</h4>
+        <div class="space-y-3">
+          <div class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 text-red-600 shrink-0 mt-0.5"></i><span class="text-sm text-zinc-300">Identity &amp; Soul Document</span></div>
+          <div class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 text-red-600 shrink-0 mt-0.5"></i><span class="text-sm text-zinc-300">Hardened cloud environment</span></div>
+          <div class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 text-red-600 shrink-0 mt-0.5"></i><span class="text-sm text-zinc-300">Dedicated email &amp; Telegram endpoint</span></div>
+          <div class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 text-red-600 shrink-0 mt-0.5"></i><span class="text-sm text-zinc-300">Core skills &amp; integrations</span></div>
+          <div class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 text-red-600 shrink-0 mt-0.5"></i><span class="text-sm text-zinc-300">Cost-optimized model setup</span></div>
+          <div class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 text-red-600 shrink-0 mt-0.5"></i><span class="text-sm text-zinc-300">Basic monitoring &amp; support</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tier 2: Specialist Operator (MOST POPULAR) -->
+    <div class="lg:col-span-4 flex flex-col h-full pricing-card bg-zinc-900/30 border border-dashed border-zinc-800 p-8 md:p-10 relative overflow-hidden animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.4s_both]">
+      <div class="absolute -top-24 -right-24 w-64 h-64 bg-[#ef233c]/10 blur-[90px] rounded-full pointer-events-none"></div>
+      <div class="absolute top-0 left-0 w-3 h-3 border-t border-l border-[#ef233c]"></div>
+      <div class="absolute top-0 right-0 w-3 h-3 border-t border-r border-[#ef233c]"></div>
+      <div class="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-[#ef233c]"></div>
+      <div class="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-[#ef233c]"></div>
+      <div class="mb-auto relative z-10">
+        <div class="flex items-center justify-between mb-3">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 border border-[#ef233c]/30 flex items-center justify-center">
+              <i data-lucide="brain" class="w-4 h-4 text-[#ef233c]"></i>
+            </div>
+            <span class="text-[10px] font-geist-mono text-[#ef233c]/60 tracking-widest uppercase">Tier 2</span>
+          </div>
+          <span class="text-[10px] uppercase font-bold text-white tracking-wider bg-[#ef233c] px-2.5 py-1 shadow-[0_0_10px_rgba(239,35,60,0.35)]">Most Popular</span>
+        </div>
+        <h3 class="text-2xl md:text-3xl font-medium text-white tracking-tight font-manrope mb-2">Specialist Operator</h3>
+        <p class="text-sm text-zinc-400 leading-relaxed mb-1 font-medium">Function-Level Ownership</p>
+        <p class="text-zinc-500 text-sm font-sans leading-relaxed mb-8">
+          The serious version. Built to own one core function end-to-end with deeper integrations and reporting.
+        </p>
+        <div class="flex items-baseline gap-1 mb-2">
+          <span class="text-[1.25rem] text-zinc-400 font-medium translate-y-1">$</span>
+          <span class="text-5xl font-medium text-white tracking-tighter font-manrope">5,000</span>
+          <span class="text-zinc-500 text-lg font-sans">&ndash;$7,500</span>
+        </div>
+        <p class="text-zinc-500 text-sm mb-6">one-time deployment</p>
+        <p class="text-zinc-400 text-sm font-medium mb-8">+ $1,000&ndash;$2,000<span class="text-zinc-500 font-normal"> / month management</span></p>
+        <a href="" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/andrewnaegele/scale-with-us?background_color=0a0a0a&text_color=ffffff&primary_color=ef233c'});return false;" class="flex items-center justify-center gap-2 px-6 py-3.5 bg-white text-black text-sm font-bold font-sans hover:bg-zinc-200 transition-all w-full cursor-pointer">
+          Get Started
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="border-t border-zinc-800/80 my-8 w-full relative z-10"></div>
+      <div class="relative z-10">
+        <h4 class="text-sm font-medium text-white font-manrope mb-5 uppercase tracking-wider">Everything in Cloud Operator, plus:</h4>
+        <div class="space-y-3">
+          <div class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 text-[#ef233c] shrink-0 mt-0.5"></i><span class="text-sm text-zinc-300">Function-specific design &amp; SOPs</span></div>
+          <div class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 text-[#ef233c] shrink-0 mt-0.5"></i><span class="text-sm text-zinc-300">Expanded Soul Doc with escalation rules</span></div>
+          <div class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 text-[#ef233c] shrink-0 mt-0.5"></i><span class="text-sm text-zinc-300">Deeper CRM / ticketing / calendar integrations</span></div>
+          <div class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 text-[#ef233c] shrink-0 mt-0.5"></i><span class="text-sm text-zinc-300">Custom workflows &amp; automations</span></div>
+          <div class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 text-[#ef233c] shrink-0 mt-0.5"></i><span class="text-sm text-zinc-300">Daily/weekly performance reporting</span></div>
+          <div class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 text-[#ef233c] shrink-0 mt-0.5"></i><span class="text-sm text-zinc-300">Higher-touch monitoring &amp; priority changes</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tier 3: Full AI Employee -->
+    <div class="lg:col-span-4 flex flex-col h-full pricing-card bg-black border border-dashed border-zinc-800 p-8 md:p-10 relative animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.5s_both]">
+      <div class="absolute top-0 left-0 w-3 h-3 border-t border-l border-[#ef233c]"></div>
+      <div class="absolute top-0 right-0 w-3 h-3 border-t border-r border-[#ef233c]"></div>
+      <div class="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-[#ef233c]"></div>
+      <div class="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-[#ef233c]"></div>
+      <div class="mb-auto">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-8 h-8 border border-zinc-700 flex items-center justify-center">
+            <i data-lucide="laptop" class="w-4 h-4 text-[#ef233c]"></i>
+          </div>
+          <span class="text-[10px] font-geist-mono text-[#ef233c]/60 tracking-widest uppercase">Tier 3</span>
+        </div>
+        <h3 class="text-2xl md:text-3xl font-medium text-white tracking-tight font-manrope mb-2">Full AI Employee</h3>
+        <p class="text-sm text-zinc-400 leading-relaxed mb-1 font-medium">Devices &amp; Infra Buildout</p>
+        <p class="text-zinc-500 text-sm font-sans leading-relaxed mb-8">
+          The &ldquo;real hire&rdquo; version: own Mac, own phone/iMessage, own accounts &mdash; all in an air-gapped&nbsp;environment.
+        </p>
+        <div class="mb-2">
+          <p class="text-zinc-500 text-xs font-sans uppercase tracking-wide font-medium mb-1">Starts at</p>
+          <div class="flex items-baseline gap-1">
+            <span class="text-[1.25rem] text-zinc-400 font-medium translate-y-1">$</span>
+            <span class="text-5xl font-medium text-white tracking-tighter font-manrope">5,000</span>
+            <span class="text-zinc-500 text-lg font-sans">&ndash;$10K</span>
+          </div>
+        </div>
+        <p class="text-zinc-500 text-sm mb-6">scope-dependent</p>
+        <p class="text-zinc-400 text-sm font-medium mb-8">+ Custom<span class="text-zinc-500 font-normal"> monthly management</span></p>
+        <a href="" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/andrewnaegele/scale-with-us?background_color=0a0a0a&text_color=ffffff&primary_color=ef233c'});return false;" class="group flex items-center justify-center gap-2 px-6 py-3.5 border border-zinc-700 text-white text-sm font-semibold font-sans hover:bg-zinc-900 hover:border-[#ef233c]/50 transition-all w-full cursor-pointer">
+          Book a Consultation
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 group-hover:translate-x-0.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="border-t border-zinc-800/80 my-8 w-full"></div>
+      <div>
+        <h4 class="text-sm font-medium text-white font-manrope mb-5 uppercase tracking-wider">Everything in Specialist, plus:</h4>
+        <div class="space-y-3">
+          <div class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 text-[#ef233c] shrink-0 mt-0.5"></i><span class="text-sm text-zinc-300">Dedicated Mac mini / on-prem / VM setup</span></div>
+          <div class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 text-[#ef233c] shrink-0 mt-0.5"></i><span class="text-sm text-zinc-300">iMessage &amp; phone integration</span></div>
+          <div class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 text-[#ef233c] shrink-0 mt-0.5"></i><span class="text-sm text-zinc-300">Optional &ldquo;employee card&rdquo; with spending limits</span></div>
+          <div class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 text-[#ef233c] shrink-0 mt-0.5"></i><span class="text-sm text-zinc-300">Logging &amp; audit trail where feasible</span></div>
+          <div class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 text-[#ef233c] shrink-0 mt-0.5"></i><span class="text-sm text-zinc-300">Priority high-touch remote support</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="pointer-events-none w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+
+<!-- ============================================================ -->
+<!-- WHY THIS AI EMPLOYEE WORKS (CLAW ARCHITECTURE) -->
+<!-- ============================================================ -->
+<section class="w-full max-w-6xl mx-auto px-6 py-24 relative">
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[400px] bg-[#ef233c]/5 rounded-full blur-[150px] pointer-events-none"></div>
+
+  <div class="flex flex-col w-full mb-16 gap-y-6 animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.2s_both]">
+    <div class="flex items-center gap-3">
+      <span class="w-8 h-px bg-[#ef233c]"></span>
+      <span class="uppercase text-sm font-medium text-[#ef233c] tracking-widest font-geist-mono">04. Architecture</span>
+    </div>
+    <h2 class="md:text-6xl text-4xl font-medium text-white tracking-tighter font-manrope">
+      Why This AI Employee <span class="bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-red-600">Works</span>
+    </h2>
+    <p class="leading-relaxed text-lg font-light text-gray-400 max-w-xl">
+      Built on the CLAW architecture &mdash; the reason ours keep running when everyone else&rsquo;s quietly&nbsp;die.
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="bg-black border border-zinc-800 border-dashed p-8 relative group hover:border-[#ef233c]/50 transition-all duration-500 hover-glow-card animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.2s_both]">
+      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#ef233c]"></div>
+      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#ef233c]"></div>
+      <div class="w-10 h-10 border border-zinc-700 flex items-center justify-center mb-5 group-hover:border-[#ef233c]/50 transition-colors">
+        <i data-lucide="database" class="w-5 h-5 text-[#ef233c]"></i>
+      </div>
+      <h3 class="text-lg font-semibold text-white font-manrope tracking-tight mb-3">No Context Rot</h3>
+      <p class="text-sm text-zinc-400 leading-relaxed">Smart memory system keeps what matters and ignores noise, so performance doesn&rsquo;t degrade in long conversations.</p>
+    </div>
+
+    <div class="bg-black border border-zinc-800 border-dashed p-8 relative group hover:border-[#ef233c]/50 transition-all duration-500 hover-glow-card animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.3s_both]">
+      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#ef233c]"></div>
+      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#ef233c]"></div>
+      <div class="w-10 h-10 border border-zinc-700 flex items-center justify-center mb-5 group-hover:border-[#ef233c]/50 transition-colors">
+        <i data-lucide="users" class="w-5 h-5 text-[#ef233c]"></i>
+      </div>
+      <h3 class="text-lg font-semibold text-white font-manrope tracking-tight mb-3">Specialist Guild, Not a God&nbsp;Bot</h3>
+      <p class="text-sm text-zinc-400 leading-relaxed">A small team of specialist agents, each with scoped skills and memory, rather than one generalist great at nothing.</p>
+    </div>
+
+    <div class="bg-black border border-zinc-800 border-dashed p-8 relative group hover:border-[#ef233c]/50 transition-all duration-500 hover-glow-card animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.4s_both]">
+      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#ef233c]"></div>
+      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#ef233c]"></div>
+      <div class="w-10 h-10 border border-zinc-700 flex items-center justify-center mb-5 group-hover:border-[#ef233c]/50 transition-colors">
+        <i data-lucide="code-2" class="w-5 h-5 text-[#ef233c]"></i>
+      </div>
+      <h3 class="text-lg font-semibold text-white font-manrope tracking-tight mb-3">Deterministic Skills</h3>
+      <p class="text-sm text-zinc-400 leading-relaxed">Critical work handled by tested, code-based skills &mdash; not brittle prompts &mdash; so you can trust it in production.</p>
+    </div>
+
+    <div class="bg-black border border-zinc-800 border-dashed p-8 relative group hover:border-[#ef233c]/50 transition-all duration-500 hover-glow-card animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.5s_both]">
+      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#ef233c]"></div>
+      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#ef233c]"></div>
+      <div class="w-10 h-10 border border-zinc-700 flex items-center justify-center mb-5 group-hover:border-[#ef233c]/50 transition-colors">
+        <i data-lucide="lock" class="w-5 h-5 text-[#ef233c]"></i>
+      </div>
+      <h3 class="text-lg font-semibold text-white font-manrope tracking-tight mb-3">Security-First by Design</h3>
+      <p class="text-sm text-zinc-400 leading-relaxed">Separate environment, separate accounts, local or private memory options. Your data stays under your control.</p>
+    </div>
+
+    <div class="bg-black border border-zinc-800 border-dashed p-8 relative group hover:border-[#ef233c]/50 transition-all duration-500 hover-glow-card animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.6s_both] md:col-span-2 lg:col-span-1">
+      <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#ef233c]"></div>
+      <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#ef233c]"></div>
+      <div class="w-10 h-10 border border-zinc-700 flex items-center justify-center mb-5 group-hover:border-[#ef233c]/50 transition-colors">
+        <i data-lucide="gauge" class="w-5 h-5 text-[#ef233c]"></i>
+      </div>
+      <h3 class="text-lg font-semibold text-white font-manrope tracking-tight mb-3">Cost-Efficient Model&nbsp;Routing</h3>
+      <p class="text-sm text-zinc-400 leading-relaxed">Routine work uses cheaper models; complex reasoning uses premium ones &mdash; keeping &ldquo;gas fees&rdquo; under control.</p>
+    </div>
+  </div>
+
+  <p class="text-center text-sm text-zinc-500 mt-10 animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.7s_both]">
+    For technical teams: <a href="" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/andrewnaegele/scale-with-us?background_color=0a0a0a&text_color=ffffff&primary_color=ef233c'});return false;" class="text-[#ef233c] hover:text-red-400 transition-colors cursor-pointer underline underline-offset-4">Request the CLAW Architecture Overview</a>
+  </p>
+</section>
+
+<div class="pointer-events-none w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+
+<!-- ============================================================ -->
+<!-- HOW IT WORKS -->
+<!-- ============================================================ -->
+<section id="how-it-works" class="w-full max-w-6xl mx-auto px-6 py-24 relative">
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[400px] bg-[#ef233c]/3 rounded-full blur-[180px] pointer-events-none"></div>
+
+  <div class="flex flex-col w-full mb-16 gap-y-6 animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.2s_both]">
+    <div class="flex items-center gap-3">
+      <span class="w-8 h-px bg-[#ef233c]"></span>
+      <span class="uppercase text-sm font-medium text-[#ef233c] tracking-widest font-geist-mono">05. Process</span>
+    </div>
+    <h2 class="md:text-6xl text-4xl font-medium text-white tracking-tighter font-manrope">
+      How It <span class="bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-red-600">Works</span>
+    </h2>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <!-- Step 1 -->
+    <div class="bg-black border border-zinc-800 border-dashed p-8 relative group hover:border-[#ef233c]/50 transition-all duration-500 hover-glow-card animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.2s_both]">
+      <div class="absolute top-0 left-0 w-3 h-3 border-t border-l border-[#ef233c]"></div>
+      <div class="absolute top-0 right-0 w-3 h-3 border-t border-r border-[#ef233c]"></div>
+      <div class="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-[#ef233c]"></div>
+      <div class="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-[#ef233c]"></div>
+      <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(239,35,60,0.05) 0%, transparent 70%);"></div>
+      <span class="text-[10px] font-geist-mono text-[#ef233c]/60 tracking-widest uppercase block mb-4">Step 01</span>
+      <div class="w-12 h-12 border border-zinc-700 flex items-center justify-center mb-5 group-hover:border-[#ef233c]/50 transition-colors">
+        <i data-lucide="phone-call" class="w-6 h-6 text-[#ef233c]"></i>
+      </div>
+      <h3 class="text-xl font-semibold text-white font-manrope tracking-tight mb-3">Fit Call</h3>
+      <p class="text-sm text-zinc-500 mb-2 font-geist-mono">20&ndash;30 minutes</p>
+      <p class="text-sm text-zinc-400 leading-relaxed">Map your use case, tools, and risk profile. Choose the right tier and function.</p>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="bg-black border border-zinc-800 border-dashed p-8 relative group hover:border-[#ef233c]/50 transition-all duration-500 hover-glow-card animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.3s_both]">
+      <div class="absolute top-0 left-0 w-3 h-3 border-t border-l border-[#ef233c]"></div>
+      <div class="absolute top-0 right-0 w-3 h-3 border-t border-r border-[#ef233c]"></div>
+      <div class="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-[#ef233c]"></div>
+      <div class="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-[#ef233c]"></div>
+      <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(239,35,60,0.05) 0%, transparent 70%);"></div>
+      <span class="text-[10px] font-geist-mono text-[#ef233c]/60 tracking-widest uppercase block mb-4">Step 02</span>
+      <div class="w-12 h-12 border border-zinc-700 flex items-center justify-center mb-5 group-hover:border-[#ef233c]/50 transition-colors">
+        <i data-lucide="wrench" class="w-6 h-6 text-[#ef233c]"></i>
+      </div>
+      <h3 class="text-xl font-semibold text-white font-manrope tracking-tight mb-3">Build &amp; Deploy</h3>
+      <p class="text-sm text-zinc-500 mb-2 font-geist-mono">3&ndash;7 business days</p>
+      <p class="text-sm text-zinc-400 leading-relaxed">We design the Soul Doc, configure infra, install skills, and run our Security &amp; Sanity Checklist.</p>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="bg-black border border-zinc-800 border-dashed p-8 relative group hover:border-[#ef233c]/50 transition-all duration-500 hover-glow-card animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.4s_both]">
+      <div class="absolute top-0 left-0 w-3 h-3 border-t border-l border-[#ef233c]"></div>
+      <div class="absolute top-0 right-0 w-3 h-3 border-t border-r border-[#ef233c]"></div>
+      <div class="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-[#ef233c]"></div>
+      <div class="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-[#ef233c]"></div>
+      <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(239,35,60,0.05) 0%, transparent 70%);"></div>
+      <span class="text-[10px] font-geist-mono text-[#ef233c]/60 tracking-widest uppercase block mb-4">Step 03</span>
+      <div class="w-12 h-12 border border-zinc-700 flex items-center justify-center mb-5 group-hover:border-[#ef233c]/50 transition-colors">
+        <i data-lucide="trending-up" class="w-6 h-6 text-[#ef233c]"></i>
+      </div>
+      <h3 class="text-xl font-semibold text-white font-manrope tracking-tight mb-3">Prove &amp; Improve</h3>
+      <p class="text-sm text-zinc-500 mb-2 font-geist-mono">First 30 days</p>
+      <p class="text-sm text-zinc-400 leading-relaxed">We tune behavior, guardrails, and workflows based on real usage until it feels like a reliable team member.</p>
+    </div>
+  </div>
+</section>
+
+<div class="pointer-events-none w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+
+<!-- ============================================================ -->
+<!-- DEPLOYMENT GUARANTEE -->
+<!-- ============================================================ -->
+<section class="w-full max-w-4xl mx-auto px-6 py-24 relative">
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-[#ef233c]/5 rounded-full blur-[120px] pointer-events-none"></div>
+
+  <div class="border border-[#ef233c]/20 border-dashed bg-black relative p-12 md:p-16 text-center overflow-hidden hover-glow-card group animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.3s_both]">
+    <div class="absolute top-0 left-0 w-4 h-4 border-t border-l border-[#ef233c]"></div>
+    <div class="absolute top-0 right-0 w-4 h-4 border-t border-r border-[#ef233c]"></div>
+    <div class="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-[#ef233c]"></div>
+    <div class="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-[#ef233c]"></div>
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(239,35,60,0.05) 0%, transparent 70%);"></div>
+
+    <div class="relative z-10">
+      <div class="flex items-center justify-center gap-3 mb-6">
+        <div class="h-px w-12 bg-gradient-to-r from-transparent to-[#ef233c]/40"></div>
+        <span class="font-geist-mono text-[10px] text-[#ef233c] tracking-widest uppercase font-bold">Guarantee</span>
+        <div class="h-px w-12 bg-gradient-to-l from-transparent to-[#ef233c]/40"></div>
+      </div>
+      <div class="w-14 h-14 border border-[#ef233c]/30 flex items-center justify-center mx-auto mb-6">
+        <i data-lucide="shield-check" class="w-7 h-7 text-[#ef233c]"></i>
+      </div>
+      <h2 class="text-3xl md:text-5xl font-bold text-white font-manrope tracking-tighter mb-6">
+        Deployment Guarantee
+      </h2>
+      <p class="text-zinc-300 leading-relaxed max-w-2xl mx-auto mb-4 text-lg">
+        Most clients are live within <strong class="text-white">3 business days</strong>. We guarantee your AI Employee will be deployed into its own isolated environment and pass our internal <strong class="text-white">Security &amp; Sanity Checklist</strong> within <strong class="text-white">7 business days</strong> of your kickoff call.
+      </p>
+      <p class="text-[#ef233c] font-medium max-w-xl mx-auto leading-relaxed">
+        If we miss that window, we work for free until it does <em>and</em> your first month of management is on&nbsp;us.
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="pointer-events-none w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+
+<!-- ============================================================ -->
+<!-- FAQ -->
+<!-- ============================================================ -->
+<section id="faq" class="w-full max-w-4xl mx-auto px-6 py-24 relative">
+  <div class="flex flex-col w-full mb-16 gap-y-6 animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.2s_both]">
+    <div class="flex items-center gap-3">
+      <span class="w-8 h-px bg-[#ef233c]"></span>
+      <span class="uppercase text-sm font-medium text-[#ef233c] tracking-widest font-geist-mono">06. FAQ</span>
+    </div>
+    <h2 class="md:text-6xl text-4xl font-medium text-white tracking-tighter font-manrope">
+      Common <span class="bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-red-600">Questions</span>
+    </h2>
+  </div>
+
+  <div class="border border-zinc-800 border-dashed bg-black relative animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.3s_both]">
+    <div class="absolute top-0 left-0 w-3 h-3 border-t border-l border-[#ef233c]"></div>
+    <div class="absolute top-0 right-0 w-3 h-3 border-t border-r border-[#ef233c]"></div>
+    <div class="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-[#ef233c]"></div>
+    <div class="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-[#ef233c]"></div>
+
+    <div class="faq-item p-8 cursor-pointer" onclick="this.classList.toggle('open')">
+      <div class="flex items-center justify-between">
+        <h3 class="text-white font-semibold font-manrope text-lg pr-4">Do I need to be technical?</h3>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-zinc-500 shrink-0 faq-chevron"><path d="m6 9 6 6 6-6"/></svg>
+      </div>
+      <div class="faq-answer mt-4">
+        <p class="text-sm text-zinc-400 leading-relaxed">No. You approve the plan; we handle setup, deployment, and maintenance. Zero terminal access required from you.</p>
+      </div>
+    </div>
+
+    <div class="faq-item p-8 cursor-pointer" onclick="this.classList.toggle('open')">
+      <div class="flex items-center justify-between">
+        <h3 class="text-white font-semibold font-manrope text-lg pr-4">Will this touch my personal accounts or machines?</h3>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-zinc-500 shrink-0 faq-chevron"><path d="m6 9 6 6 6-6"/></svg>
+      </div>
+      <div class="faq-answer mt-4">
+        <p class="text-sm text-zinc-400 leading-relaxed">By default, no. Everything runs in its own environment with its own accounts. That&rsquo;s the entire point of our isolation-first architecture.</p>
+      </div>
+    </div>
+
+    <div class="faq-item p-8 cursor-pointer" onclick="this.classList.toggle('open')">
+      <div class="flex items-center justify-between">
+        <h3 class="text-white font-semibold font-manrope text-lg pr-4">What if OpenClaw changes or breaks?</h3>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-zinc-500 shrink-0 faq-chevron"><path d="m6 9 6 6 6-6"/></svg>
+      </div>
+      <div class="faq-answer mt-4">
+        <p class="text-sm text-zinc-400 leading-relaxed">That&rsquo;s what your management plan covers. We track upstream changes, patch issues, and keep things stable so you don&rsquo;t have to.</p>
+      </div>
+    </div>
+
+    <div class="faq-item p-8 cursor-pointer" onclick="this.classList.toggle('open')">
+      <div class="flex items-center justify-between">
+        <h3 class="text-white font-semibold font-manrope text-lg pr-4">How do we get started?</h3>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-zinc-500 shrink-0 faq-chevron"><path d="m6 9 6 6 6-6"/></svg>
+      </div>
+      <div class="faq-answer mt-4">
+        <p class="text-sm text-zinc-400 leading-relaxed">Click &ldquo;Book Your AI Employee Build Call,&rdquo; pick a time, and we&rsquo;ll walk you through which tier and function make the most sense for your business.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="pointer-events-none w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+
+<!-- ============================================================ -->
+<!-- FINAL CTA -->
+<!-- ============================================================ -->
+<section class="w-full max-w-4xl mx-auto px-6 py-24 relative">
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-[#ef233c]/5 rounded-full blur-[120px] pointer-events-none"></div>
+
+  <div class="border border-zinc-800 border-dashed bg-black relative p-12 md:p-16 text-center overflow-hidden hover-glow-card group animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.3s_both]">
+    <div class="absolute top-0 left-0 w-3 h-3 border-t border-l border-[#ef233c]"></div>
+    <div class="absolute top-0 right-0 w-3 h-3 border-t border-r border-[#ef233c]"></div>
+    <div class="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-[#ef233c]"></div>
+    <div class="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-[#ef233c]"></div>
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(239,35,60,0.05) 0%, transparent 70%);"></div>
+
+    <div class="relative z-10">
+      <div class="flex items-center justify-center gap-3 mb-6">
+        <div class="h-px w-12 bg-gradient-to-r from-transparent to-[#ef233c]/40"></div>
+        <span class="font-geist-mono text-[10px] text-[#ef233c] tracking-widest uppercase font-bold">Let&rsquo;s Build</span>
+        <div class="h-px w-12 bg-gradient-to-l from-transparent to-[#ef233c]/40"></div>
+      </div>
+      <h2 class="text-3xl md:text-5xl font-bold text-white font-manrope tracking-tighter mb-6">
+        Ready to Install Your AI&nbsp;Employee?
+      </h2>
+      <p class="text-zinc-400 leading-relaxed max-w-xl mx-auto mb-8">
+        Book a 20&ndash;30 minute fit call. We&rsquo;ll map your use case, choose a tier, and give you a deployment timeline on the&nbsp;spot.
+      </p>
+
+      <a href="" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/andrewnaegele/scale-with-us?background_color=0a0a0a&text_color=ffffff&primary_color=ef233c'});return false;" class="shiny-cta inline-block cursor-pointer" style="padding: 1.25rem 3rem;">
+        <span class="flex flex-nowrap items-center justify-center gap-2 text-sm font-bold tracking-wide uppercase font-manrope whitespace-nowrap">
+          Book Your AI Employee Build Call
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- FOOTER -->
+<!-- ============================================================ -->
+<footer class="w-full border-t border-zinc-800 border-dashed mt-12">
+  <div class="max-w-6xl mx-auto px-6 py-12">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="flex items-center gap-3">
+        <img src="img/ai-simple-logo.svg" alt="AI Simple" class="h-6 w-auto drop-shadow-[0_0_5px_rgba(255,255,255,0.3)]">
+        <span class="text-lg font-bold text-white tracking-tight font-manrope">AI Simple</span>
+      </div>
+      <div class="flex items-center gap-6 text-xs text-zinc-600">
+        <a href="/" class="hover:text-white transition-colors">Home</a>
+        <a href="#pricing" class="hover:text-white transition-colors">Pricing</a>
+        <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+        <a href="#" class="hover:text-white transition-colors">Terms</a>
+      </div>
+    </div>
+  </div>
+  <div class="w-full py-8 text-center border-t border-dashed border-zinc-800 bg-black">
+    <p class="text-[10px] text-zinc-600 font-bold uppercase tracking-[0.2em] font-sans">
+      &copy; 2026 <a href="/" class="hover:text-white transition-colors text-[#ef233c]">AI Simple</a> &mdash; Built with systems, not&nbsp;hustle.
+    </p>
+  </div>
+</footer>
+
+<!-- ============================================================ -->
+<!-- SCRIPTS -->
+<!-- ============================================================ -->
+<script>document.addEventListener('DOMContentLoaded', () => { if (typeof lucide !== 'undefined') lucide.createIcons(); });</script>
+
+</body>
+</html>
