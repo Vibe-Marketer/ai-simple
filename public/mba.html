@@ -875,20 +875,18 @@ select.form-input { appearance: none; background-image: url("data:image/svg+xml,
 })();
 </script>
 
-<!-- Form Submission — CRM Integration (localStorage + Google Sheets webhook) -->
+<!-- Form Submission — Supabase CRM + Redirect to Thank You -->
 <script>
 document.getElementById('lead-form').addEventListener('submit', async function(e) {
   e.preventDefault();
   const form = e.target;
   const btn = document.getElementById('submit-btn');
-  const formContainer = document.getElementById('form-container');
-  const successEl = document.getElementById('form-success');
 
-  // Disable button
+  // Disable button & show loading state
   btn.disabled = true;
   btn.querySelector('span').textContent = 'Sending...';
 
-  // Collect data
+  // Collect form data
   const data = {
     name: form.name.value,
     email: form.email.value,
@@ -897,60 +895,39 @@ document.getElementById('lead-form').addEventListener('submit', async function(e
     revenue: form.revenue.value,
     channel: form.channel.value,
     help_wanted: form.help_wanted.value,
-    submitted_at: new Date().toISOString(),
-    source: 'lead-magnet-page',
+    source: 'mba-lead-magnet',
     page_url: window.location.href,
     user_agent: navigator.userAgent
   };
 
-  // === CRM INTEGRATION ===
-  // Option 1: Google Sheets webhook (replace URL with your actual Apps Script deployment URL)
-  const WEBHOOK_URL = 'YOUR_GOOGLE_SHEETS_WEBHOOK_URL';
-
-  try {
-    if (WEBHOOK_URL !== 'YOUR_GOOGLE_SHEETS_WEBHOOK_URL') {
-      await fetch(WEBHOOK_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      });
-    }
-  } catch (err) {
-    console.log('Webhook delivery attempted:', err);
-  }
-
-  // Option 2: Always save to localStorage as backup CRM
+  // Save to localStorage as backup (in case API fails)
   try {
     const existing = JSON.parse(localStorage.getItem('ai_simple_leads') || '[]');
-    existing.push(data);
+    existing.push({ ...data, submitted_at: new Date().toISOString() });
     localStorage.setItem('ai_simple_leads', JSON.stringify(existing));
-    console.log('Lead saved to local CRM. Total leads:', existing.length);
   } catch (err) {
-    console.error('Local save failed:', err);
+    console.error('Local backup save failed:', err);
   }
 
-  // Show success state
-  formContainer.classList.add('hidden');
-  successEl.classList.remove('hidden');
+  // Submit to Supabase via serverless function
+  try {
+    const res = await fetch('/api/submit-lead', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
 
-  // Hide sticky bar
-  document.getElementById('sticky-bar').classList.remove('visible');
+    if (!res.ok) {
+      console.error('API error:', res.status, await res.text());
+    }
+  } catch (err) {
+    console.error('API call failed:', err);
+    // Don't block — lead is saved in localStorage, and user should still get assets
+  }
+
+  // Always redirect to thank-you page (assets are there)
+  window.location.href = '/thank-you';
 });
-
-// CRM Export utility — run in console: exportLeads()
-window.exportLeads = function() {
-  const leads = JSON.parse(localStorage.getItem('ai_simple_leads') || '[]');
-  if (!leads.length) { console.log('No leads yet.'); return; }
-  const headers = Object.keys(leads[0]);
-  const csv = [headers.join(','), ...leads.map(l => headers.map(h => '"' + (l[h] || '').toString().replace(/"/g, '""') + '"').join(','))].join('\n');
-  const blob = new Blob([csv], { type: 'text/csv' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url; a.download = 'ai-simple-leads-' + new Date().toISOString().slice(0,10) + '.csv';
-  a.click(); URL.revokeObjectURL(url);
-  console.log('Exported', leads.length, 'leads to CSV');
-};
 </script>
 
 <!-- Smooth scroll for anchor links -->
