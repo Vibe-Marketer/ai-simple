@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>You're In — Grab Your Assets | AI Simple</title>
+<meta name="description" content="Access your Offer MBA, 728M Lead Vault, and Direct Copywriter GPT.">
+<link rel="icon" href="img/ai-simple-logo.png" type="image/png">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+<script>tailwind.config = { theme: { extend: {} } };</script>
+<style>
+body { font-family: 'Inter', sans-serif; }
+.font-manrope { font-family: 'Manrope', sans-serif !important; }
+.font-geist-mono { font-family: 'Geist Mono', monospace !important; }
+
+/* ========== ANIMATIONS ========== */
+@keyframes fadeSlideIn { 0% { opacity: 0; transform: translateY(30px); filter: blur(8px); } 100% { opacity: 1; transform: translateY(0); filter: blur(0px); } }
+@keyframes columnReveal { 0% { clip-path: inset(0 0 100% 0); opacity: 0; } 100% { clip-path: inset(0 0 0% 0); opacity: 1; } }
+@keyframes border-spin { to { --gradient-angle: 360deg; } }
+@keyframes shimmer { to { transform: translate(-50%, -50%) rotate(360deg); } }
+@keyframes breathe { 0%, 100% { transform: translate(-50%, -50%) scale(1); } 50% { transform: translate(-50%, -50%) scale(1.20); } }
+@keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
+@keyframes scan-line { 0% { top: -2px; } 100% { top: 100%; } }
+@keyframes text-shimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
+@keyframes check-pop { 0% { transform: scale(0); opacity: 0; } 50% { transform: scale(1.2); } 100% { transform: scale(1); opacity: 1; } }
+@keyframes pulse-dot { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.5); } }
+@keyframes auroraShift1 { 0% { transform: translateX(-8%) translateY(-3%) scale(1); opacity: 0.7; } 50% { transform: translateX(8%) translateY(3%) scale(1.1); opacity: 1; } 100% { transform: translateX(-8%) translateY(-3%) scale(1); opacity: 0.7; } }
+@keyframes auroraShift2 { 0% { transform: translateX(5%) translateY(5%) scale(1.05); opacity: 0.8; } 50% { transform: translateX(-5%) translateY(-5%) scale(1); opacity: 0.6; } 100% { transform: translateX(5%) translateY(5%) scale(1.05); opacity: 0.8; } }
+
+.col-anim { animation: columnReveal 1.4s cubic-bezier(0.16, 1, 0.3, 1) backwards; will-change: clip-path; }
+.delay-1 { animation-delay: 0.1s; } .delay-2 { animation-delay: 0.2s; } .delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; } .delay-5 { animation-delay: 0.5s; } .delay-6 { animation-delay: 0.6s; }
+.delay-7 { animation-delay: 0.7s; }
+
+/* ========== SHINY CTA ========== */
+@property --gradient-angle { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
+@property --gradient-angle-offset { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
+@property --gradient-percent { syntax: "<percentage>"; initial-value: 20%; inherits: false; }
+@property --gradient-shine { syntax: "<color>"; initial-value: #ef233c; inherits: false; }
+.shiny-cta {
+  --gradient-angle: 0deg; --gradient-angle-offset: 0deg; --gradient-percent: 20%; --gradient-shine: #ef233c;
+  position: relative; overflow: hidden; border-radius: 0; padding: 1.25rem 2.5rem; font-size: 1rem; line-height: 1.2; font-weight: 600; color: #fff;
+  background: linear-gradient(#000, #000) padding-box, conic-gradient(from calc(var(--gradient-angle) - var(--gradient-angle-offset)), transparent 0%, #ef233c 5%, var(--gradient-shine) 15%, #ef233c 30%, transparent 40%, transparent 100%) border-box;
+  border: 2px solid transparent; box-shadow: inset 0 0 0 1px #1a1818; outline: none;
+  transition: --gradient-angle-offset 800ms cubic-bezier(0.25, 1, 0.5, 1), --gradient-percent 800ms cubic-bezier(0.25, 1, 0.5, 1), --gradient-shine 800ms cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s;
+  cursor: pointer; isolation: isolate; z-index: 0; animation: border-spin 2.5s linear infinite; width: 100%; display: block; text-decoration: none;
+}
+.shiny-cta:active { transform: translateY(1px); }
+.shiny-cta::before { content: ''; pointer-events: none; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 0; --size: calc(100% - 6px); width: var(--size); height: var(--size); background: radial-gradient(circle at 2px 2px, white 0.5px, transparent 0) padding-box; background-size: 4px 4px; background-repeat: space; mask-image: conic-gradient(from calc(var(--gradient-angle) + 45deg), black, transparent 10% 90%, black); border-radius: inherit; opacity: 0.4; }
+.shiny-cta::after { content: ''; pointer-events: none; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 1; width: 100%; aspect-ratio: 1; background: linear-gradient(-50deg, transparent, #ef233c, transparent); mask-image: radial-gradient(circle at bottom, transparent 40%, black); opacity: 0.6; animation: shimmer 4s linear infinite; }
+.shiny-cta span { position: relative; z-index: 2; display: inline-block; }
+
+/* ========== GRADIENT BORDER ========== */
+[style*="--border-gradient"]::before { content: ""; position: absolute; inset: 0; padding: 1px; border-radius: var(--border-radius-before, inherit); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; background: var(--border-gradient); pointer-events: none; }
+
+/* ========== PROGRESSIVE BLUR ========== */
+.gradient-blur { position: fixed; z-index: 5; inset: 0 0 auto 0; height: 12%; pointer-events: none; transform: translateZ(0); }
+.gradient-blur>div, .gradient-blur::before, .gradient-blur::after { position: absolute; inset: 0; }
+.gradient-blur::before { content: ""; z-index: 1; backdrop-filter: blur(0.5px); mask: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 12.5%, rgba(0,0,0,1) 25%, rgba(0,0,0,0) 37.5%); }
+.gradient-blur>div:nth-of-type(1) { z-index: 2; backdrop-filter: blur(1px); mask: linear-gradient(to top, rgba(0,0,0,0) 12.5%, rgba(0,0,0,1) 25%, rgba(0,0,0,1) 37.5%, rgba(0,0,0,0) 50%); }
+.gradient-blur>div:nth-of-type(2) { z-index: 3; backdrop-filter: blur(2px); mask: linear-gradient(to top, rgba(0,0,0,0) 25%, rgba(0,0,0,1) 37.5%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 62.5%); }
+.gradient-blur>div:nth-of-type(3) { z-index: 4; backdrop-filter: blur(4px); mask: linear-gradient(to top, rgba(0,0,0,0) 37.5%, rgba(0,0,0,1) 50%, rgba(0,0,0,1) 62.5%, rgba(0,0,0,0) 75%); }
+.gradient-blur>div:nth-of-type(4) { z-index: 5; backdrop-filter: blur(8px); mask: linear-gradient(to top, rgba(0,0,0,0) 50%, rgba(0,0,0,1) 62.5%, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 87.5%); }
+.gradient-blur>div:nth-of-type(5) { z-index: 6; backdrop-filter: blur(16px); mask: linear-gradient(to top, rgba(0,0,0,0) 62.5%, rgba(0,0,0,1) 75%, rgba(0,0,0,1) 87.5%, rgba(0,0,0,0) 100%); }
+.gradient-blur>div:nth-of-type(6) { z-index: 7; backdrop-filter: blur(32px); mask: linear-gradient(to top, rgba(0,0,0,0) 75%, rgba(0,0,0,1) 87.5%, rgba(0,0,0,1) 100%); }
+.gradient-blur::after { content: ""; z-index: 8; backdrop-filter: blur(64px); mask: linear-gradient(to top, rgba(0,0,0,0) 87.5%, rgba(0,0,0,1) 100%); }
+
+/* ========== HOVER GLOW ========== */
+.hover-glow-card { transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+.hover-glow-card:hover { border-color: rgba(239,35,60,0.5) !important; box-shadow: 0 0 30px rgba(239,35,60,0.08), inset 0 0 30px rgba(239,35,60,0.03); }
+
+/* ========== GRID ========== */
+.bg-grid { background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 60px 60px; }
+
+/* ========== TEXT SHIMMER ========== */
+.text-shimmer { background: linear-gradient(90deg, #fff 0%, #ef233c 25%, #fff 50%, #ef233c 75%, #fff 100%); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: text-shimmer 4s linear infinite; }
+
+/* ========== SCAN LINE ========== */
+.scan-line { position: relative; overflow: hidden; }
+.scan-line::after { content: ''; position: absolute; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(239,35,60,0.3), transparent); animation: scan-line 8s linear infinite; pointer-events: none; z-index: 1; }
+
+/* ========== PARTICLES ========== */
+.particle { position: absolute; width: 2px; height: 2px; background: rgba(239,35,60,0.4); border-radius: 50%; animation: float 6s ease-in-out infinite; pointer-events: none; }
+
+/* ========== PULSE DOT ========== */
+.pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
+
+/* ========== ASSET CARD ========== */
+.asset-card {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.asset-card:hover {
+  border-color: rgba(239,35,60,0.5) !important;
+  box-shadow: 0 0 30px rgba(239,35,60,0.08), inset 0 0 30px rgba(239,35,60,0.03);
+  transform: translateY(-4px);
+}
+</style>
+</head>
+
+<body class="antialiased overflow-x-hidden selection:bg-red-600/30 selection:text-red-200 text-white bg-black">
+
+<!-- Progressive Blur -->
+<div class="gradient-blur" style="height: 120px;"><div></div><div></div><div></div><div></div><div></div><div></div></div>
+
+<!-- ============================================================ -->
+<!-- NAVIGATION -->
+<!-- ============================================================ -->
+<div class="fixed flex [animation:fadeSlideIn_1s_ease-out_0.5s_both] w-full z-50 pt-6 pr-4 pl-4 top-0 left-0 justify-center">
+  <nav class="shadow-black/50 flex md:gap-8 md:w-auto bg-black/60 w-full max-w-5xl rounded-none pt-2 pr-2 pb-2 pl-3 shadow-2xl backdrop-blur-lg gap-x-4 gap-y-4 items-center justify-between" style="position: relative; --border-gradient: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0), rgba(255,255,255,0.2)); --border-radius-before: 0">
+    <a href="/" class="flex gap-x-3 items-center">
+      <img src="img/ai-simple-logo.svg" alt="AI Simple" class="h-8 w-auto drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">
+      <span class="text-xl font-bold text-white tracking-tight font-manrope">AI Simple</span>
+    </a>
+    <a href="/" class="group inline-flex overflow-hidden transition-transform active:scale-95 cursor-pointer outline-none rounded-none pt-2.5 pr-5 pb-2.5 pl-5 relative items-center justify-center" style="background-color: rgba(255,255,255,0.05)">
+      <span class="absolute inset-0 rounded-none bg-zinc-800"></span>
+      <span class="bg-black z-10 rounded-none absolute top-[1px] right-[1px] bottom-[1px] left-[1px]"></span>
+      <span class="relative z-20 flex items-center justify-center gap-2 text-xs font-medium text-white tracking-wide uppercase">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        <span>Back to Site</span>
+      </span>
+    </a>
+  </nav>
+</div>
+
+<!-- ============================================================ -->
+<!-- HERO: CONFIRMATION + VIDEO -->
+<!-- ============================================================ -->
+<section class="flex flex-col overflow-hidden w-full pt-32 md:pt-24 pb-12 relative items-center justify-start bg-grid">
+  <!-- Aurora Background -->
+  <div class="absolute inset-0 z-0 h-full overflow-hidden pointer-events-none" style="mask-image: linear-gradient(to bottom, transparent, black 5%, black 75%, transparent);">
+    <div class="absolute inset-0" style="background: radial-gradient(ellipse 80% 50% at 20% 40%, rgba(239,35,60,0.1) 0%, transparent 60%), radial-gradient(ellipse 60% 60% at 75% 60%, rgba(248,113,113,0.08) 0%, transparent 60%); animation: auroraShift1 8s ease-in-out infinite alternate;"></div>
+    <div class="absolute inset-0" style="background: radial-gradient(ellipse 70% 50% at 60% 30%, rgba(220,38,38,0.08) 0%, transparent 55%), radial-gradient(ellipse 50% 70% at 30% 70%, rgba(239,35,60,0.06) 0%, transparent 60%); animation: auroraShift2 12s ease-in-out infinite alternate-reverse;"></div>
+  </div>
+
+  <!-- Radial Glow -->
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[700px] pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(239,35,60,0.12) 0%, transparent 70%);"></div>
+
+  <!-- Column Reveal Grid -->
+  <div class="absolute inset-0 flex z-0 pointer-events-none" style="mask-image: linear-gradient(180deg, transparent, black 10%, black 80%, transparent);">
+    <div class="flex-1 border-r border-white/[0.02] col-anim delay-1"></div>
+    <div class="flex-1 border-r border-white/[0.02] col-anim delay-2"></div>
+    <div class="flex-1 border-r border-white/[0.02] col-anim delay-3"></div>
+    <div class="flex-1 border-r border-white/[0.02] col-anim delay-4"></div>
+    <div class="flex-1 border-r border-white/[0.02] col-anim delay-5"></div>
+    <div class="flex-1 border-r border-white/[0.02] col-anim delay-6"></div>
+    <div class="flex-1 col-anim delay-7"></div>
+  </div>
+
+  <!-- Particles -->
+  <div class="particle" style="top: 15%; left: 10%; animation-delay: 0s; animation-duration: 7s;"></div>
+  <div class="particle" style="top: 25%; left: 85%; animation-delay: 1s; animation-duration: 5s;"></div>
+  <div class="particle" style="top: 60%; left: 20%; animation-delay: 2s; animation-duration: 8s;"></div>
+  <div class="particle" style="top: 45%; left: 75%; animation-delay: 0.5s; animation-duration: 6s;"></div>
+
+  <div class="z-20 w-full max-w-4xl mx-auto px-6 mt-16 md:mt-24 relative">
+
+    <div class="text-center mb-10 [animation:fadeSlideIn_1s_ease-out_0.3s_both]">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white font-manrope tracking-tighter mb-4 leading-[1.05]">
+        You're <span class="text-shimmer">In.</span>
+      </h1>
+      <p class="text-lg md:text-xl text-zinc-400 font-medium font-manrope leading-relaxed max-w-2xl mx-auto">
+        Your assets are ready. Click each one below to access them now.
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="pointer-events-none w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+
+<section class="w-full max-w-5xl mx-auto px-6 py-24 relative">
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-[#ef233c]/3 rounded-full blur-[200px] pointer-events-none"></div>
+
+  <div class="flex flex-col mb-16 gap-y-6 [animation:fadeSlideIn_1s_ease-out_0.2s_both]">
+    <div class="flex items-center gap-3">
+      <span class="w-8 h-px bg-[#ef233c]"></span>
+      <span class="uppercase text-sm font-medium text-[#ef233c] tracking-widest font-geist-mono">Your Assets</span>
+    </div>
+    <h2 class="md:text-5xl text-3xl font-bold text-white tracking-tighter font-manrope">
+      Grab <span class="bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-red-600">Everything</span> Below
+    </h2>
+    <p class="leading-relaxed text-lg font-light text-gray-400 max-w-2xl">
+      Click each card to open the asset. Bookmark this page so you can come back anytime.
+    </p>
+  </div>
+
+  <!-- 3 Asset Cards -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+    <!-- Card 1: Offer MBA -->
+    <div class="asset-card bg-black border border-zinc-800 border-dashed p-8 group relative flex flex-col [animation:fadeSlideIn_0.8s_ease-out_0.1s_both]">
+      <div class="absolute top-0 left-0 w-3 h-3 border-t border-l border-[#ef233c]"></div>
+      <div class="absolute top-0 right-0 w-3 h-3 border-t border-r border-[#ef233c]"></div>
+      <div class="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-[#ef233c]"></div>
+      <div class="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-[#ef233c]"></div>
+      <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(239,35,60,0.05) 0%, transparent 70%);"></div>
+
+      <div class="relative z-10 flex flex-col flex-1">
+        <div class="w-12 h-12 border border-zinc-700 flex items-center justify-center mb-6">
+          <i data-lucide="graduation-cap" class="w-6 h-6 text-[#ef233c]"></i>
+        </div>
+        <span class="text-xs font-geist-mono tracking-widest uppercase text-[#ef233c]/70 mb-3 block">01</span>
+        <h3 class="text-xl font-bold font-manrope text-white mb-2 tracking-tight">Offer MBA</h3>
+        <p class="text-sm text-zinc-500 leading-relaxed mb-6 flex-1">7 AI agents that build your Master Offer Playbook in about an hour.</p>
+        <a href="https://vibelinks.co/mba" target="_blank" rel="noopener" class="shiny-cta text-center no-underline block" style="padding: 0.875rem 1.5rem;">
+          <span class="flex items-center justify-center gap-2 font-bold tracking-wide uppercase font-manrope text-sm whitespace-nowrap">
+            Open Now
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Card 2: Direct Copywriter GPT -->
+    <div class="asset-card bg-black border border-zinc-800 border-dashed p-8 group relative flex flex-col [animation:fadeSlideIn_0.8s_ease-out_0.2s_both]">
+      <div class="absolute top-0 left-0 w-3 h-3 border-t border-l border-[#ef233c]"></div>
+      <div class="absolute top-0 right-0 w-3 h-3 border-t border-r border-[#ef233c]"></div>
+      <div class="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-[#ef233c]"></div>
+      <div class="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-[#ef233c]"></div>
+      <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(239,35,60,0.05) 0%, transparent 70%);"></div>
+
+      <div class="relative z-10 flex flex-col flex-1">
+        <div class="w-12 h-12 border border-zinc-700 flex items-center justify-center mb-6">
+          <i data-lucide="pen-tool" class="w-6 h-6 text-[#ef233c]"></i>
+        </div>
+        <span class="text-xs font-geist-mono tracking-widest uppercase text-[#ef233c]/70 mb-3 block">02</span>
+        <h3 class="text-xl font-bold font-manrope text-white mb-2 tracking-tight">Direct Copywriter GPT</h3>
+        <p class="text-sm text-zinc-500 leading-relaxed mb-6 flex-1">Brutal copy audits + rewrites. Paste your playbook, get conversion-ready assets.</p>
+        <a href="https://vibelinks.co/direct" target="_blank" rel="noopener" class="shiny-cta text-center no-underline block" style="padding: 0.875rem 1.5rem;">
+          <span class="flex items-center justify-center gap-2 font-bold tracking-wide uppercase font-manrope text-sm whitespace-nowrap">
+            Open Now
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Card 3: 728M Lead Vault -->
+    <div class="asset-card bg-black border border-[#ef233c]/20 border-dashed p-8 group relative flex flex-col [animation:fadeSlideIn_0.8s_ease-out_0.3s_both]">
+      <div class="absolute top-0 left-0 w-3 h-3 border-t border-l border-[#ef233c]"></div>
+      <div class="absolute top-0 right-0 w-3 h-3 border-t border-r border-[#ef233c]"></div>
+      <div class="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-[#ef233c]"></div>
+      <div class="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-[#ef233c]"></div>
+      <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(239,35,60,0.05) 0%, transparent 70%);"></div>
+
+      <div class="relative z-10 flex flex-col flex-1">
+        <div class="w-12 h-12 border border-[#ef233c]/30 flex items-center justify-center mb-6">
+          <i data-lucide="database" class="w-6 h-6 text-[#ef233c]"></i>
+        </div>
+        <span class="text-xs font-geist-mono tracking-widest uppercase text-[#ef233c]/70 mb-3 block">03</span>
+        <h3 class="text-xl font-bold font-manrope text-white mb-2 tracking-tight">728,000,000 Leads</h3>
+        <p class="text-sm text-zinc-500 leading-relaxed mb-6 flex-1">Pre-built lead data across LinkedIn, Instagram, and high-intent verticals.</p>
+        <a href="https://vibelinks.co/728m-leads" target="_blank" rel="noopener" class="shiny-cta text-center no-underline block" style="padding: 0.875rem 1.5rem;">
+          <span class="flex items-center justify-center gap-2 font-bold tracking-wide uppercase font-manrope text-sm whitespace-nowrap">
+            Open Now
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="pointer-events-none w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+
+<!-- ============================================================ -->
+<!-- SECTION: IMPLEMENTATION CTA -->
+<!-- ============================================================ -->
+<section class="w-full max-w-4xl mx-auto px-6 py-24 relative">
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-[#ef233c]/5 rounded-full blur-[120px] pointer-events-none"></div>
+
+  <div class="border border-zinc-800 border-dashed bg-black relative p-12 md:p-16 text-center overflow-hidden hover-glow-card group [animation:fadeSlideIn_1s_ease-out_0.3s_both]">
+    <div class="absolute top-0 left-0 w-3 h-3 border-t border-l border-[#ef233c]"></div>
+    <div class="absolute top-0 right-0 w-3 h-3 border-t border-r border-[#ef233c]"></div>
+    <div class="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-[#ef233c]"></div>
+    <div class="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-[#ef233c]"></div>
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(239,35,60,0.05) 0%, transparent 70%);"></div>
+
+    <div class="relative z-10">
+      <div class="flex items-center justify-center gap-3 mb-6">
+        <div class="h-px w-12 bg-gradient-to-r from-transparent to-[#ef233c]/40"></div>
+        <span class="font-geist-mono text-[10px] text-[#ef233c] tracking-widest uppercase font-bold">Done-With-You</span>
+        <div class="h-px w-12 bg-gradient-to-l from-transparent to-[#ef233c]/40"></div>
+      </div>
+      <h2 class="text-3xl md:text-5xl font-bold text-white font-manrope tracking-tighter mb-6">
+        Want Us To Wire This Into Your&nbsp;Business?
+      </h2>
+      <p class="text-zinc-400 leading-relaxed max-w-xl mx-auto mb-8">
+        Don't let this sit in a folder. Book a free implementation call and we'll map out a 7-day sprint to get this live in your pipeline.
+      </p>
+
+      <a href="" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/andrewnaegele/scale-with-us?background_color=0a0a0a&text_color=ffffff&primary_color=ef233c'});return false;" class="shiny-cta inline-block cursor-pointer" style="width: auto; padding: 1.25rem 3rem;">
+        <span class="flex flex-nowrap items-center justify-center gap-2 text-sm font-bold tracking-wide uppercase font-manrope whitespace-nowrap">
+          Book an Implementation Call
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- FOOTER -->
+<!-- ============================================================ -->
+<footer class="w-full border-t border-zinc-800 border-dashed mt-12">
+  <div class="max-w-6xl mx-auto px-6 py-12">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="flex items-center gap-3">
+        <img src="img/ai-simple-logo.svg" alt="AI Simple" class="h-6 w-auto drop-shadow-[0_0_5px_rgba(255,255,255,0.3)]">
+        <span class="text-lg font-bold text-white tracking-tight font-manrope">AI Simple</span>
+      </div>
+      <div class="flex items-center gap-6 text-xs text-zinc-600">
+        <a href="/" class="hover:text-white transition-colors">Home</a>
+        <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+        <a href="#" class="hover:text-white transition-colors">Terms</a>
+      </div>
+    </div>
+  </div>
+  <div class="w-full py-8 text-center border-t border-dashed border-zinc-800 bg-black">
+    <p class="text-[10px] text-zinc-600 font-bold uppercase tracking-[0.2em] font-sans">
+      &copy; 2026 <a href="/" class="hover:text-white transition-colors text-[#ef233c]">AI Simple</a> &mdash; Built with systems, not&nbsp;hustle.
+    </p>
+  </div>
+</footer>
+
+<!-- ============================================================ -->
+<!-- SCRIPTS -->
+<!-- ============================================================ -->
+<script>document.addEventListener('DOMContentLoaded', () => { if (typeof lucide !== 'undefined') lucide.createIcons(); });</script>
+
+</body>
+</html>
