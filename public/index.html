@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI Simple - Build Offers, Brands & AI Systems That Actually Move the Needle</title>
 <meta name="description" content="Work directly with Los Silva and Andrew Naegele to architect offers, content machines, and AI-driven systems that turn attention into revenue.">
-<link rel="icon" href="img/ai-simple-logo.png" type="image/png">
-<link rel="apple-touch-icon" href="img/ai-simple-logo.png">
+<link rel="icon" href="img/ai-simple-logo.png?v=2" type="image/png">
+<link rel="apple-touch-icon" href="img/ai-simple-logo.png?v=2">
 <link rel="canonical" href="https://aisimple.co/">
 
 <!-- Open Graph / Facebook -->
@@ -33,6 +33,8 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://unpkg.com/lucide@latest"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 
 <style>
 body { font-family: 'Inter', sans-serif; }
@@ -231,6 +233,46 @@ body { font-family: 'Inter', sans-serif; }
 .particle {
   position: absolute; width: 2px; height: 2px; background: rgba(239,35,60,0.4); border-radius: 50%;
   animation: float 6s ease-in-out infinite; pointer-events: none;
+}
+
+/* ========== APPLY FORM MODAL ========== */
+.modal-overlay {
+  display: none; position: fixed; inset: 0; z-index: 9999;
+  background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
+  align-items: center; justify-content: center; padding: 24px;
+}
+.modal-overlay.active { display: flex; }
+.modal-content {
+  background: #0a0a0a; border: 1px dashed rgba(63,63,70,0.8); position: relative;
+  width: 100%; max-width: 540px; max-height: 90vh; overflow-y: auto;
+  animation: fadeSlideIn 0.4s ease-out both;
+}
+.modal-content .corner-tl { position: absolute; top: 0; left: 0; width: 12px; height: 12px; border-top: 2px solid #ef233c; border-left: 2px solid #ef233c; }
+.modal-content .corner-tr { position: absolute; top: 0; right: 0; width: 12px; height: 12px; border-top: 2px solid #ef233c; border-right: 2px solid #ef233c; }
+.modal-content .corner-bl { position: absolute; bottom: 0; left: 0; width: 12px; height: 12px; border-bottom: 2px solid #ef233c; border-left: 2px solid #ef233c; }
+.modal-content .corner-br { position: absolute; bottom: 0; right: 0; width: 12px; height: 12px; border-bottom: 2px solid #ef233c; border-right: 2px solid #ef233c; }
+.modal-close {
+  position: absolute; top: 16px; right: 16px; z-index: 10;
+  width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
+  border: 1px solid rgba(63,63,70,0.5); background: rgba(0,0,0,0.5);
+  color: #a1a1aa; cursor: pointer; transition: all 0.2s;
+}
+.modal-close:hover { border-color: #ef233c; color: white; }
+.form-input {
+  background: rgba(255,255,255,0.03); border: 1px dashed rgba(63,63,70,0.8);
+  padding: 14px 16px; color: white; width: 100%; outline: none; font-size: 14px;
+  transition: all 0.3s ease; font-family: 'Inter', sans-serif; border-radius: 0;
+}
+.form-input:focus {
+  border-color: #ef233c; box-shadow: 0 0 0 1px rgba(239,35,60,0.3), 0 0 20px rgba(239,35,60,0.1);
+  background: rgba(239,35,60,0.03);
+}
+.form-input::placeholder { color: rgba(161,161,170,0.5); }
+.form-input option { background: #0a0a0a; color: white; }
+select.form-input {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23a1a1aa' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 12px center;
 }
 </style>
 
@@ -1240,9 +1282,9 @@ tailwind.config = {
 
   <!-- Apply CTA -->
   <div class="text-center animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.5s_both]">
-    <a href="#book" class="shiny-cta inline-block">
+    <button onclick="openApplyModal()" class="shiny-cta inline-block">
       <span>Apply for a Strategy Call</span>
-    </a>
+    </button>
   </div>
 </section>
 
@@ -1314,7 +1356,7 @@ tailwind.config = {
     <p class="text-lg text-zinc-400 leading-relaxed max-w-2xl mx-auto mb-10">
       Apply for a free strategy call. We&rsquo;ll map out the offers, content systems, and AI automations that will move the needle fastest in your business.
     </p>
-    <a href="#book" class="group relative inline-flex min-w-[220px] h-[56px] items-center justify-center overflow-hidden rounded-none outline-none cursor-pointer transition-transform active:scale-95 no-underline" style="background-color: rgba(255,255,255,0.05);">
+    <button onclick="openApplyModal()" class="group relative inline-flex min-w-[220px] h-[56px] items-center justify-center overflow-hidden rounded-none outline-none cursor-pointer transition-transform active:scale-95 no-underline" style="background-color: rgba(255,255,255,0.05);">
       <span class="absolute inset-[-100%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,transparent_75%,#ef233c_100%)] opacity-100"></span>
       <span class="absolute inset-[1px] rounded-none bg-black z-10"></span>
       <span class="absolute inset-0 pointer-events-none opacity-100 z-10" style="background: radial-gradient(50% 50% at 50% 100%, rgba(239,35,60,0.15) 0%, transparent 100%);"></span>
@@ -1322,7 +1364,7 @@ tailwind.config = {
         <span>Apply for a Strategy Call</span>
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 transition-transform duration-300 group-hover:translate-x-1"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
       </span>
-    </a>
+    </button>
   </div>
 </section>
 
@@ -1351,7 +1393,7 @@ tailwind.config = {
         </div>
         <div class="flex flex-col gap-4">
           <span class="font-mono text-[10px] text-zinc-500 uppercase tracking-widest font-bold">Resources</span>
-          <a href="#book" class="text-sm text-zinc-400 hover:text-white transition-colors">Apply for a Call</a>
+          <a href="#book" onclick="openApplyModal();return false;" class="text-sm text-zinc-400 hover:text-white transition-colors cursor-pointer">Apply for a Call</a>
           <a href="/mba" class="text-sm text-zinc-400 hover:text-white transition-colors">Free Lead Vault</a>
           <a href="https://www.skool.com/vibe-marketing" target="_blank" rel="noopener" class="text-sm text-zinc-400 hover:text-white transition-colors">Community</a>
         </div>
@@ -1544,6 +1586,207 @@ document.addEventListener('DOMContentLoaded', () => {
       card.style.transition = 'transform 0.5s ease';
     });
   });
+});
+</script>
+
+<!-- ============================================================ -->
+<!-- APPLY FORM MODAL -->
+<!-- ============================================================ -->
+<div id="apply-modal" class="modal-overlay">
+  <div class="modal-content">
+    <div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div>
+    <button class="modal-close" onclick="closeApplyModal()" aria-label="Close">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+    </button>
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 50% 0%, rgba(239,35,60,0.06) 0%, transparent 60%);"></div>
+
+    <!-- Form State -->
+    <div id="apply-form-container" class="p-8 md:p-10 relative z-10">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="w-1.5 h-1.5 bg-[#ef233c] animate-pulse shadow-[0_0_8px_rgba(239,35,60,0.5)]"></span>
+        <span class="font-geist-mono text-[10px] text-[#ef233c] tracking-widest uppercase font-bold">Apply to Work With Us</span>
+      </div>
+      <p class="text-zinc-500 text-xs mb-6">Tell us about your business so we can see if we&rsquo;re a fit.</p>
+
+      <form id="apply-form" class="flex flex-col gap-4">
+        <div>
+          <label class="text-[10px] font-geist-mono text-zinc-500 uppercase tracking-wider mb-1.5 block">Full Name *</label>
+          <input type="text" name="name" required class="form-input" placeholder="Jane Smith">
+        </div>
+        <div>
+          <label class="text-[10px] font-geist-mono text-zinc-500 uppercase tracking-wider mb-1.5 block">Email *</label>
+          <input type="email" name="email" required class="form-input" placeholder="jane@company.com">
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="text-[10px] font-geist-mono text-zinc-500 uppercase tracking-wider mb-1.5 block">Business Name</label>
+            <input type="text" name="business" class="form-input" placeholder="Acme Corp">
+          </div>
+          <div>
+            <label class="text-[10px] font-geist-mono text-zinc-500 uppercase tracking-wider mb-1.5 block">Website</label>
+            <input type="url" name="website" class="form-input" placeholder="https://...">
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="text-[10px] font-geist-mono text-zinc-500 uppercase tracking-wider mb-1.5 block">Monthly Revenue</label>
+            <select name="revenue" class="form-input">
+              <option value="">Select...</option>
+              <option value="pre-revenue">Pre-revenue</option>
+              <option value="0-10k">$0 - $10K</option>
+              <option value="10k-50k">$10K - $50K</option>
+              <option value="50k-100k">$50K - $100K</option>
+              <option value="100k-500k">$100K - $500K</option>
+              <option value="500k+">$500K+</option>
+            </select>
+          </div>
+          <div>
+            <label class="text-[10px] font-geist-mono text-zinc-500 uppercase tracking-wider mb-1.5 block">Acquisition Channel</label>
+            <select name="channel" class="form-input">
+              <option value="">Select...</option>
+              <option value="organic-social">Organic Social</option>
+              <option value="paid-ads">Paid Ads</option>
+              <option value="cold-outreach">Cold Outreach</option>
+              <option value="referrals">Referrals</option>
+              <option value="seo">SEO / Content</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label class="text-[10px] font-geist-mono text-zinc-500 uppercase tracking-wider mb-1.5 block">How ready are you to invest in implementing AI in your business over the next 90 days?</label>
+          <p class="text-[10px] text-zinc-600 mb-2">Your answer just helps us know if we&rsquo;re a fit and how to structure the call. There&rsquo;s no hard sell.</p>
+          <select name="investment_readiness" required class="form-input">
+            <option value="">Select...</option>
+            <option value="30k+">I'm ready to invest $30K+ in AI implementation in the next 30&ndash;90 days.</option>
+            <option value="15k-30k">I'm ready to invest $15K&ndash;$30K to implement AI in the next 30&ndash;90 days.</option>
+            <option value="5k-15k">I'm ready to invest $5K&ndash;$15K to get AI systems in place (phased or smaller scope).</option>
+            <option value="under-5k">I'm interested, but I'm not ready to invest at least $5K right now.</option>
+          </select>
+        </div>
+
+        <button type="submit" class="shiny-cta mt-2 text-center" id="apply-submit-btn">
+          <span class="inline-flex items-center justify-center gap-2 font-bold tracking-wide uppercase font-manrope text-sm whitespace-nowrap">
+            Submit Application
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 inline-block"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </span>
+        </button>
+      </form>
+    </div>
+
+    <!-- Success State: Qualified (shows Calendly) -->
+    <div id="apply-success-qualified" class="hidden p-8 md:p-10 relative z-10 text-center">
+      <div class="w-16 h-16 mx-auto mb-6 border-2 border-[#ef233c] flex items-center justify-center" style="animation: check-pop 0.6s ease-out 0.3s both;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ef233c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h3 class="text-2xl font-bold text-white font-manrope tracking-tight mb-3">You&rsquo;re a Fit.</h3>
+      <p class="text-zinc-400 text-sm leading-relaxed mb-6">Pick a time below and we&rsquo;ll map out your AI implementation strategy on the call.</p>
+      <button onclick="Calendly.initPopupWidget({url: 'https://calendly.com/andrewnaegele/scale-with-us?background_color=0a0a0a&text_color=ffffff&primary_color=ef233c'});return false;" class="shiny-cta inline-block cursor-pointer" style="width: auto; padding: 1.25rem 3rem;">
+        <span class="flex flex-nowrap items-center justify-center gap-2 text-sm font-bold tracking-wide uppercase font-manrope whitespace-nowrap">
+          Book Your Strategy Call
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </span>
+      </button>
+    </div>
+
+    <!-- Success State: Not Qualified (nurture) -->
+    <div id="apply-success-nurture" class="hidden p-8 md:p-10 relative z-10 text-center">
+      <div class="w-16 h-16 mx-auto mb-6 border-2 border-zinc-600 flex items-center justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#a1a1aa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+      </div>
+      <h3 class="text-2xl font-bold text-white font-manrope tracking-tight mb-3">Thanks for Your Interest</h3>
+      <p class="text-zinc-400 text-sm leading-relaxed mb-6">We&rsquo;re currently focused on done-for-you implementations starting at $5K+. In the meantime, here are free resources to help you get started.</p>
+      <a href="/mba" class="shiny-cta inline-block cursor-pointer" style="width: auto; padding: 1.25rem 3rem;">
+        <span class="flex flex-nowrap items-center justify-center gap-2 text-sm font-bold tracking-wide uppercase font-manrope whitespace-nowrap">
+          Get Free AI Resources
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Apply Modal Script -->
+<script>
+function openApplyModal() {
+  document.getElementById('apply-modal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+  // Reset to form state
+  document.getElementById('apply-form-container').classList.remove('hidden');
+  document.getElementById('apply-success-qualified').classList.add('hidden');
+  document.getElementById('apply-success-nurture').classList.add('hidden');
+  document.getElementById('apply-form').reset();
+  var btn = document.getElementById('apply-submit-btn');
+  btn.disabled = false;
+  btn.querySelector('span').innerHTML = 'Submit Application <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 inline-block"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>';
+}
+function closeApplyModal() {
+  document.getElementById('apply-modal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+// Close on overlay click
+document.getElementById('apply-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeApplyModal();
+});
+// Close on Escape
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeApplyModal();
+});
+
+// Form submission
+document.getElementById('apply-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  var form = e.target;
+  var btn = document.getElementById('apply-submit-btn');
+  btn.disabled = true;
+  btn.querySelector('span').textContent = 'Sending...';
+
+  var revenue = form.revenue.value;
+  var readiness = form.investment_readiness.value;
+
+  // Determine if qualified: not "under-5k" AND not "pre-revenue" or "$0-10k" monthly revenue
+  var isLowRevenue = (revenue === 'pre-revenue' || revenue === '0-10k');
+  var isNotReady = (readiness === 'under-5k');
+  var isQualified = !isNotReady && !isLowRevenue;
+
+  var data = {
+    name: form.name.value,
+    email: form.email.value,
+    business: form.business.value,
+    website: form.website.value,
+    revenue: revenue,
+    channel: form.channel.value,
+    investment_readiness: readiness,
+    qualified: isQualified,
+    source: 'apply-modal',
+    page_url: window.location.href,
+    user_agent: navigator.userAgent
+  };
+
+  // Save to localStorage as backup
+  try {
+    var existing = JSON.parse(localStorage.getItem('ai_simple_leads') || '[]');
+    existing.push({ ...data, submitted_at: new Date().toISOString() });
+    localStorage.setItem('ai_simple_leads', JSON.stringify(existing));
+  } catch (err) { console.error('Local backup failed:', err); }
+
+  // Submit to Supabase
+  try {
+    var res = await fetch('/api/submit-lead', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    if (!res.ok) console.error('API error:', res.status);
+  } catch (err) { console.error('API call failed:', err); }
+
+  // Show appropriate success state
+  document.getElementById('apply-form-container').classList.add('hidden');
+  if (isQualified) {
+    document.getElementById('apply-success-qualified').classList.remove('hidden');
+  } else {
+    document.getElementById('apply-success-nurture').classList.remove('hidden');
+  }
 });
 </script>
 

@@ -13,7 +13,9 @@
     { "source": "/join", "destination": "/community", "permanent": false },
     { "source": "/upsell", "destination": "/community", "permanent": false },
     { "source": "/call", "destination": "https://aisimple.co/#book", "permanent": false },
-    { "source": "/book", "destination": "https://aisimple.co/#book", "permanent": false }
+    { "source": "/book", "destination": "https://aisimple.co/#book", "permanent": false },
+    { "source": "/blueprint", "destination": "/employee-setup", "permanent": false },
+    { "source": "/ai-employee", "destination": "/employee-setup", "permanent": false }
   ],
   "headers": [
     {

@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The AI Employee Identity Blueprint — AI Simple</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--ais-red:#ef233c;
+--ais-red-light:#f87171;
+--ais-red-dark:#dc2626;
+--ais-red-glow:rgba(239,35,60,0.3);
+--ais-red-subtle:rgba(239,35,60,0.06);
+--ais-bg:#fafafa;
+--ais-surface-1:#ffffff;
+--ais-surface-2:#f4f4f5;
+--ais-surface-card:#ffffff;
+--ais-border:#e4e4e7;
+--ais-border-subtle:rgba(0,0,0,0.06);
+--ais-border-hover:rgba(239,35,60,0.5);
+--ais-text-primary:#18181b;
+--ais-text-secondary:#52525b;
+--ais-text-muted:#a1a1aa;
+--ais-text-accent:#ef233c;
+--ais-radius:0px;
+}
+html{scroll-behavior:smooth}
+body{
+font-family:'Inter',sans-serif;
+background:var(--ais-bg);
+color:var(--ais-text-primary);
+line-height:1.7;
+-webkit-font-smoothing:antialiased;
+overflow-x:hidden;
+}
+::selection{background:rgba(239,35,60,0.15);color:#18181b}
+.font-manrope{font-family:'Manrope',sans-serif!important}
+.font-mono{font-family:'Geist Mono','Space Mono',monospace!important}
+
+.container{max-width:900px;margin:0 auto;padding:0 32px}
+.container-wide{max-width:1100px;margin:0 auto;padding:0 32px}
+
+/* ===== COVER (SCALED UP 1.5–2x) ===== */
+.cover{
+min-height:100vh;
+display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+position:relative;background:#fff;border-bottom:1px dashed var(--ais-border);overflow:hidden;
+padding:60px 32px;
+}
+.cover::before{content:'';position:absolute;top:-200px;right:-200px;width:700px;height:700px;background:radial-gradient(circle,rgba(239,35,60,0.07) 0%,transparent 70%);pointer-events:none;}
+.cover::after{content:'';position:absolute;bottom:-200px;left:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(239,35,60,0.05) 0%,transparent 70%);pointer-events:none;}
+.cover-badge{
+display:inline-flex;align-items:center;gap:10px;padding:8px 20px;
+border:1px dashed var(--ais-border);font-family:'Geist Mono',monospace;font-size:12px;
+text-transform:uppercase;letter-spacing:0.15em;color:var(--ais-text-accent);margin-bottom:48px;position:relative;
+}
+.cover-badge::before{content:'';width:7px;height:7px;background:var(--ais-red);border-radius:50%;animation:pulse-glow 2s infinite;}
+.cover h1{
+font-family:'Manrope',sans-serif;font-size:clamp(3.2rem,8vw,6.5rem);font-weight:700;
+letter-spacing:-0.04em;line-height:1.05;color:var(--ais-text-primary);margin-bottom:36px;max-width:900px;
+}
+.cover h1 .accent{background:linear-gradient(135deg,var(--ais-red-light),var(--ais-red-dark));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.cover-sub{font-size:1.4rem;font-weight:300;color:var(--ais-text-secondary);max-width:680px;line-height:1.6;margin-bottom:56px;}
+.cover-meta{display:flex;gap:40px;font-family:'Geist Mono',monospace;font-size:13px;text-transform:uppercase;letter-spacing:0.1em;color:var(--ais-text-muted);}
+.cover-logo{position:absolute;bottom:40px;font-family:'Manrope',sans-serif;font-weight:700;font-size:22px;letter-spacing:-0.03em;color:var(--ais-text-primary);}
+.cover-logo span{color:var(--ais-red)}
+
+/* ===== SECTION HEADERS ===== */
+.section-label{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+.section-label::before{content:'';width:32px;height:1px;background:var(--ais-red);}
+.section-label span{font-family:'Geist Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.15em;color:var(--ais-red);font-weight:500;}
+.section-title{font-family:'Manrope',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:600;letter-spacing:-0.04em;line-height:1.1;margin-bottom:16px;color:var(--ais-text-primary);}
+.section-title .accent{background:linear-gradient(135deg,var(--ais-red-light),var(--ais-red-dark));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.section-desc{font-size:1.05rem;font-weight:300;color:var(--ais-text-secondary);max-width:640px;line-height:1.6;margin-bottom:32px;}
+
+/* ===== CARDS ===== */
+.card{background:var(--ais-surface-card);border:1px dashed var(--ais-border);padding:32px;position:relative;transition:all 0.4s ease;}
+.card:hover{border-color:rgba(239,35,60,0.35)}
+.card::before{content:'';position:absolute;top:0;left:0;width:10px;height:10px;border-top:2px solid var(--ais-red);border-left:2px solid var(--ais-red);}
+.card::after{content:'';position:absolute;bottom:0;right:0;width:10px;height:10px;border-bottom:2px solid var(--ais-red);border-right:2px solid var(--ais-red);}
+
+/* ===== STEP BLOCKS ===== */
+.step{background:#fff;border:1px dashed var(--ais-border);padding:36px;margin-bottom:24px;position:relative;}
+.step::before{content:'';position:absolute;top:0;left:0;width:10px;height:10px;border-top:2px solid var(--ais-red);border-left:2px solid var(--ais-red);}
+.step::after{content:'';position:absolute;bottom:0;right:0;width:10px;height:10px;border-bottom:2px solid var(--ais-red);border-right:2px solid var(--ais-red);}
+.step-number{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid var(--ais-border);font-family:'Geist Mono',monospace;font-size:14px;font-weight:500;color:var(--ais-red);margin-bottom:16px;background:var(--ais-red-subtle);}
+.step h3{font-family:'Manrope',sans-serif;font-size:1.4rem;font-weight:600;letter-spacing:-0.03em;margin-bottom:14px;color:var(--ais-text-primary);}
+.step p{color:var(--ais-text-secondary);font-size:0.95rem;margin-bottom:12px;line-height:1.75;}
+.step p:last-child{margin-bottom:0}
+
+/* ===== CALLOUT / TIP ===== */
+.callout{border-left:3px solid var(--ais-red);background:var(--ais-red-subtle);padding:18px 22px;margin:16px 0;font-size:0.9rem;color:var(--ais-text-primary);}
+.callout-label{font-family:'Geist Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.12em;color:var(--ais-red);font-weight:500;margin-bottom:8px;display:flex;align-items:center;gap:6px;}
+.callout-label::before{content:'';width:6px;height:6px;background:var(--ais-red);border-radius:50%;}
+.callout p{margin:0;line-height:1.6}
+.tip{border-left:3px solid #22c55e;background:rgba(34,197,94,0.04);padding:18px 22px;margin:16px 0;font-size:0.9rem;}
+.tip-label{font-family:'Geist Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.12em;color:#16a34a;font-weight:500;margin-bottom:8px;display:flex;align-items:center;gap:6px;}
+.tip-label::before{content:'';width:6px;height:6px;background:#22c55e;border-radius:50%;}
+
+/* ===== SHOPPING GRID ===== */
+.shopping-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin:28px 0;}
+.shopping-item{background:#fff;border:1px dashed var(--ais-border);padding:24px;position:relative;}
+.shopping-item::before{content:'';position:absolute;top:0;left:0;width:8px;height:8px;border-top:2px solid var(--ais-red);border-left:2px solid var(--ais-red);}
+.shopping-item h4{font-family:'Manrope',sans-serif;font-size:1rem;font-weight:600;letter-spacing:-0.02em;margin-bottom:8px;}
+.shopping-item .price{font-family:'Geist Mono',monospace;font-size:12px;color:var(--ais-red);font-weight:500;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.08em;}
+.shopping-item p{font-size:0.85rem;color:var(--ais-text-secondary);line-height:1.6;}
+
+/* ===== INTERACTIVE CHECKLIST (used everywhere) ===== */
+.interactive-checklist{margin:20px 0;padding:0;list-style:none}
+.interactive-checklist li{display:flex;align-items:flex-start;gap:12px;padding:8px 0;border-bottom:1px solid var(--ais-border-subtle);font-size:0.92rem;color:var(--ais-text-secondary);cursor:pointer;transition:color 0.3s;}
+.interactive-checklist li.checked{color:var(--ais-text-muted);text-decoration:line-through}
+.interactive-checklist input[type="checkbox"]{
+flex-shrink:0;width:18px;height:18px;margin-top:2px;cursor:pointer;
+accent-color:var(--ais-red);
+-webkit-appearance:none;appearance:none;
+border:1px dashed var(--ais-border);
+background:var(--ais-red-subtle);
+position:relative;
+}
+.interactive-checklist input[type="checkbox"]:checked{
+background:var(--ais-red);border-color:var(--ais-red);
+}
+.interactive-checklist input[type="checkbox"]:checked::after{
+content:'✓';position:absolute;top:-1px;left:3px;
+color:#fff;font-size:13px;font-weight:700;
+}
+
+/* ===== DIVIDER ===== */
+.divider{width:100%;height:1px;background:linear-gradient(to right,transparent,var(--ais-border),transparent);margin:40px 0;}
+
+/* ===== SECTION SPACING (tighter) ===== */
+.section{padding:40px 0}
+
+a{color:var(--ais-red);text-decoration:none;border-bottom:1px solid rgba(239,35,60,0.3);transition:border-color 0.3s}
+a:hover{border-color:var(--ais-red)}
+
+/* ===== FOOTER ===== */
+.footer{border-top:1px dashed var(--ais-border);padding:32px 0;text-align:center;background:#fff;}
+.footer-logo{font-family:'Manrope',sans-serif;font-weight:700;font-size:18px;letter-spacing:-0.03em;color:var(--ais-text-primary);margin-bottom:12px;}
+.footer-logo span{color:var(--ais-red)}
+.footer p{font-family:'Geist Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.1em;color:var(--ais-text-muted);margin-bottom:4px;}
+.footer a{border:none;color:var(--ais-red)}
+.footer-disclaimer{
+margin-top:24px;padding-top:20px;border-top:1px solid var(--ais-border-subtle);
+font-family:'Inter',sans-serif;font-size:0.72rem;color:var(--ais-text-muted);
+line-height:1.6;
+max-width:100%;
+text-transform:none;letter-spacing:normal;
+text-align:center;
+}
+.footer-disclaimer strong{
+color:var(--ais-text-secondary);text-transform:uppercase;font-size:0.65rem;letter-spacing:0.08em;
+}
+.footer-disc-block{
+margin-bottom:12px;
+}
+
+/* ===== TOC ===== */
+.toc{background:#fff;border:1px dashed var(--ais-border);padding:32px;margin:28px 0;position:relative;}
+.toc::before{content:'';position:absolute;top:0;left:0;width:10px;height:10px;border-top:2px solid var(--ais-red);border-left:2px solid var(--ais-red);}
+.toc::after{content:'';position:absolute;bottom:0;right:0;width:10px;height:10px;border-bottom:2px solid var(--ais-red);border-right:2px solid var(--ais-red);}
+.toc h3{font-family:'Manrope',sans-serif;font-size:1.2rem;font-weight:600;letter-spacing:-0.02em;margin-bottom:16px;}
+.toc ol{padding-left:0;list-style:none;counter-reset:toc;}
+.toc li{counter-increment:toc;padding:8px 0;border-bottom:1px solid var(--ais-border-subtle);font-size:0.92rem;color:var(--ais-text-secondary);display:flex;align-items:center;gap:12px;}
+.toc li::before{content:counter(toc, decimal-leading-zero);font-family:'Geist Mono',monospace;font-size:11px;color:var(--ais-red);font-weight:500;min-width:24px;}
+
+code{font-family:'Geist Mono',monospace;font-size:0.85em;background:var(--ais-surface-2);padding:2px 6px;border:1px solid var(--ais-border-subtle);color:var(--ais-text-primary);}
+
+@keyframes pulse-glow{0%,100%{box-shadow:0 0 4px rgba(239,35,60,0.3)}50%{box-shadow:0 0 12px rgba(239,35,60,0.6)}}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+.container,.container-wide{padding:0 20px}
+.cover{padding:40px 20px;min-height:90vh}
+.cover h1{font-size:clamp(2.4rem,7vw,3.8rem)}
+.cover-sub{font-size:1.15rem;max-width:90%}
+.cover-meta{flex-direction:column;gap:12px;font-size:11px}
+.cover-badge{font-size:10px;padding:6px 14px}
+.step{padding:24px}
+.card{padding:24px}
+.shopping-grid{grid-template-columns:1fr}
+.footer-disclaimer{columns:1}
+.section-title{font-size:clamp(1.5rem,5vw,2.2rem)}
+}
+@media(max-width:480px){
+.cover h1{font-size:2.2rem}
+.cover-sub{font-size:1.05rem}
+.step{padding:18px}
+.shopping-item{padding:18px}
+.toc{padding:20px}
+}
+@media print{
+.cover{min-height:auto;page-break-after:always}
+.step{break-inside:avoid}
+.section{padding:28px 0}
+body{font-size:11pt}
+.footer-disclaimer{columns:1}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ COVER ============ -->
+<div class="cover">
+<div class="cover-badge"><span>Lead Magnet · Step-By-Step Guide</span></div>
+<h1 class="font-manrope">The AI Employee<br><span class="accent">Identity Blueprint</span></h1>
+<p class="cover-sub">How to give your AI employee its own <strong>phone number</strong>, <strong>email</strong>, <strong>iCloud account</strong>, and even a <strong>bank account</strong> or <strong>credit card</strong> — without getting banned. The complete setup from scratch.</p>
+<div class="cover-meta">
+<span>12 Steps</span><span>·</span><span>Under 45 Minutes</span><span>·</span><span>Ban-Proof Method</span>
+</div>
+<div class="cover-logo">AI <span>Simple</span></div>
+</div>
+
+<!-- ============ INTRO + TOC ============ -->
+<div class="section">
+<div class="container">
+
+<div class="section-label"><span>00. Overview</span></div>
+<h2 class="section-title">What You're About <span class="accent">To Build</span></h2>
+<p class="section-desc">Your AI employee needs more than a prompt. It needs an identity — a <strong>phone number</strong>, a <strong>business email</strong>, an <strong>iCloud account</strong>, and the digital presence of a real team member. This guide walks you through every click, every setting, and every trap to avoid.</p>
+
+<div class="toc">
+<h3 class="font-manrope">Table of Contents</h3>
+<ol>
+<li>Choose Your AI Employee's Identity</li>
+<li>Get a Phone &amp; Phone Number</li>
+<li>Set Up the iPhone as a New Device</li>
+<li>Create the iCloud Account</li>
+<li>Warm Up the Phone (Prevent Bans)</li>
+<li>Configure iMessage Settings</li>
+<li>Set Up Google Workspace Email</li>
+<li>Link Business Email to Apple ID</li>
+<li>Set Up Recovery &amp; Redundancy</li>
+<li>Warm Up Messaging Again</li>
+<li>Create Your AI Employee's Visual Identity</li>
+<li>Password Strategy &amp; Final Checklist</li>
+</ol>
+</div>
+
+<div class="divider"></div>
+
+<!-- ===== WHAT YOU NEED ===== -->
+<div class="section-label"><span>00.B Requirements</span></div>
+<h2 class="section-title">What You <span class="accent">Need</span></h2>
+<p class="section-desc">Before you start, grab these things. Total cost runs between $70–$100 for the hardware and just <strong>$6/month</strong> for the phone plan. The whole setup takes <strong>under 45 minutes</strong>.</p>
+
+<div class="shopping-grid">
+
+<div class="shopping-item">
+<div class="price">$60–$80 One-Time</div>
+<h4 class="font-manrope">An Old iPhone</h4>
+<p>iPhone X or newer is ideal so you can use eSIM. But any model works — even an iPhone SE 2nd Gen. Grab a used one from <a href="https://swappa.com/listings/apple-iphone-se-2nd-gen" target="_blank">Swappa</a> for $60–$80.</p>
+</div>
+
+<div class="shopping-item">
+<div class="price">Varies</div>
+<h4 class="font-manrope">Google Workspace Account</h4>
+<p>You need a <strong>business email</strong> on your own domain — not a free Gmail. If you already have Google Workspace, you'll just add a new user. If not, you'll set one up on your business domain during Step 7.</p>
+</div>
+
+<div class="shopping-item">
+<div class="price">Just $6/Month</div>
+<h4 class="font-manrope">Tello Phone Plan</h4>
+<p>Sign up at <a href="https://vibelinks.co/tello" target="_blank">vibelinks.co/tello</a> for a $10 affiliate credit. Activation is $9. Select the <strong>Unlimited Texting</strong> plan with 100 minutes and 1GB data — just <strong>$6/month</strong> at the time of this writing. Tello runs on the <strong>T-Mobile network</strong>, so you'll need a T-Mobile-compatible or unlocked phone. Service area doesn't matter since we'll primarily be using Wi-Fi — the plan just needs to be active.</p>
+</div>
+
+<div class="shopping-item">
+<div class="price">Under 45 Minutes</div>
+<h4 class="font-manrope">Your Time</h4>
+<p>The entire identity setup — from unboxing the phone to a fully operational AI employee with its own <strong>phone number</strong>, <strong>email</strong>, <strong>iCloud</strong>, and <strong>iMessage</strong> — takes less than 45 minutes if you follow these steps without detours. No technical expertise required.</p>
+</div>
+
+</div>
+
+<div class="callout">
+<div class="callout-label">Important</div>
+<p>Don't try to shortcut this with a free Gmail account. Every time it's been tested, the account gets shut down within 1–2 days. When your AI employee is paying for Claude, scheduling calls, or managing client communication, losing that email means losing access to everything. Use your business domain. Look legitimate.</p>
+</div>
+
+</div>
+</div>
+
+<!-- ============ STEP 1 ============ -->
+<div class="section" style="background:#fff;border-top:1px dashed var(--ais-border);border-bottom:1px dashed var(--ais-border);">
+<div class="container">
+<div class="step">
+<div class="step-number font-mono">01</div>
+<h3>Choose Your AI Employee's Identity</h3>
+<p>Before you touch a single device, decide who your AI employee is going to <em>be</em>. This isn't optional — it's the foundation everything else builds on.</p>
+
+<p><strong>Give it a real human name.</strong> Something you'd actually name an employee. Not "Slavebot," not "Terminator123," not "OpenClaw." When your AI joins a client chat or sends an email, that name needs to pass the gut check. If a customer asks "hey, what's your name?" the response should sound like a person, not a science project.</p>
+
+<p><strong>Use your own birthday as your AI's date of birth.</strong> This part's tricky because you'll need a DOB when signing up for accounts, <strong>email addresses</strong>, and various services. The birthday you pick needs to be one you'll never forget. Your own birthday is the obvious choice — you know it, you won't lose it, and it passes every form validation.</p>
+
+<p><strong>Define a personality archetype.</strong> Choose someone who's clear, direct, and not a pushover. Think about the tone you want when your AI communicates with clients, vendors, and partners. A subservient, wishy-washy persona creates problems down the line. Pick a personality type that represents your brand with confidence.</p>
+
+<div class="tip">
+<div class="tip-label">Pro Tip</div>
+<p>Write down the full identity profile before proceeding: first name, last name, date of birth, personality type, and a 2–3 sentence description of who this person is. You'll reference it throughout the entire setup.</p>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ============ STEP 2 ============ -->
+<div class="section">
+<div class="container">
+<div class="step">
+<div class="step-number font-mono">02</div>
+<h3>Get a Phone &amp; Activate the Plan</h3>
+
+<p>Grab your iPhone from <a href="https://swappa.com/listings/apple-iphone-se-2nd-gen" target="_blank">Swappa</a> or wherever you sourced it. Make sure it's either a <strong>T-Mobile phone or an unlocked device</strong> — Tello uses the T-Mobile network. Service area doesn't actually matter since your AI employee will operate on Wi-Fi, but the plan needs to be active for the <strong>phone number</strong> to work.</p>
+
+<p>Once you have the device in hand, head to <a href="https://vibelinks.co/tello" target="_blank">vibelinks.co/tello</a> and sign up for a Tello plan. The activation fee is $9, and you'll get a $10 credit through the affiliate link. Select the plan with <strong>Unlimited Texting, 100 minutes, and 1GB data — just $6/month</strong> at the time of this writing. You don't technically need the data or the minutes — the AI employee will primarily operate on Wi-Fi — but the difference is about a dollar a month. Add them. If Wi-Fi goes down or you need to make an actual phone call from that number, you can.</p>
+
+<p><strong>Make sure the phone number is active and working before you move to the next step.</strong> Don't proceed until you can confirm the SIM is activated and the phone has service.</p>
+</div>
+</div>
+</div>
+
+<!-- ============ STEP 3 ============ -->
+<div class="section" style="background:#fff;border-top:1px dashed var(--ais-border);border-bottom:1px dashed var(--ais-border);">
+<div class="container">
+<div class="step">
+<div class="step-number font-mono">03</div>
+<h3>Set Up the iPhone as a Brand New Device</h3>
+
+<p>Power on the iPhone and walk through the initial setup. Here's the critical part: <strong>do NOT restore from a backup.</strong> Don't restore from your personal iCloud, don't transfer data from another device, don't do anything that connects your personal digital identity to this phone. Your data and your employee's data need to stay completely separate.</p>
+
+<p>When you reach the setup screen, select <strong>"Set up as New iPhone."</strong></p>
+
+<p>It will ask you to sign in with an <strong>iCloud account</strong> or indicate that you don't have one. Select that <strong>you don't have an iCloud account</strong>, and it will prompt you to create one. That's exactly what we want — we'll handle that in the next step.</p>
+
+<div class="callout">
+<div class="callout-label">Critical</div>
+<p>Never restore from a backup. Never sign in with your personal Apple ID. The entire point is that this device operates as an independent identity — a separate human being as far as Apple's systems are concerned.</p>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ============ STEP 4 ============ -->
+<div class="section">
+<div class="container">
+<div class="step">
+<div class="step-number font-mono">04</div>
+<h3>Create the iCloud Account</h3>
+
+<p>During the iPhone setup flow, you'll see the option to create a new Apple ID with an <strong>iCloud email</strong>. Take it.</p>
+
+<p>Use your AI employee's <strong>first and last name</strong> exactly as you defined them in Step 1. For the email address, go with something like <code>firstname.lastname@icloud.com</code> or <code>firstname.lastname.new@icloud.com</code>. If the plain version is taken, add a subtle suffix — <code>.new</code>, initials, something that looks human.</p>
+
+<p><strong>Avoid anything that screams "bot."</strong> Don't use <code>.AI</code>, don't include words like "bot," "agent," or "auto." Apple's systems are watching for non-human patterns, and a dead giveaway in the email address is the fastest way to get flagged. Make it look like a normal person signed up for an <strong>iCloud account</strong> — because that's exactly what you're simulating.</p>
+
+<p>Use the birthday you decided on in Step 1 (your own birthday) as the date of birth for this Apple ID.</p>
+
+<p>Once the <strong>iCloud account</strong> is created, continue through the rest of the iPhone setup. <strong>Enable location services.</strong> Say yes to everything Apple asks during setup. You don't care about location tracking on this device — nobody's tracking where your AI employee "is" — but you want the account to look as human as possible. A real person says yes to location services. Be a real person.</p>
+
+<div class="tip">
+<div class="tip-label">Example</div>
+<p>If your AI employee is named Soren Vale, the email might be <code>sorenvale.new@icloud.com</code>. Clean. Human. Forgettable in the best way.</p>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ============ STEP 5 ============ -->
+<div class="section" style="background:#fff;border-top:1px dashed var(--ais-border);border-bottom:1px dashed var(--ais-border);">
+<div class="container">
+<div class="step">
+<div class="step-number font-mono">05</div>
+<h3>Warm Up the Phone (Prevent Bans)</h3>
+
+<p>This is where 90% of people skip ahead and end up with a disabled <strong>iMessage</strong> account 48 hours later. Don't be that person.</p>
+
+<p><strong>Before you connect this phone to a computer or start doing anything automated, you need normal human usage on the device.</strong></p>
+
+<p>Here's the warm-up protocol:</p>
+
+<p><strong>1. Make a phone call.</strong> Call your own number from the AI employee's phone. Make sure outbound and inbound calling works. Even a 30-second call is fine.</p>
+
+<p><strong>2. Send iMessages.</strong> From your personal iPhone, send an <strong>iMessage</strong> to the AI employee's phone number. Open the AI employee's phone and reply. Have a mini back-and-forth conversation — 4 or 5 messages each direction. Don't have an iPhone? Find someone who does and have them text you. The goal is to generate real iMessage traffic between real devices.</p>
+
+<p><strong>3. Open Settings → iCloud.</strong> Tap your AI employee's name at the top. Enable iCloud Backup. Turn on the standard iCloud services just like you would for any normal iPhone setup.</p>
+
+<p>This warm-up period tells Apple's systems: "This is a human being using a phone normally." Skip it, and the system flags you as a bot — which leads to <strong>iMessage getting disabled</strong>.</p>
+
+<div class="callout">
+<div class="callout-label">If iMessage Gets Disabled</div>
+<p>Go to Apple Support. There's an option to request re-enabling your Apple ID. Sign in with the Apple ID, tell them you don't know why it was turned off, that you've been using your phone normally. They'll re-enable it — it just takes 24–48 hours. During that window, you can't use <strong>iMessage</strong>, which is painful if you're trying to communicate through the bot. This is why the warm-up matters.</p>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ============ STEP 6 ============ -->
+<div class="section">
+<div class="container">
+<div class="step">
+<div class="step-number font-mono">06</div>
+<h3>Configure iMessage Settings</h3>
+
+<p>Open <strong>Settings → Messages</strong> on the AI employee's iPhone. (If you can't find it, use the search bar at the top of Settings and type "Messages.")</p>
+
+<p>Inside the <strong>iMessage</strong> settings, look for <strong>"Send &amp; Receive."</strong> You'll see a list of addresses — the phone number and the Apple ID email. <strong>Uncheck the Apple ID email address.</strong> Leave only the phone number checked.</p>
+
+<p>This ensures that when the AI employee sends an <strong>iMessage</strong>, it shows up as coming from the phone number — not from an iCloud email address. Recipients see a normal phone number, not an email, which keeps the interaction looking human.</p>
+
+<p>Verify this works by sending a test iMessage from the AI employee's phone to yours. The message should arrive showing the phone number as the sender, not the iCloud email.</p>
+</div>
+</div>
+</div>
+
+<!-- ============ STEP 7 ============ -->
+<div class="section" style="background:#fff;border-top:1px dashed var(--ais-border);border-bottom:1px dashed var(--ais-border);">
+<div class="container">
+<div class="step">
+<div class="step-number font-mono">07</div>
+<h3>Set Up Google Workspace Email</h3>
+
+<p>Now we give your AI employee a professional <strong>business email</strong>. This is non-negotiable — a free Gmail account will get shut down within days.</p>
+
+<p><strong>If you already have Google Workspace</strong> on your business domain, go to <code>admin.google.com</code>, sign in, and add a new user account for your AI employee. Make the email something clean like <code>firstname@yourcompany.com</code> or <code>firstinitial@yourcompany.com</code>. It should look like a real employee at your company — because that's what it is.</p>
+
+<p><strong>If you don't have Google Workspace yet,</strong> sign up for one using your business website domain. Set it up, then create the user account for your AI employee as described above.</p>
+
+<p>On the iPhone, download the <strong>Google app</strong> and the <strong>Gmail app</strong> from the App Store. Also download <strong>WhatsApp</strong> — but don't set it up yet. We'll handle that later.</p>
+
+<p>Sign into the Gmail app with the new <strong>business email</strong> to make sure it's working. Send a test email to yourself and reply to it.</p>
+
+<div class="tip">
+<div class="tip-label">Power Move</div>
+<p>If you want Google Workspace accounts where you pay once and never have a monthly fee again — with capacity for 600–2,000 users — those exist. As of this writing, they run $997 one-time. That means you can add your entire organization without recurring per-user costs. Reach out if you want one.</p>
+</div>
+
+<div class="callout">
+<div class="callout-label">Why Not Free Gmail?</div>
+<p>Free Gmail accounts used for AI automation get flagged and shut down within 1–2 days. Consistently. Every time. When your AI employee is subscribed to Claude, managing client emails, or connected to payment systems, losing that <strong>email</strong> means losing access to everything. A $6/month Google Workspace account is cheap insurance.</p>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ============ STEP 8 ============ -->
+<div class="section">
+<div class="container">
+<div class="step">
+<div class="step-number font-mono">08</div>
+<h3>Link Business Email to Apple ID</h3>
+
+<p>Open <strong>Settings</strong> on the AI employee's iPhone. Tap the name at the very top (the iCloud profile). Then tap <strong>"Sign-In &amp; Security"</strong> → <strong>"Email &amp; Phone Numbers."</strong></p>
+
+<p>You'll see an option to <strong>add an email or phone number</strong>. Add the new <strong>business Gmail address</strong> you just created (e.g., <code>firstname@yourcompany.com</code>).</p>
+
+<p>Once it's added, tap on it and <strong>set it as the Primary Email</strong>. This pushes the iCloud email below the phone number in the hierarchy. Your Apple ID is now associated with both the <strong>iCloud email</strong> and the <strong>business email</strong> — with the business email taking priority.</p>
+
+<p>Why this matters: you now have redundancy. The Gmail can be the recovery account for the iCloud. The iCloud can be the recovery account for the Gmail. If one gets locked, the other gets you back in.</p>
+</div>
+</div>
+</div>
+
+<!-- ============ STEP 9 ============ -->
+<div class="section" style="background:#fff;border-top:1px dashed var(--ais-border);border-bottom:1px dashed var(--ais-border);">
+<div class="container">
+<div class="step">
+<div class="step-number font-mono">09</div>
+<h3>Set Up Recovery &amp; Redundancy</h3>
+
+<p>While you're still in the Apple ID settings, scroll down to <strong>"Recovery Contacts."</strong> Tap it and <strong>add yourself as the recovery contact</strong> for this Apple ID. This means if the AI employee's account ever gets locked out, <em>you're</em> the one who gets asked to reset the password. You maintain control at all times.</p>
+
+<p>Then set up recovery contacts in the other direction: make sure your <strong>business Gmail</strong> has the iCloud email as a recovery option, and vice versa. This creates a safety net. If any single account goes down, you have a path back in through the other.</p>
+
+<p>This is the kind of operational resilience that separates a hobby project from a business asset. Your AI employee handles real work — client communication, scheduling, account management. Losing access to its accounts means your business takes a hit. Build redundancy now so you never have to scramble later.</p>
+</div>
+</div>
+</div>
+
+<!-- ============ STEP 10 ============ -->
+<div class="section">
+<div class="container">
+<div class="step">
+<div class="step-number font-mono">10</div>
+<h3>Second Warm-Up Round</h3>
+
+<p>Now that you have the <strong>business email</strong> linked and recovery set up, it's time for another round of warm-up activity. Send a few text messages and <strong>iMessages</strong> from the AI employee's phone to yours. Have a short conversation. Send 5–10 messages back and forth.</p>
+
+<p>This isn't about volume — it's about pattern. Apple's systems monitor usage patterns. A phone that was set up, configured with a bunch of settings, and then immediately starts pumping out automated messages gets flagged. A phone that was set up, used normally for a bit, then gradually increases activity looks like a human.</p>
+
+<p>Don't rush this. Spend 10–15 minutes just using the device like a normal person. Open Safari. Google something. Check the weather. The metadata from these activities all contributes to the "this is a real person" signal.</p>
+</div>
+</div>
+</div>
+
+<!-- ============ STEP 11 ============ -->
+<div class="section" style="background:#fff;border-top:1px dashed var(--ais-border);border-bottom:1px dashed var(--ais-border);">
+<div class="container">
+<div class="step">
+<div class="step-number font-mono">11</div>
+<h3>Create Your AI Employee's Visual Identity</h3>
+
+<p>Go to <a href="https://gemini.google.com" target="_blank">gemini.google.com</a> and describe your AI employee. Be specific: gender, approximate age, professional appearance, personality traits. Ask Gemini to generate a realistic representation of this person.</p>
+
+<p>Iterate on it. Ask for variations until you get something that looks like the employee you imagined. Then ask for a professional headshot of that individual.</p>
+
+<p>Use that headshot as the profile picture on:</p>
+
+<ul class="interactive-checklist">
+<li><input type="checkbox"> Google Workspace account (<strong>business Gmail</strong>)</li>
+<li><input type="checkbox"> Apple ID / <strong>iCloud account</strong></li>
+<li><input type="checkbox"> WhatsApp (when you set it up)</li>
+<li><input type="checkbox"> Any other platform where the AI employee has a presence</li>
+</ul>
+
+<p>A profile picture does two things: it makes the account look legitimate to the platforms (reducing ban risk), and it makes the AI employee feel real to the people interacting with it. Both matter.</p>
+</div>
+</div>
+</div>
+
+<!-- ============ STEP 12 ============ -->
+<div class="section">
+<div class="container">
+<div class="step">
+<div class="step-number font-mono">12</div>
+<h3>Password Strategy &amp; Final Checklist</h3>
+
+<p><strong>Keep passwords simple during setup.</strong> You're going to enter these passwords dozens of times across multiple devices and sign-in screens during the initial configuration. Something like <code>LastName2024!</code> passes most security requirements, isn't easily guessed, and won't make you want to throw the phone against a wall after the 15th time you type it.</p>
+
+<p><strong>Use different passwords for iCloud and Gmail.</strong> Apple requires that your iCloud password and your device login password are different — you don't have a choice there. Make the <strong>iCloud</strong> password and the <strong>Gmail</strong> password different from each other as well. Three distinct passwords total: device login, iCloud, and Gmail.</p>
+
+<p>Once the setup is complete and everything is stable, you can upgrade to stronger passwords. But during the initial build, simplicity saves sanity.</p>
+
+<div class="divider"></div>
+
+<h3 class="font-manrope" style="font-size:1.3rem;margin-bottom:16px;letter-spacing:-0.03em">Final Setup Checklist</h3>
+
+<ul class="interactive-checklist" id="finalChecklist">
+<li><input type="checkbox"> AI employee identity defined: first name, last name, date of birth, personality</li>
+<li><input type="checkbox"> iPhone purchased and in hand (T-Mobile or unlocked)</li>
+<li><input type="checkbox"> Tello plan activated ($6/mo — unlimited texting + 100min + 1GB data, T-Mobile network)</li>
+<li><input type="checkbox"> iPhone set up as new device (no backup restore)</li>
+<li><input type="checkbox"> <strong>iCloud account</strong> created with human-looking email</li>
+<li><input type="checkbox"> Location services and iCloud backup enabled</li>
+<li><input type="checkbox"> Phone calls tested — inbound and outbound working</li>
+<li><input type="checkbox"> <strong>iMessages</strong> tested — 5+ messages sent and received</li>
+<li><input type="checkbox"> iMessage settings configured — phone number only, Apple ID email unchecked</li>
+<li><input type="checkbox"> Google Workspace <strong>business email</strong> created on your domain</li>
+<li><input type="checkbox"> Business email added to Apple ID as primary email</li>
+<li><input type="checkbox"> Recovery contacts configured in both directions</li>
+<li><input type="checkbox"> Second round of warm-up messaging completed</li>
+<li><input type="checkbox"> AI employee headshot generated and set as profile picture everywhere</li>
+<li><input type="checkbox"> Passwords documented securely (iCloud, Gmail, device)</li>
+</ul>
+
+<div class="callout">
+<div class="callout-label">What's Next</div>
+<p>Once everything on this checklist is green, you're ready to sign into your Apple account on a new Mac Mini (or whatever device your AI employee will operate from). That's the next module. If you're using our managed setup service, send all the account information — names, emails, passwords, and date of birth — to us and we'll take it from there.</p>
+</div>
+
+</div>
+</div>
+</div>
+
+<!-- ============ BONUS: BANK ACCOUNT / CREDIT CARD ============ -->
+<div class="section" style="background:#fff;border-top:1px dashed var(--ais-border);border-bottom:1px dashed var(--ais-border);">
+<div class="container">
+
+<div class="section-label"><span>Bonus</span></div>
+<h2 class="section-title">Giving Your AI Employee <span class="accent">Financial Access</span></h2>
+<p class="section-desc">Once the identity is fully established — <strong>phone number</strong>, <strong>email</strong>, <strong>iCloud</strong>, Google Workspace — your AI employee can open its own <strong>bank account</strong> or <strong>credit card</strong> for business expenses.</p>
+
+<div class="step" style="margin-bottom:0">
+<div class="step-number font-mono">$$</div>
+<h3>How to Set Up Financial Accounts</h3>
+
+<p>With a working <strong>phone number</strong> (for 2FA), a <strong>business email</strong>, and a consistent identity across platforms, your AI employee now has the infrastructure to open <strong>financial accounts</strong>. Here's how this works:</p>
+
+<p><strong>Prepaid Business Cards (Easiest Path):</strong> Services like <a href="https://vibelinks.co/Mercury" target="_blank">Mercury</a>, Relay, or Ramp let you issue virtual cards to team members under your business account. You add your AI employee as a "team member" using their <strong>business email</strong>, set a spending limit, and issue them a <strong>virtual credit card</strong>. No separate <strong>bank account</strong> needed — the card draws from your business account with whatever spending controls you set.</p>
+
+<div class="tip">
+<div class="tip-label">$250 Bonus</div>
+<p>Sign up for Mercury through <a href="https://vibelinks.co/Mercury" target="_blank">vibelinks.co/Mercury</a> and get a <strong>$250 bonus</strong> when you activate your business account. Mercury makes it dead simple to issue virtual cards to team members — including your AI employee — with per-card spending limits and instant controls.</p>
+</div>
+
+<p><strong>Dedicated Sub-Accounts:</strong> Some business banking platforms let you create sub-accounts or "buckets" under your main <strong>business bank account</strong>. Assign one to your AI employee for expense tracking. The AI employee gets its own <strong>card number</strong> and transaction history, but the funds are ring-fenced within your business account.</p>
+
+<p>The identity stack you built — <strong>phone number</strong>, <strong>business email</strong>, profile picture, <strong>iCloud account</strong> — is what makes this possible. Financial platforms verify identity through email, phone-based 2FA, and sometimes photo ID. The phone number handles 2FA. The business email handles account creation. And the profile picture adds a layer of legitimacy that automated accounts don't have.</p>
+</div>
+
+</div>
+</div>
+
+<!-- ============ CTA: BOOK A CALL ============ -->
+<div class="section" style="background:#fff;border-top:1px dashed var(--ais-border);border-bottom:1px dashed var(--ais-border);">
+<div class="container" style="text-align:center;padding-top:20px;padding-bottom:20px;">
+<div class="section-label" style="justify-content:center"><span>Done-For-You</span></div>
+<h2 class="section-title" style="text-align:center;margin-bottom:20px;">Want Us To Build This <span class="accent">For You?</span></h2>
+<p style="font-size:1.05rem;color:var(--ais-text-secondary);max-width:560px;margin:0 auto 32px;line-height:1.6;">Skip the setup. We deploy fully isolated AI Employees with their own identity, environment, and guardrails &mdash; live in 3&ndash;7 days.</p>
+<button onclick="openApplyModal()" style="display:inline-flex;align-items:center;gap:10px;padding:16px 36px;background:var(--ais-red);color:#fff;border:none;font-family:'Manrope',sans-serif;font-size:0.95rem;font-weight:700;letter-spacing:0.03em;text-transform:uppercase;cursor:pointer;transition:all 0.3s;">
+Apply to Work With Us
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+</button>
+</div>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<div class="footer">
+<div class="container-wide">
+<div class="footer-logo">AI <span>Simple</span></div>
+<p><a href="https://aisimple.co" target="_blank">aisimple.co</a></p>
+<p style="margin-top:8px">&copy; 2026 AI Simple. All rights reserved.</p>
+<p style="margin-top:4px">Build Offers, Brands &amp; AI Systems That Actually Move the Needle</p>
+
+<div class="footer-disclaimer">
+<div class="footer-disc-block">
+<strong>Disclaimer</strong><br>
+This guide is provided for <strong>educational and informational purposes only</strong>. Nothing in this document constitutes financial, legal, tax, or professional advice. The strategies, tools, and techniques described herein are shared as educational content and should not be interpreted as a recommendation to take any specific action. You are solely responsible for your own decisions and for ensuring compliance with all applicable laws, regulations, and terms of service in your jurisdiction. Consult a licensed professional before making any financial or legal decisions. The authors and publishers of this guide assume no liability for any actions taken based on the information contained herein.
+</div>
+<div class="footer-disc-block">
+<strong>Affiliate Disclosure</strong><br>
+This guide contains affiliate links, including links to Tello (<a href="https://vibelinks.co/tello">vibelinks.co/tello</a>) and Mercury (<a href="https://vibelinks.co/Mercury">vibelinks.co/Mercury</a>). If you sign up through these links, we may receive a commission or referral credit at no additional cost to you. We only recommend products and services we genuinely use and believe in. Affiliate relationships do not influence our editorial recommendations.
+</div>
+</div>
+</div>
+</div>
+
+<script>
+// Interactive checklist — applies to ALL checkboxes on the page
+document.querySelectorAll('.interactive-checklist input[type="checkbox"]').forEach(cb => {
+  cb.addEventListener('change', function() {
+    this.closest('li').classList.toggle('checked', this.checked);
+  });
+});
+</script>
+
+<!-- ============ APPLY FORM MODAL ============ -->
+<div id="apply-modal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.7);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:24px;">
+<div style="background:#fff;border:1px dashed var(--ais-border);position:relative;width:100%;max-width:540px;max-height:90vh;overflow-y:auto;padding:40px 32px;">
+<div style="position:absolute;top:0;left:0;width:12px;height:12px;border-top:2px solid var(--ais-red);border-left:2px solid var(--ais-red);"></div>
+<div style="position:absolute;top:0;right:0;width:12px;height:12px;border-top:2px solid var(--ais-red);border-right:2px solid var(--ais-red);"></div>
+<div style="position:absolute;bottom:0;left:0;width:12px;height:12px;border-bottom:2px solid var(--ais-red);border-left:2px solid var(--ais-red);"></div>
+<div style="position:absolute;bottom:0;right:0;width:12px;height:12px;border-bottom:2px solid var(--ais-red);border-right:2px solid var(--ais-red);"></div>
+<button onclick="closeApplyModal()" style="position:absolute;top:12px;right:12px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;border:1px solid var(--ais-border);background:#fff;cursor:pointer;color:var(--ais-text-muted);" aria-label="Close">&times;</button>
+
+<!-- Form State -->
+<div id="apply-form-container">
+<div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+<span style="width:7px;height:7px;background:var(--ais-red);border-radius:50%;"></span>
+<span class="font-mono" style="font-size:10px;text-transform:uppercase;letter-spacing:0.12em;color:var(--ais-red);font-weight:500;">Apply to Work With Us</span>
+</div>
+<p style="font-size:12px;color:var(--ais-text-muted);margin-bottom:20px;">Tell us about your business so we can see if we're a fit.</p>
+
+<form id="apply-form" style="display:flex;flex-direction:column;gap:14px;">
+<div>
+<label class="font-mono" style="font-size:10px;text-transform:uppercase;letter-spacing:0.1em;color:var(--ais-text-muted);display:block;margin-bottom:6px;">Full Name *</label>
+<input type="text" name="name" required placeholder="Jane Smith" style="width:100%;padding:12px 14px;border:1px dashed var(--ais-border);background:var(--ais-surface-2);font-size:14px;font-family:'Inter',sans-serif;outline:none;">
+</div>
+<div>
+<label class="font-mono" style="font-size:10px;text-transform:uppercase;letter-spacing:0.1em;color:var(--ais-text-muted);display:block;margin-bottom:6px;">Email *</label>
+<input type="email" name="email" required placeholder="jane@company.com" style="width:100%;padding:12px 14px;border:1px dashed var(--ais-border);background:var(--ais-surface-2);font-size:14px;font-family:'Inter',sans-serif;outline:none;">
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+<div>
+<label class="font-mono" style="font-size:10px;text-transform:uppercase;letter-spacing:0.1em;color:var(--ais-text-muted);display:block;margin-bottom:6px;">Business Name</label>
+<input type="text" name="business" placeholder="Acme Corp" style="width:100%;padding:12px 14px;border:1px dashed var(--ais-border);background:var(--ais-surface-2);font-size:14px;font-family:'Inter',sans-serif;outline:none;">
+</div>
+<div>
+<label class="font-mono" style="font-size:10px;text-transform:uppercase;letter-spacing:0.1em;color:var(--ais-text-muted);display:block;margin-bottom:6px;">Website</label>
+<input type="url" name="website" placeholder="https://..." style="width:100%;padding:12px 14px;border:1px dashed var(--ais-border);background:var(--ais-surface-2);font-size:14px;font-family:'Inter',sans-serif;outline:none;">
+</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+<div>
+<label class="font-mono" style="font-size:10px;text-transform:uppercase;letter-spacing:0.1em;color:var(--ais-text-muted);display:block;margin-bottom:6px;">Monthly Revenue</label>
+<select name="revenue" style="width:100%;padding:12px 14px;border:1px dashed var(--ais-border);background:var(--ais-surface-2);font-size:14px;font-family:'Inter',sans-serif;outline:none;appearance:none;">
+<option value="">Select...</option>
+<option value="pre-revenue">Pre-revenue</option>
+<option value="0-10k">$0 - $10K</option>
+<option value="10k-50k">$10K - $50K</option>
+<option value="50k-100k">$50K - $100K</option>
+<option value="100k-500k">$100K - $500K</option>
+<option value="500k+">$500K+</option>
+</select>
+</div>
+<div>
+<label class="font-mono" style="font-size:10px;text-transform:uppercase;letter-spacing:0.1em;color:var(--ais-text-muted);display:block;margin-bottom:6px;">Acquisition Channel</label>
+<select name="channel" style="width:100%;padding:12px 14px;border:1px dashed var(--ais-border);background:var(--ais-surface-2);font-size:14px;font-family:'Inter',sans-serif;outline:none;appearance:none;">
+<option value="">Select...</option>
+<option value="organic-social">Organic Social</option>
+<option value="paid-ads">Paid Ads</option>
+<option value="cold-outreach">Cold Outreach</option>
+<option value="referrals">Referrals</option>
+<option value="seo">SEO / Content</option>
+<option value="other">Other</option>
+</select>
+</div>
+</div>
+<div>
+<label class="font-mono" style="font-size:10px;text-transform:uppercase;letter-spacing:0.1em;color:var(--ais-text-muted);display:block;margin-bottom:6px;">How ready are you to invest in implementing AI in your business over the next 90 days?</label>
+<p style="font-size:11px;color:var(--ais-text-muted);margin-bottom:8px;">Your answer just helps us know if we're a fit and how to structure the call. There's no hard sell.</p>
+<select name="investment_readiness" required style="width:100%;padding:12px 14px;border:1px dashed var(--ais-border);background:var(--ais-surface-2);font-size:14px;font-family:'Inter',sans-serif;outline:none;appearance:none;">
+<option value="">Select...</option>
+<option value="30k+">I'm ready to invest $30K+ in AI implementation in the next 30-90 days.</option>
+<option value="15k-30k">I'm ready to invest $15K-$30K to implement AI in the next 30-90 days.</option>
+<option value="5k-15k">I'm ready to invest $5K-$15K to get AI systems in place (phased or smaller scope).</option>
+<option value="under-5k">I'm interested, but I'm not ready to invest at least $5K right now.</option>
+</select>
+</div>
+<button type="submit" id="apply-submit-btn" style="margin-top:8px;padding:16px;background:var(--ais-red);color:#fff;border:none;font-family:'Manrope',sans-serif;font-size:0.9rem;font-weight:700;letter-spacing:0.03em;text-transform:uppercase;cursor:pointer;">Submit Application</button>
+</form>
+</div>
+
+<!-- Success: Qualified -->
+<div id="apply-success-qualified" style="display:none;text-align:center;">
+<div style="width:56px;height:56px;margin:0 auto 20px;border:2px solid var(--ais-red);display:flex;align-items:center;justify-content:center;">
+<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--ais-red)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+</div>
+<h3 class="font-manrope" style="font-size:1.4rem;font-weight:700;margin-bottom:12px;">You're a Fit.</h3>
+<p style="color:var(--ais-text-secondary);font-size:0.95rem;margin-bottom:24px;">Pick a time below and we'll map out your AI implementation strategy on the call.</p>
+<button onclick="Calendly.initPopupWidget({url:'https://calendly.com/andrewnaegele/scale-with-us?background_color=0a0a0a&text_color=ffffff&primary_color=ef233c'});return false;" style="display:inline-flex;align-items:center;gap:10px;padding:16px 36px;background:var(--ais-red);color:#fff;border:none;font-family:'Manrope',sans-serif;font-size:0.9rem;font-weight:700;letter-spacing:0.03em;text-transform:uppercase;cursor:pointer;">
+Book Your Strategy Call
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+</button>
+</div>
+
+<!-- Success: Nurture -->
+<div id="apply-success-nurture" style="display:none;text-align:center;">
+<h3 class="font-manrope" style="font-size:1.4rem;font-weight:700;margin-bottom:12px;">Thanks for Your Interest</h3>
+<p style="color:var(--ais-text-secondary);font-size:0.95rem;margin-bottom:24px;">We're currently focused on done-for-you implementations starting at $5K+. In the meantime, here are free resources to help you get started.</p>
+<a href="/mba" style="display:inline-flex;align-items:center;gap:10px;padding:16px 36px;background:var(--ais-red);color:#fff;border:none;font-family:'Manrope',sans-serif;font-size:0.9rem;font-weight:700;letter-spacing:0.03em;text-transform:uppercase;cursor:pointer;text-decoration:none;border-bottom:none;">
+Get Free AI Resources
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+</a>
+</div>
+
+</div>
+</div>
+
+<script>
+function openApplyModal() {
+  var m = document.getElementById('apply-modal');
+  m.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+  document.getElementById('apply-form-container').style.display = '';
+  document.getElementById('apply-success-qualified').style.display = 'none';
+  document.getElementById('apply-success-nurture').style.display = 'none';
+  document.getElementById('apply-form').reset();
+  var btn = document.getElementById('apply-submit-btn');
+  btn.disabled = false;
+  btn.textContent = 'Submit Application';
+}
+function closeApplyModal() {
+  document.getElementById('apply-modal').style.display = 'none';
+  document.body.style.overflow = '';
+}
+document.getElementById('apply-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeApplyModal();
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeApplyModal();
+});
+
+document.getElementById('apply-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  var form = e.target;
+  var btn = document.getElementById('apply-submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+
+  var revenue = form.revenue.value;
+  var readiness = form.investment_readiness.value;
+  var isLowRevenue = (revenue === 'pre-revenue' || revenue === '0-10k');
+  var isNotReady = (readiness === 'under-5k');
+  var isQualified = !isNotReady && !isLowRevenue;
+
+  var data = {
+    name: form.name.value, email: form.email.value,
+    business: form.business.value, website: form.website.value,
+    revenue: revenue, channel: form.channel.value,
+    investment_readiness: readiness, qualified: isQualified,
+    source: 'employee-setup-apply', page_url: window.location.href,
+    user_agent: navigator.userAgent
+  };
+
+  try {
+    var existing = JSON.parse(localStorage.getItem('ai_simple_leads') || '[]');
+    existing.push({ ...data, submitted_at: new Date().toISOString() });
+    localStorage.setItem('ai_simple_leads', JSON.stringify(existing));
+  } catch (err) {}
+
+  try {
+    await fetch('/api/submit-lead', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+  } catch (err) {}
+
+  document.getElementById('apply-form-container').style.display = 'none';
+  if (isQualified) {
+    document.getElementById('apply-success-qualified').style.display = '';
+  } else {
+    document.getElementById('apply-success-nurture').style.display = '';
+  }
+});
+</script>
+
+</body>
+</html>

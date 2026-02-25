@@ -98,6 +98,23 @@ body { font-family: 'Inter', sans-serif; }
   box-shadow: 0 0 30px rgba(239,35,60,0.08), inset 0 0 30px rgba(239,35,60,0.03);
   transform: translateY(-4px);
 }
+
+/* ========== NURTURE MODAL ========== */
+.modal-overlay {
+  display: none; position: fixed; inset: 0; z-index: 9999;
+  background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
+  align-items: center; justify-content: center; padding: 24px;
+}
+.modal-overlay.active { display: flex; }
+.modal-box {
+  background: #0a0a0a; border: 1px dashed rgba(63,63,70,0.8); position: relative;
+  width: 100%; max-width: 480px; padding: 48px 32px; text-align: center;
+  animation: fadeSlideIn 0.4s ease-out both;
+}
+.modal-box .corner-tl { position: absolute; top: 0; left: 0; width: 12px; height: 12px; border-top: 2px solid #ef233c; border-left: 2px solid #ef233c; }
+.modal-box .corner-tr { position: absolute; top: 0; right: 0; width: 12px; height: 12px; border-top: 2px solid #ef233c; border-right: 2px solid #ef233c; }
+.modal-box .corner-bl { position: absolute; bottom: 0; left: 0; width: 12px; height: 12px; border-bottom: 2px solid #ef233c; border-left: 2px solid #ef233c; }
+.modal-box .corner-br { position: absolute; bottom: 0; right: 0; width: 12px; height: 12px; border-bottom: 2px solid #ef233c; border-right: 2px solid #ef233c; }
 </style>
 </head>
 
@@ -286,18 +303,18 @@ body { font-family: 'Inter', sans-serif; }
         <div class="h-px w-12 bg-gradient-to-l from-transparent to-[#ef233c]/40"></div>
       </div>
       <h2 class="text-3xl md:text-5xl font-bold text-white font-manrope tracking-tighter mb-6">
-        Want Us To Wire This Into Your&nbsp;Business?
+        Ready To Have Us Build This For&nbsp;You?
       </h2>
       <p class="text-zinc-400 leading-relaxed max-w-xl mx-auto mb-8">
-        Don't let this sit in a folder. Book a free implementation call and we'll map out a 7-day sprint to get this live in your pipeline.
+        Don&rsquo;t let this sit in a folder. Apply to work with us and we&rsquo;ll map out a 7-day sprint to get this live in your pipeline.
       </p>
 
-      <a href="" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/andrewnaegele/scale-with-us?background_color=0a0a0a&text_color=ffffff&primary_color=ef233c'});return false;" class="shiny-cta inline-block cursor-pointer" style="width: auto; padding: 1.25rem 3rem;">
+      <button onclick="handleBookCall()" class="shiny-cta inline-block cursor-pointer" style="width: auto; padding: 1.25rem 3rem;">
         <span class="flex flex-nowrap items-center justify-center gap-2 text-sm font-bold tracking-wide uppercase font-manrope whitespace-nowrap">
-          Book an Implementation Call
+          Apply to Work With Us
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </span>
-      </a>
+      </button>
     </div>
   </div>
 </section>
@@ -330,6 +347,60 @@ body { font-family: 'Inter', sans-serif; }
 <!-- SCRIPTS -->
 <!-- ============================================================ -->
 <script>document.addEventListener('DOMContentLoaded', () => { if (typeof lucide !== 'undefined') lucide.createIcons(); });</script>
+
+<!-- Nurture Modal -->
+<div id="nurture-modal" class="modal-overlay">
+  <div class="modal-box">
+    <div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div>
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(239,35,60,0.05) 0%, transparent 70%);"></div>
+    <div class="relative z-10">
+      <div class="w-14 h-14 mx-auto mb-6 border border-zinc-700 flex items-center justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#a1a1aa" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+      </div>
+      <h3 class="text-xl font-bold text-white font-manrope tracking-tight mb-3">Thanks for Your Interest</h3>
+      <p class="text-zinc-400 text-sm leading-relaxed mb-6">We&rsquo;re currently focused on done-for-you implementations starting at $5K+. In the meantime, here are free resources to help you get started.</p>
+      <a href="/mba" class="shiny-cta inline-block cursor-pointer" style="width: auto; padding: 1rem 2.5rem;">
+        <span class="flex flex-nowrap items-center justify-center gap-2 text-sm font-bold tracking-wide uppercase font-manrope whitespace-nowrap">
+          Get Free AI Resources
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Book Call Routing -->
+<script>
+function handleBookCall() {
+  // Check what they submitted from the MBA form (saved in localStorage)
+  var isQualified = true;
+  try {
+    var leads = JSON.parse(localStorage.getItem('ai_simple_leads') || '[]');
+    if (leads.length > 0) {
+      var latest = leads[leads.length - 1];
+      var revenue = latest.revenue || '';
+      var readiness = latest.investment_readiness || '';
+      var isLowRevenue = (revenue === 'pre-revenue' || revenue === '0-10k');
+      var isNotReady = (readiness === 'under-5k');
+      if (isNotReady || isLowRevenue) isQualified = false;
+    }
+  } catch (err) { /* default to qualified if localStorage fails */ }
+
+  if (isQualified) {
+    Calendly.initPopupWidget({url: 'https://calendly.com/andrewnaegele/scale-with-us?background_color=0a0a0a&text_color=ffffff&primary_color=ef233c'});
+  } else {
+    document.getElementById('nurture-modal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+}
+// Close nurture modal on overlay click or Escape
+document.getElementById('nurture-modal').addEventListener('click', function(e) {
+  if (e.target === this) { this.classList.remove('active'); document.body.style.overflow = ''; }
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') { document.getElementById('nurture-modal').classList.remove('active'); document.body.style.overflow = ''; }
+});
+</script>
 
 </body>
 </html>

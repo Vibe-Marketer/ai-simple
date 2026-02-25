@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Offer MBA + 728M Lead Vault (Free) — AI Simple</title>
 <meta name="description" content="Build a 7-figure-ready offer in about an hour, then plug it into 728,000,000 pre-built leads and use our most ruthless copy GPT to turn it into content, emails, and sales.">
-<link rel="icon" href="img/ai-simple-logo.png" type="image/png">
-<link rel="apple-touch-icon" href="img/ai-simple-logo.png">
+<link rel="icon" href="img/ai-simple-logo.png?v=2" type="image/png">
+<link rel="apple-touch-icon" href="img/ai-simple-logo.png?v=2">
 <link rel="canonical" href="https://aisimple.co/mba">
 
 <!-- Open Graph / Facebook -->
@@ -323,10 +323,14 @@ select.form-input { appearance: none; background-image: url("data:image/svg+xml,
                 </div>
               </div>
               <div>
-                <label class="text-[10px] font-geist-mono text-zinc-500 uppercase tracking-wider mb-1.5 block">Want help wiring this into your pipeline?</label>
-                <select name="help_wanted" class="form-input">
-                  <option value="yes">Yes &mdash; let's do it</option>
-                  <option value="not-now">Not right now</option>
+                <label class="text-[10px] font-geist-mono text-zinc-500 uppercase tracking-wider mb-1.5 block">How ready are you to invest in implementing AI in your business over the next 90 days?</label>
+                <p class="text-[10px] text-zinc-600 mb-2">Your answer just helps us know if we&rsquo;re a fit and how to structure the call. There&rsquo;s no hard sell.</p>
+                <select name="investment_readiness" class="form-input">
+                  <option value="">Select...</option>
+                  <option value="30k+">I'm ready to invest $30K+ in AI implementation in the next 30&ndash;90 days.</option>
+                  <option value="15k-30k">I'm ready to invest $15K&ndash;$30K to implement AI in the next 30&ndash;90 days.</option>
+                  <option value="5k-15k">I'm ready to invest $5K&ndash;$15K to get AI systems in place (phased or smaller scope).</option>
+                  <option value="under-5k">I'm interested, but I'm not ready to invest at least $5K right now.</option>
                 </select>
               </div>
 
@@ -671,9 +675,9 @@ select.form-input { appearance: none; background-image: url("data:image/svg+xml,
 
       <p class="text-sm text-zinc-500 mb-8 max-w-lg mx-auto">If it makes sense, we&rsquo;ll show you what it looks like for us to build and/or run the system with you.</p>
 
-      <a href="#" class="shiny-cta inline-block" style="width: auto; padding: 1.25rem 3rem;">
+      <a href="/#book" class="shiny-cta inline-block" style="width: auto; padding: 1.25rem 3rem;">
         <span class="inline-flex items-center justify-center gap-2 text-sm font-bold tracking-wide uppercase font-manrope whitespace-nowrap">
-          Claim an Implementation Call
+          Apply to Work With Us
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 inline-block"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </span>
       </a>
@@ -894,7 +898,7 @@ document.getElementById('lead-form').addEventListener('submit', async function(e
     website: form.website.value,
     revenue: form.revenue.value,
     channel: form.channel.value,
-    help_wanted: form.help_wanted.value,
+    investment_readiness: form.investment_readiness.value,
     source: 'mba-lead-magnet',
     page_url: window.location.href,
     user_agent: navigator.userAgent
