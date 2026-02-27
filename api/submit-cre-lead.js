@@ -61,16 +61,20 @@ export default async function handler(req, res) {
       return res.status(500).json({ error: 'Failed to save lead' });
     }
 
-    // Fire-and-forget welcome email via Composio (don't block the response)
+    // Send welcome email via Composio (must await or Vercel kills the function)
     try {
       const baseUrl = `https://${req.headers.host}`;
-      fetch(`${baseUrl}/api/send-cre-welcome`, {
+      const emailRes = await fetch(`${baseUrl}/api/send-cre-welcome`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ first_name, last_name, email }),
-      }).catch(emailErr => console.error('Welcome email fire-and-forget error:', emailErr));
+      });
+      const emailResult = await emailRes.json();
+      if (!emailRes.ok) {
+        console.error('Welcome email failed:', JSON.stringify(emailResult));
+      }
     } catch (emailErr) {
-      console.error('Welcome email trigger error:', emailErr);
+      console.error('Welcome email error:', emailErr);
     }
 
     return res.status(200).json({ success: true, id: data?.[0]?.id });
