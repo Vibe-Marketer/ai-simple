@@ -1,5 +1,5 @@
 // Sends a welcome email from Grace via Composio Gmail when a CRE lead signs up
-// From: Grace (grace@leveragedcre.com via Composio)
+// From: Grace (gardenz@leveragedcre.com via Composio)
 // CC: Phill (ptomlinson@cpiaz.com)
 // BCC: Andrew (andrew@aisimple.co)
 
@@ -54,7 +54,7 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         user_id: GRACE_USER_ID,
-        input: {
+        arguments: {
           recipient_email: email,
           subject: `Welcome, ${first_name}! Your CRE AI Resources Are Coming`,
           body: htmlBody,
