@@ -1,9 +1,8 @@
 import { createClient } from '@supabase/supabase-js';
 
-// Use service role key server-side to bypass RLS (safe — this only runs on Vercel, never exposed to browser)
 const supabase = createClient(
   process.env.SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_ROLE_KEY
+  process.env.SUPABASE_SECRET_KEY
 );
 
 export default async function handler(req, res) {
