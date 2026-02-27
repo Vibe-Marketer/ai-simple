@@ -3,7 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CRE AI Follow-Up Call + Free Resources from Phil | AI Simple</title>
+<title>CRE AI Follow-Up Call + Free Resources from Phill | AI Simple</title>
+<link rel="icon" type="image/png" href="/img/favicon/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/svg+xml" href="/img/favicon/favicon.svg">
+<link rel="shortcut icon" href="/img/favicon/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -37,11 +41,9 @@
     --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
     --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
     --shadow-lg: 0 12px 40px rgba(0,0,0,0.08);
-    --shadow-xl: 0 20px 60px rgba(0,0,0,0.10);
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; }
 
   body {
@@ -50,11 +52,11 @@
     color: var(--neutral-700);
     line-height: 1.6;
     min-height: 100vh;
+    min-height: 100dvh;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* ─── Top accent bar ─── */
   .top-bar {
     height: 3px;
     background: linear-gradient(90deg, var(--green-300), var(--green-500), var(--gold-400), var(--green-500), var(--green-300));
@@ -67,14 +69,13 @@
     50% { background-position: 100% 50%; }
   }
 
-  /* ─── Nav ─── */
   .nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     max-width: 1100px;
     margin: 0 auto;
-    padding: 20px 28px;
+    padding: 12px 28px;
   }
 
   .nav-logos {
@@ -116,11 +117,10 @@
     border-radius: 100px;
   }
 
-  /* ─── Hero ─── */
   .hero {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 40px 28px 20px;
+    padding: 16px 28px 8px;
     text-align: center;
   }
 
@@ -129,12 +129,12 @@
     align-items: center;
     gap: 8px;
     font-family: 'Jost', sans-serif;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--green-600);
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
 
   .hero-eyebrow::before,
@@ -148,12 +148,12 @@
   .hero h1 {
     font-family: 'Jost', sans-serif;
     font-weight: 700;
-    font-size: clamp(28px, 4.5vw, 44px);
+    font-size: clamp(24px, 4vw, 38px);
     line-height: 1.15;
     color: var(--neutral-900);
     letter-spacing: -0.025em;
     max-width: 680px;
-    margin: 0 auto 16px;
+    margin: 0 auto 8px;
   }
 
   .hero h1 .accent {
@@ -161,25 +161,24 @@
   }
 
   .hero p {
-    font-size: 17px;
-    line-height: 1.65;
+    font-size: 15px;
+    line-height: 1.55;
     color: var(--neutral-500);
-    max-width: 540px;
+    max-width: 520px;
     margin: 0 auto;
   }
 
-  /* ─── Form Card ─── */
   .form-section {
-    max-width: 600px;
-    margin: 36px auto 60px;
-    padding: 0 28px;
+    max-width: 680px;
+    margin: 16px auto 40px;
+    padding: 0 20px;
   }
 
   .form-card {
     background: var(--white);
     border: 1px solid var(--neutral-200);
     border-radius: 16px;
-    padding: 40px 36px;
+    padding: 28px 28px 24px;
     box-shadow: var(--shadow-lg);
     position: relative;
     overflow: hidden;
@@ -198,14 +197,14 @@
   .form-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-bottom: 24px;
+    gap: 14px;
+    margin-bottom: 20px;
   }
 
   .form-group {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 5px;
   }
 
   .form-group.full-width {
@@ -228,14 +227,15 @@
 
   .form-group input {
     font-family: 'Source Sans 3', sans-serif;
-    font-size: 15px;
-    padding: 11px 14px;
+    font-size: 16px;
+    padding: 10px 14px;
     border: 1.5px solid var(--neutral-200);
     border-radius: 10px;
     background: var(--neutral-50);
     color: var(--neutral-800);
     transition: all 0.2s ease;
     outline: none;
+    -webkit-appearance: none;
   }
 
   .form-group input:focus {
@@ -248,24 +248,23 @@
     color: var(--neutral-400);
   }
 
-  /* ─── Divider ─── */
   .form-divider {
     height: 1px;
     background: var(--neutral-200);
-    margin: 28px 0;
+    margin: 20px 0;
     position: relative;
   }
 
   .form-divider::after {
-    content: 'Tell Phil what you're interested in';
+    content: 'Tell Phill what you\2019re interested in';
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background: var(--white);
-    padding: 0 16px;
+    padding: 0 14px;
     font-family: 'Jost', sans-serif;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 500;
     letter-spacing: 0.06em;
     text-transform: uppercase;
@@ -273,20 +272,19 @@
     white-space: nowrap;
   }
 
-  /* ─── Checkboxes ─── */
   .checkbox-list {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    margin-bottom: 32px;
+    gap: 8px;
+    margin-bottom: 20px;
   }
 
   .checkbox-item {
     display: flex;
     align-items: flex-start;
-    gap: 12px;
+    gap: 10px;
     cursor: pointer;
-    padding: 12px 14px;
+    padding: 10px 12px;
     border-radius: 10px;
     border: 1.5px solid var(--neutral-200);
     background: var(--neutral-50);
@@ -340,8 +338,8 @@
   }
 
   .checkbox-text {
-    font-size: 14.5px;
-    line-height: 1.5;
+    font-size: 13.5px;
+    line-height: 1.45;
     color: var(--neutral-700);
   }
 
@@ -350,7 +348,6 @@
     color: var(--neutral-800);
   }
 
-  /* The "intro to Andrew" checkbox gets a subtle gold left-edge */
   .checkbox-item.gold-accent {
     border-left: 3px solid transparent;
   }
@@ -359,7 +356,6 @@
     border-left-color: var(--gold-400);
   }
 
-  /* ─── Submit ─── */
   .submit-btn {
     width: 100%;
     font-family: 'Jost', sans-serif;
@@ -370,12 +366,13 @@
     background: linear-gradient(135deg, var(--green-500), var(--green-600));
     border: none;
     border-radius: 12px;
-    padding: 16px 28px;
+    padding: 14px 28px;
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 4px 16px rgba(93, 130, 54, 0.25);
     position: relative;
     overflow: hidden;
+    -webkit-appearance: none;
   }
 
   .submit-btn::after {
@@ -402,10 +399,15 @@
     transform: translateY(0);
   }
 
-  /* ─── Trust bar ─── */
+  .submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+  }
+
   .trust-bar {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 14px;
     font-size: 12px;
     color: var(--neutral-400);
     display: flex;
@@ -420,10 +422,9 @@
     color: var(--neutral-300);
   }
 
-  /* ─── Footer ─── */
   .footer {
     text-align: center;
-    padding: 24px 28px 32px;
+    padding: 20px 28px 28px;
     font-size: 12px;
     color: var(--neutral-400);
     border-top: 1px solid var(--neutral-200);
@@ -436,28 +437,40 @@
     text-decoration: none;
   }
 
-  /* ─── Responsive ─── */
+  /* ─── Mobile-first responsive ─── */
   @media (max-width: 600px) {
-    .form-grid {
-      grid-template-columns: 1fr;
-    }
-    .form-card {
-      padding: 28px 22px;
-    }
-    .nav { padding: 16px 20px; }
-    .hero { padding: 28px 20px 12px; }
-    .form-section { padding: 0 16px; margin: 28px auto 48px; }
+    .nav { padding: 10px 16px; }
     .nav-badge { display: none; }
+    .hero { padding: 12px 16px 6px; }
+    .hero h1 { font-size: 22px; margin-bottom: 6px; }
+    .hero p { font-size: 14px; }
+    .form-section { padding: 0 12px; margin: 10px auto 32px; }
+    .form-card { padding: 20px 16px 18px; border-radius: 14px; }
+    .form-grid { gap: 10px; }
+    .form-group input { padding: 10px 12px; font-size: 16px; }
+    .form-divider { margin: 14px 0; }
+    .form-divider::after { font-size: 10px; padding: 0 10px; }
+    .checkbox-list { gap: 6px; }
+    .checkbox-item { padding: 8px 10px; }
+    .checkbox-text { font-size: 13px; }
+    .submit-btn { padding: 14px 24px; font-size: 15px; }
+    .trust-bar { margin-top: 10px; }
+    .footer { padding: 16px 16px 24px; }
   }
 
-  /* ─── Subtle animation on load ─── */
+  /* Extra small phones */
+  @media (max-width: 380px) {
+    .form-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 20px; }
+  }
+
   @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(16px); }
+    from { opacity: 0; transform: translateY(12px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
-  .hero { animation: fadeUp 0.6s ease-out; }
-  .form-card { animation: fadeUp 0.6s ease-out 0.15s both; }
+  .hero { animation: fadeUp 0.5s ease-out; }
+  .form-card { animation: fadeUp 0.5s ease-out 0.1s both; }
 </style>
 </head>
 <body>
@@ -468,40 +481,36 @@
   <div class="nav-logos">
     <span class="nav-logo">AI Simple</span>
     <div class="nav-divider"></div>
-    <span class="nav-partner">Leveraged CRE</span>
+    <span class="nav-partner">LeveragedCRE</span>
   </div>
   <span class="nav-badge">Free Workshop</span>
 </nav>
 
 <section class="hero">
   <div class="hero-eyebrow">AI for Commercial Real Estate</div>
-  <h1>Get the <span class="accent">CRE AI Follow‑Up Call</span> + Free Resources from Phil</h1>
-  <p>Tell Phil you want to stay in the loop, see his real workflows, and hear about potential next steps with AI in CRE.</p>
+  <h1>Get the <span class="accent">CRE AI Follow&#8209;Up Call</span> + Free Resources from Phill</h1>
+  <p>Tell Phill you want to stay in the loop, see his real workflows, and hear about potential next steps with AI in CRE.</p>
 </section>
 
 <section class="form-section">
-  <form class="form-card" id="creForm" action="cre-thanks.html" method="GET">
+  <form class="form-card" id="creForm">
 
     <div class="form-grid">
       <div class="form-group">
         <label for="firstName">First Name</label>
-        <input type="text" id="firstName" name="firstName" placeholder="Phil" required>
+        <input type="text" id="firstName" name="firstName" placeholder="First name" required autocomplete="given-name">
       </div>
       <div class="form-group">
         <label for="lastName">Last Name</label>
-        <input type="text" id="lastName" name="lastName" placeholder="Tomlinson" required>
+        <input type="text" id="lastName" name="lastName" placeholder="Last name" required autocomplete="family-name">
       </div>
       <div class="form-group">
         <label for="email">Email</label>
-        <input type="email" id="email" name="email" placeholder="you@yourfirm.com" required>
+        <input type="email" id="email" name="email" placeholder="you@yourfirm.com" required autocomplete="email">
       </div>
       <div class="form-group">
-        <label for="firmCity">Firm / City</label>
-        <input type="text" id="firmCity" name="firmCity" placeholder="Acme CRE – Dallas, TX" required>
-      </div>
-      <div class="form-group full-width">
         <label for="mobile">Mobile <span class="optional">(optional)</span></label>
-        <input type="tel" id="mobile" name="mobile" placeholder="(555) 123-4567">
+        <input type="tel" id="mobile" name="mobile" placeholder="(555) 123-4567" autocomplete="tel">
       </div>
     </div>
 
@@ -516,7 +525,7 @@
             <polyline points="2.5 6 5 8.5 9.5 3.5"/>
           </svg>
         </span>
-        <span class="checkbox-text"><strong>Yes</strong> – Invite me to the CRE AI follow‑up workshop Phil mentioned.</span>
+        <span class="checkbox-text"><strong>Yes</strong> -- Invite me to the CRE AI follow-up workshop Phill mentioned.</span>
       </label>
 
       <label class="checkbox-item" onclick="toggleCheck(this)">
@@ -526,7 +535,7 @@
             <polyline points="2.5 6 5 8.5 9.5 3.5"/>
           </svg>
         </span>
-        <span class="checkbox-text"><strong>Yes</strong> – Send me the free CRE AI examples and resources Phil talked about over the next 4–8 weeks.</span>
+        <span class="checkbox-text"><strong>Yes</strong> -- Send me the free CRE AI examples and resources Phill talked about over the next 4-8 weeks.</span>
       </label>
 
       <label class="checkbox-item" onclick="toggleCheck(this)">
@@ -536,7 +545,7 @@
             <polyline points="2.5 6 5 8.5 9.5 3.5"/>
           </svg>
         </span>
-        <span class="checkbox-text">If Phil creates a 6–8 week micro‑training on AI employees for CRE, I'd like to hear about it.</span>
+        <span class="checkbox-text">If Phill creates a 6-8 week micro-training on AI employees for CRE, I'd like to hear about it.</span>
       </label>
 
       <label class="checkbox-item gold-accent" onclick="toggleCheck(this)">
@@ -546,33 +555,31 @@
             <polyline points="2.5 6 5 8.5 9.5 3.5"/>
           </svg>
         </span>
-        <span class="checkbox-text">I'm interested in building my own "Grace" – an AI employee for my CRE business. Please have Phil make a personal intro to Andrew.</span>
+        <span class="checkbox-text">I'm interested in building my own "Grace" -- an AI employee for my CRE business. Please have Phill make a personal intro to Andrew.</span>
       </label>
 
     </div>
 
-    <button type="submit" class="submit-btn">Save My Spot &amp; Stay in the Loop</button>
+    <button type="submit" class="submit-btn" id="submitBtn">Save My Spot &amp; Stay in the Loop</button>
 
     <div class="trust-bar">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
       </svg>
-      Your info stays between you and Phil. No spam, ever.
+      Your info stays between you and Phill. No spam, ever.
     </div>
 
   </form>
 </section>
 
 <footer class="footer">
-  A partnership between <a href="https://aisimple.co" target="_blank">AI Simple</a> &amp; <a href="https://leveragedcre.com" target="_blank">Leveraged CRE</a>
+  A partnership between <a href="https://aisimple.co" target="_blank">AI Simple</a> &amp; <a href="https://leveragedcre.com" target="_blank">LeveragedCRE</a>
 </footer>
 
 <script>
 function toggleCheck(el) {
-  const checkbox = el.querySelector('input[type="checkbox"]');
-  // The label click will toggle the checkbox automatically,
-  // so we just toggle the visual class
-  setTimeout(() => {
+  var checkbox = el.querySelector('input[type="checkbox"]');
+  setTimeout(function() {
     if (checkbox.checked) {
       el.classList.add('checked');
     } else {
@@ -580,6 +587,56 @@ function toggleCheck(el) {
     }
   }, 0);
 }
+
+document.getElementById('creForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  var form = e.target;
+  var btn = document.getElementById('submitBtn');
+
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+
+  var data = {
+    first_name: form.firstName.value.trim(),
+    last_name: form.lastName.value.trim(),
+    email: form.email.value.trim(),
+    mobile: form.mobile.value.trim() || null,
+    workshop: form.workshop.checked,
+    resources: form.resources.checked,
+    microtraining: form.microtraining.checked,
+    intro_to_andrew: form.introToAndrew.checked,
+    source: 'cre-partnership',
+    page_url: window.location.href,
+    user_agent: navigator.userAgent
+  };
+
+  // Save to localStorage as backup
+  try {
+    var existing = JSON.parse(localStorage.getItem('cre_leads') || '[]');
+    existing.push({ ...data, submitted_at: new Date().toISOString() });
+    localStorage.setItem('cre_leads', JSON.stringify(existing));
+  } catch (err) {
+    console.error('Local backup save failed:', err);
+  }
+
+  // Submit to Supabase via serverless function
+  try {
+    var res = await fetch('/api/submit-cre-lead', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+
+    if (!res.ok) {
+      console.error('API error:', res.status, await res.text());
+    }
+  } catch (err) {
+    console.error('API call failed:', err);
+  }
+
+  // Always redirect to thank-you page
+  window.location.href = '/cre-thanks';
+});
 </script>
 
 </body>

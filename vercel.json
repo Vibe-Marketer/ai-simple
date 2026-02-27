@@ -15,7 +15,9 @@
     { "source": "/call", "destination": "https://aisimple.co/#book", "permanent": false },
     { "source": "/book", "destination": "https://aisimple.co/#book", "permanent": false },
     { "source": "/blueprint", "destination": "/employee-setup", "permanent": false },
-    { "source": "/ai-employee", "destination": "/employee-setup", "permanent": false }
+    { "source": "/ai-employee", "destination": "/employee-setup", "permanent": false },
+    { "source": "/leveragedcre", "destination": "/cre", "permanent": false },
+    { "source": "/phill", "destination": "/cre", "permanent": false }
   ],
   "headers": [
     {

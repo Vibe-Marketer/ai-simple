@@ -3,7 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>You're In – CRE AI | AI Simple × Leveraged CRE</title>
+<title>You're In -- CRE AI | AI Simple x LeveragedCRE</title>
+<link rel="icon" type="image/png" href="/img/favicon/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/svg+xml" href="/img/favicon/favicon.svg">
+<link rel="shortcut icon" href="/img/favicon/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -45,12 +49,12 @@
     color: var(--neutral-700);
     line-height: 1.6;
     min-height: 100vh;
+    min-height: 100dvh;
     display: flex;
     flex-direction: column;
     -webkit-font-smoothing: antialiased;
   }
 
-  /* ─── Top accent bar ─── */
   .top-bar {
     height: 3px;
     background: linear-gradient(90deg, var(--green-300), var(--green-500), var(--gold-400), var(--green-500), var(--green-300));
@@ -63,14 +67,13 @@
     50% { background-position: 100% 50%; }
   }
 
-  /* ─── Nav ─── */
   .nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     max-width: 1100px;
     margin: 0 auto;
-    padding: 20px 28px;
+    padding: 16px 28px;
     width: 100%;
   }
 
@@ -101,13 +104,12 @@
     color: var(--green-600);
   }
 
-  /* ─── Main content ─── */
   .main {
     flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 40px 28px 80px;
+    padding: 32px 28px 60px;
   }
 
   .confirmation-card {
@@ -122,7 +124,6 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* ─── Success icon ─── */
   .success-icon {
     width: 72px;
     height: 72px;
@@ -131,7 +132,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 28px;
+    margin: 0 auto 24px;
     position: relative;
   }
 
@@ -168,32 +169,31 @@
     font-size: clamp(26px, 4vw, 36px);
     color: var(--neutral-900);
     letter-spacing: -0.02em;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
 
   .confirmation-card .subtitle {
     font-size: 17px;
     color: var(--neutral-500);
-    margin-bottom: 36px;
+    margin-bottom: 32px;
   }
 
-  /* ─── Steps ─── */
   .steps {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 14px;
     text-align: left;
-    margin-bottom: 40px;
+    margin-bottom: 36px;
   }
 
   .step {
     display: flex;
-    gap: 16px;
+    gap: 14px;
     align-items: flex-start;
     background: var(--white);
     border: 1px solid var(--neutral-200);
     border-radius: 12px;
-    padding: 18px 20px;
+    padding: 16px 18px;
     animation: fadeUp 0.5s ease-out both;
   }
 
@@ -232,7 +232,6 @@
     font-weight: 600;
   }
 
-  /* ─── Bottom CTA ─── */
   .bottom-note {
     font-size: 13px;
     color: var(--neutral-400);
@@ -245,10 +244,9 @@
     font-weight: 500;
   }
 
-  /* ─── Footer ─── */
   .footer {
     text-align: center;
-    padding: 24px 28px 32px;
+    padding: 20px 28px 28px;
     font-size: 12px;
     color: var(--neutral-400);
     border-top: 1px solid var(--neutral-200);
@@ -263,8 +261,12 @@
   }
 
   @media (max-width: 600px) {
-    .main { padding: 32px 16px 60px; }
-    .step { padding: 14px 16px; }
+    .nav { padding: 12px 16px; }
+    .main { padding: 24px 16px 48px; }
+    .step { padding: 14px 14px; }
+    .step-text { font-size: 14px; }
+    .confirmation-card h1 { font-size: 24px; }
+    .confirmation-card .subtitle { font-size: 15px; margin-bottom: 24px; }
   }
 </style>
 </head>
@@ -276,7 +278,7 @@
   <div class="nav-logos">
     <span class="nav-logo">AI Simple</span>
     <div class="nav-divider"></div>
-    <span class="nav-partner">Leveraged CRE</span>
+    <span class="nav-partner">LeveragedCRE</span>
   </div>
 </nav>
 
@@ -296,30 +298,30 @@
 
       <div class="step">
         <span class="step-num">1</span>
-        <p class="step-text"><strong>March CRE AI follow‑up call details</strong> are headed to your inbox. Keep an eye out for an email from Phil with the date, time, and link.</p>
+        <p class="step-text"><strong>March CRE AI follow-up call details</strong> are headed to your inbox. Keep an eye out for an email from Phill with the date, time, and link.</p>
       </div>
 
       <div class="step">
         <span class="step-num">2</span>
-        <p class="step-text"><strong>Over the next 4–8 weeks,</strong> Phil will send some of the actual workflows and resources he's using with AI in his CRE business. Real stuff, not theory.</p>
+        <p class="step-text"><strong>Over the next 4-8 weeks,</strong> Phill will send some of the actual workflows and resources he's using with AI in his CRE business. Real stuff, not theory.</p>
       </div>
 
       <div class="step">
         <span class="step-num">3</span>
-        <p class="step-text">If you checked the <strong>"intro to Andrew"</strong> box, expect a separate email from Phil making that personal connection. No pressure — just a warm intro.</p>
+        <p class="step-text">If you checked the <strong>"intro to Andrew"</strong> box, expect a separate email from Phill making that personal connection. No pressure -- just a warm intro.</p>
       </div>
 
     </div>
 
     <p class="bottom-note">
-      Questions? Reach Phil directly at <a href="https://leveragedcre.com" target="_blank">leveragedcre.com</a>
+      Questions? Reach Phill directly at <a href="https://leveragedcre.com" target="_blank">LeveragedCRE.com</a>
     </p>
 
   </div>
 </main>
 
 <footer class="footer">
-  A partnership between <a href="https://aisimple.co" target="_blank">AI Simple</a> &amp; <a href="https://leveragedcre.com" target="_blank">Leveraged CRE</a>
+  A partnership between <a href="https://aisimple.co" target="_blank">AI Simple</a> &amp; <a href="https://leveragedcre.com" target="_blank">LeveragedCRE</a>
 </footer>
 
 </body>
