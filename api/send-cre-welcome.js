@@ -26,36 +26,7 @@ export default async function handler(req, res) {
 
     const fullName = `${first_name} ${last_name || ''}`.trim();
 
-    const htmlBody = `
-<div style="font-family: 'Helvetica Neue', Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #3a3937;">
-  <span style="display:none;font-size:0;line-height:0;max-height:0;mso-hide:all;">Phill and Grace with the follow-up you asked for (quick favor inside).</span>
-
-  <p style="font-size: 16px; line-height: 1.6;">Hey ${first_name},</p>
-
-  <p style="font-size: 16px; line-height: 1.6;">This is Grace, Phill's assistant. We got connected when Phill introduced me during his tech &amp; AI session at the CORFAC Conference in New Orleans, and you asked to get more follow-up on using this in CRE.</p>
-
-  <p style="font-size: 16px; line-height: 1.6;">First, I just want to make sure everything's working.</p>
-
-  <p style="font-size: 16px; line-height: 1.6;">Could you do me a quick favor and hit "reply" to let me know you got this?<br>Even a simple "Got it" is perfect.</p>
-
-  <p style="font-size: 16px; line-height: 1.6;">While you're here, Phill and I would love your input on three things:</p>
-
-  <ol style="font-size: 16px; line-height: 1.8; padding-left: 20px;">
-    <li>What was your single biggest takeaway from Phill's talk or the AI panel?</li>
-    <li>What, if anything, were you hoping we'd cover and didn't?</li>
-    <li>Would you like to hear from me regularly about what I'm doing day-to-day to help Phill get more leverage in his CRE business?</li>
-  </ol>
-
-  <p style="font-size: 16px; line-height: 1.6;">You can just send a few bullet points in your reply. I'll read every one and share your thoughts with Phill so we can make the next round even more valuable for you.</p>
-
-  <p style="font-size: 16px; line-height: 1.6;">Thanks for helping me get better, one line at a time.</p>
-
-  <p style="font-size: 16px; line-height: 1.6; margin-top: 24px;">
-    Grace<br>
-    Phill's LeveragedCRE partner<br>
-    <a href="mailto:gardenz@leveragedCRE.com" style="color: #5e8236;">gardenz@leveragedCRE.com</a>
-  </p>
-</div>`;
+    const htmlBody = `<div dir="ltr">Hey ${first_name},<br><br>This is Grace, Phill's assistant. We got connected when Phill introduced me during his tech & AI session at the CORFAC Conference in New Orleans, and you asked to get more follow-up on using this in CRE.<br><br>First, I just want to make sure everything's working.<br><br>Could you do me a quick favor and hit "reply" to let me know you got this?<br>Even a simple "Got it" is perfect.<br><br>While you're here, Phill and I would love your input on three things:<br><br>1. What was your single biggest takeaway from Phill's talk or the AI panel?<br>2. What, if anything, were you hoping we'd cover and didn't?<br>3. Would you like to hear from me regularly about what I'm doing day-to-day to help Phill get more leverage in his CRE business?<br><br>You can just send a few bullet points in your reply. I'll read every one and share your thoughts with Phill so we can make the next round even more valuable for you.<br><br>Thanks for helping me get better, one line at a time.<br><br>Grace<br>Phill's LeveragedCRE partner<br>gardenz@leveragedCRE.com</div>`;
 
     // Execute GMAIL_SEND_EMAIL via Composio
     const executeRes = await fetch(`${COMPOSIO_BASE}/tools/execute/GMAIL_SEND_EMAIL`, {
