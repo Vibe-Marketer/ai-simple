@@ -122,11 +122,20 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
+  .greeting {
+    font-family: 'Jost', sans-serif;
+    font-size: clamp(18px, 3vw, 22px);
+    font-weight: 500;
+    color: var(--neutral-600);
+    margin-bottom: 24px;
+    animation: fadeUp 0.4s ease-out both;
+  }
+
   .headshots {
     display: flex;
     justify-content: center;
-    gap: 28px;
-    margin: 0 auto 28px;
+    gap: 48px;
+    margin: 0 auto 32px;
   }
 
   .headshot {
@@ -156,9 +165,28 @@
     color: var(--neutral-700);
   }
 
+  .community-cta {
+    display: inline-block;
+    margin-top: 28px;
+    padding: 14px 32px;
+    background: var(--green-600);
+    color: var(--white);
+    font-family: 'Jost', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: background 0.2s ease;
+  }
+
+  .community-cta:hover {
+    background: var(--green-700);
+  }
+
   @media (max-width: 600px) {
     .headshot img { width: 76px; height: 76px; }
-    .headshots { gap: 22px; }
+    .headshots { gap: 32px; }
+    .community-cta { padding: 12px 24px; font-size: 15px; }
   }
 
   .confirmation-card h1 {
@@ -283,6 +311,8 @@
 <main class="main">
   <div class="confirmation-card">
 
+    <p class="greeting">Great meeting you at CORFAC!</p>
+
     <div class="headshots">
       <div class="headshot">
         <img src="/img/phill_headshot.png" alt="Phill Tomlinson">
@@ -319,6 +349,8 @@
     <p class="bottom-note">
       Questions? Reach Phill directly at <a href="https://leveragedcre.com" target="_blank">LeveragedCRE.com</a>
     </p>
+
+    <a href="https://www.skool.com/leveragedcre/about" target="_blank" class="community-cta">Join My LeveragedCRE Community</a>
 
   </div>
 </main>
