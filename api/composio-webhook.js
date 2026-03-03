@@ -1,6 +1,7 @@
 // Handles Composio trigger webhooks (Stripe checkout completed, payment failed, etc.)
 // Composio delivers trigger events here when subscribed events fire.
 // Logs purchases to Supabase: trial_purchases + SimpleCRM
+// Post-purchase: welcome email, Drive sharing, Andrew notifications
 
 import { createClient } from '@supabase/supabase-js';
 import { createHmac, timingSafeEqual } from 'crypto';
@@ -9,6 +10,96 @@ const supabase = createClient(
   process.env.SUPABASE_URL,
   process.env.SUPABASE_SECRET_KEY
 );
+
+const COMPOSIO_API_KEY = process.env.COMPOSIO_API_KEY;
+const COMPOSIO_BASE = 'https://backend.composio.dev/api/v3';
+
+// --- Composio tool execution helper ---
+
+async function executeComposioTool(action, userId, args) {
+  const res = await fetch(`${COMPOSIO_BASE}/tools/execute/${action}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-api-key': COMPOSIO_API_KEY,
+    },
+    body: JSON.stringify({
+      user_id: userId,
+      arguments: args,
+    }),
+  });
+  return res.json();
+}
+
+// --- Post-purchase automation actions ---
+
+async function sendBuyerWelcomeEmail(email, name) {
+  const firstName = name ? name.split(' ')[0] : 'there';
+  return executeComposioTool(
+    'RESEND_SEND_EMAIL',
+    process.env.COMPOSIO_RESEND_USER_ID,
+    {
+      from: 'Andrew <a@mail.aisimple.co>',
+      reply_to: 'a@aisimple.co',
+      to: email,
+      subject: "You're in — welcome to THE LAB",
+      html: `<p>Hey ${firstName},</p>
+<p>You're officially in THE LAB. Here's everything you need to get started:</p>
+<p><strong>1. Join the WhatsApp group:</strong><br/>
+<a href="https://chat.whatsapp.com/JNKkecBPQTEKfNElHJMtIV">Click here to join</a> — this is where the real conversations happen.</p>
+<p><strong>2. Access the resource vault:</strong><br/>
+A Google Drive folder with tools, templates, and automations has been shared with your email (${email}). Check your Drive for it.</p>
+<p><strong>3. Your 7-day trial starts now.</strong><br/>
+Dive in, ask questions, build things. This is your backstage pass.</p>
+<p>Talk soon,<br/>Andrew</p>`,
+    }
+  );
+}
+
+async function shareGoogleDriveFolder(email) {
+  return executeComposioTool(
+    'GOOGLEDRIVE_ADD_FILE_SHARING_PREFERENCE',
+    process.env.COMPOSIO_GOOGLEDRIVE_USER_ID,
+    {
+      file_id: '1ytVubbMbkoIv9o0-RfhYSZeGuINY-1Nb',
+      email_address: email,
+      role: 'reader',
+      type: 'user',
+    }
+  );
+}
+
+async function sendAndrewNotificationEmail(email, name, amount) {
+  return executeComposioTool(
+    'RESEND_SEND_EMAIL',
+    process.env.COMPOSIO_RESEND_USER_ID,
+    {
+      from: 'THE LAB <a@aisimple.co>',
+      to: 'a@aisimple.co',
+      subject: `New LAB trial purchase — ${name || email}`,
+      html: `<p><strong>New trial purchase:</strong></p>
+<ul>
+<li>Name: ${name || 'N/A'}</li>
+<li>Email: ${email}</li>
+<li>Amount: $${(amount / 100).toFixed(2)}</li>
+</ul>
+<p>Drive folder shared + welcome email sent automatically.</p>`,
+    }
+  );
+}
+
+async function sendAndrewWhatsAppNotification(email, name, amount) {
+  const msg = `New LAB trial: ${name || email} — $${(amount / 100).toFixed(2)}`;
+  return executeComposioTool(
+    'WHATSAPP_SEND_MESSAGE',
+    process.env.COMPOSIO_WHATSAPP_USER_ID,
+    {
+      phone_number_id: process.env.WHATSAPP_PHONE_NUMBER_ID,
+      to_number: process.env.ANDREW_WHATSAPP_NUMBER,
+      text: msg,
+    }
+  );
+}
 
 function verifyComposioSignature(payload, signature, secret) {
   if (!signature || !secret) return false;
@@ -138,6 +229,25 @@ export default async function handler(req, res) {
         }]);
 
       console.log('Trial purchase via Composio:', customerEmail, `$${(amountTotal / 100).toFixed(2)}`);
+
+      // --- Post-purchase automation (all fire in parallel, none blocks another) ---
+      if (customerEmail) {
+        const results = await Promise.allSettled([
+          sendBuyerWelcomeEmail(customerEmail, customerName),
+          shareGoogleDriveFolder(customerEmail),
+          sendAndrewNotificationEmail(customerEmail, customerName, amountTotal),
+          sendAndrewWhatsAppNotification(customerEmail, customerName, amountTotal),
+        ]);
+
+        const labels = ['welcome-email', 'drive-share', 'andrew-email', 'andrew-whatsapp'];
+        results.forEach((r, i) => {
+          if (r.status === 'fulfilled') {
+            console.log(`Post-purchase [${labels[i]}]: OK`, JSON.stringify(r.value).slice(0, 200));
+          } else {
+            console.error(`Post-purchase [${labels[i]}]: FAILED`, r.reason);
+          }
+        });
+      }
     }
 
     if (triggerSlug === 'STRIPE_PAYMENT_FAILED_TRIGGER') {
