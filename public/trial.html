@@ -83,7 +83,7 @@ body { font-family: 'Inter', sans-serif; }
   width: 100%; aspect-ratio: 1; background: linear-gradient(-50deg, transparent, #ef233c, transparent);
   mask-image: radial-gradient(circle at bottom, transparent 40%, black); opacity: 0.6; animation: shimmer 4s linear infinite;
 }
-.shiny-cta span { position: relative; z-index: 2; display: inline-block; }
+.shiny-cta span { position: relative; z-index: 2; display: inline-flex; align-items: center; gap: 0.5rem; }
 .shiny-cta span::before {
   content: ''; pointer-events: none; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: -1;
   --size: calc(100% + 1rem); width: var(--size); height: var(--size);
@@ -551,7 +551,7 @@ body { font-family: 'Inter', sans-serif; }
         <p class="text-zinc-500 text-xs text-center mb-6">If after 7 days this isn't for you — keep everything you grabbed and walk. No questions asked. No awkward cancellation form. No guilt trip.</p>
 
         <div class="text-center">
-          <a href="#STRIPE_PAYMENT_LINK" id="pricing-cta" class="shiny-cta trial-cta-link">
+          <a href="https://buy.stripe.com/cNi8wP3Px5Yn0Pc8GRbAs0f" id="pricing-cta" class="shiny-cta trial-cta-link">
             <span class="flex items-center justify-center gap-2 text-base font-bold tracking-wide uppercase font-manrope whitespace-nowrap">
               Get In — $49
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
@@ -942,7 +942,7 @@ body { font-family: 'Inter', sans-serif; }
     </div>
 
     <div class="animate-on-scroll mb-8">
-      <a href="#STRIPE_PAYMENT_LINK" id="final-cta" class="shiny-cta trial-cta-link">
+      <a href="https://buy.stripe.com/cNi8wP3Px5Yn0Pc8GRbAs0f" id="final-cta" class="shiny-cta trial-cta-link">
         <span class="flex items-center justify-center gap-2 text-base font-bold tracking-wide uppercase font-manrope whitespace-nowrap">
           Get In — $49
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
@@ -969,7 +969,7 @@ body { font-family: 'Inter', sans-serif; }
 
 <!-- ========== STICKY MOBILE CTA ========== -->
 <div id="sticky-cta" class="sticky-cta md:hidden">
-  <a href="#STRIPE_PAYMENT_LINK" class="trial-cta-link inline-block w-full max-w-sm mx-auto px-6 py-3 bg-[#ef233c] text-white text-sm font-bold font-manrope tracking-wide uppercase text-center hover:bg-[#dc2626] transition-colors" style="border-radius: 0;">
+  <a href="https://buy.stripe.com/cNi8wP3Px5Yn0Pc8GRbAs0f" class="trial-cta-link inline-block w-full max-w-sm mx-auto px-6 py-3 bg-[#ef233c] text-white text-sm font-bold font-manrope tracking-wide uppercase text-center hover:bg-[#dc2626] transition-colors" style="border-radius: 0;">
     Get In — $49 →
   </a>
 </div>
