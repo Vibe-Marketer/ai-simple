@@ -3,7 +3,7 @@
 
 const COMPOSIO_API_KEY = process.env.COMPOSIO_API_KEY;
 const COMPOSIO_BASE = 'https://backend.composio.dev/api/v3';
-const STRIPE_USER_ID = 'andrew-aisimple';
+const STRIPE_USER_ID = 'pg-test-e7af580e-232f-4e5c-9529-c7791fb36806';
 
 async function executeStripe(action, args) {
   const res = await fetch(`${COMPOSIO_BASE}/tools/execute/${action}`, {
@@ -26,19 +26,16 @@ export default async function handler(req, res) {
   }
 
   try {
-    const productsResult = await executeStripe('STRIPE_LIST_ALL_PRODUCTS', {
+    const productsResult = await executeStripe('STRIPE_LIST_PRODUCTS', {
       limit: 20,
-      active: true,
     });
 
-    const pricesResult = await executeStripe('STRIPE_LIST_ALL_PRICES', {
+    const pricesResult = await executeStripe('STRIPE_LIST_CHARGES', {
       limit: 20,
-      active: true,
     });
 
-    const linksResult = await executeStripe('STRIPE_LIST_ALL_PAYMENT_LINKS', {
+    const linksResult = await executeStripe('STRIPE_LIST_PAYMENT_LINKS', {
       limit: 20,
-      active: true,
     });
 
     return res.status(200).json({

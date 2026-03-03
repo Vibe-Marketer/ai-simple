@@ -4,7 +4,7 @@
 const COMPOSIO_API_KEY = process.env.COMPOSIO_API_KEY;
 const COMPOSIO_BASE = 'https://backend.composio.dev/api/v3';
 const STRIPE_AUTH_CONFIG_ID = 'ac_CHQmlC58Ya5K';
-const STRIPE_USER_ID = 'andrew-aisimple';
+const STRIPE_USER_ID = 'pg-test-e7af580e-232f-4e5c-9529-c7791fb36806';
 
 export default async function handler(req, res) {
   if (req.method !== 'GET') {
