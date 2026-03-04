@@ -187,7 +187,15 @@ body { font-family: 'Inter', sans-serif; }
   transition: box-shadow 0.3s;
 }
 .proof-card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
-.proof-card img { width: 100%; height: auto; display: block; }
+.proof-card img, .proof-card video { width: 100%; height: auto; display: block; }
+.proof-card video { filter: grayscale(1); }
+.proof-card .vid-label {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 6px 10px;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  color: #fff; font-size: 11px; font-weight: 600;
+  font-family: 'Manrope', sans-serif;
+}
 .proof-quote {
   border-radius: 10px; border: 1px solid #e4e4e7;
   background: #fff; padding: 20px;
@@ -1067,6 +1075,7 @@ body { font-family: 'Inter', sans-serif; }
       <div class="h-full overflow-hidden relative">
         <div class="proof-track flex flex-col gap-3" data-direction="up" data-speed="0.4">
           <div class="proof-card"><img src="img/testimonials/jessica-pereira.png" alt="Jessica Pereira" loading="lazy"></div>
+          <div class="proof-card" style="position:relative"><video src="img/testimonials/vid/jake-lockwood.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">Jake Lockwood</div></div>
           <div class="proof-quote">
             <p class="text-zinc-700 text-sm italic leading-relaxed mb-3">"This is impressive as hell... Interested in possibly doing something together on this?"</p>
             <div class="flex items-center gap-2">
@@ -1076,6 +1085,7 @@ body { font-family: 'Inter', sans-serif; }
           </div>
           <div class="proof-card"><img src="img/testimonials/kamaya-johnson.png" alt="Kamaya Johnson" loading="lazy"></div>
           <div class="proof-card"><img src="img/testimonials/charles-p.png" alt="Charles P" loading="lazy"></div>
+          <div class="proof-card" style="position:relative"><video src="img/testimonials/vid/robert-medina.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">Robert Medina</div></div>
           <div class="proof-card"><img src="img/testimonials/kofi-akyeampong.png" alt="Kofi Akyeampong" loading="lazy"></div>
           <div class="proof-quote">
             <p class="text-zinc-700 text-sm italic leading-relaxed mb-3">"Andrew 10x'd my quality, effort, and delivery speed. Complete game changer."</p>
@@ -1085,9 +1095,11 @@ body { font-family: 'Inter', sans-serif; }
             </div>
           </div>
           <div class="proof-card"><img src="img/testimonials/terry---offer-doc.png" alt="Terry" loading="lazy"></div>
+          <div class="proof-card" style="position:relative"><video src="img/testimonials/vid/wiz-short.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">Wiz</div></div>
           <div class="proof-card"><img src="img/testimonials/rizzan-ds-testimonial-post.png" alt="Rizzan" loading="lazy"></div>
           <!-- DUPLICATE for infinite loop -->
           <div class="proof-card"><img src="img/testimonials/jessica-pereira.png" alt="Jessica Pereira" loading="lazy"></div>
+          <div class="proof-card" style="position:relative"><video src="img/testimonials/vid/jake-lockwood.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">Jake Lockwood</div></div>
           <div class="proof-quote">
             <p class="text-zinc-700 text-sm italic leading-relaxed mb-3">"This is impressive as hell..."</p>
             <div class="flex items-center gap-2">
@@ -1097,6 +1109,7 @@ body { font-family: 'Inter', sans-serif; }
           </div>
           <div class="proof-card"><img src="img/testimonials/kamaya-johnson.png" alt="Kamaya Johnson" loading="lazy"></div>
           <div class="proof-card"><img src="img/testimonials/charles-p.png" alt="Charles P" loading="lazy"></div>
+          <div class="proof-card" style="position:relative"><video src="img/testimonials/vid/robert-medina.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">Robert Medina</div></div>
           <div class="proof-card"><img src="img/testimonials/kofi-akyeampong.png" alt="Kofi Akyeampong" loading="lazy"></div>
           <div class="proof-quote">
             <p class="text-zinc-700 text-sm italic leading-relaxed mb-3">"Andrew 10x'd my quality, effort, and delivery speed."</p>
@@ -1106,6 +1119,7 @@ body { font-family: 'Inter', sans-serif; }
             </div>
           </div>
           <div class="proof-card"><img src="img/testimonials/terry---offer-doc.png" alt="Terry" loading="lazy"></div>
+          <div class="proof-card" style="position:relative"><video src="img/testimonials/vid/wiz-short.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">Wiz</div></div>
           <div class="proof-card"><img src="img/testimonials/rizzan-ds-testimonial-post.png" alt="Rizzan" loading="lazy"></div>
         </div>
       </div>
@@ -1128,6 +1142,7 @@ body { font-family: 'Inter', sans-serif; }
             </div>
           </div>
           <div class="proof-card"><img src="img/testimonials/david-barton-__-andrew-testimonial.png" alt="David Barton" loading="lazy"></div>
+          <div class="proof-card" style="position:relative"><video src="img/testimonials/vid/kevin-mabry.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">Kevin Mabry</div></div>
           <div class="proof-card"><img src="img/testimonials/facundo-aljer.png" alt="Facundo Aljer" loading="lazy"></div>
           <div class="proof-quote">
             <p class="text-zinc-700 text-sm italic leading-relaxed mb-3">"I don't think there's many people that can even touch Andrew when it comes to AI. Andrew's the monstrosity here on AI by leaps and bounds."</p>
@@ -1137,6 +1152,7 @@ body { font-family: 'Inter', sans-serif; }
             </div>
           </div>
           <div class="proof-card"><img src="img/testimonials/chetali-deshmukh.png" alt="Chetali Deshmukh" loading="lazy"></div>
+          <div class="proof-card" style="position:relative"><video src="img/testimonials/vid/ty-lg.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">TY</div></div>
           <div class="proof-card"><img src="img/testimonials/plato-taking-action.png" alt="Plato" loading="lazy"></div>
           <!-- DUPLICATE for infinite loop -->
           <div class="proof-card"><img src="img/testimonials/phil-tomlinson.png" alt="Phill Tomlinson" loading="lazy"></div>
@@ -1153,6 +1169,7 @@ body { font-family: 'Inter', sans-serif; }
             </div>
           </div>
           <div class="proof-card"><img src="img/testimonials/david-barton-__-andrew-testimonial.png" alt="David Barton" loading="lazy"></div>
+          <div class="proof-card" style="position:relative"><video src="img/testimonials/vid/kevin-mabry.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">Kevin Mabry</div></div>
           <div class="proof-card"><img src="img/testimonials/facundo-aljer.png" alt="Facundo Aljer" loading="lazy"></div>
           <div class="proof-quote">
             <p class="text-zinc-700 text-sm italic leading-relaxed mb-3">"Andrew's the monstrosity here on AI by leaps and bounds."</p>
@@ -1162,6 +1179,7 @@ body { font-family: 'Inter', sans-serif; }
             </div>
           </div>
           <div class="proof-card"><img src="img/testimonials/chetali-deshmukh.png" alt="Chetali Deshmukh" loading="lazy"></div>
+          <div class="proof-card" style="position:relative"><video src="img/testimonials/vid/ty-lg.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">TY</div></div>
           <div class="proof-card"><img src="img/testimonials/plato-taking-action.png" alt="Plato" loading="lazy"></div>
         </div>
       </div>
@@ -1170,6 +1188,7 @@ body { font-family: 'Inter', sans-serif; }
       <div class="h-full overflow-hidden relative hidden md:block">
         <div class="proof-track flex flex-col gap-3" data-direction="up" data-speed="0.45">
           <div class="proof-card"><img src="img/testimonials/charlie-lyons.png" alt="Charlie Lyons" loading="lazy"></div>
+          <div class="proof-card" style="position:relative"><video src="img/testimonials/vid/osaro.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">Osaro</div></div>
           <div class="proof-card"><img src="img/testimonials/jon-benson.png" alt="Jon Benson" loading="lazy"></div>
           <div class="proof-quote">
             <p class="text-zinc-700 text-sm italic leading-relaxed mb-3">"I posted one LinkedIn update and, 36 hours later, closed a $19,000 build-out."</p>
@@ -1180,12 +1199,14 @@ body { font-family: 'Inter', sans-serif; }
           </div>
           <div class="proof-card"><img src="img/testimonials/ram-sathappan.png" alt="Ram Sathappan" loading="lazy"></div>
           <div class="proof-card"><img src="img/testimonials/toby-hanson-offerdocsrock.png" alt="Toby Hanson" loading="lazy"></div>
+          <div class="proof-card" style="position:relative"><video src="img/testimonials/vid/wiz-los.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">Wiz &amp; Los</div></div>
           <div class="proof-card"><img src="img/testimonials/catfish.png" alt="Community testimonial" loading="lazy"></div>
           <div class="proof-card"><img src="img/testimonials/facundo-ajler.png" alt="Facundo Ajler" loading="lazy"></div>
           <div class="proof-card"><img src="img/testimonials/andrew-__-david-han-(screenshot).png" alt="Andrew & David Han" loading="lazy"></div>
           <div class="proof-card"><img src="img/testimonials/kofi-armstrong.png" alt="Kofi Armstrong" loading="lazy"></div>
           <!-- DUPLICATE for infinite loop -->
           <div class="proof-card"><img src="img/testimonials/charlie-lyons.png" alt="Charlie Lyons" loading="lazy"></div>
+          <div class="proof-card" style="position:relative"><video src="img/testimonials/vid/osaro.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">Osaro</div></div>
           <div class="proof-card"><img src="img/testimonials/jon-benson.png" alt="Jon Benson" loading="lazy"></div>
           <div class="proof-quote">
             <p class="text-zinc-700 text-sm italic leading-relaxed mb-3">"Closed a $19,000 build-out in 36 hours."</p>
@@ -1196,6 +1217,7 @@ body { font-family: 'Inter', sans-serif; }
           </div>
           <div class="proof-card"><img src="img/testimonials/ram-sathappan.png" alt="Ram Sathappan" loading="lazy"></div>
           <div class="proof-card"><img src="img/testimonials/toby-hanson-offerdocsrock.png" alt="Toby Hanson" loading="lazy"></div>
+          <div class="proof-card" style="position:relative"><video src="img/testimonials/vid/wiz-los.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">Wiz &amp; Los</div></div>
           <div class="proof-card"><img src="img/testimonials/catfish.png" alt="Community testimonial" loading="lazy"></div>
           <div class="proof-card"><img src="img/testimonials/facundo-ajler.png" alt="Facundo Ajler" loading="lazy"></div>
           <div class="proof-card"><img src="img/testimonials/andrew-__-david-han-(screenshot).png" alt="Andrew & David Han" loading="lazy"></div>
