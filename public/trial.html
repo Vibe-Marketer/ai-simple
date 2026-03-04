@@ -173,44 +173,37 @@ body { font-family: 'Inter', sans-serif; }
 .product-card img { transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
 .product-card:hover img { transform: scale(1.05); }
 
-/* ========== MASONRY TESTIMONIAL WALL ========== */
-.masonry-wall {
-  column-count: 2;
-  column-gap: 12px;
+/* ========== 3D TESTIMONIAL MARQUEE ========== */
+.proof-perspective { perspective: 1200px; overflow: hidden; }
+.proof-3d-grid {
+  transform: rotateX(20deg) rotateY(-4deg) rotateZ(4deg) scale(1.15);
+  transform-style: preserve-3d; will-change: transform;
 }
-@media (min-width: 768px) { .masonry-wall { column-count: 3; } }
-.masonry-wall .masonry-item {
-  break-inside: avoid;
-  margin-bottom: 12px;
-  display: inline-block;
-  width: 100%;
-}
-
-/* Video testimonial feature */
-.video-feature {
-  position: relative;
-  overflow: hidden;
-  border-radius: 12px;
-  cursor: pointer;
+.proof-track { will-change: transform; }
+.proof-card {
+  border-radius: 10px; overflow: hidden;
   border: 1px solid #e4e4e7;
-  background: linear-gradient(135deg, #18181b 0%, #27272a 100%);
-  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  transition: box-shadow 0.3s;
 }
-.video-feature:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+.proof-card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+.proof-card img { width: 100%; height: auto; display: block; }
+.proof-quote {
+  border-radius: 10px; border: 1px solid #e4e4e7;
+  background: #fff; padding: 20px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
 }
-.video-play-btn {
-  width: 64px; height: 64px;
-  background: rgba(239,35,60,0.9);
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  transition: transform 0.3s, background 0.3s;
+.proof-video {
+  border-radius: 10px; overflow: hidden;
+  border: 1px solid #e4e4e7;
+  position: relative; cursor: pointer;
 }
-.video-feature:hover .video-play-btn {
-  transform: scale(1.1);
-  background: #ef233c;
+.proof-video .play-btn {
+  width: 48px; height: 48px; background: rgba(239,35,60,0.9);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  transition: transform 0.3s;
 }
+.proof-video:hover .play-btn { transform: scale(1.15); }
 </style>
 </head>
 
@@ -1048,83 +1041,169 @@ body { font-family: 'Inter', sans-serif; }
 <!-- ========== DIVIDER ========== -->
 <div class="section-divider"></div>
 
-<!-- ========== ANIK SINGAL VIDEO TESTIMONIAL ========== -->
+<!-- ========== 3D TESTIMONIAL MARQUEE ========== -->
 <section class="py-20 px-6 relative z-10">
-  <div class="max-w-4xl mx-auto">
-
+  <div class="max-w-5xl mx-auto mb-12">
     <div class="flex items-center gap-2 mb-3 animate-on-scroll">
       <span class="w-1.5 h-1.5 rounded-full bg-[#ef233c]" style="animation: pulse-dot 2s infinite;"></span>
-      <span class="text-[10px] font-geist-mono text-zinc-500 uppercase tracking-widest">Featured Testimonial</span>
+      <span class="text-[10px] font-geist-mono text-zinc-500 uppercase tracking-widest">Proof</span>
     </div>
-
-    <h2 class="text-3xl md:text-5xl font-manrope font-medium tracking-tighter text-zinc-900 mb-10 animate-on-scroll">
-      Hear It From <span class="text-[#ef233c]">Anik Singal</span>
-    </h2>
-
-    <div class="video-feature animate-on-scroll" onclick="if(this.querySelector('iframe')){return;} this.querySelector('.video-poster').style.display='none'; var f=document.createElement('iframe'); f.src='https://www.youtube-nocookie.com/embed/uGcl13lI_-U?autoplay=1&rel=0&modestbranding=1&playsinline=1'; f.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'; f.allowFullscreen=true; f.style.cssText='position:absolute;inset:0;width:100%;height:100%;border:none;z-index:10;border-radius:12px;'; this.appendChild(f);">
-      <div class="video-poster aspect-video flex flex-col items-center justify-center p-8 md:p-12 text-center relative" style="background: url('https://img.youtube.com/vi/uGcl13lI_-U/maxresdefault.jpg') center/cover no-repeat; border-radius: 12px;">
-        <div style="position:absolute;inset:0;background:rgba(0,0,0,0.5);border-radius:12px;"></div>
-        <div class="relative z-10 flex flex-col items-center">
-          <div class="video-play-btn mb-6">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="white" stroke="none"><polygon points="6,3 20,12 6,21"/></svg>
-          </div>
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[#ef233c] to-red-800 flex items-center justify-center text-white text-sm font-bold">AS</div>
-            <div class="text-left">
-              <p class="text-white font-manrope font-semibold">Anik Singal</p>
-              <p class="text-zinc-400 text-sm">Founder of Lurn &middot; 9-Figure Entrepreneur</p>
-            </div>
-          </div>
-          <p class="text-white text-lg md:text-xl font-manrope italic max-w-xl drop-shadow-lg">"Andrew is absolutely by far the best AI expert I've had a chance to talk to. And I talk to people every day."</p>
-          <p class="text-white/60 text-xs mt-4">Click to watch the full testimonial</p>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ========== DIVIDER ========== -->
-<div class="section-divider"></div>
-
-<!-- ========== MEMBER TESTIMONIALS — IMAGE WALL ========== -->
-<section class="py-20 px-6 relative z-10">
-  <div class="max-w-6xl mx-auto">
-
-    <div class="flex items-center gap-2 mb-3 animate-on-scroll">
-      <span class="w-1.5 h-1.5 rounded-full bg-[#ef233c]" style="animation: pulse-dot 2s infinite;"></span>
-      <span class="text-[10px] font-geist-mono text-zinc-500 uppercase tracking-widest">Results</span>
-    </div>
-
-    <h2 class="text-3xl md:text-5xl font-manrope font-medium tracking-tighter text-zinc-900 mb-4 animate-on-scroll">
+    <h2 class="text-3xl md:text-5xl font-manrope font-medium tracking-tighter text-zinc-900 mb-3 animate-on-scroll">
       Members Aren't Talking. <span class="text-[#ef233c]">They're Closing.</span>
     </h2>
+    <p class="text-zinc-500 text-sm animate-on-scroll">Real screenshots. Real results. Real video. Nothing staged.</p>
+  </div>
 
-    <p class="text-zinc-500 text-sm mb-10 animate-on-scroll">Real screenshots. Real results. Nothing edited.</p>
+  <div class="w-full h-[600px] md:h-[800px] relative proof-perspective animate-on-scroll" id="proof-marquee">
+    <!-- Fade edges -->
+    <div class="pointer-events-none absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-white via-white/80 to-transparent z-10"></div>
+    <div class="pointer-events-none absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white via-white/80 to-transparent z-10"></div>
+    <div class="pointer-events-none absolute top-0 bottom-0 left-0 w-16 bg-gradient-to-r from-white to-transparent z-10"></div>
+    <div class="pointer-events-none absolute top-0 bottom-0 right-0 w-16 bg-gradient-to-l from-white to-transparent z-10"></div>
 
-    <!-- Masonry testimonial wall -->
-    <div class="masonry-wall animate-on-scroll">
-      <div class="masonry-item"><img src="img/testimonials/jessica-pereira.png" alt="Jessica Pereira testimonial" class="testimonial-img w-full" loading="lazy"></div>
-      <div class="masonry-item"><img src="img/testimonials/phil-tomlinson.png" alt="Phill Tomlinson testimonial" class="testimonial-img w-full" loading="lazy"></div>
-      <div class="masonry-item"><img src="img/testimonials/kamaya-johnson.png" alt="Kamaya Johnson testimonial" class="testimonial-img w-full" loading="lazy"></div>
-      <div class="masonry-item"><img src="img/testimonials/david-barton-__-andrew-testimonial.png" alt="David Barton testimonial" class="testimonial-img w-full" loading="lazy"></div>
-      <div class="masonry-item"><img src="img/testimonials/charlie-lyons.png" alt="Charlie Lyons testimonial" class="testimonial-img w-full" loading="lazy"></div>
-      <div class="masonry-item"><img src="img/testimonials/jon-benson.png" alt="Jon Benson testimonial" class="testimonial-img w-full" loading="lazy"></div>
-      <div class="masonry-item"><img src="img/testimonials/ram-sathappan.png" alt="Ram Sathappan testimonial" class="testimonial-img w-full" loading="lazy"></div>
-      <div class="masonry-item"><img src="img/testimonials/kofi-akyeampong.png" alt="Kofi Akyeampong testimonial" class="testimonial-img w-full" loading="lazy"></div>
-      <div class="masonry-item"><img src="img/testimonials/facundo-aljer.png" alt="Facundo Aljer testimonial" class="testimonial-img w-full" loading="lazy"></div>
-      <div class="masonry-item"><img src="img/testimonials/charles-p.png" alt="Charles P testimonial" class="testimonial-img w-full" loading="lazy"></div>
-      <div class="masonry-item"><img src="img/testimonials/chetali-deshmukh.png" alt="Chetali Deshmukh testimonial" class="testimonial-img w-full" loading="lazy"></div>
-      <div class="masonry-item"><img src="img/testimonials/toby-hanson-offerdocsrock.png" alt="Toby Hanson testimonial" class="testimonial-img w-full" loading="lazy"></div>
-      <div class="masonry-item"><img src="img/testimonials/kofi-armstrong.png" alt="Kofi Armstrong testimonial" class="testimonial-img w-full" loading="lazy"></div>
-      <div class="masonry-item"><img src="img/testimonials/terry---offer-doc.png" alt="Terry testimonial" class="testimonial-img w-full" loading="lazy"></div>
-      <div class="masonry-item"><img src="img/testimonials/plato-taking-action.png" alt="Plato taking action" class="testimonial-img w-full" loading="lazy"></div>
-      <div class="masonry-item"><img src="img/testimonials/andrew-__-david-han-(screenshot).png" alt="Andrew and David Han testimonial" class="testimonial-img w-full" loading="lazy"></div>
-      <div class="masonry-item"><img src="img/testimonials/rizzan-ds-testimonial-post.png" alt="Rizzan testimonial" class="testimonial-img w-full" loading="lazy"></div>
-      <div class="masonry-item"><img src="img/testimonials/facundo-ajler.png" alt="Facundo Ajler testimonial" class="testimonial-img w-full" loading="lazy"></div>
-      <div class="masonry-item"><img src="img/testimonials/catfish.png" alt="Catfish testimonial" class="testimonial-img w-full" loading="lazy"></div>
+    <div class="grid grid-cols-2 md:grid-cols-3 h-full max-w-7xl mx-auto gap-3 proof-3d-grid" style="mask-image: linear-gradient(180deg, transparent, black 8%, black 92%, transparent); -webkit-mask-image: linear-gradient(180deg, transparent, black 8%, black 92%, transparent);">
+
+      <!-- COLUMN 1 — scrolls UP -->
+      <div class="h-full overflow-hidden relative">
+        <div class="proof-track flex flex-col gap-3" data-direction="up" data-speed="0.4">
+          <div class="proof-card"><img src="img/testimonials/jessica-pereira.png" alt="Jessica Pereira" loading="lazy"></div>
+          <div class="proof-quote">
+            <p class="text-zinc-700 text-sm italic leading-relaxed mb-3">"This is impressive as hell... Interested in possibly doing something together on this?"</p>
+            <div class="flex items-center gap-2">
+              <div class="w-7 h-7 rounded-full bg-gradient-to-br from-[#ef233c] to-red-800 flex items-center justify-center text-white text-[10px] font-bold">JB</div>
+              <div><p class="text-zinc-900 text-xs font-semibold">Jon Benson</p><p class="text-zinc-400 text-[10px]">Inventor of the VSL</p></div>
+            </div>
+          </div>
+          <div class="proof-card"><img src="img/testimonials/kamaya-johnson.png" alt="Kamaya Johnson" loading="lazy"></div>
+          <div class="proof-card"><img src="img/testimonials/charles-p.png" alt="Charles P" loading="lazy"></div>
+          <div class="proof-card"><img src="img/testimonials/kofi-akyeampong.png" alt="Kofi Akyeampong" loading="lazy"></div>
+          <div class="proof-quote">
+            <p class="text-zinc-700 text-sm italic leading-relaxed mb-3">"Andrew 10x'd my quality, effort, and delivery speed. Complete game changer."</p>
+            <div class="flex items-center gap-2">
+              <div class="w-7 h-7 rounded-full bg-gradient-to-br from-[#ef233c] to-red-800 flex items-center justify-center text-white text-[10px] font-bold">TC</div>
+              <div><p class="text-zinc-900 text-xs font-semibold">Terry Chenowith</p><p class="text-zinc-400 text-[10px]">Entrepreneur</p></div>
+            </div>
+          </div>
+          <div class="proof-card"><img src="img/testimonials/terry---offer-doc.png" alt="Terry" loading="lazy"></div>
+          <div class="proof-card"><img src="img/testimonials/rizzan-ds-testimonial-post.png" alt="Rizzan" loading="lazy"></div>
+          <!-- DUPLICATE for infinite loop -->
+          <div class="proof-card"><img src="img/testimonials/jessica-pereira.png" alt="Jessica Pereira" loading="lazy"></div>
+          <div class="proof-quote">
+            <p class="text-zinc-700 text-sm italic leading-relaxed mb-3">"This is impressive as hell..."</p>
+            <div class="flex items-center gap-2">
+              <div class="w-7 h-7 rounded-full bg-gradient-to-br from-[#ef233c] to-red-800 flex items-center justify-center text-white text-[10px] font-bold">JB</div>
+              <div><p class="text-zinc-900 text-xs font-semibold">Jon Benson</p><p class="text-zinc-400 text-[10px]">Inventor of the VSL</p></div>
+            </div>
+          </div>
+          <div class="proof-card"><img src="img/testimonials/kamaya-johnson.png" alt="Kamaya Johnson" loading="lazy"></div>
+          <div class="proof-card"><img src="img/testimonials/charles-p.png" alt="Charles P" loading="lazy"></div>
+          <div class="proof-card"><img src="img/testimonials/kofi-akyeampong.png" alt="Kofi Akyeampong" loading="lazy"></div>
+          <div class="proof-quote">
+            <p class="text-zinc-700 text-sm italic leading-relaxed mb-3">"Andrew 10x'd my quality, effort, and delivery speed."</p>
+            <div class="flex items-center gap-2">
+              <div class="w-7 h-7 rounded-full bg-gradient-to-br from-[#ef233c] to-red-800 flex items-center justify-center text-white text-[10px] font-bold">TC</div>
+              <div><p class="text-zinc-900 text-xs font-semibold">Terry Chenowith</p><p class="text-zinc-400 text-[10px]">Entrepreneur</p></div>
+            </div>
+          </div>
+          <div class="proof-card"><img src="img/testimonials/terry---offer-doc.png" alt="Terry" loading="lazy"></div>
+          <div class="proof-card"><img src="img/testimonials/rizzan-ds-testimonial-post.png" alt="Rizzan" loading="lazy"></div>
+        </div>
+      </div>
+
+      <!-- COLUMN 2 — scrolls DOWN (center) -->
+      <div class="h-full overflow-hidden relative">
+        <div class="proof-track flex flex-col gap-3" data-direction="down" data-speed="0.5">
+          <div class="proof-card"><img src="img/testimonials/phil-tomlinson.png" alt="Phill Tomlinson" loading="lazy"></div>
+          <!-- ANIK VIDEO CARD -->
+          <div class="proof-video" onclick="if(this.querySelector('iframe'))return; this.querySelector('.vid-poster').style.display='none'; var f=document.createElement('iframe'); f.src='https://www.youtube-nocookie.com/embed/uGcl13lI_-U?autoplay=1&rel=0&modestbranding=1&playsinline=1'; f.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'; f.allowFullscreen=true; f.style.cssText='width:100%;aspect-ratio:16/9;border:none;display:block;'; this.appendChild(f);">
+            <div class="vid-poster relative">
+              <img src="https://img.youtube.com/vi/uGcl13lI_-U/maxresdefault.jpg" alt="Anik Singal Video Testimonial" class="w-full" style="aspect-ratio:16/9; object-fit:cover;">
+              <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+                <div class="play-btn"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="white" stroke="none"><polygon points="6,3 20,12 6,21"/></svg></div>
+              </div>
+              <div class="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/70 to-transparent">
+                <p class="text-white text-xs font-semibold font-manrope">Anik Singal</p>
+                <p class="text-white/60 text-[10px]">Founder of Lurn &middot; 9-Figure Entrepreneur</p>
+              </div>
+            </div>
+          </div>
+          <div class="proof-card"><img src="img/testimonials/david-barton-__-andrew-testimonial.png" alt="David Barton" loading="lazy"></div>
+          <div class="proof-card"><img src="img/testimonials/facundo-aljer.png" alt="Facundo Aljer" loading="lazy"></div>
+          <div class="proof-quote">
+            <p class="text-zinc-700 text-sm italic leading-relaxed mb-3">"I don't think there's many people that can even touch Andrew when it comes to AI. Andrew's the monstrosity here on AI by leaps and bounds."</p>
+            <div class="flex items-center gap-2">
+              <div class="w-7 h-7 rounded-full bg-gradient-to-br from-[#ef233c] to-red-800 flex items-center justify-center text-white text-[10px] font-bold">LS</div>
+              <div><p class="text-zinc-900 text-xs font-semibold">Los Silva</p><p class="text-zinc-400 text-[10px]">AI Simple Co-Founder</p></div>
+            </div>
+          </div>
+          <div class="proof-card"><img src="img/testimonials/chetali-deshmukh.png" alt="Chetali Deshmukh" loading="lazy"></div>
+          <div class="proof-card"><img src="img/testimonials/plato-taking-action.png" alt="Plato" loading="lazy"></div>
+          <!-- DUPLICATE for infinite loop -->
+          <div class="proof-card"><img src="img/testimonials/phil-tomlinson.png" alt="Phill Tomlinson" loading="lazy"></div>
+          <div class="proof-video">
+            <div class="relative">
+              <img src="https://img.youtube.com/vi/uGcl13lI_-U/maxresdefault.jpg" alt="Anik Singal" class="w-full" style="aspect-ratio:16/9; object-fit:cover;">
+              <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+                <div class="play-btn"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="white" stroke="none"><polygon points="6,3 20,12 6,21"/></svg></div>
+              </div>
+              <div class="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/70 to-transparent">
+                <p class="text-white text-xs font-semibold font-manrope">Anik Singal</p>
+                <p class="text-white/60 text-[10px]">Founder of Lurn</p>
+              </div>
+            </div>
+          </div>
+          <div class="proof-card"><img src="img/testimonials/david-barton-__-andrew-testimonial.png" alt="David Barton" loading="lazy"></div>
+          <div class="proof-card"><img src="img/testimonials/facundo-aljer.png" alt="Facundo Aljer" loading="lazy"></div>
+          <div class="proof-quote">
+            <p class="text-zinc-700 text-sm italic leading-relaxed mb-3">"Andrew's the monstrosity here on AI by leaps and bounds."</p>
+            <div class="flex items-center gap-2">
+              <div class="w-7 h-7 rounded-full bg-gradient-to-br from-[#ef233c] to-red-800 flex items-center justify-center text-white text-[10px] font-bold">LS</div>
+              <div><p class="text-zinc-900 text-xs font-semibold">Los Silva</p><p class="text-zinc-400 text-[10px]">AI Simple Co-Founder</p></div>
+            </div>
+          </div>
+          <div class="proof-card"><img src="img/testimonials/chetali-deshmukh.png" alt="Chetali Deshmukh" loading="lazy"></div>
+          <div class="proof-card"><img src="img/testimonials/plato-taking-action.png" alt="Plato" loading="lazy"></div>
+        </div>
+      </div>
+
+      <!-- COLUMN 3 — scrolls UP (hidden on mobile) -->
+      <div class="h-full overflow-hidden relative hidden md:block">
+        <div class="proof-track flex flex-col gap-3" data-direction="up" data-speed="0.45">
+          <div class="proof-card"><img src="img/testimonials/charlie-lyons.png" alt="Charlie Lyons" loading="lazy"></div>
+          <div class="proof-card"><img src="img/testimonials/jon-benson.png" alt="Jon Benson" loading="lazy"></div>
+          <div class="proof-quote">
+            <p class="text-zinc-700 text-sm italic leading-relaxed mb-3">"I posted one LinkedIn update and, 36 hours later, closed a $19,000 build-out."</p>
+            <div class="flex items-center gap-2">
+              <div class="w-7 h-7 rounded-full bg-gradient-to-br from-[#ef233c] to-red-800 flex items-center justify-center text-white text-[10px] font-bold">JP</div>
+              <div><p class="text-zinc-900 text-xs font-semibold">Jessica Pereira</p><p class="text-zinc-400 text-[10px]">Founder</p></div>
+            </div>
+          </div>
+          <div class="proof-card"><img src="img/testimonials/ram-sathappan.png" alt="Ram Sathappan" loading="lazy"></div>
+          <div class="proof-card"><img src="img/testimonials/toby-hanson-offerdocsrock.png" alt="Toby Hanson" loading="lazy"></div>
+          <div class="proof-card"><img src="img/testimonials/catfish.png" alt="Community testimonial" loading="lazy"></div>
+          <div class="proof-card"><img src="img/testimonials/facundo-ajler.png" alt="Facundo Ajler" loading="lazy"></div>
+          <div class="proof-card"><img src="img/testimonials/andrew-__-david-han-(screenshot).png" alt="Andrew & David Han" loading="lazy"></div>
+          <div class="proof-card"><img src="img/testimonials/kofi-armstrong.png" alt="Kofi Armstrong" loading="lazy"></div>
+          <!-- DUPLICATE for infinite loop -->
+          <div class="proof-card"><img src="img/testimonials/charlie-lyons.png" alt="Charlie Lyons" loading="lazy"></div>
+          <div class="proof-card"><img src="img/testimonials/jon-benson.png" alt="Jon Benson" loading="lazy"></div>
+          <div class="proof-quote">
+            <p class="text-zinc-700 text-sm italic leading-relaxed mb-3">"Closed a $19,000 build-out in 36 hours."</p>
+            <div class="flex items-center gap-2">
+              <div class="w-7 h-7 rounded-full bg-gradient-to-br from-[#ef233c] to-red-800 flex items-center justify-center text-white text-[10px] font-bold">JP</div>
+              <div><p class="text-zinc-900 text-xs font-semibold">Jessica Pereira</p><p class="text-zinc-400 text-[10px]">Founder</p></div>
+            </div>
+          </div>
+          <div class="proof-card"><img src="img/testimonials/ram-sathappan.png" alt="Ram Sathappan" loading="lazy"></div>
+          <div class="proof-card"><img src="img/testimonials/toby-hanson-offerdocsrock.png" alt="Toby Hanson" loading="lazy"></div>
+          <div class="proof-card"><img src="img/testimonials/catfish.png" alt="Community testimonial" loading="lazy"></div>
+          <div class="proof-card"><img src="img/testimonials/facundo-ajler.png" alt="Facundo Ajler" loading="lazy"></div>
+          <div class="proof-card"><img src="img/testimonials/andrew-__-david-han-(screenshot).png" alt="Andrew & David Han" loading="lazy"></div>
+          <div class="proof-card"><img src="img/testimonials/kofi-armstrong.png" alt="Kofi Armstrong" loading="lazy"></div>
+        </div>
+      </div>
+
     </div>
-
   </div>
 </section>
 
@@ -1242,6 +1321,35 @@ window.addEventListener('scroll', () => {
   }
   lastScroll = scrollY;
 }, { passive: true });
+
+// 3D Testimonial Marquee — infinite scroll
+(function() {
+  const tracks = document.querySelectorAll('.proof-track');
+  if (!tracks.length) return;
+  const states = Array.from(tracks).map(t => ({
+    el: t,
+    dir: (t.getAttribute('data-direction') || 'up') === 'up' ? -1 : 1,
+    speed: parseFloat(t.getAttribute('data-speed') || '0.5'),
+    pos: 0, half: 0
+  }));
+  function init() {
+    states.forEach(s => { s.half = s.el.scrollHeight / 2; });
+  }
+  function tick() {
+    states.forEach(s => {
+      s.pos += s.speed * s.dir;
+      if (s.dir === -1 && s.pos <= -s.half) s.pos += s.half;
+      if (s.dir === 1 && s.pos >= 0) s.pos -= s.half;
+      s.el.style.transform = 'translate3d(0,' + s.pos + 'px,0)';
+    });
+    requestAnimationFrame(tick);
+  }
+  setTimeout(() => {
+    init();
+    states.forEach(s => { if (s.dir === 1) s.pos = -s.half; });
+    tick();
+  }, 600);
+})();
 </script>
 
 </body>
