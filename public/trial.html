@@ -188,11 +188,28 @@ body { font-family: 'Inter', sans-serif; }
 }
 .proof-card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
 .proof-card img, .proof-card video { width: 100%; height: auto; display: block; }
-.proof-card video { filter: grayscale(1); }
-.proof-card .vid-label {
+
+/* Uniform video testimonial cards */
+.vid-card {
+  position: relative; flex-shrink: 0;
+  width: 160px; height: 284px;
+  border-radius: 14px; overflow: hidden;
+  border: 1px solid #e4e4e7;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s;
+}
+.vid-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.12); }
+@media (min-width: 768px) { .vid-card { width: 200px; height: 356px; } }
+.vid-card video {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  filter: grayscale(1);
+  transition: filter 0.4s;
+}
+.vid-card:hover video { filter: grayscale(0); }
+.vid-label {
   position: absolute; bottom: 0; left: 0; right: 0;
-  padding: 6px 10px;
-  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  padding: 8px 12px;
+  background: linear-gradient(to top, rgba(0,0,0,0.75), transparent);
   color: #fff; font-size: 11px; font-weight: 600;
   font-family: 'Manrope', sans-serif;
 }
@@ -1384,44 +1401,60 @@ body { font-family: 'Inter', sans-serif; }
   </div>
 </section>
 
-<!-- ========== VIDEO TESTIMONIALS — horizontal scroll ========== -->
-<section class="py-12 relative z-10 overflow-hidden">
-  <div class="relative" id="vid-marquee">
-    <div class="pointer-events-none absolute top-0 bottom-0 left-0 w-24 bg-gradient-to-r from-white to-transparent z-10"></div>
-    <div class="pointer-events-none absolute top-0 bottom-0 right-0 w-24 bg-gradient-to-l from-white to-transparent z-10"></div>
-    <div class="flex gap-4 vid-scroll-track" style="width: max-content;">
-      <div class="shrink-0 w-48 md:w-56 rounded-xl overflow-hidden border border-zinc-200 shadow-sm" style="position:relative"><video src="img/testimonials/vid/jake-lockwood.mp4" autoplay muted loop playsinline preload="metadata" class="w-full" style="filter:grayscale(1);"></video><div class="vid-label">Jake Lockwood</div></div>
-      <div class="shrink-0 w-48 md:w-56 rounded-xl overflow-hidden border border-zinc-200 shadow-sm" style="position:relative"><video src="img/testimonials/vid/kevin-mabry.mp4" autoplay muted loop playsinline preload="metadata" class="w-full" style="filter:grayscale(1);"></video><div class="vid-label">Kevin Mabry</div></div>
-      <div class="shrink-0 w-48 md:w-56 rounded-xl overflow-hidden border border-zinc-200 shadow-sm" style="position:relative"><video src="img/testimonials/vid/osaro.mp4" autoplay muted loop playsinline preload="metadata" class="w-full" style="filter:grayscale(1);"></video><div class="vid-label">Osaro</div></div>
-      <div class="shrink-0 w-48 md:w-56 rounded-xl overflow-hidden border border-zinc-200 shadow-sm" style="position:relative"><video src="img/testimonials/vid/robert-medina.mp4" autoplay muted loop playsinline preload="metadata" class="w-full" style="filter:grayscale(1);"></video><div class="vid-label">Robert Medina</div></div>
-      <div class="shrink-0 w-80 md:w-96 rounded-xl overflow-hidden border border-zinc-200 shadow-sm" style="position:relative"><video src="img/testimonials/vid/ty-lg.mp4" autoplay muted loop playsinline preload="metadata" class="w-full" style="filter:grayscale(1);"></video><div class="vid-label">TY</div></div>
-      <div class="shrink-0 w-48 md:w-56 rounded-xl overflow-hidden border border-zinc-200 shadow-sm" style="position:relative"><video src="img/testimonials/vid/wiz-los.mp4" autoplay muted loop playsinline preload="metadata" class="w-full" style="filter:grayscale(1);"></video><div class="vid-label">Wiz &amp; Los</div></div>
-      <div class="shrink-0 w-48 md:w-56 rounded-xl overflow-hidden border border-zinc-200 shadow-sm" style="position:relative"><video src="img/testimonials/vid/wiz-short.mp4" autoplay muted loop playsinline preload="metadata" class="w-full" style="filter:grayscale(1);"></video><div class="vid-label">Wiz</div></div>
-      <!-- Anik YouTube -->
-      <div class="proof-video shrink-0 w-80 md:w-96 rounded-xl overflow-hidden border border-zinc-200 shadow-sm" onclick="if(this.querySelector('iframe'))return; this.querySelector('.vid-poster').style.display='none'; var f=document.createElement('iframe'); f.src='https://www.youtube-nocookie.com/embed/uGcl13lI_-U?autoplay=1&rel=0&modestbranding=1&playsinline=1'; f.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'; f.allowFullscreen=true; f.style.cssText='width:100%;aspect-ratio:16/9;border:none;display:block;'; this.appendChild(f);">
-        <div class="vid-poster relative">
-          <img src="https://img.youtube.com/vi/uGcl13lI_-U/maxresdefault.jpg" alt="Anik Singal" class="w-full" style="aspect-ratio:16/9; object-fit:cover;">
-          <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
-            <div class="play-btn"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="white" stroke="none"><polygon points="6,3 20,12 6,21"/></svg></div>
-          </div>
-          <div class="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/70 to-transparent">
-            <p class="text-white text-xs font-semibold font-manrope">Anik Singal</p>
-            <p class="text-white/60 text-[10px]">Founder of Lurn &middot; 9-Figure Entrepreneur</p>
+<!-- ========== ANIK SINGAL — Featured Endorsement ========== -->
+<section class="py-16 px-6 relative z-10">
+  <div class="max-w-3xl mx-auto">
+    <div class="flex items-center gap-2 mb-3 animate-on-scroll">
+      <span class="w-1.5 h-1.5 rounded-full bg-[#ef233c]" style="animation: pulse-dot 2s infinite;"></span>
+      <span class="text-[10px] font-geist-mono text-zinc-500 uppercase tracking-widest">Featured Endorsement</span>
+    </div>
+    <h2 class="text-2xl md:text-4xl font-manrope font-medium tracking-tighter text-zinc-900 mb-8 animate-on-scroll">
+      Hear It From a <span class="bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-red-600">9-Figure Founder</span>
+    </h2>
+
+    <div class="rounded-2xl overflow-hidden border border-zinc-200 shadow-lg animate-on-scroll proof-video" onclick="if(this.querySelector('iframe'))return; this.querySelector('.vid-poster').style.display='none'; var f=document.createElement('iframe'); f.src='https://www.youtube-nocookie.com/embed/uGcl13lI_-U?autoplay=1&rel=0&modestbranding=1&playsinline=1'; f.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'; f.allowFullscreen=true; f.style.cssText='width:100%;aspect-ratio:16/9;border:none;display:block;border-radius:16px;'; this.appendChild(f);">
+      <div class="vid-poster relative">
+        <img src="https://img.youtube.com/vi/uGcl13lI_-U/maxresdefault.jpg" alt="Anik Singal endorses Andrew Naegele" class="w-full" style="aspect-ratio:16/9; object-fit:cover;">
+        <div class="absolute inset-0 bg-black/30 flex items-center justify-center transition-all hover:bg-black/20">
+          <div class="w-16 h-16 md:w-20 md:h-20 bg-[#ef233c] rounded-full flex items-center justify-center shadow-xl" style="box-shadow: 0 0 40px rgba(239,35,60,0.4);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="white" stroke="none"><polygon points="8,5 20,12 8,19"/></svg>
           </div>
         </div>
       </div>
-      <!-- DUPLICATE for seamless loop -->
-      <div class="shrink-0 w-48 md:w-56 rounded-xl overflow-hidden border border-zinc-200 shadow-sm" style="position:relative"><video src="img/testimonials/vid/jake-lockwood.mp4" autoplay muted loop playsinline preload="metadata" class="w-full" style="filter:grayscale(1);"></video><div class="vid-label">Jake Lockwood</div></div>
-      <div class="shrink-0 w-48 md:w-56 rounded-xl overflow-hidden border border-zinc-200 shadow-sm" style="position:relative"><video src="img/testimonials/vid/kevin-mabry.mp4" autoplay muted loop playsinline preload="metadata" class="w-full" style="filter:grayscale(1);"></video><div class="vid-label">Kevin Mabry</div></div>
-      <div class="shrink-0 w-48 md:w-56 rounded-xl overflow-hidden border border-zinc-200 shadow-sm" style="position:relative"><video src="img/testimonials/vid/osaro.mp4" autoplay muted loop playsinline preload="metadata" class="w-full" style="filter:grayscale(1);"></video><div class="vid-label">Osaro</div></div>
-      <div class="shrink-0 w-48 md:w-56 rounded-xl overflow-hidden border border-zinc-200 shadow-sm" style="position:relative"><video src="img/testimonials/vid/robert-medina.mp4" autoplay muted loop playsinline preload="metadata" class="w-full" style="filter:grayscale(1);"></video><div class="vid-label">Robert Medina</div></div>
-      <div class="shrink-0 w-80 md:w-96 rounded-xl overflow-hidden border border-zinc-200 shadow-sm" style="position:relative"><video src="img/testimonials/vid/ty-lg.mp4" autoplay muted loop playsinline preload="metadata" class="w-full" style="filter:grayscale(1);"></video><div class="vid-label">TY</div></div>
-      <div class="shrink-0 w-48 md:w-56 rounded-xl overflow-hidden border border-zinc-200 shadow-sm" style="position:relative"><video src="img/testimonials/vid/wiz-los.mp4" autoplay muted loop playsinline preload="metadata" class="w-full" style="filter:grayscale(1);"></video><div class="vid-label">Wiz &amp; Los</div></div>
-      <div class="shrink-0 w-48 md:w-56 rounded-xl overflow-hidden border border-zinc-200 shadow-sm" style="position:relative"><video src="img/testimonials/vid/wiz-short.mp4" autoplay muted loop playsinline preload="metadata" class="w-full" style="filter:grayscale(1);"></video><div class="vid-label">Wiz</div></div>
-      <div class="shrink-0 w-80 md:w-96 rounded-xl overflow-hidden border border-zinc-200 shadow-sm" style="position:relative">
-        <img src="https://img.youtube.com/vi/uGcl13lI_-U/maxresdefault.jpg" alt="Anik Singal" class="w-full" style="aspect-ratio:16/9; object-fit:cover; filter:grayscale(1);">
-        <div class="vid-label">Anik Singal</div>
+    </div>
+
+    <div class="mt-6 flex items-start gap-4 animate-on-scroll">
+      <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[#ef233c] to-red-800 flex items-center justify-center text-white text-sm font-bold shrink-0">AS</div>
+      <div>
+        <p class="text-zinc-700 text-sm italic leading-relaxed">"Andrew is absolutely by far the best AI expert I've had a chance to talk to. And I talk to people every day. Some of the toughest AI things we had to do — he did in less than a day what would have taken my team weeks."</p>
+        <p class="text-zinc-900 text-sm font-semibold font-manrope mt-2">Anik Singal</p>
+        <p class="text-zinc-400 text-xs">Founder of Lurn &middot; 9-Figure Entrepreneur</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== VIDEO TESTIMONIALS — uniform horizontal scroll ========== -->
+<section class="py-8 relative z-10 overflow-hidden">
+  <div class="relative" id="vid-marquee">
+    <div class="pointer-events-none absolute top-0 bottom-0 left-0 w-20 md:w-32 bg-gradient-to-r from-white to-transparent z-10"></div>
+    <div class="pointer-events-none absolute top-0 bottom-0 right-0 w-20 md:w-32 bg-gradient-to-l from-white to-transparent z-10"></div>
+    <div class="vid-scroll-track flex gap-4" style="width: max-content; will-change: transform;">
+      <div class="vid-card"><video src="img/testimonials/vid/jake-lockwood.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">Jake Lockwood</div></div>
+      <div class="vid-card"><video src="img/testimonials/vid/kevin-mabry.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">Kevin Mabry</div></div>
+      <div class="vid-card"><video src="img/testimonials/vid/osaro.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">Osaro</div></div>
+      <div class="vid-card"><video src="img/testimonials/vid/robert-medina.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">Robert Medina</div></div>
+      <div class="vid-card"><video src="img/testimonials/vid/ty-lg.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">TY</div></div>
+      <div class="vid-card"><video src="img/testimonials/vid/wiz-los.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">Wiz &amp; Los</div></div>
+      <div class="vid-card"><video src="img/testimonials/vid/wiz-short.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">Wiz</div></div>
+      <!-- DUPLICATE for seamless loop -->
+      <div class="vid-card"><video src="img/testimonials/vid/jake-lockwood.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">Jake Lockwood</div></div>
+      <div class="vid-card"><video src="img/testimonials/vid/kevin-mabry.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">Kevin Mabry</div></div>
+      <div class="vid-card"><video src="img/testimonials/vid/osaro.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">Osaro</div></div>
+      <div class="vid-card"><video src="img/testimonials/vid/robert-medina.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">Robert Medina</div></div>
+      <div class="vid-card"><video src="img/testimonials/vid/ty-lg.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">TY</div></div>
+      <div class="vid-card"><video src="img/testimonials/vid/wiz-los.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">Wiz &amp; Los</div></div>
+      <div class="vid-card"><video src="img/testimonials/vid/wiz-short.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">Wiz</div></div>
     </div>
   </div>
 </section>
