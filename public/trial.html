@@ -134,6 +134,81 @@ body { font-family: 'Inter', sans-serif; }
 
 /* Quote border */
 .quote-border { border-left: 3px solid #ef233c; }
+
+/* ========== BRAND MARQUEE ========== */
+@keyframes infinite-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-infinite-scroll { animation: infinite-scroll 35s linear infinite; }
+.brand-marquee:hover .animate-infinite-scroll { animation-play-state: paused; }
+.brand-logo { height: 24px; width: auto; object-fit: contain; max-width: 100px; filter: grayscale(1); opacity: 0.35; transition: opacity 0.3s, filter 0.3s; }
+.brand-logo:hover { opacity: 0.7; filter: grayscale(0); }
+.logo-dark { filter: grayscale(1) brightness(0.2); opacity: 0.35; }
+.logo-dark:hover { filter: grayscale(0) brightness(1); opacity: 0.7; }
+
+/* ========== TESTIMONIAL WALL ========== */
+.testimonial-img {
+  border-radius: 8px;
+  border: 1px solid #e4e4e7;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.testimonial-img:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+}
+
+/* ========== OFFER STACK ========== */
+.offer-img {
+  border-radius: 8px;
+  border: 1px solid #e4e4e7;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  transition: transform 0.4s, box-shadow 0.4s;
+}
+.offer-img:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+}
+
+/* ========== MASONRY TESTIMONIAL WALL ========== */
+.masonry-wall {
+  column-count: 2;
+  column-gap: 12px;
+}
+@media (min-width: 768px) { .masonry-wall { column-count: 3; } }
+.masonry-wall .masonry-item {
+  break-inside: avoid;
+  margin-bottom: 12px;
+  display: inline-block;
+  width: 100%;
+}
+
+/* Video testimonial feature */
+.video-feature {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  cursor: pointer;
+  border: 1px solid #e4e4e7;
+  background: linear-gradient(135deg, #18181b 0%, #27272a 100%);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.video-feature:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+}
+.video-play-btn {
+  width: 64px; height: 64px;
+  background: rgba(239,35,60,0.9);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  transition: transform 0.3s, background 0.3s;
+}
+.video-feature:hover .video-play-btn {
+  transform: scale(1.1);
+  background: #ef233c;
+}
 </style>
 </head>
 
@@ -194,7 +269,38 @@ body { font-family: 'Inter', sans-serif; }
   </div>
 </section>
 
-<!-- ========== DIVIDER ========== -->
+<!-- ========== BRAND MARQUEE ========== -->
+<div class="py-8 relative z-10 brand-marquee">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="w-full inline-flex flex-nowrap overflow-hidden" style="mask-image: linear-gradient(to right, transparent 0, black 80px, black calc(100% - 80px), transparent 100%); -webkit-mask-image: linear-gradient(to right, transparent 0, black 80px, black calc(100% - 80px), transparent 100%);">
+      <div class="flex items-center [&_div]:mx-6 w-max animate-infinite-scroll">
+        <div class="flex items-center"><img src="img/disney.png" alt="Disney" class="brand-logo logo-dark"></div>
+        <div class="flex items-center"><img src="img/nfl.svg" alt="NFL" class="brand-logo logo-dark"></div>
+        <div class="flex items-center"><img src="img/jawzrsize.jpg" alt="Jawzrsize" class="brand-logo"></div>
+        <div class="flex items-center"><img src="img/gr8fl-solar.png" alt="GR8FL Solar" class="brand-logo logo-dark"></div>
+        <div class="flex items-center"><img src="img/lurn.png" alt="Lurn" class="brand-logo logo-dark"></div>
+        <div class="flex items-center"><img src="img/entrepreneur.svg" alt="Entrepreneur" class="brand-logo logo-dark"></div>
+        <div class="flex items-center"><img src="img/techcrunch.svg" alt="TechCrunch" class="brand-logo logo-dark"></div>
+        <div class="flex items-center"><img src="img/app-sumo.svg" alt="AppSumo" class="brand-logo logo-dark"></div>
+        <div class="flex items-center"><img src="img/mixergy.png" alt="Mixergy" class="brand-logo logo-dark"></div>
+        <div class="flex items-center"><img src="img/complily.png" alt="Complily" class="brand-logo logo-dark"></div>
+        <div class="flex items-center"><img src="img/bnsn.png" alt="BNSN" class="brand-logo logo-dark"></div>
+        <div class="flex items-center"><img src="img/disney.png" alt="Disney" class="brand-logo logo-dark"></div>
+        <div class="flex items-center"><img src="img/nfl.svg" alt="NFL" class="brand-logo logo-dark"></div>
+        <div class="flex items-center"><img src="img/jawzrsize.jpg" alt="Jawzrsize" class="brand-logo"></div>
+        <div class="flex items-center"><img src="img/gr8fl-solar.png" alt="GR8FL Solar" class="brand-logo logo-dark"></div>
+        <div class="flex items-center"><img src="img/lurn.png" alt="Lurn" class="brand-logo logo-dark"></div>
+        <div class="flex items-center"><img src="img/entrepreneur.svg" alt="Entrepreneur" class="brand-logo logo-dark"></div>
+        <div class="flex items-center"><img src="img/techcrunch.svg" alt="TechCrunch" class="brand-logo logo-dark"></div>
+        <div class="flex items-center"><img src="img/app-sumo.svg" alt="AppSumo" class="brand-logo logo-dark"></div>
+        <div class="flex items-center"><img src="img/mixergy.png" alt="Mixergy" class="brand-logo logo-dark"></div>
+        <div class="flex items-center"><img src="img/complily.png" alt="Complily" class="brand-logo logo-dark"></div>
+        <div class="flex items-center"><img src="img/bnsn.png" alt="BNSN" class="brand-logo logo-dark"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="section-divider my-0"></div>
 
 <!-- ========== SOCIAL PROOF — BIG NAMES ========== -->
@@ -416,6 +522,60 @@ body { font-family: 'Inter', sans-serif; }
         </div>
       </div>
 
+    </div>
+
+    <!-- Visual Product Showcase -->
+    <div class="mt-12 animate-on-scroll">
+      <p class="text-[10px] font-geist-mono text-zinc-500 uppercase tracking-widest mb-6 text-center">See What's Inside</p>
+
+      <!-- Hero mockup -->
+      <div class="mb-6">
+        <img src="img/trial/mockup.png" alt="THE LAB — Mission Control, Tools & Google Drive Vault" class="offer-img w-full">
+      </div>
+
+      <!-- Product grid -->
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <div class="space-y-2">
+          <img src="img/trial/callvault.png" alt="CallVault AI — Call Recording & Analysis" class="offer-img w-full">
+          <p class="text-zinc-500 text-xs text-center">CallVault AI</p>
+        </div>
+        <div class="space-y-2">
+          <img src="img/trial/clawsimply.png" alt="ClawSimply — Mission Control for AI Employees" class="offer-img w-full">
+          <p class="text-zinc-500 text-xs text-center">ClawSimply</p>
+        </div>
+        <div class="space-y-2">
+          <img src="img/trial/dashboard.png" alt="Project Dashboard — Kanban & Task Management" class="offer-img w-full">
+          <p class="text-zinc-500 text-xs text-center">Dashboards & Project Tools</p>
+        </div>
+        <div class="space-y-2">
+          <img src="img/trial/devping.png" alt="DevPing — Developer Notification Tool" class="offer-img w-full">
+          <p class="text-zinc-500 text-xs text-center">DevPing</p>
+        </div>
+        <div class="space-y-2">
+          <img src="img/trial/mac-health-checkup.png" alt="Mac Health Checkup" class="offer-img w-full">
+          <p class="text-zinc-500 text-xs text-center">Mac Health Checkup</p>
+        </div>
+        <div class="space-y-2">
+          <img src="img/trial/whatsapp.png" alt="Private WhatsApp Community" class="offer-img w-full">
+          <p class="text-zinc-500 text-xs text-center">Private WhatsApp Group</p>
+        </div>
+      </div>
+
+      <!-- Authority row -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+        <div class="space-y-2">
+          <img src="img/trial/andrew-speaking.png" alt="Andrew speaking at a founders event" class="offer-img w-full">
+        </div>
+        <div class="space-y-2">
+          <img src="img/trial/tribe-interview.png" alt="Andrew on Tribe of Buyers" class="offer-img w-full">
+        </div>
+      </div>
+    </div>
+
+    <!-- Founders Suite visual -->
+    <div class="mt-8 text-center animate-on-scroll">
+      <img src="img/trial/founders-suite.jpg" alt="AI Simple Founders Lab — The Ultimate Growth Suite" class="offer-img w-full max-w-2xl mx-auto">
+      <p class="text-zinc-500 text-xs mt-3">Everything you see here is yours for 7 days. Take it all.</p>
     </div>
 
   </div>
@@ -823,85 +983,78 @@ body { font-family: 'Inter', sans-serif; }
 <!-- ========== DIVIDER ========== -->
 <div class="section-divider"></div>
 
-<!-- ========== MEMBER TESTIMONIALS ========== -->
+<!-- ========== ANIK SINGAL VIDEO TESTIMONIAL ========== -->
 <section class="py-20 px-6 relative z-10">
-  <div class="max-w-5xl mx-auto">
+  <div class="max-w-4xl mx-auto">
+
+    <div class="flex items-center gap-2 mb-3 animate-on-scroll">
+      <span class="w-1.5 h-1.5 rounded-full bg-[#ef233c]" style="animation: pulse-dot 2s infinite;"></span>
+      <span class="text-[10px] font-geist-mono text-zinc-500 uppercase tracking-widest">Featured Testimonial</span>
+    </div>
+
+    <h2 class="text-3xl md:text-5xl font-manrope font-medium tracking-tighter text-zinc-900 mb-10 animate-on-scroll">
+      Hear It From <span class="text-[#ef233c]">Anik Singal</span>
+    </h2>
+
+    <div class="video-feature animate-on-scroll" onclick="if(this.querySelector('iframe')){return;} var f=document.createElement('iframe'); f.src='https://www.youtube.com/embed/ANIK_VIDEO_ID?autoplay=1&rel=0'; f.allow='autoplay; encrypted-media'; f.allowFullscreen=true; f.style.cssText='position:absolute;inset:0;width:100%;height:100%;border:none;z-index:10;'; this.appendChild(f);">
+      <div class="aspect-video flex flex-col items-center justify-center p-8 md:p-12 text-center relative">
+        <div class="video-play-btn mb-6">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="white" stroke="none"><polygon points="6,3 20,12 6,21"/></svg>
+        </div>
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[#ef233c] to-red-800 flex items-center justify-center text-white text-sm font-bold">AS</div>
+          <div class="text-left">
+            <p class="text-white font-manrope font-semibold">Anik Singal</p>
+            <p class="text-zinc-400 text-sm">Founder of Lurn &middot; 9-Figure Entrepreneur</p>
+          </div>
+        </div>
+        <p class="text-zinc-300 text-lg md:text-xl font-manrope italic max-w-xl">"Andrew is absolutely by far the best AI expert I've had a chance to talk to. And I talk to people every day."</p>
+        <p class="text-zinc-500 text-xs mt-4">Click to watch the full testimonial</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ========== DIVIDER ========== -->
+<div class="section-divider"></div>
+
+<!-- ========== MEMBER TESTIMONIALS — IMAGE WALL ========== -->
+<section class="py-20 px-6 relative z-10">
+  <div class="max-w-6xl mx-auto">
 
     <div class="flex items-center gap-2 mb-3 animate-on-scroll">
       <span class="w-1.5 h-1.5 rounded-full bg-[#ef233c]" style="animation: pulse-dot 2s infinite;"></span>
       <span class="text-[10px] font-geist-mono text-zinc-500 uppercase tracking-widest">Results</span>
     </div>
 
-    <h2 class="text-3xl md:text-5xl font-manrope font-medium tracking-tighter text-zinc-900 mb-10 animate-on-scroll">
+    <h2 class="text-3xl md:text-5xl font-manrope font-medium tracking-tighter text-zinc-900 mb-4 animate-on-scroll">
       Members Aren't Talking. <span class="text-[#ef233c]">They're Closing.</span>
     </h2>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <p class="text-zinc-500 text-sm mb-10 animate-on-scroll">Real screenshots. Real results. Nothing edited.</p>
 
-      <div class="bento-card border border-dashed border-zinc-200 bg-zinc-50 p-6 animate-on-scroll">
-        <div class="bento-glow"></div>
-        <div class="relative z-10">
-          <p class="text-zinc-600 text-sm leading-relaxed italic mb-3">"I posted one LinkedIn update and, 36 hours later, closed a $19,000 build-out."</p>
-          <p class="text-zinc-900 text-sm font-medium">— Jessica Pereira</p>
-        </div>
-      </div>
-
-      <div class="bento-card border border-dashed border-zinc-200 bg-zinc-50 p-6 animate-on-scroll" style="transition-delay: 0.1s;">
-        <div class="bento-glow"></div>
-        <div class="relative z-10">
-          <p class="text-zinc-600 text-sm leading-relaxed italic mb-3">"I received 5 strong responses, gained a new customer from Skool, and brought in $23,000 to date as a direct result."</p>
-          <p class="text-zinc-900 text-sm font-medium">— Phill Tomlinson</p>
-        </div>
-      </div>
-
-      <div class="bento-card border border-dashed border-zinc-200 bg-zinc-50 p-6 animate-on-scroll">
-        <div class="bento-glow"></div>
-        <div class="relative z-10">
-          <p class="text-zinc-600 text-sm leading-relaxed italic mb-3">"I'm on track to have a $5K week pushing for my first $10K month!"</p>
-          <p class="text-zinc-900 text-sm font-medium">— Kamaya Johnson</p>
-        </div>
-      </div>
-
-      <div class="bento-card border border-dashed border-zinc-200 bg-zinc-50 p-6 animate-on-scroll" style="transition-delay: 0.1s;">
-        <div class="bento-glow"></div>
-        <div class="relative z-10">
-          <p class="text-zinc-600 text-sm leading-relaxed italic mb-3">"Before I started working with Andrew, I was stuck. Too many ideas, no clear direction. Now, I take action every day."</p>
-          <p class="text-zinc-900 text-sm font-medium">— David Barton</p>
-        </div>
-      </div>
-
-      <div class="bento-card border border-dashed border-zinc-200 bg-zinc-50 p-6 animate-on-scroll">
-        <div class="bento-glow"></div>
-        <div class="relative z-10">
-          <p class="text-zinc-600 text-sm leading-relaxed italic mb-3">"I joined Andrew's community... not too long after I got my very first client."</p>
-          <p class="text-zinc-900 text-sm font-medium">— Osaro</p>
-        </div>
-      </div>
-
-      <div class="bento-card border border-dashed border-zinc-200 bg-zinc-50 p-6 animate-on-scroll" style="transition-delay: 0.1s;">
-        <div class="bento-glow"></div>
-        <div class="relative z-10">
-          <p class="text-zinc-600 text-sm leading-relaxed italic mb-3">"I decided not to buy the new BMW and put my money here instead. And I love it."</p>
-          <p class="text-zinc-900 text-sm font-medium">— Willie Dochee</p>
-        </div>
-      </div>
-
-      <div class="bento-card border border-dashed border-zinc-200 bg-zinc-50 p-6 animate-on-scroll">
-        <div class="bento-glow"></div>
-        <div class="relative z-10">
-          <p class="text-zinc-600 text-sm leading-relaxed italic mb-3">"Andrew's coaching calls are what make this worth it. I'm usually the one talking in masterminds, but here I'm quiet because I'm taking in so much."</p>
-          <p class="text-zinc-900 text-sm font-medium">— Eddy Bautista</p>
-        </div>
-      </div>
-
-      <div class="bento-card border border-dashed border-zinc-200 bg-zinc-50 p-6 animate-on-scroll" style="transition-delay: 0.1s;">
-        <div class="bento-glow"></div>
-        <div class="relative z-10">
-          <p class="text-zinc-600 text-sm leading-relaxed italic mb-3">"I attended the call and was astonished at how much value attendees got. He helped people with offers, funnels, copy, productivity, AI... all of it. My decision to join was a no-brainer."</p>
-          <p class="text-zinc-900 text-sm font-medium">— Charlie Lyons</p>
-        </div>
-      </div>
-
+    <!-- Masonry testimonial wall -->
+    <div class="masonry-wall animate-on-scroll">
+      <div class="masonry-item"><img src="img/testimonials/jessica-pereira.png" alt="Jessica Pereira testimonial" class="testimonial-img w-full" loading="lazy"></div>
+      <div class="masonry-item"><img src="img/testimonials/phil-tomlinson.png" alt="Phill Tomlinson testimonial" class="testimonial-img w-full" loading="lazy"></div>
+      <div class="masonry-item"><img src="img/testimonials/kamaya-johnson.png" alt="Kamaya Johnson testimonial" class="testimonial-img w-full" loading="lazy"></div>
+      <div class="masonry-item"><img src="img/testimonials/david-barton-__-andrew-testimonial.png" alt="David Barton testimonial" class="testimonial-img w-full" loading="lazy"></div>
+      <div class="masonry-item"><img src="img/testimonials/charlie-lyons.png" alt="Charlie Lyons testimonial" class="testimonial-img w-full" loading="lazy"></div>
+      <div class="masonry-item"><img src="img/testimonials/jon-benson.png" alt="Jon Benson testimonial" class="testimonial-img w-full" loading="lazy"></div>
+      <div class="masonry-item"><img src="img/testimonials/ram-sathappan.png" alt="Ram Sathappan testimonial" class="testimonial-img w-full" loading="lazy"></div>
+      <div class="masonry-item"><img src="img/testimonials/kofi-akyeampong.png" alt="Kofi Akyeampong testimonial" class="testimonial-img w-full" loading="lazy"></div>
+      <div class="masonry-item"><img src="img/testimonials/facundo-aljer.png" alt="Facundo Aljer testimonial" class="testimonial-img w-full" loading="lazy"></div>
+      <div class="masonry-item"><img src="img/testimonials/charles-p.png" alt="Charles P testimonial" class="testimonial-img w-full" loading="lazy"></div>
+      <div class="masonry-item"><img src="img/testimonials/chetali-deshmukh.png" alt="Chetali Deshmukh testimonial" class="testimonial-img w-full" loading="lazy"></div>
+      <div class="masonry-item"><img src="img/testimonials/toby-hanson-offerdocsrock.png" alt="Toby Hanson testimonial" class="testimonial-img w-full" loading="lazy"></div>
+      <div class="masonry-item"><img src="img/testimonials/kofi-armstrong.png" alt="Kofi Armstrong testimonial" class="testimonial-img w-full" loading="lazy"></div>
+      <div class="masonry-item"><img src="img/testimonials/terry---offer-doc.png" alt="Terry testimonial" class="testimonial-img w-full" loading="lazy"></div>
+      <div class="masonry-item"><img src="img/testimonials/plato-taking-action.png" alt="Plato taking action" class="testimonial-img w-full" loading="lazy"></div>
+      <div class="masonry-item"><img src="img/testimonials/andrew-__-david-han-(screenshot).png" alt="Andrew and David Han testimonial" class="testimonial-img w-full" loading="lazy"></div>
+      <div class="masonry-item"><img src="img/testimonials/rizzan-ds-testimonial-post.png" alt="Rizzan testimonial" class="testimonial-img w-full" loading="lazy"></div>
+      <div class="masonry-item"><img src="img/testimonials/facundo-ajler.png" alt="Facundo Ajler testimonial" class="testimonial-img w-full" loading="lazy"></div>
+      <div class="masonry-item"><img src="img/testimonials/catfish.png" alt="Catfish testimonial" class="testimonial-img w-full" loading="lazy"></div>
     </div>
 
   </div>
