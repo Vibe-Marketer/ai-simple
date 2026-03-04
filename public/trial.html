@@ -996,20 +996,23 @@ body { font-family: 'Inter', sans-serif; }
       Hear It From <span class="text-[#ef233c]">Anik Singal</span>
     </h2>
 
-    <div class="video-feature animate-on-scroll" onclick="if(this.querySelector('iframe')){return;} var f=document.createElement('iframe'); f.src='https://www.youtube.com/embed/ANIK_VIDEO_ID?autoplay=1&rel=0'; f.allow='autoplay; encrypted-media'; f.allowFullscreen=true; f.style.cssText='position:absolute;inset:0;width:100%;height:100%;border:none;z-index:10;'; this.appendChild(f);">
-      <div class="aspect-video flex flex-col items-center justify-center p-8 md:p-12 text-center relative">
-        <div class="video-play-btn mb-6">
-          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="white" stroke="none"><polygon points="6,3 20,12 6,21"/></svg>
-        </div>
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[#ef233c] to-red-800 flex items-center justify-center text-white text-sm font-bold">AS</div>
-          <div class="text-left">
-            <p class="text-white font-manrope font-semibold">Anik Singal</p>
-            <p class="text-zinc-400 text-sm">Founder of Lurn &middot; 9-Figure Entrepreneur</p>
+    <div class="video-feature animate-on-scroll" onclick="if(this.querySelector('iframe')){return;} this.querySelector('.video-poster').style.display='none'; var f=document.createElement('iframe'); f.src='https://www.youtube-nocookie.com/embed/uGcl13lI_-U?autoplay=1&rel=0&modestbranding=1&playsinline=1'; f.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'; f.allowFullscreen=true; f.style.cssText='position:absolute;inset:0;width:100%;height:100%;border:none;z-index:10;border-radius:12px;'; this.appendChild(f);">
+      <div class="video-poster aspect-video flex flex-col items-center justify-center p-8 md:p-12 text-center relative" style="background: url('https://img.youtube.com/vi/uGcl13lI_-U/maxresdefault.jpg') center/cover no-repeat; border-radius: 12px;">
+        <div style="position:absolute;inset:0;background:rgba(0,0,0,0.5);border-radius:12px;"></div>
+        <div class="relative z-10 flex flex-col items-center">
+          <div class="video-play-btn mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="white" stroke="none"><polygon points="6,3 20,12 6,21"/></svg>
           </div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[#ef233c] to-red-800 flex items-center justify-center text-white text-sm font-bold">AS</div>
+            <div class="text-left">
+              <p class="text-white font-manrope font-semibold">Anik Singal</p>
+              <p class="text-zinc-400 text-sm">Founder of Lurn &middot; 9-Figure Entrepreneur</p>
+            </div>
+          </div>
+          <p class="text-white text-lg md:text-xl font-manrope italic max-w-xl drop-shadow-lg">"Andrew is absolutely by far the best AI expert I've had a chance to talk to. And I talk to people every day."</p>
+          <p class="text-white/60 text-xs mt-4">Click to watch the full testimonial</p>
         </div>
-        <p class="text-zinc-300 text-lg md:text-xl font-manrope italic max-w-xl">"Andrew is absolutely by far the best AI expert I've had a chance to talk to. And I talk to people every day."</p>
-        <p class="text-zinc-500 text-xs mt-4">Click to watch the full testimonial</p>
       </div>
     </div>
 
