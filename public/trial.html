@@ -205,7 +205,6 @@ body { font-family: 'Inter', sans-serif; }
   filter: grayscale(1);
   transition: filter 0.4s;
 }
-.vid-card:hover video { filter: grayscale(0); }
 .vid-label {
   position: absolute; bottom: 0; left: 0; right: 0;
   padding: 8px 12px;
@@ -380,6 +379,39 @@ body { font-family: 'Inter', sans-serif; }
   </div>
 </section>
 
+<!-- ========== ANIK SINGAL — Featured Endorsement ========== -->
+<section class="py-16 px-6 relative z-10">
+  <div class="max-w-3xl mx-auto">
+    <div class="flex items-center gap-2 mb-3 animate-on-scroll">
+      <span class="w-1.5 h-1.5 rounded-full bg-[#ef233c]" style="animation: pulse-dot 2s infinite;"></span>
+      <span class="text-[10px] font-geist-mono text-zinc-500 uppercase tracking-widest">Featured Endorsement</span>
+    </div>
+    <h2 class="text-2xl md:text-4xl font-manrope font-medium tracking-tighter text-zinc-900 mb-8 animate-on-scroll">
+      Hear It From a <span class="bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-red-600">9-Figure Founder</span>
+    </h2>
+
+    <div class="rounded-2xl overflow-hidden border border-zinc-200 shadow-lg animate-on-scroll proof-video" onclick="if(this.querySelector('iframe'))return; this.querySelector('.vid-poster').style.display='none'; var f=document.createElement('iframe'); f.src='https://www.youtube-nocookie.com/embed/uGcl13lI_-U?autoplay=1&rel=0&modestbranding=1&playsinline=1'; f.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'; f.allowFullscreen=true; f.style.cssText='width:100%;aspect-ratio:16/9;border:none;display:block;border-radius:16px;'; this.appendChild(f);">
+      <div class="vid-poster relative">
+        <img src="https://img.youtube.com/vi/uGcl13lI_-U/maxresdefault.jpg" alt="Anik Singal endorses Andrew Naegele" class="w-full" style="aspect-ratio:16/9; object-fit:cover;">
+        <div class="absolute inset-0 bg-black/30 flex items-center justify-center transition-all hover:bg-black/20">
+          <div class="w-16 h-16 md:w-20 md:h-20 bg-[#ef233c] rounded-full flex items-center justify-center shadow-xl" style="box-shadow: 0 0 40px rgba(239,35,60,0.4);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="white" stroke="none"><polygon points="8,5 20,12 8,19"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-6 flex items-start gap-4 animate-on-scroll">
+      <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[#ef233c] to-red-800 flex items-center justify-center text-white text-sm font-bold shrink-0">AS</div>
+      <div>
+        <p class="text-zinc-700 text-sm italic leading-relaxed">"Andrew is absolutely by far the best AI expert I've had a chance to talk to. And I talk to people every day. Some of the toughest AI things we had to do — he did in less than a day what would have taken my team weeks."</p>
+        <p class="text-zinc-900 text-sm font-semibold font-manrope mt-2">Anik Singal</p>
+        <p class="text-zinc-400 text-xs">Founder of Lurn &middot; 9-Figure Entrepreneur</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ========== DIVIDER ========== -->
 <div class="section-divider"></div>
 
@@ -506,7 +538,7 @@ body { font-family: 'Inter', sans-serif; }
         <div class="relative z-10">
           <span class="text-[10px] font-geist-mono text-[#ef233c] uppercase tracking-widest">04</span>
           <h3 class="text-xl font-manrope font-medium text-zinc-900 tracking-tight mt-2">Automations, Workflows & GPTs</h3>
-          <p class="text-zinc-500 text-sm mt-3 leading-relaxed">10,000+ Make.com automations. 200+ n8n automations. 115+ custom GPTs. Use them as-is or as blueprints.</p>
+          <p class="text-zinc-500 text-sm mt-3 leading-relaxed">10,000+ Make.com automations. 200+ n8n automations. 78+ custom GPTs. Use them as-is or as blueprints.</p>
         </div>
       </div>
 
@@ -606,11 +638,11 @@ body { font-family: 'Inter', sans-serif; }
       <!-- ROW 4: Custom GPTs (wide) + App Icons -->
       <div class="grid grid-cols-2 md:grid-cols-12 gap-3 mb-3">
         <div class="col-span-2 md:col-span-6 product-card h-[200px] md:h-[280px] animate-on-scroll">
-          <img src="img/trial/custom-gpts.png" alt="12+ Custom GPTs — Copywriting, Sales, Cold Email, Research" class="w-full h-full object-cover" loading="lazy">
+          <img src="img/trial/custom-gpts.png" alt="78+ Custom GPTs — Copywriting, Sales, Cold Email, Research" class="w-full h-full object-cover" loading="lazy">
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
           <div class="absolute bottom-0 left-0 right-0 p-5">
             <p class="text-[#ef233c] text-[10px] font-geist-mono uppercase tracking-widest mb-1">AI Tools</p>
-            <h4 class="text-white font-manrope font-semibold text-base">12+ Custom GPTs</h4>
+            <h4 class="text-white font-manrope font-semibold text-base">78+ Custom GPTs</h4>
             <p class="text-white/50 text-xs mt-0.5">Copywriting, sales, cold email, research — all yours</p>
           </div>
         </div>
@@ -677,6 +709,31 @@ body { font-family: 'Inter', sans-serif; }
 
     </div>
 
+  </div>
+</section>
+
+<!-- ========== VIDEO TESTIMONIALS — uniform horizontal scroll ========== -->
+<section class="py-8 relative z-10 overflow-hidden">
+  <div class="relative" id="vid-marquee">
+    <div class="pointer-events-none absolute top-0 bottom-0 left-0 w-20 md:w-32 bg-gradient-to-r from-white to-transparent z-10"></div>
+    <div class="pointer-events-none absolute top-0 bottom-0 right-0 w-20 md:w-32 bg-gradient-to-l from-white to-transparent z-10"></div>
+    <div class="vid-scroll-track flex gap-4" style="width: max-content; will-change: transform;">
+      <div class="vid-card"><video src="img/testimonials/vid/jake-lockwood.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">Jake Lockwood</div></div>
+      <div class="vid-card"><video src="img/testimonials/vid/kevin-mabry.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">Kevin Mabry</div></div>
+      <div class="vid-card"><video src="img/testimonials/vid/osaro.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">Osaro Igbinoba</div></div>
+      <div class="vid-card"><video src="img/testimonials/vid/robert-medina.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">Robert Medina</div></div>
+      <div class="vid-card"><video src="img/testimonials/vid/ty-lg.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">Ty Leon-Genaro</div></div>
+      <div class="vid-card"><video src="img/testimonials/vid/los-silva.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">Los Silva</div></div>
+      <div class="vid-card"><video src="img/testimonials/vid/wiz-of-ecom.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">Mubbu "Wiz of Ecom"</div></div>
+      <!-- DUPLICATE for seamless loop -->
+      <div class="vid-card"><video src="img/testimonials/vid/jake-lockwood.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">Jake Lockwood</div></div>
+      <div class="vid-card"><video src="img/testimonials/vid/kevin-mabry.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">Kevin Mabry</div></div>
+      <div class="vid-card"><video src="img/testimonials/vid/osaro.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">Osaro Igbinoba</div></div>
+      <div class="vid-card"><video src="img/testimonials/vid/robert-medina.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">Robert Medina</div></div>
+      <div class="vid-card"><video src="img/testimonials/vid/ty-lg.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">Ty Leon-Genaro</div></div>
+      <div class="vid-card"><video src="img/testimonials/vid/los-silva.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">Los Silva</div></div>
+      <div class="vid-card"><video src="img/testimonials/vid/wiz-of-ecom.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">Mubbu "Wiz of Ecom"</div></div>
+    </div>
   </div>
 </section>
 
@@ -1401,61 +1458,19 @@ body { font-family: 'Inter', sans-serif; }
   </div>
 </section>
 
-<!-- ========== ANIK SINGAL — Featured Endorsement ========== -->
+
+<!-- ========== SENJA REVIEWS ========== -->
 <section class="py-16 px-6 relative z-10">
-  <div class="max-w-3xl mx-auto">
+  <div class="max-w-5xl mx-auto">
     <div class="flex items-center gap-2 mb-3 animate-on-scroll">
       <span class="w-1.5 h-1.5 rounded-full bg-[#ef233c]" style="animation: pulse-dot 2s infinite;"></span>
-      <span class="text-[10px] font-geist-mono text-zinc-500 uppercase tracking-widest">Featured Endorsement</span>
+      <span class="text-[10px] font-geist-mono text-zinc-500 uppercase tracking-widest">Verified Reviews</span>
     </div>
     <h2 class="text-2xl md:text-4xl font-manrope font-medium tracking-tighter text-zinc-900 mb-8 animate-on-scroll">
-      Hear It From a <span class="bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-red-600">9-Figure Founder</span>
+      Don't Take My Word For It. <span class="bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-red-600">Read Theirs.</span>
     </h2>
-
-    <div class="rounded-2xl overflow-hidden border border-zinc-200 shadow-lg animate-on-scroll proof-video" onclick="if(this.querySelector('iframe'))return; this.querySelector('.vid-poster').style.display='none'; var f=document.createElement('iframe'); f.src='https://www.youtube-nocookie.com/embed/uGcl13lI_-U?autoplay=1&rel=0&modestbranding=1&playsinline=1'; f.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'; f.allowFullscreen=true; f.style.cssText='width:100%;aspect-ratio:16/9;border:none;display:block;border-radius:16px;'; this.appendChild(f);">
-      <div class="vid-poster relative">
-        <img src="https://img.youtube.com/vi/uGcl13lI_-U/maxresdefault.jpg" alt="Anik Singal endorses Andrew Naegele" class="w-full" style="aspect-ratio:16/9; object-fit:cover;">
-        <div class="absolute inset-0 bg-black/30 flex items-center justify-center transition-all hover:bg-black/20">
-          <div class="w-16 h-16 md:w-20 md:h-20 bg-[#ef233c] rounded-full flex items-center justify-center shadow-xl" style="box-shadow: 0 0 40px rgba(239,35,60,0.4);">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="white" stroke="none"><polygon points="8,5 20,12 8,19"/></svg>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="mt-6 flex items-start gap-4 animate-on-scroll">
-      <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[#ef233c] to-red-800 flex items-center justify-center text-white text-sm font-bold shrink-0">AS</div>
-      <div>
-        <p class="text-zinc-700 text-sm italic leading-relaxed">"Andrew is absolutely by far the best AI expert I've had a chance to talk to. And I talk to people every day. Some of the toughest AI things we had to do — he did in less than a day what would have taken my team weeks."</p>
-        <p class="text-zinc-900 text-sm font-semibold font-manrope mt-2">Anik Singal</p>
-        <p class="text-zinc-400 text-xs">Founder of Lurn &middot; 9-Figure Entrepreneur</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ========== VIDEO TESTIMONIALS — uniform horizontal scroll ========== -->
-<section class="py-8 relative z-10 overflow-hidden">
-  <div class="relative" id="vid-marquee">
-    <div class="pointer-events-none absolute top-0 bottom-0 left-0 w-20 md:w-32 bg-gradient-to-r from-white to-transparent z-10"></div>
-    <div class="pointer-events-none absolute top-0 bottom-0 right-0 w-20 md:w-32 bg-gradient-to-l from-white to-transparent z-10"></div>
-    <div class="vid-scroll-track flex gap-4" style="width: max-content; will-change: transform;">
-      <div class="vid-card"><video src="img/testimonials/vid/jake-lockwood.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">Jake Lockwood</div></div>
-      <div class="vid-card"><video src="img/testimonials/vid/kevin-mabry.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">Kevin Mabry</div></div>
-      <div class="vid-card"><video src="img/testimonials/vid/osaro.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">Osaro</div></div>
-      <div class="vid-card"><video src="img/testimonials/vid/robert-medina.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">Robert Medina</div></div>
-      <div class="vid-card"><video src="img/testimonials/vid/ty-lg.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">TY</div></div>
-      <div class="vid-card"><video src="img/testimonials/vid/wiz-los.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">Wiz &amp; Los</div></div>
-      <div class="vid-card"><video src="img/testimonials/vid/wiz-short.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">Wiz</div></div>
-      <!-- DUPLICATE for seamless loop -->
-      <div class="vid-card"><video src="img/testimonials/vid/jake-lockwood.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">Jake Lockwood</div></div>
-      <div class="vid-card"><video src="img/testimonials/vid/kevin-mabry.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">Kevin Mabry</div></div>
-      <div class="vid-card"><video src="img/testimonials/vid/osaro.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">Osaro</div></div>
-      <div class="vid-card"><video src="img/testimonials/vid/robert-medina.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">Robert Medina</div></div>
-      <div class="vid-card"><video src="img/testimonials/vid/ty-lg.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">TY</div></div>
-      <div class="vid-card"><video src="img/testimonials/vid/wiz-los.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">Wiz &amp; Los</div></div>
-      <div class="vid-card"><video src="img/testimonials/vid/wiz-short.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="vid-label">Wiz</div></div>
-    </div>
+    <script src="https://widget.senja.io/widget/eddcf36c-6596-4b5f-80cf-21b26016bc7a/platform.js" type="text/javascript" async></script>
+    <div class="senja-embed" data-id="eddcf36c-6596-4b5f-80cf-21b26016bc7a" data-mode="shadow" data-lazyload="false" style="display: block; width: 100%;"></div>
   </div>
 </section>
 
