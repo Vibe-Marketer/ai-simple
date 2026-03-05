@@ -248,6 +248,80 @@ export default async function handler(req, res) {
           }
         });
       }
+
+      // --- Annual upgrade: cancel monthly subscription + tag + welcome email ---
+      const subscriptionId = session.subscription;
+      if (subscriptionId) {
+        try {
+          // Retrieve subscription to check the price
+          const subResult = await executeComposioTool(
+            'STRIPE_RETRIEVE_SUBSCRIPTION',
+            process.env.COMPOSIO_STRIPE_USER_ID,
+            { subscription_id: subscriptionId }
+          );
+          const sub = subResult?.response_data || subResult?.data || {};
+          const priceId = sub.items?.data?.[0]?.price?.id;
+          const annualPriceId = process.env.STRIPE_ANNUAL_PRICE_ID;
+
+          if (annualPriceId && priceId === annualPriceId) {
+            console.log('Annual upgrade detected for:', customerEmail);
+
+            // Find and cancel existing monthly subscription
+            const custId = session.customer;
+            if (custId) {
+              const listResult = await executeComposioTool(
+                'STRIPE_LIST_SUBSCRIPTIONS',
+                process.env.COMPOSIO_STRIPE_USER_ID,
+                { customer: custId, status: 'active' }
+              );
+              const subs = listResult?.response_data?.data || listResult?.data?.data || [];
+              for (const existingSub of subs) {
+                if (existingSub.id !== subscriptionId) {
+                  await executeComposioTool(
+                    'STRIPE_CANCEL_SUBSCRIPTION',
+                    process.env.COMPOSIO_STRIPE_USER_ID,
+                    { subscription_id: existingSub.id }
+                  );
+                  console.log('Cancelled monthly subscription:', existingSub.id);
+                }
+              }
+            }
+
+            // Tag CRM contact as founder-annual
+            if (crmContactId) {
+              await supabase.from('crm_tags').insert([{
+                contact_id: crmContactId,
+                tag: 'founder-annual',
+              }]);
+            }
+
+            // Send Founder Annual welcome email
+            if (customerEmail) {
+              const firstName = customerName ? customerName.split(' ')[0] : 'there';
+              await executeComposioTool(
+                'RESEND_SEND_EMAIL',
+                process.env.COMPOSIO_RESEND_USER_ID,
+                {
+                  from: 'Andrew <a@mail.aisimple.co>',
+                  reply_to: 'a@aisimple.co',
+                  to: customerEmail,
+                  subject: "You're a Founder Annual member — let's build your Godfather Offer",
+                  html: `<p>Hey ${firstName},</p>
+<p>Welcome to Founder Annual. You've locked in the best rate and unlocked two 1:1 bonuses:</p>
+<p><strong>1. Golden Thread Session</strong> — I'll extract your origin story, your why, and the positioning that makes your brand impossible to ignore.</p>
+<p><strong>2. OfferMBA — Godfather Offer Build</strong> — I research your market, dissect your competitors, and build a Godfather Offer so good your audience can't say no.</p>
+<p><strong>Book your first session:</strong><br/>
+<a href="https://calendly.com/andrewnaegele/golden-thread">Click here to book your Golden Thread call</a></p>
+<p>Talk soon,<br/>Andrew</p>`,
+                }
+              );
+              console.log('Founder Annual welcome email sent to:', customerEmail);
+            }
+          }
+        } catch (annualErr) {
+          console.error('Annual upgrade processing error:', annualErr);
+        }
+      }
     }
 
     if (triggerSlug === 'STRIPE_PAYMENT_FAILED_TRIGGER') {

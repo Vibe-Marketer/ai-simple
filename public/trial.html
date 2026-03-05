@@ -241,6 +241,7 @@ body { font-family: 'Inter', sans-serif; }
   <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
     <a href="/" class="flex items-center gap-2">
       <img src="img/ai-simple-logo.png" alt="AI Simple" class="h-6 w-auto">
+      <span class="text-zinc-400 text-xs font-geist-mono hidden sm:inline">Business is hard. Make AI simple.</span>
     </a>
     <a href="#get-in" class="px-5 py-2 bg-[#ef233c] text-white text-sm font-medium hover:bg-[#dc2626] transition-colors" style="border-radius: 0;">
       Get In — $49 <span class="ml-1">→</span>
@@ -797,49 +798,107 @@ body { font-family: 'Inter', sans-serif; }
       <span class="text-[10px] font-geist-mono text-zinc-500 uppercase tracking-widest">The Deal</span>
     </div>
 
-    <h2 class="text-3xl md:text-5xl font-manrope font-medium tracking-tighter text-zinc-900 mb-6 animate-on-scroll">
+    <h2 class="text-3xl md:text-5xl font-manrope font-medium tracking-tighter text-zinc-900 mb-10 animate-on-scroll">
       $49. Take Everything. <span class="bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-red-600">Walk If You Want.</span>
     </h2>
 
-    <div class="bento-card border border-dashed border-zinc-200 bg-zinc-50 p-8 md:p-12 text-left animate-on-scroll">
+    <div class="bento-card border border-dashed border-zinc-200 bg-zinc-50 pt-0 pb-8 px-6 md:px-10 text-left animate-on-scroll relative overflow-visible">
       <div class="bento-glow"></div>
       <div class="relative z-10">
 
-        <div class="text-center mb-8">
-          <span class="text-5xl md:text-6xl font-manrope font-medium text-zinc-900 tracking-tighter">$49</span>
-          <p class="text-zinc-500 text-sm mt-2">7-day full access. Everything included.</p>
+        <!-- Product mockup image — overflows above card -->
+        <div class="flex justify-center" style="margin-top: -80px; margin-bottom: 24px;">
+          <img src="img/trial/aisimple-trial-mockup.png" alt="THE LAB — Product Mockup" class="w-64 md:w-80 drop-shadow-2xl">
         </div>
 
-        <div class="space-y-3 mb-8">
-          <div class="flex items-start gap-3">
-            <span class="w-1 h-1 bg-[#ef233c] rounded-full mt-2 shrink-0"></span>
-            <p class="text-zinc-600 text-sm">7 full days inside THE LAB — every tool, automation, and workflow I use</p>
+        <!-- THE ROOM -->
+        <p class="text-[10px] font-geist-mono text-[#ef233c] uppercase tracking-widest mb-3">The Room</p>
+
+        <div class="space-y-4 mb-6">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <p class="text-zinc-900 text-sm font-semibold">Private WhatsApp Community</p>
+              <p class="text-zinc-500 text-xs">Ask me anything. Real-time answers from my desk.</p>
+            </div>
+            <span class="text-zinc-400 text-sm font-geist-mono whitespace-nowrap">$500 val</span>
           </div>
-          <div class="flex items-start gap-3">
-            <span class="w-1 h-1 bg-[#ef233c] rounded-full mt-2 shrink-0"></span>
-            <p class="text-zinc-600 text-sm">Private WhatsApp access</p>
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <p class="text-zinc-900 text-sm font-semibold">Weekly LAB Call</p>
+              <p class="text-zinc-500 text-xs">Live, unscripted. Bring your stuff — I'll work on it with you.</p>
+            </div>
+            <span class="text-zinc-400 text-sm font-geist-mono whitespace-nowrap">$1,000 val</span>
           </div>
-          <div class="flex items-start gap-3">
-            <span class="w-1 h-1 bg-[#ef233c] rounded-full mt-2 shrink-0"></span>
-            <p class="text-zinc-600 text-sm">Weekly LAB call — live, unscripted, bring your stuff</p>
-          </div>
-          <div class="flex items-start gap-3">
-            <span class="w-1 h-1 bg-[#ef233c] rounded-full mt-2 shrink-0"></span>
-            <p class="text-zinc-600 text-sm">Everything you download is yours — even if you leave</p>
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <p class="text-zinc-900 text-sm font-semibold">Member Deal Flow</p>
+              <p class="text-zinc-500 text-xs">Referrals, collabs, and intros I only share in the room.</p>
+            </div>
+            <span class="text-zinc-400 text-sm font-geist-mono whitespace-nowrap">$1,000 val</span>
           </div>
         </div>
 
-        <div class="border border-dashed border-zinc-200 p-6 mb-8">
-          <p class="text-[10px] font-geist-mono text-[#ef233c] uppercase tracking-widest mb-2">Already earning $5K+/mo?</p>
-          <p class="text-zinc-600 text-sm leading-relaxed">You get a 20-minute clarity call with me before your trial ends. I'll look at what you're building, make sure you're aimed at the right target, and map your next move together.</p>
+        <!-- THE DRIVE -->
+        <p class="text-[10px] font-geist-mono text-[#ef233c] uppercase tracking-widest mb-3 mt-6">The Drive</p>
+
+        <div class="space-y-4 mb-6">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <p class="text-zinc-900 text-sm font-semibold">Full AI Tool Stack</p>
+              <p class="text-zinc-500 text-xs">Every tool I use for 7–9 figure clients — yours to take.</p>
+            </div>
+            <span class="text-zinc-400 text-sm font-geist-mono whitespace-nowrap">$2,000 val</span>
+          </div>
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <p class="text-zinc-900 text-sm font-semibold">Workflows &amp; Automations</p>
+              <p class="text-zinc-500 text-xs">n8n flows, Zapier templates, AI agents — plug and play.</p>
+            </div>
+            <span class="text-zinc-400 text-sm font-geist-mono whitespace-nowrap">$2,000 val</span>
+          </div>
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <p class="text-zinc-900 text-sm font-semibold">SOPs &amp; Frameworks</p>
+              <p class="text-zinc-500 text-xs">The exact docs I hand to my clients' teams to run AI ops.</p>
+            </div>
+            <span class="text-zinc-400 text-sm font-geist-mono whitespace-nowrap">$1,000 val</span>
+          </div>
         </div>
 
-        <div class="border border-dashed border-zinc-200 p-6 mb-8">
-          <p class="text-[10px] font-geist-mono text-zinc-500 uppercase tracking-widest mb-2">Not at $5K/mo yet?</p>
-          <p class="text-zinc-500 text-sm leading-relaxed">No problem. Keep your membership running at just <span class="text-zinc-900 font-medium">$77/week</span> and use the room, the tools, and the calls to get there. Cancel anytime with one click.</p>
+        <!-- PARTNERSHIP -->
+        <p class="text-[10px] font-geist-mono text-[#ef233c] uppercase tracking-widest mb-3 mt-6">Partnership</p>
+
+        <div class="space-y-4 mb-8">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <p class="text-zinc-900 text-sm font-semibold">20-Min Clarity Call</p>
+              <p class="text-zinc-500 text-xs">Already at $5K+/mo? I'll map your next move with you personally.</p>
+            </div>
+            <span class="text-zinc-400 text-sm font-geist-mono whitespace-nowrap">$500 val</span>
+          </div>
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <p class="text-zinc-900 text-sm font-semibold">Keep Everything You Download</p>
+              <p class="text-zinc-500 text-xs">Even if you leave after 7 days — it's yours.</p>
+            </div>
+            <span class="text-zinc-400 text-sm font-geist-mono whitespace-nowrap">$1,000 val</span>
+          </div>
         </div>
 
-        <p class="text-zinc-500 text-xs text-center mb-6">If after 7 days this isn't for you — keep everything you grabbed and walk. No questions asked. No awkward cancellation form. No guilt trip.</p>
+        <!-- Divider + pricing block -->
+        <div class="border-t border-dashed border-zinc-300 pt-6 mt-6">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-zinc-500 text-sm font-medium">Total value:</span>
+            <span class="text-zinc-900 text-sm font-geist-mono font-bold">$9,000+</span>
+          </div>
+          <div class="flex items-center justify-between mb-1">
+            <span class="text-zinc-900 text-lg font-manrope font-bold">Your price today:</span>
+            <span class="text-3xl font-manrope font-bold text-zinc-900 tracking-tighter">$49</span>
+          </div>
+          <p class="text-zinc-500 text-xs text-center mt-2">Then $297 every 4 weeks &middot; Cancel anytime</p>
+        </div>
+
+        <p class="text-zinc-500 text-xs text-center mt-6 mb-6">If after 7 days this isn't for you — keep everything you grabbed and walk. No questions asked. No awkward cancellation form. No guilt trip.</p>
 
         <div class="text-center">
           <a href="https://buy.stripe.com/8x26oHgCj86v9lIf5fbAs0i?prefilled_promo_code=7DAYTRIAL" id="pricing-cta" class="shiny-cta trial-cta-link">
@@ -1303,7 +1362,7 @@ body { font-family: 'Inter', sans-serif; }
           <h3 class="text-lg font-manrope font-medium text-zinc-900 tracking-tight">Decision Time</h3>
           <ul class="mt-3 space-y-2">
             <li class="text-zinc-500 text-sm leading-relaxed"><span class="text-zinc-900">Earning $5K+/mo?</span> Book your 20-minute clarity call with me.</li>
-            <li class="text-zinc-500 text-sm leading-relaxed"><span class="text-zinc-900">Not at $5K/mo yet?</span> Keep at $77/week. Cancel anytime.</li>
+            <li class="text-zinc-500 text-sm leading-relaxed"><span class="text-zinc-900">Not at $5K/mo yet?</span> Keep at $297 every 4 weeks. Cancel anytime.</li>
             <li class="text-zinc-500 text-sm leading-relaxed"><span class="text-zinc-900">Want to walk?</span> Keep everything you grabbed. No questions.</li>
           </ul>
         </div>
@@ -1465,6 +1524,10 @@ body { font-family: 'Inter', sans-serif; }
 <section class="py-24 px-6 relative z-10">
   <div class="max-w-3xl mx-auto text-center">
 
+    <p class="text-zinc-400 text-sm font-manrope mb-4 animate-on-scroll">
+      Business is hard. <span class="text-zinc-900 font-medium">Make AI simple.</span>
+    </p>
+
     <h2 class="text-3xl md:text-5xl font-manrope font-medium tracking-tighter text-zinc-900 mb-6 animate-on-scroll">
       You've Seen the Tools. You've Seen the Proof. <span class="bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-red-600">$49 Gets You In.</span>
     </h2>
@@ -1472,23 +1535,19 @@ body { font-family: 'Inter', sans-serif; }
     <div class="space-y-3 mb-10 text-left max-w-md mx-auto animate-on-scroll">
       <div class="flex items-start gap-3">
         <span class="w-1 h-1 bg-[#ef233c] rounded-full mt-2 shrink-0"></span>
-        <p class="text-zinc-600 text-sm">7 full days inside THE LAB</p>
+        <p class="text-zinc-600 text-sm">The Room — WhatsApp community + weekly LAB calls</p>
       </div>
       <div class="flex items-start gap-3">
         <span class="w-1 h-1 bg-[#ef233c] rounded-full mt-2 shrink-0"></span>
-        <p class="text-zinc-600 text-sm">Every tool, automation, and workflow I use</p>
+        <p class="text-zinc-600 text-sm">The Drive — every tool, workflow, and automation I use</p>
       </div>
       <div class="flex items-start gap-3">
         <span class="w-1 h-1 bg-[#ef233c] rounded-full mt-2 shrink-0"></span>
-        <p class="text-zinc-600 text-sm">Private WhatsApp access</p>
+        <p class="text-zinc-600 text-sm">Partnership — clarity call + deal flow + everything you download is yours</p>
       </div>
       <div class="flex items-start gap-3">
         <span class="w-1 h-1 bg-[#ef233c] rounded-full mt-2 shrink-0"></span>
-        <p class="text-zinc-600 text-sm">Already earning $5K+/mo? A 20-minute clarity call with me</p>
-      </div>
-      <div class="flex items-start gap-3">
-        <span class="w-1 h-1 bg-[#ef233c] rounded-full mt-2 shrink-0"></span>
-        <p class="text-zinc-600 text-sm">Everything you download is yours — even if you leave</p>
+        <p class="text-zinc-600 text-sm">$9,000+ in value — yours for $49, then $297 every 4 weeks</p>
       </div>
     </div>
 

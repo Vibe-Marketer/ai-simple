@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clickable Impact × AI Simple — Battle Plan</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════
+   AI SIMPLE — LIGHT OPS EDITION
+   Zero radius. Dashed borders. Corner marks.
+   Red heat on white paper.
+   ═══════════════════════════════════════════════ */
+
+:root {
+  --ais-red: #ef233c;
+  --ais-red-light: #f87171;
+  --ais-red-dark: #dc2626;
+  --ais-red-glow: rgba(239,35,60,0.15);
+  --ais-red-subtle: rgba(239,35,60,0.06);
+  --ais-gradient-red: linear-gradient(to right, #f87171, #dc2626);
+
+  --ais-bg: #fafafa;
+  --ais-surface: #ffffff;
+  --ais-surface-1: #ffffff;
+  --ais-surface-2: #f4f4f5;
+
+  --ais-border: #e4e4e7;
+  --ais-border-subtle: rgba(0,0,0,0.06);
+  --ais-border-hover: rgba(239,35,60,0.5);
+
+  --ais-text: #18181b;
+  --ais-text-secondary: #52525b;
+  --ais-text-muted: #a1a1aa;
+  --ais-text-accent: #ef233c;
+
+  --ais-glow-red: 0 0 20px rgba(239,35,60,0.15);
+  --ais-selection-bg: rgba(220,38,38,0.15);
+  --ais-selection-text: #991b1b;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+::selection {
+  background: var(--ais-selection-bg);
+  color: var(--ais-selection-text);
+}
+
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: var(--ais-bg);
+  color: var(--ais-text);
+  line-height: 1.7;
+  font-size: 16px;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.font-manrope { font-family: 'Manrope', sans-serif; }
+.font-mono { font-family: 'Geist Mono', 'Space Mono', monospace; }
+
+/* Grid pattern overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,0,0,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container { max-width: 1100px; margin: 0 auto; padding: 60px 24px; position: relative; z-index: 1; }
+
+/* ─── SECTION HEADER PROTOCOL ─── */
+.section-header { margin-bottom: 40px; }
+.section-line {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 16px;
+}
+.section-line::before {
+  content: '';
+  width: 32px; height: 1px;
+  background: var(--ais-red);
+}
+.section-label {
+  font-family: 'Geist Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ais-red);
+}
+.section-title {
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  color: var(--ais-text);
+  margin-bottom: 12px;
+}
+.text-gradient {
+  background: var(--ais-gradient-red);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.section-desc {
+  font-size: 17px;
+  font-weight: 300;
+  color: var(--ais-text-secondary);
+  max-width: 640px;
+  line-height: 1.65;
+}
+
+/* ─── BENTO CARD (the weapon) ─── */
+.bento-card {
+  position: relative;
+  background: var(--ais-surface);
+  border: 1px dashed var(--ais-border);
+  border-radius: 0; /* ZERO. ALWAYS. */
+  padding: 32px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+.bento-card::after {
+  content: '';
+  position: absolute; inset: 0;
+  opacity: 0;
+  transition: opacity 0.4s;
+  background: radial-gradient(500px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(239,35,60,0.04), transparent 40%);
+  pointer-events: none;
+}
+.bento-card:hover::after { opacity: 1; }
+.bento-card:hover { border-color: var(--ais-border-hover); box-shadow: var(--ais-glow-red); }
+
+/* Corner marks — the targeting reticle */
+.corner-tl, .corner-tr, .corner-bl, .corner-br {
+  position: absolute;
+  width: 8px; height: 8px;
+}
+.corner-tl { top: 0; left: 0; border-top: 2px solid var(--ais-red); border-left: 2px solid var(--ais-red); }
+.corner-tr { top: 0; right: 0; border-top: 2px solid var(--ais-red); border-right: 2px solid var(--ais-red); }
+.corner-bl { bottom: 0; left: 0; border-bottom: 2px solid var(--ais-red); border-left: 2px solid var(--ais-red); }
+.corner-br { bottom: 0; right: 0; border-bottom: 2px solid var(--ais-red); border-right: 2px solid var(--ais-red); }
+
+/* Pulse dot */
+.pulse-dot {
+  width: 6px; height: 6px;
+  background: var(--ais-red);
+  border-radius: 50%;
+  display: inline-block;
+  animation: pulse-glow 2s ease-in-out infinite;
+  box-shadow: 0 0 6px rgba(239,35,60,0.4);
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 4px rgba(239,35,60,0.3); }
+  50% { box-shadow: 0 0 12px rgba(239,35,60,0.6); }
+}
+
+@keyframes fadeSlideIn {
+  0% { opacity: 0; transform: translateY(24px); filter: blur(6px); }
+  100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+/* ─── STATS STRIP ─── */
+.stats-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0;
+  border: 1px dashed var(--ais-border);
+  background: var(--ais-surface);
+  margin-bottom: 48px;
+}
+.stat-cell {
+  padding: 28px 24px;
+  border-right: 1px dashed var(--ais-border);
+  position: relative;
+  transition: background 0.3s;
+}
+.stat-cell:last-child { border-right: none; }
+.stat-cell:hover { background: var(--ais-red-subtle); }
+.stat-cell .stat-label {
+  font-family: 'Geist Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ais-text-muted);
+  margin-bottom: 8px;
+  display: flex; align-items: center; gap: 8px;
+}
+.stat-cell .stat-value {
+  font-family: 'Manrope', sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: var(--ais-text);
+  line-height: 1;
+}
+.stat-cell .stat-note {
+  font-size: 12px;
+  color: var(--ais-text-muted);
+  margin-top: 4px;
+}
+
+/* ─── TAGS ─── */
+.tag {
+  font-family: 'Geist Mono', monospace;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border: 1px dashed;
+  display: inline-block;
+}
+.tag--human { border-color: #3b82f6; color: #3b82f6; background: rgba(59,130,246,0.06); }
+.tag--ai { border-color: var(--ais-red); color: var(--ais-red); background: var(--ais-red-subtle); }
+.tag--code { border-color: #10b981; color: #10b981; background: rgba(16,185,129,0.06); }
+
+/* ─── BOTTLENECK ITEMS ─── */
+.bottleneck {
+  background: var(--ais-surface);
+  border: 1px dashed var(--ais-border);
+  padding: 28px;
+  margin-bottom: 12px;
+  position: relative;
+  transition: all 0.3s;
+}
+.bottleneck:hover { border-color: var(--ais-border-hover); box-shadow: var(--ais-glow-red); }
+.bn-header { display: flex; align-items: center; gap: 16px; margin-bottom: 12px; }
+.bn-rank {
+  min-width: 32px; height: 32px;
+  background: var(--ais-red);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Geist Mono', monospace;
+  font-weight: 700; font-size: 13px; color: white;
+}
+.bn-title {
+  font-family: 'Manrope', sans-serif;
+  font-size: 17px; font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--ais-text);
+}
+.bn-body {
+  color: var(--ais-text-secondary);
+  font-size: 14px; font-weight: 300;
+  line-height: 1.7; margin-bottom: 14px;
+}
+.bn-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+/* ─── PHASE BLOCKS ─── */
+.phase-block {
+  background: var(--ais-surface);
+  border: 1px dashed var(--ais-border); /* ALL dashed outer */
+  padding: 40px;
+  position: relative;
+  margin-bottom: 24px;
+}
+.phase-block::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--phase-color, var(--ais-red));
+  border-radius: 0;
+}
+.phase-block .corner-tl, .phase-block .corner-tr,
+.phase-block .corner-bl, .phase-block .corner-br { display: block; }
+.phase-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'Geist Mono', monospace;
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: white;
+  background: var(--ais-red);
+  padding: 5px 14px;
+  margin-bottom: 16px;
+}
+.phase-title {
+  font-family: 'Manrope', sans-serif;
+  font-size: 24px; font-weight: 600;
+  letter-spacing: -0.03em;
+  color: var(--ais-text);
+  margin-bottom: 6px;
+}
+.phase-sub {
+  font-size: 13px; color: var(--ais-text-muted);
+  font-family: 'Geist Mono', monospace;
+  margin-bottom: 24px;
+}
+.phase-item {
+  padding: 18px 0;
+  border-bottom: 1px dashed var(--ais-border);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 16px; align-items: start;
+}
+.phase-item:last-child { border-bottom: none; }
+.pi-title {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 600; font-size: 15px;
+  color: var(--ais-text); margin-bottom: 4px;
+}
+.pi-desc { font-size: 14px; font-weight: 300; color: var(--ais-text-secondary); line-height: 1.65; }
+.pi-tags { display: flex; gap: 6px; flex-wrap: wrap; padding-top: 2px; }
+
+/* ─── CALL STRUCTURE ─── */
+.call-section {
+  background: var(--ais-red-subtle);
+  border: 1px dashed rgba(239,35,60,0.2);
+  padding: 24px;
+  margin: 16px 0;
+  position: relative;
+}
+.call-section-title {
+  font-family: 'Geist Mono', monospace;
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ais-red);
+  margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+.call-item {
+  padding: 8px 0;
+  font-size: 14px; font-weight: 300;
+  color: var(--ais-text-secondary);
+  display: flex; gap: 12px; align-items: baseline;
+}
+.call-time {
+  min-width: 60px;
+  font-family: 'Geist Mono', monospace;
+  font-size: 11px; font-weight: 500;
+  color: var(--ais-red);
+}
+
+/* ─── BACKLOG ─── */
+.backlog-item {
+  display: flex; align-items: center; gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px dashed var(--ais-border);
+  font-size: 14px; font-weight: 400;
+  color: var(--ais-text-secondary);
+}
+.backlog-item:last-child { border-bottom: none; }
+.backlog-dot {
+  width: 6px; height: 6px; min-width: 6px;
+  border-radius: 50%;
+}
+.backlog-dot--hot { background: var(--ais-red); box-shadow: 0 0 6px rgba(239,35,60,0.4); }
+.backlog-dot--warm { background: #f59e0b; }
+.backlog-dot--cool { background: #3b82f6; }
+
+/* ─── QUOTE ─── */
+.quote-block {
+  border-left: 3px solid var(--ais-red);
+  padding: 28px 32px;
+  background: var(--ais-red-subtle);
+  margin: 40px 0;
+  position: relative;
+}
+.quote-block::before {
+  content: '\201C';
+  position: absolute;
+  top: -4px; left: 16px;
+  font-size: 80px; font-weight: 800;
+  color: var(--ais-red); opacity: 0.1;
+  font-family: Georgia, serif; line-height: 1;
+}
+.quote-text {
+  font-family: 'Manrope', sans-serif;
+  font-size: 20px; font-weight: 500;
+  font-style: italic;
+  color: var(--ais-text);
+  line-height: 1.5;
+  position: relative; z-index: 1;
+}
+.quote-source {
+  margin-top: 10px;
+  font-family: 'Geist Mono', monospace;
+  font-size: 11px; font-weight: 500;
+  color: var(--ais-red);
+  font-style: normal;
+  letter-spacing: 0.05em;
+}
+
+/* ─── DIVIDER ─── */
+.divider {
+  width: 100%; height: 1px;
+  background: linear-gradient(to right, transparent, rgba(239,35,60,0.2), transparent);
+  margin: 48px 0;
+}
+
+/* ─── LEVERAGE GRID ─── */
+.leverage-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 0;
+  border: 1px dashed var(--ais-border);
+}
+.leverage-cell {
+  padding: 28px;
+  border-right: 1px dashed var(--ais-border);
+  position: relative;
+}
+.leverage-cell:last-child { border-right: none; }
+.leverage-label {
+  font-family: 'Geist Mono', monospace;
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  margin-bottom: 12px;
+  display: flex; align-items: center; gap: 8px;
+}
+
+/* ─── FOOTER ─── */
+.footer {
+  text-align: center;
+  padding: 56px 0 32px;
+}
+.footer-mark {
+  width: 44px; height: 44px;
+  margin: 0 auto 16px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800; font-size: 14px;
+  color: white;
+  background: var(--ais-red);
+  position: relative;
+}
+.footer-mark .corner-tl, .footer-mark .corner-tr,
+.footer-mark .corner-bl, .footer-mark .corner-br {
+  width: 6px; height: 6px;
+}
+.footer-text {
+  font-family: 'Geist Mono', monospace;
+  font-size: 11px;
+  color: var(--ais-text-muted);
+  letter-spacing: 0.05em;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  .stats-strip { grid-template-columns: repeat(2, 1fr); }
+  .stat-cell { border-bottom: 1px dashed var(--ais-border); }
+  .phase-block { padding: 28px; }
+  .phase-item { grid-template-columns: 1fr; }
+  .leverage-grid { grid-template-columns: 1fr; }
+  .leverage-cell { border-right: none; border-bottom: 1px dashed var(--ais-border); }
+  .leverage-cell:last-child { border-bottom: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- HERO -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="bento-card" style="padding: 56px; margin-bottom: 48px;">
+  <div class="corner-tl"></div>
+  <div class="corner-tr"></div>
+  <div class="corner-bl"></div>
+  <div class="corner-br"></div>
+  <!-- Red glow orb -->
+  <div style="position: absolute; top: -60px; right: -60px; width: 300px; height: 300px; background: rgba(239,35,60,0.04); border-radius: 50%; filter: blur(80px); pointer-events: none;"></div>
+  <div style="position: relative; z-index: 1;">
+    <div class="section-line">
+      <span class="section-label"><span class="pulse-dot" style="margin-right: 6px;"></span> Clickable Impact × AI Simple</span>
+    </div>
+    <h1 class="section-title">AI Leverage <span class="text-gradient">Battle Plan</span></h1>
+    <p class="section-desc">Constraint-sequenced roadmap for Mike Sierra & Caroline. Every bottleneck mapped. Every phase ordered by what unblocks the most revenue, fastest.</p>
+    <p style="margin-top: 20px; font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ais-text-muted);">Prepared Feb 26, 2026 — Andrew Naegele</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- STATS STRIP -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="stats-strip">
+  <div class="stat-cell">
+    <div class="stat-label"><span class="pulse-dot"></span> Revenue</div>
+    <div class="stat-value">$4.3M</div>
+    <div class="stat-note">FlightPath Golf 2024</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-label"><span class="pulse-dot"></span> Net Margin</div>
+    <div class="stat-value">~1%</div>
+    <div class="stat-note">$46K net profit</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-label"><span class="pulse-dot"></span> Ad Spend</div>
+    <div class="stat-value">$2M</div>
+    <div class="stat-note">100% Meta-dependent</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-label"><span class="pulse-dot"></span> Customers</div>
+    <div class="stat-value">500K</div>
+    <div class="stat-note">Across all sub-brands</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- CORE THESIS -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="bento-card" style="margin-bottom: 32px;">
+  <div class="corner-tl"></div>
+  <div class="corner-br"></div>
+  <div class="section-line">
+    <span class="section-label">01. Core Thesis</span>
+  </div>
+  <h2 style="font-family: 'Manrope', sans-serif; font-size: 26px; font-weight: 600; letter-spacing: -0.03em; color: var(--ais-text); margin-bottom: 20px;">Mike is the constraint. Everything flows through him.</h2>
+  <p style="color: var(--ais-text-secondary); font-weight: 300; margin-bottom: 16px;">
+    Every dollar of growth at Clickable Impact runs through one brain: Mike's. The "Idea to Revenue" methodology — positioning, offer stacks, landing pages, email sequences, advertorials, creative strategy, CRO — all of it lives in his head. That's a $4.3M business running on a single point of failure.
+  </p>
+  <p style="color: var(--ais-text-secondary); font-weight: 300; margin-bottom: 16px;">
+    Caroline's genius zone is partnerships, investor outreach, and M&A. But she's stuck in ops meetings. Every hour Caroline spends on internal management is an hour not spent acquiring AmateurGolf.com or closing the next brand deal.
+  </p>
+  <p style="color: var(--ais-text-secondary); font-weight: 300;">
+    The play isn't "give them AI tools." The play is <strong style="color: var(--ais-text); font-weight: 600;">extract Mike's brain into a system, free Caroline from ops, and build the infrastructure that turns their $2M ad spend into actual margin.</strong>
+  </p>
+</div>
+
+<div class="quote-block">
+  <div class="quote-text">"I am the bottleneck of the businesses."</div>
+  <div class="quote-source">— Mike Sierra, Onboarding Call 003</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- BOTTLENECK MATRIX -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="section-header">
+  <div class="section-line">
+    <span class="section-label">02. Bottleneck Matrix</span>
+  </div>
+  <h2 class="section-title">10 Constraints, Ranked by <span class="text-gradient">Revenue Impact</span></h2>
+  <p class="section-desc">Ordered by what's costing the most money right now. Tags show where the fix lives: human judgment, AI intelligence, or pure code/automation.</p>
+</div>
+
+<div class="bottleneck">
+  <div class="corner-tl"></div><div class="corner-br"></div>
+  <div class="bn-header">
+    <div class="bn-rank">1</div>
+    <div class="bn-title">Mike = Only CRO/DR Marketing Brain</div>
+  </div>
+  <div class="bn-body">Everything from positioning to offer stacks to landing pages to email sequences goes through Mike. One person doing the work of a 6-person creative team. New products sit for weeks/months waiting for his bandwidth. The SwitchGrips launch sat on a garbage website because Mike hadn't gotten to it yet.</div>
+  <div class="bn-tags">
+    <span class="tag tag--ai">AI: Draft copy, pages, sequences</span>
+    <span class="tag tag--human">Human: Mike approves & refines</span>
+    <span class="tag tag--code">Code: Template system, auto-deploy</span>
+  </div>
+</div>
+
+<div class="bottleneck">
+  <div class="bn-header">
+    <div class="bn-rank">2</div>
+    <div class="bn-title">No Creative Performance Tracking</div>
+  </div>
+  <div class="bn-body">$2M/year in Meta ads with no system tracking which creative works at which funnel stage, for which persona, with which angle. Decisions are gut feel. ClickUp holds some of it, but it's not connected to actual performance data from Triple Whale or Meta.</div>
+  <div class="bn-tags">
+    <span class="tag tag--ai">AI: Analyze & categorize performance</span>
+    <span class="tag tag--code">Code: Data pipeline from Triple Whale</span>
+    <span class="tag tag--human">Human: Strategic creative decisions</span>
+  </div>
+</div>
+
+<div class="bottleneck">
+  <div class="bn-header">
+    <div class="bn-rank">3</div>
+    <div class="bn-title">Sales Team Ignoring CRM</div>
+  </div>
+  <div class="bn-body">Paid 6 figures to salespeople who don't log activities, don't follow up on time, and don't make their calls. Hot leads go cold. No visibility into pipeline health. No accountability system beyond Mike checking manually.</div>
+  <div class="bn-tags">
+    <span class="tag tag--ai">AI: Flag hot leads, daily task lists</span>
+    <span class="tag tag--code">Code: CRM automation, alerts</span>
+    <span class="tag tag--human">Human: Sales calls & relationship building</span>
+  </div>
+</div>
+
+<div class="bottleneck">
+  <div class="bn-header">
+    <div class="bn-rank">4</div>
+    <div class="bn-title">Caroline Trapped in Ops</div>
+  </div>
+  <div class="bn-body">Caroline raised $20M for 69 companies. Her genius zone is partnerships, investor outreach, and M&A. But she's being pulled into internal ops meetings, team management, and processes that should be systematized. Every hour in ops = one less hour pursuing the AmateurGolf.com acquisition or closing brand partnerships.</div>
+  <div class="bn-tags">
+    <span class="tag tag--ai">AI: Lead research, outreach drafts</span>
+    <span class="tag tag--code">Code: Ops workflows, automations</span>
+    <span class="tag tag--human">Human: Caroline closes deals</span>
+  </div>
+</div>
+
+<div class="bottleneck">
+  <div class="bn-header">
+    <div class="bn-rank">5</div>
+    <div class="bn-title">Idea-to-Revenue Pipeline Takes Months</div>
+  </div>
+  <div class="bn-body">Getting a new product from "in hand" to "generating revenue" requires: marketing angles, landing page, email sequences, infographics, product images, scripts, content creation, editing, ad launch, data analysis, iteration. Each step waits for the previous one. Most steps wait for Mike.</div>
+  <div class="bn-tags">
+    <span class="tag tag--ai">AI: Generate first drafts of everything</span>
+    <span class="tag tag--code">Code: Automated deployment pipeline</span>
+    <span class="tag tag--human">Human: Mike's strategic eye, final approval</span>
+  </div>
+</div>
+
+<div class="bottleneck">
+  <div class="bn-header">
+    <div class="bn-rank">6</div>
+    <div class="bn-title">1% Net Margin on $4.3M</div>
+  </div>
+  <div class="bn-body">~$46K net profit. $800K in seller-financing debt. $2M in ad spend eating margins. At this margin, a 5% efficiency gain on ad spend alone = $100K straight to the bottom line. This isn't a "nice to have" optimization — it's survival math.</div>
+  <div class="bn-tags">
+    <span class="tag tag--ai">AI: Ad spend optimization, CRO</span>
+    <span class="tag tag--code">Code: Automated bid rules, reporting</span>
+    <span class="tag tag--human">Human: Strategic budget allocation</span>
+  </div>
+</div>
+
+<div class="bottleneck">
+  <div class="bn-header">
+    <div class="bn-rank">7</div>
+    <div class="bn-title">100% Meta-Dependent for Paid Traffic</div>
+  </div>
+  <div class="bn-body">All $2M in ad spend goes to one platform. A single algorithm change or account suspension = catastrophic revenue drop. Mike wants YouTube, AppLovin, Snapchat, Pinterest, X, Reddit, and Connected TV but doesn't have bandwidth to test new channels.</div>
+  <div class="bn-tags">
+    <span class="tag tag--ai">AI: Creative adaptation per platform</span>
+    <span class="tag tag--code">Code: Cross-platform deployment</span>
+    <span class="tag tag--human">Human: Channel strategy decisions</span>
+  </div>
+</div>
+
+<div class="bottleneck">
+  <div class="bn-header">
+    <div class="bn-rank">8</div>
+    <div class="bn-title">Lead Gen is Manual</div>
+  </div>
+  <div class="bn-body">Caroline's outbound for newsletter sponsors, golf brands, and partnership opportunities is all manual research. Apollo and StoreLeads sit underutilized. Trade show follow-up is inconsistent. The pipeline for new business development is hand-cranked.</div>
+  <div class="bn-tags">
+    <span class="tag tag--ai">AI: Prospect research, scoring, outreach</span>
+    <span class="tag tag--code">Code: Apollo/StoreLeads automation</span>
+    <span class="tag tag--human">Human: Caroline qualifies & closes</span>
+  </div>
+</div>
+
+<div class="bottleneck">
+  <div class="bn-header">
+    <div class="bn-rank">9</div>
+    <div class="bn-title">Content Distribution is Ad Hoc</div>
+  </div>
+  <div class="bn-body">Content gets created but distribution across platforms is inconsistent. No repurposing system. No cross-posting automation. Stairway Legends newsletter, social accounts, and brand content all managed separately with no unified distribution engine.</div>
+  <div class="bn-tags">
+    <span class="tag tag--ai">AI: Repurpose & adapt per platform</span>
+    <span class="tag tag--code">Code: Scheduled posting, cross-platform</span>
+    <span class="tag tag--human">Human: Voice & brand direction</span>
+  </div>
+</div>
+
+<div class="bottleneck">
+  <div class="bn-header">
+    <div class="bn-rank">10</div>
+    <div class="bn-title">3.7/5 Trustpilot — Customer Experience Gaps</div>
+  </div>
+  <div class="bn-body">Polarized reviews. Subscription billing complaints. Product quality inconsistency across sub-brands. This erodes LTV and increases refund rates on that razor-thin margin. A CX monitoring system catches problems before they become 1-star reviews.</div>
+  <div class="bn-tags">
+    <span class="tag tag--ai">AI: Sentiment analysis, auto-responses</span>
+    <span class="tag tag--code">Code: Review monitoring pipeline</span>
+    <span class="tag tag--human">Human: Complex complaint resolution</span>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- PHASE 1 -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="section-header">
+  <div class="section-line">
+    <span class="section-label">03. The Battle Plan</span>
+  </div>
+  <h2 class="section-title">Constraint-Sequenced <span class="text-gradient">Execution</span></h2>
+  <p class="section-desc">Biggest constraint first. Highest leverage second. Each phase unlocks the next.</p>
+</div>
+
+<div class="phase-block">
+  <div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div>
+  <div class="phase-badge"><span class="pulse-dot" style="background: white; box-shadow: none;"></span> Phase 1 — Weeks 1–3</div>
+  <div class="phase-title">Unblock Mike: Extract the Brain</div>
+  <div class="phase-sub">Constraints targeted: #1 (Mike is bottleneck) + #3 (Sales CRM)</div>
+
+  <div class="phase-item">
+    <div>
+      <div class="pi-title">CRO / Funnel Brain Agent</div>
+      <div class="pi-desc">Connect Shopify analytics + Microsoft Clarity heatmaps + Triple Whale data. Build an AI agent that can analyze any product page and generate: conversion rate diagnosis, specific copy/layout recommendations, and A/B test suggestions — all in Mike's voice and framework. Mike reviews and approves; he doesn't have to build from scratch anymore.</div>
+    </div>
+    <div class="pi-tags"><span class="tag tag--ai">AI</span><span class="tag tag--code">Code</span></div>
+  </div>
+
+  <div class="phase-item">
+    <div>
+      <div class="pi-title">Sales CRM Manager Agent</div>
+      <div class="pi-desc">Plug into the existing CRM. AI scans for: leads that haven't been contacted in 24+ hrs, deals going cold, missing activity logs. Generates daily task lists for each rep. Sends Mike a 60-second morning briefing on pipeline health. No more manually checking if salespeople are doing their jobs.</div>
+    </div>
+    <div class="pi-tags"><span class="tag tag--ai">AI</span><span class="tag tag--code">Code</span></div>
+  </div>
+
+  <div class="phase-item">
+    <div>
+      <div class="pi-title">Offer Doc + Brand Voice Extraction</div>
+      <div class="pi-desc">Run Mike's "Idea to Revenue" methodology through the 7-step Offer Doc framework. Extract his positioning instincts, go-to angles, and DR copywriting patterns into a documented system the AI can reference for every future piece of content. This is the foundation everything else builds on.</div>
+    </div>
+    <div class="pi-tags"><span class="tag tag--ai">AI</span><span class="tag tag--human">Human</span></div>
+  </div>
+
+  <div class="phase-item">
+    <div>
+      <div class="pi-title">Mac Mini Setup + Agent Infrastructure</div>
+      <div class="pi-desc">Both Mac Minis configured. Dedicated identities, 1Password vaults, Amex virtual cards with spend limits, TailScale for secure file transfer, Jump Desktop for remote access. Mike's agent and Caroline's agent fully isolated and operational.</div>
+    </div>
+    <div class="pi-tags"><span class="tag tag--code">Code</span></div>
+  </div>
+</div>
+
+<!-- PHASE 2 -->
+<div class="phase-block">
+  <div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div>
+  <div class="phase-badge"><span class="pulse-dot" style="background: white; box-shadow: none;"></span> Phase 2 — Weeks 4–6</div>
+  <div class="phase-title">Revenue Acceleration: Speed Up the Pipeline</div>
+  <div class="phase-sub">Constraints targeted: #5 (Idea-to-Revenue speed) + #4 (Caroline in ops) + #8 (Manual lead gen)</div>
+
+  <div class="phase-item">
+    <div>
+      <div class="pi-title">Idea-to-Revenue Accelerator</div>
+      <div class="pi-desc">AI drafts the full launch package when a new product enters the pipeline: landing page copy, email sequence (welcome + nurture + promo), 3 advertorial angles, social ad copy variations, infographic briefs. Mike goes from "building everything" to "reviewing and tweaking." Target: shrink launch cycle from months to days.</div>
+    </div>
+    <div class="pi-tags"><span class="tag tag--ai">AI</span><span class="tag tag--human">Human</span></div>
+  </div>
+
+  <div class="phase-item">
+    <div>
+      <div class="pi-title">Lead Gen Engine for Caroline</div>
+      <div class="pi-desc">Automated prospect research via Apollo + StoreLeads for: golf brands, newsletter sponsors, potential acquisitions. AI scores and ranks prospects, drafts personalized outreach. Caroline spends her time on qualified conversations, not research.</div>
+    </div>
+    <div class="pi-tags"><span class="tag tag--ai">AI</span><span class="tag tag--code">Code</span></div>
+  </div>
+
+  <div class="phase-item">
+    <div>
+      <div class="pi-title">Sales Call & Language Miner (CallVault Integration)</div>
+      <div class="pi-desc">Every Zoom call gets processed through CallVault. Extract: customer pains, objections, exact language, buying triggers, and competitive mentions. Build a living "voice of customer" database that feeds the CRO brain and creative system. Mike's sales calls become a goldmine instead of a time sink.</div>
+    </div>
+    <div class="pi-tags"><span class="tag tag--ai">AI</span><span class="tag tag--code">Code</span></div>
+  </div>
+
+  <div class="phase-item">
+    <div>
+      <div class="pi-title">Mission Control Board Setup</div>
+      <div class="pi-desc">Centralized task management for humans + AI. Kanban-style board where both human team members and AI agents have assigned tasks, deadlines, and status tracking. Mike sees everything in one place.</div>
+    </div>
+    <div class="pi-tags"><span class="tag tag--code">Code</span><span class="tag tag--human">Human</span></div>
+  </div>
+</div>
+
+<!-- PHASE 3 -->
+<div class="phase-block">
+  <div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div>
+  <div class="phase-badge"><span class="pulse-dot" style="background: white; box-shadow: none;"></span> Phase 3 — Weeks 7–10</div>
+  <div class="phase-title">Margin Expansion: Make the Ad Spend Work</div>
+  <div class="phase-sub">Constraints targeted: #2 (Creative tracking) + #6 (Thin margins) + #9 (Content distribution)</div>
+
+  <div class="phase-item">
+    <div>
+      <div class="pi-title">Creative Performance Brain</div>
+      <div class="pi-desc">The system Mike's been asking for. Every ad tagged by: funnel stage (TOF/MOF/BOF), buyer persona, creative angle, format type. Connected to Triple Whale and Meta Ads data. AI generates weekly performance reports with clear "scale this / kill this / test this" recommendations. Replaces gut feel with data-driven creative decisions on $2M in spend.</div>
+    </div>
+    <div class="pi-tags"><span class="tag tag--ai">AI</span><span class="tag tag--code">Code</span></div>
+  </div>
+
+  <div class="phase-item">
+    <div>
+      <div class="pi-title">Content Distribution System</div>
+      <div class="pi-desc">One piece of content adapted and deployed across every platform. Per-platform skills for Twitter/X, Instagram, Facebook, LinkedIn, YouTube Shorts, Stairway Legends newsletter. AI handles adaptation, scheduling, and posting. Target: 3x content output with zero additional human hours.</div>
+    </div>
+    <div class="pi-tags"><span class="tag tag--ai">AI</span><span class="tag tag--code">Code</span></div>
+  </div>
+
+  <div class="phase-item">
+    <div>
+      <div class="pi-title">CX Monitoring + Review Response System</div>
+      <div class="pi-desc">Auto-monitor Trustpilot, Shopify reviews, and Intercom tickets. AI flags negative sentiment patterns (subscription billing, product quality). Drafts response templates for common complaints. Escalates edge cases to human. Target: move from 3.7 to 4.2+ Trustpilot within 90 days.</div>
+    </div>
+    <div class="pi-tags"><span class="tag tag--ai">AI</span><span class="tag tag--code">Code</span></div>
+  </div>
+</div>
+
+<!-- FUTURE PHASE -->
+<div class="phase-block" style="--phase-color: var(--ais-text-muted); opacity: 0.85;">
+  <div class="corner-tl" style="border-color: var(--ais-text-muted);"></div><div class="corner-br" style="border-color: var(--ais-text-muted);"></div>
+  <div class="phase-badge" style="background: var(--ais-text-muted);">Future — Weeks 11+</div>
+  <div class="phase-title">Scale: New Channels + Acquisitions</div>
+  <div class="phase-sub">Constraints targeted: #7 (Meta dependency) + M&A support</div>
+
+  <div class="phase-item">
+    <div>
+      <div class="pi-title">Multi-Channel Ad Expansion</div>
+      <div class="pi-desc">With the creative performance brain in place and the Idea-to-Revenue pipeline humming, start deploying creatives to YouTube, AppLovin, Snapchat, Pinterest. AI adapts winning Meta creatives to each new platform's format and best practices.</div>
+    </div>
+    <div class="pi-tags"><span class="tag tag--ai">AI</span><span class="tag tag--code">Code</span></div>
+  </div>
+
+  <div class="phase-item">
+    <div>
+      <div class="pi-title">M&A Due Diligence Assistant</div>
+      <div class="pi-desc">For the AmateurGolf.com acquisition and future targets: AI analyzes P&Ls, bank statements, traffic data, and competitive positioning. Generates diligence reports Caroline can use in negotiations.</div>
+    </div>
+    <div class="pi-tags"><span class="tag tag--ai">AI</span><span class="tag tag--human">Human</span></div>
+  </div>
+
+  <div class="phase-item">
+    <div>
+      <div class="pi-title">Personal AI Assistant for Mike</div>
+      <div class="pi-desc">Mike's daily companion: schedule management, call prep, content ideas surfaced from industry monitoring, automatic task capture from conversations. The AI that knows Mike's business as well as Mike does.</div>
+    </div>
+    <div class="pi-tags"><span class="tag tag--ai">AI</span></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- WEEKLY CALL -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="bento-card" style="margin-bottom: 32px;">
+  <div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div>
+  <div class="section-line">
+    <span class="section-label">04. Weekly Rhythm</span>
+  </div>
+  <h2 style="font-family: 'Manrope', sans-serif; font-size: 26px; font-weight: 600; letter-spacing: -0.03em; margin-bottom: 8px;">AI Leverage Weekly — Strategy & Coaching</h2>
+  <p style="font-size: 15px; font-weight: 300; color: var(--ais-text-secondary); margin-bottom: 24px;">60-minute call split into two distinct modes. The first half captures what's bouncing around in Mike's and Caroline's heads. The second half is pure execution — decisions made, actions assigned.</p>
+
+  <div class="call-section">
+    <div class="call-section-title"><span class="pulse-dot"></span> Section 1: Brain Dump & Ideas (25 min)</div>
+    <div class="call-item"><span class="call-time">0–5 min</span> Quick wins from the week — what worked, what broke, what surprised</div>
+    <div class="call-item"><span class="call-time">5–15 min</span> Mike's content/tool sightings — anything he saw that sparked an idea. Gets captured to the backlog immediately.</div>
+    <div class="call-item"><span class="call-time">15–25 min</span> Caroline's pipeline updates — partnership leads, acquisition targets, investor conversations. Anything the AI should know about or act on.</div>
+  </div>
+
+  <div class="call-section">
+    <div class="call-section-title"><span class="pulse-dot"></span> Section 2: Direct Implementation Path (35 min)</div>
+    <div class="call-item"><span class="call-time">25–35 min</span> Andrew presents 1-2 recommendations with options already prepared. "Here's what I recommend, here's why, here's the alternative." Decision made on the call.</div>
+    <div class="call-item"><span class="call-time">35–50 min</span> Live building / demo of what was shipped that week. Screen share. Immediate feedback loop.</div>
+    <div class="call-item"><span class="call-time">50–55 min</span> Backlog review — reprioritize based on what we learned this week.</div>
+    <div class="call-item"><span class="call-time">55–60 min</span> Lock in next week's deliverables. Specific commitments from Andrew, from Mike, from Caroline. Written down. No ambiguity.</div>
+  </div>
+
+  <p style="margin-top: 20px; font-size: 13px; color: var(--ais-text-muted); font-family: 'Geist Mono', monospace;"><strong style="color: var(--ais-red);">Key rule:</strong> Andrew shows up with recommendations already locked in. Call time is for decisions and feedback, not brainstorming from scratch.</p>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- BACKLOG -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="bento-card" style="margin-bottom: 32px;">
+  <div class="corner-tl"></div><div class="corner-br"></div>
+  <div class="section-line">
+    <span class="section-label">05. Living Document</span>
+  </div>
+  <h2 style="font-family: 'Manrope', sans-serif; font-size: 26px; font-weight: 600; letter-spacing: -0.03em; margin-bottom: 8px;">Idea Backlog</h2>
+  <p style="font-size: 14px; font-weight: 300; color: var(--ais-text-secondary); margin-bottom: 20px;">Everything surfaced but not in the active phase yet. Reprioritized weekly. <span style="color: var(--ais-red);">Hot</span> = next up. <span style="color: #f59e0b;">Warm</span> = soon. <span style="color: #3b82f6;">Cool</span> = future.</p>
+
+  <div class="backlog-item"><span class="backlog-dot backlog-dot--hot"></span> YouTube as second paid channel (test with top-performing Meta creative adapted)</div>
+  <div class="backlog-item"><span class="backlog-dot backlog-dot--hot"></span> Yoho / creative management tool evaluation — build vs. buy decision</div>
+  <div class="backlog-item"><span class="backlog-dot backlog-dot--hot"></span> Email/SMS optimization via Klaviyo — AI-powered subject lines + send time optimization</div>
+  <div class="backlog-item"><span class="backlog-dot backlog-dot--warm"></span> AppLovin + Snapchat creative testing (after YouTube proves out)</div>
+  <div class="backlog-item"><span class="backlog-dot backlog-dot--warm"></span> AmateurGolf.com acquisition — AI due diligence package</div>
+  <div class="backlog-item"><span class="backlog-dot backlog-dot--warm"></span> Stairway Legends newsletter growth engine — automated content curation + sponsor outreach</div>
+  <div class="backlog-item"><span class="backlog-dot backlog-dot--warm"></span> Discord creator community management — AI moderator + content brief generator</div>
+  <div class="backlog-item"><span class="backlog-dot backlog-dot--cool"></span> Connected TV ad testing (Pinterest, Reddit, X)</div>
+  <div class="backlog-item"><span class="backlog-dot backlog-dot--cool"></span> The Max (chocolate company) — apply same Idea-to-Revenue playbook</div>
+  <div class="backlog-item"><span class="backlog-dot backlog-dot--cool"></span> Local AI model experimentation for video editing workflows</div>
+  <div class="backlog-item"><span class="backlog-dot backlog-dot--cool"></span> Sub-brand consolidation strategy (SwitchGrips, PuttBuddies, Birdie Golf under FlightPath umbrella)</div>
+  <div class="backlog-item"><span class="backlog-dot backlog-dot--cool"></span> Subscription billing fix + retention flow optimization (address Trustpilot complaints)</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- THE OPERATING PRINCIPLE -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="section-header">
+  <div class="section-line">
+    <span class="section-label">06. The Operating Principle</span>
+  </div>
+  <h2 class="section-title">Humans × AI × Code</h2>
+  <p class="section-desc">Naval's 4 pillars of leverage applied to every decision. Nothing gets assigned to a human that AI can do. Nothing goes to AI that pure code can handle.</p>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px;">
+
+  <!-- HUMANS -->
+  <div class="bento-card" style="padding: 36px; position: relative;">
+    <div class="corner-tl" style="border-color: #3b82f6;"></div>
+    <div class="corner-br" style="border-color: #3b82f6;"></div>
+    <div style="font-size: 48px; margin-bottom: 20px; line-height: 1;">🧠</div>
+    <div style="font-family: 'Geist Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: #3b82f6; margin-bottom: 8px;">Humans</div>
+    <div style="font-family: 'Manrope', sans-serif; font-size: 22px; font-weight: 700; letter-spacing: -0.03em; color: var(--ais-text); margin-bottom: 20px; line-height: 1.2;">Judgment.<br>Relationships.<br>Final call.</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px;">
+      <div style="background: rgba(59,130,246,0.06); border: 1px dashed rgba(59,130,246,0.25); padding: 14px 12px;">
+        <div style="font-family: 'Manrope', sans-serif; font-size: 24px; font-weight: 800; color: #3b82f6; letter-spacing: -0.04em;">100%</div>
+        <div style="font-family: 'Geist Mono', monospace; font-size: 9px; color: var(--ais-text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px;">Brand decisions</div>
+      </div>
+      <div style="background: rgba(59,130,246,0.06); border: 1px dashed rgba(59,130,246,0.25); padding: 14px 12px;">
+        <div style="font-family: 'Manrope', sans-serif; font-size: 24px; font-weight: 800; color: #3b82f6; letter-spacing: -0.04em;">$20M</div>
+        <div style="font-family: 'Geist Mono', monospace; font-size: 9px; color: var(--ais-text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px;">Caroline raised</div>
+      </div>
+    </div>
+    <div style="font-size: 13px; font-weight: 300; color: var(--ais-text-secondary); line-height: 1.7; border-top: 1px dashed var(--ais-border); padding-top: 16px;">
+      Strategic positioning. Sales calls. Creative direction. Partnership negotiations. Market intuition. The things that require skin in the game.
+    </div>
+  </div>
+
+  <!-- AI -->
+  <div class="bento-card" style="padding: 36px; position: relative;">
+    <div class="corner-tl"></div>
+    <div class="corner-br"></div>
+    <div style="font-size: 48px; margin-bottom: 20px; line-height: 1;">⚡</div>
+    <div style="font-family: 'Geist Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ais-red); margin-bottom: 8px; display: flex; align-items: center; gap: 6px;"><span class="pulse-dot"></span> AI</div>
+    <div style="font-family: 'Manrope', sans-serif; font-size: 22px; font-weight: 700; letter-spacing: -0.03em; color: var(--ais-text); margin-bottom: 20px; line-height: 1.2;">Scale.<br>Speed.<br>Pattern recognition.</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px;">
+      <div style="background: var(--ais-red-subtle); border: 1px dashed rgba(239,35,60,0.25); padding: 14px 12px;">
+        <div style="font-family: 'Manrope', sans-serif; font-size: 24px; font-weight: 800; color: var(--ais-red); letter-spacing: -0.04em;">3×</div>
+        <div style="font-family: 'Geist Mono', monospace; font-size: 9px; color: var(--ais-text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px;">Content output</div>
+      </div>
+      <div style="background: var(--ais-red-subtle); border: 1px dashed rgba(239,35,60,0.25); padding: 14px 12px;">
+        <div style="font-family: 'Manrope', sans-serif; font-size: 24px; font-weight: 800; color: var(--ais-red); letter-spacing: -0.04em;">Days</div>
+        <div style="font-family: 'Geist Mono', monospace; font-size: 9px; color: var(--ais-text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px;">Launch cycles</div>
+      </div>
+    </div>
+    <div style="font-size: 13px; font-weight: 300; color: var(--ais-text-secondary); line-height: 1.7; border-top: 1px dashed var(--ais-border); padding-top: 16px;">
+      Draft copy at scale. Analyze performance data. Score leads. Repurpose content. Surface insights across 1,000s of data points without burning a human hour.
+    </div>
+  </div>
+
+  <!-- CODE -->
+  <div class="bento-card" style="padding: 36px; position: relative;">
+    <div class="corner-tl" style="border-color: #10b981;"></div>
+    <div class="corner-br" style="border-color: #10b981;"></div>
+    <div style="font-size: 48px; margin-bottom: 20px; line-height: 1;">⚙️</div>
+    <div style="font-family: 'Geist Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: #10b981; margin-bottom: 8px;">Code</div>
+    <div style="font-family: 'Manrope', sans-serif; font-size: 22px; font-weight: 700; letter-spacing: -0.03em; color: var(--ais-text); margin-bottom: 20px; line-height: 1.2;">Automation.<br>Pipelines.<br>Zero marginal cost.</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px;">
+      <div style="background: rgba(16,185,129,0.06); border: 1px dashed rgba(16,185,129,0.25); padding: 14px 12px;">
+        <div style="font-family: 'Manrope', sans-serif; font-size: 24px; font-weight: 800; color: #10b981; letter-spacing: -0.04em;">24/7</div>
+        <div style="font-family: 'Geist Mono', monospace; font-size: 9px; color: var(--ais-text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px;">Runs without sleep</div>
+      </div>
+      <div style="background: rgba(16,185,129,0.06); border: 1px dashed rgba(16,185,129,0.25); padding: 14px 12px;">
+        <div style="font-family: 'Manrope', sans-serif; font-size: 24px; font-weight: 800; color: #10b981; letter-spacing: -0.04em;">$0</div>
+        <div style="font-family: 'Geist Mono', monospace; font-size: 9px; color: var(--ais-text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px;">Marginal cost</div>
+      </div>
+    </div>
+    <div style="font-size: 13px; font-weight: 300; color: var(--ais-text-secondary); line-height: 1.7; border-top: 1px dashed var(--ais-border); padding-top: 16px;">
+      Triple Whale data pipelines. Scheduled distribution. CRM alerts. Review monitoring. API integrations. If it's pure logic and repetition, it's a code job.
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- FOOTER -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="footer">
+  <div class="footer-mark">
+    <div class="corner-tl" style="width: 6px; height: 6px;"></div>
+    <div class="corner-tr" style="width: 6px; height: 6px;"></div>
+    <div class="corner-bl" style="width: 6px; height: 6px;"></div>
+    <div class="corner-br" style="width: 6px; height: 6px;"></div>
+    AS
+  </div>
+  <p class="footer-text">Clickable Impact × AI Simple — Battle Plan v1.0</p>
+  <p class="footer-text" style="margin-top: 4px;">Prepared by Andrew Naegele — February 26, 2026</p>
+  <p class="footer-text" style="margin-top: 4px; opacity: 0.5;">This is a living document. Updated weekly based on call outcomes.</p>
+  <p class="footer-text" style="margin-top: 12px; opacity: 0.4;">© 2026 AI Simple</p>
+</div>
+
+</div><!-- end container -->
+
+<script>
+// Mouse tracking for hover glow on bento cards
+document.querySelectorAll('.bento-card').forEach(card => {
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    card.style.setProperty('--mouse-x', ((e.clientX - rect.left) / rect.width * 100) + '%');
+    card.style.setProperty('--mouse-y', ((e.clientY - rect.top) / rect.height * 100) + '%');
+  });
+});
+</script>
+
+</body>
+</html>
