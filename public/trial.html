@@ -65,7 +65,7 @@ body { font-family: 'Inter', sans-serif; }
 @property --gradient-angle { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
 .shiny-cta {
   --gradient-angle: 0deg;
-  position: relative; overflow: hidden; border-radius: 0; padding: 1.25rem 3rem; font-size: 1.125rem; line-height: 1.2; font-weight: 500; color: #fff;
+  position: relative; overflow: hidden; border-radius: 6px; padding: 1.25rem 3rem; font-size: 1.125rem; line-height: 1.2; font-weight: 500; color: #fff;
   background: linear-gradient(#000, #000) padding-box, conic-gradient(from calc(var(--gradient-angle)), transparent 0%, #ef233c 5%, #f87171 15%, #ef233c 30%, transparent 40%, transparent 100%) border-box;
   border: 2px solid transparent; box-shadow: inset 0 0 0 1px #1a1818; outline: none;
   cursor: pointer; isolation: isolate; z-index: 0; animation: border-spin 2.5s linear infinite;
@@ -243,8 +243,8 @@ body { font-family: 'Inter', sans-serif; }
       <img src="img/ai-simple-logo.png" alt="AI Simple" class="h-6 w-auto">
       <span class="text-zinc-400 text-xs font-geist-mono hidden sm:inline">Business is hard. Make AI simple.</span>
     </a>
-    <a href="#get-in" class="px-5 py-2 bg-[#ef233c] text-white text-sm font-medium hover:bg-[#dc2626] transition-colors" style="border-radius: 0;">
-      Get In — $49 <span class="ml-1">→</span>
+    <a href="#get-in" class="px-5 py-2 bg-[#ef233c] text-white text-sm font-medium hover:bg-[#dc2626] transition-colors rounded-md">
+      Start Your 7-Day Pass <span class="ml-1">→</span>
     </a>
   </div>
 </nav>
@@ -253,7 +253,7 @@ body { font-family: 'Inter', sans-serif; }
 <section class="relative min-h-screen flex items-center justify-center pt-20 pb-16 px-6">
   <div class="max-w-4xl mx-auto text-center relative z-10">
 
-    <div class="inline-flex items-center gap-2 mb-8 animate-on-scroll">
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 border border-zinc-200 rounded-full mb-8 animate-on-scroll">
       <span class="w-1.5 h-1.5 rounded-full bg-[#ef233c]" style="animation: pulse-dot 2s infinite;"></span>
       <span class="text-[10px] font-geist-mono text-zinc-500 uppercase tracking-widest">THE LAB — 7-Day Backstage Pass</span>
     </div>
@@ -281,10 +281,15 @@ body { font-family: 'Inter', sans-serif; }
     <div class="animate-on-scroll" style="animation-delay: 0.4s;">
       <a href="#get-in" id="hero-cta" class="shiny-cta">
         <span class="flex items-center justify-center gap-2 text-base font-bold tracking-wide uppercase font-manrope whitespace-nowrap">
-          Get In — $49
+          Start Your 7-Day Pass
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </span>
       </a>
+    </div>
+
+    <div class="flex items-center justify-center gap-2 mt-6 animate-on-scroll" style="animation-delay: 0.5s;">
+      <span class="w-1.5 h-1.5 rounded-full bg-[#ef233c] shrink-0" style="animation: pulse-dot 2s infinite;"></span>
+      <p class="text-zinc-500 text-xs">Join the founders already inside THE LAB &ndash; yours today for <span class="line-through text-zinc-400">$497/mo</span> <strong class="text-zinc-900">$49</strong> when you start your 7&#8209;day pass before <span class="current-month"></span> ends.</p>
     </div>
   </div>
 </section>
@@ -899,10 +904,15 @@ body { font-family: 'Inter', sans-serif; }
         <div class="text-center">
           <a href="https://buy.stripe.com/8x26oHgCj86v9lIf5fbAs0i?prefilled_promo_code=7DAYTRIAL" id="pricing-cta" class="shiny-cta trial-cta-link">
             <span class="flex items-center justify-center gap-2 text-base font-bold tracking-wide uppercase font-manrope whitespace-nowrap">
-              Get In — $49
+              Start Your 7-Day Pass
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
             </span>
           </a>
+        </div>
+
+        <div class="flex items-center justify-center gap-2 mt-5">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#ef233c] shrink-0" style="animation: pulse-dot 2s infinite;"></span>
+          <p class="text-zinc-500 text-xs">Join the founders already inside THE LAB &ndash; yours today for <span class="line-through text-zinc-400">$497/mo</span> <strong class="text-zinc-900">$49</strong> when you start your 7&#8209;day pass before <span class="current-month"></span> ends.</p>
         </div>
 
       </div>
@@ -1547,13 +1557,18 @@ body { font-family: 'Inter', sans-serif; }
       </div>
     </div>
 
-    <div class="animate-on-scroll mb-8">
+    <div class="animate-on-scroll mb-4">
       <a href="https://buy.stripe.com/8x26oHgCj86v9lIf5fbAs0i?prefilled_promo_code=7DAYTRIAL" id="final-cta" class="shiny-cta trial-cta-link">
         <span class="flex items-center justify-center gap-2 text-base font-bold tracking-wide uppercase font-manrope whitespace-nowrap">
-          Get In — $49
+          Get In The Room
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </span>
       </a>
+    </div>
+
+    <div class="flex items-center justify-center gap-2 mb-8 animate-on-scroll">
+      <span class="w-1.5 h-1.5 rounded-full bg-[#ef233c] shrink-0" style="animation: pulse-dot 2s infinite;"></span>
+      <p class="text-zinc-500 text-xs">Join the founders already inside THE LAB &ndash; yours today for <span class="line-through text-zinc-400">$497/mo</span> <strong class="text-zinc-900">$49</strong> when you start your 7&#8209;day pass before <span class="current-month"></span> ends.</p>
     </div>
 
     <p class="text-zinc-500 text-sm animate-on-scroll">Worst case? You walk away with my entire stack for the price of dinner.</p>
@@ -1602,13 +1617,17 @@ body { font-family: 'Inter', sans-serif; }
 
 <!-- ========== STICKY MOBILE CTA ========== -->
 <div id="sticky-cta" class="sticky-cta md:hidden">
-  <a href="https://buy.stripe.com/8x26oHgCj86v9lIf5fbAs0i?prefilled_promo_code=7DAYTRIAL" class="trial-cta-link inline-block w-full max-w-sm mx-auto px-6 py-3 bg-[#ef233c] text-white text-sm font-bold font-manrope tracking-wide uppercase text-center hover:bg-[#dc2626] transition-colors" style="border-radius: 0;">
-    Get In — $49 →
+  <a href="https://buy.stripe.com/8x26oHgCj86v9lIf5fbAs0i?prefilled_promo_code=7DAYTRIAL" class="trial-cta-link inline-block w-full max-w-sm mx-auto px-6 py-3 bg-[#ef233c] text-white text-sm font-bold font-manrope tracking-wide uppercase text-center hover:bg-[#dc2626] transition-colors rounded-md">
+    Start Your 7-Day Pass →
   </a>
 </div>
 
 <!-- ========== SCRIPTS ========== -->
 <script>
+// Dynamic month injection
+const monthName = new Date().toLocaleString('en-US', { month: 'long' });
+document.querySelectorAll('.current-month').forEach(el => { el.textContent = monthName; });
+
 // Scroll-triggered animations
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
