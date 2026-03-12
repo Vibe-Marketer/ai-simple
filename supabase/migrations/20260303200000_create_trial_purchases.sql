@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS trial_purchases (
   currency text DEFAULT 'usd',
   status text,
   source text DEFAULT 'trial-page',
-  crm_contact_id uuid REFERENCES crm_contacts(id),
+  crm_contact_id uuid, -- FK to crm_contacts if that table exists
   created_at timestamptz DEFAULT now()
 );
 

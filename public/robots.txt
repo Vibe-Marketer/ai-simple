@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /thank-you
+Disallow: /welcome
+Disallow: /cre-thanks
+Disallow: /trial-upsell
+
+Sitemap: https://aisimple.co/sitemap.xml

@@ -6,3 +6,10 @@ node_modules/
 .env
 .env.*
 supabase/.temp/
+public/css/tailwind.css
+*.log
+
+# Large video files (too big for GitHub)
+docs/**/*.mp4
+docs/**/*.mov
+docs/**/*.avi

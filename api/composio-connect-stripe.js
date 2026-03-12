@@ -3,7 +3,7 @@
 
 const COMPOSIO_API_KEY = process.env.COMPOSIO_API_KEY;
 const COMPOSIO_BASE = 'https://backend.composio.dev/api/v3';
-const STRIPE_AUTH_CONFIG_ID = 'ac_CHQmlC58Ya5K';
+const STRIPE_AUTH_CONFIG_ID = process.env.COMPOSIO_STRIPE_AUTH_CONFIG_ID || 'ac_CHQmlC58Ya5K';
 const STRIPE_USER_ID = process.env.COMPOSIO_STRIPE_USER_ID;
 
 export default async function handler(req, res) {

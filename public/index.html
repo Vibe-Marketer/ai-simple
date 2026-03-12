@@ -9,6 +9,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
 <!-- End Google Tag Manager -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5JY8VWSF4Y"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-5JY8VWSF4Y');
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI Simple - Build Offers, Brands & AI Systems That Actually Move the Needle</title>
@@ -38,7 +46,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="robots" content="index, follow">
 <meta name="author" content="AI Simple — Los Silva & Andrew Naegele">
 <meta name="keywords" content="AI marketing agency, offer architecture, lead generation, AI systems, content machines, brand building, growth infrastructure">
-<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="/css/tailwind.css">
 <script src="https://unpkg.com/lucide@latest"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -286,29 +294,6 @@ select.form-input {
 }
 </style>
 
-<script>
-tailwind.config = {
-  theme: { extend: {} },
-  plugins: [
-    function({ addUtilities }) {
-      const rotateXUtilities = {}; const rotateYUtilities = {}; const rotateZUtilities = {};
-      const rotateValues = [0, 5, 10, 15, 20, 30, 45, 75];
-      rotateValues.forEach((v) => {
-        rotateXUtilities[`.rotate-x-${v}`] = { '--tw-rotate-x': `${v}deg`, transform: `translate3d(var(--tw-translate-x,0),var(--tw-translate-y,0),var(--tw-translate-z,0)) rotateX(var(--tw-rotate-x,0)) rotateY(var(--tw-rotate-y,0)) rotateZ(var(--tw-rotate-z,0)) skewX(var(--tw-skew-x,0)) skewY(var(--tw-skew-y,0)) scaleX(var(--tw-scale-x,1)) scaleY(var(--tw-scale-y,1))` };
-        if (v !== 0) rotateXUtilities[`.-rotate-x-${v}`] = { '--tw-rotate-x': `-${v}deg`, transform: `translate3d(var(--tw-translate-x,0),var(--tw-translate-y,0),var(--tw-translate-z,0)) rotateX(var(--tw-rotate-x,0)) rotateY(var(--tw-rotate-y,0)) rotateZ(var(--tw-rotate-z,0)) skewX(var(--tw-skew-x,0)) skewY(var(--tw-skew-y,0)) scaleX(var(--tw-scale-x,1)) scaleY(var(--tw-scale-y,1))` };
-      });
-      rotateValues.forEach((v) => { rotateYUtilities[`.rotate-y-${v}`] = { '--tw-rotate-y': `${v}deg`, transform: `translate3d(var(--tw-translate-x,0),var(--tw-translate-y,0),var(--tw-translate-z,0)) rotateX(var(--tw-rotate-x,0)) rotateY(var(--tw-rotate-y,0)) rotateZ(var(--tw-rotate-z,0)) skewX(var(--tw-skew-x,0)) skewY(var(--tw-skew-y,0)) scaleX(var(--tw-scale-x,1)) scaleY(var(--tw-scale-y,1))` }; });
-      addUtilities({
-        ...rotateXUtilities, ...rotateYUtilities, ...rotateZUtilities,
-        ".perspective-none": { perspective: "none" }, ".perspective-dramatic": { perspective: "100px" },
-        ".perspective-near": { perspective: "300px" }, ".perspective-normal": { perspective: "500px" },
-        ".perspective-midrange": { perspective: "800px" }, ".perspective-distant": { perspective: "1200px" },
-        ".transform-style-preserve-3d": { "transform-style": "preserve-3d" }, ".transform-style-flat": { "transform-style": "flat" },
-      });
-    }
-  ]
-};
-</script>
 
 <script>
 (function () {
@@ -355,7 +340,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <nav class="shadow-black/50 flex md:gap-8 md:w-auto bg-black/60 w-full max-w-5xl rounded-none pt-2 pr-2 pb-2 pl-3 shadow-2xl backdrop-blur-lg gap-x-4 gap-y-4 items-center justify-between" style="position: relative; --border-gradient: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0), rgba(255,255,255,0.2)); --border-radius-before: 0">
     <div class="flex gap-2 shrink-0 items-center">
       <a href="/" class="flex gap-x-3 items-center">
-        <img src="img/ai-simple-logo.png" alt="AI Simple" class="h-8 w-auto drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">
+        <picture>
+  <source srcset="img/ai-simple-logo.webp" type="image/webp">
+  <img src="img/ai-simple-logo.png" alt="AI Simple" class="h-8 w-auto drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">
+</picture>
         <span class="text-xl font-bold text-white tracking-tight font-manrope">AI Simple</span>
       </a>
     </div>
@@ -671,36 +659,36 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </style>
       <div class="flex items-center justify-center md:justify-start [&_div]:mx-8 w-max animate-infinite-scroll">
         <!-- Original Items -->
-        <div class="flex items-center"><img src="img/disney.png" alt="Disney" class="brand-logo logo-white" loading="lazy"></div>
+        <div class="flex items-center"><picture><source srcset="img/disney.webp" type="image/webp"><img src="img/disney.png" alt="Disney" class="brand-logo logo-white" loading="lazy"></picture></div>
         <div class="flex items-center"><img src="img/nfl.svg" alt="NFL" class="brand-logo logo-white" loading="lazy"></div>
-        <div class="flex items-center"><img src="img/jawzrsize.jpg" alt="Jawzrsize" class="brand-logo logo-invert" loading="lazy"></div>
+        <div class="flex items-center"><picture><source srcset="img/jawzrsize.webp" type="image/webp"><img src="img/jawzrsize.jpg" alt="Jawzrsize" class="brand-logo logo-invert" loading="lazy"></picture></div>
         <div class="flex items-center"><img src="img/gr8fl-solar.png" alt="Gr8fl Solar" class="brand-logo logo-white" loading="lazy"></div>
-        <div class="flex items-center"><img src="img/lurn.png" alt="Lurn" class="brand-logo logo-white" loading="lazy"></div>
+        <div class="flex items-center"><picture><source srcset="img/lurn.webp" type="image/webp"><img src="img/lurn.png" alt="Lurn" class="brand-logo logo-white" loading="lazy"></picture></div>
         <div class="flex items-center"><img src="img/entrepreneur.svg" alt="Entrepreneur" class="brand-logo logo-white" loading="lazy"></div>
         <div class="flex items-center"><img src="img/techcrunch.svg" alt="TechCrunch" class="brand-logo logo-white" loading="lazy"></div>
         <div class="flex items-center"><img src="img/app-sumo.svg" alt="AppSumo" class="brand-logo logo-white" loading="lazy"></div>
-        <div class="flex items-center"><img src="img/mixergy.png" alt="Mixergy" class="brand-logo logo-white" loading="lazy"></div>
-        <div class="flex items-center"><img src="img/high-ticket-trainer.png" alt="High Ticket Trainer" class="brand-logo" style="height: 36px;" loading="lazy"></div>
-        <div class="flex items-center"><img src="img/corner-capital.jpg" alt="Corner Capital" class="brand-logo logo-invert" loading="lazy"></div>
-        <div class="flex items-center"><img src="img/complily.png" alt="Complily" class="brand-logo logo-white" loading="lazy"></div>
+        <div class="flex items-center"><picture><source srcset="img/mixergy.webp" type="image/webp"><img src="img/mixergy.png" alt="Mixergy" class="brand-logo logo-white" loading="lazy"></picture></div>
+        <div class="flex items-center"><picture><source srcset="img/high-ticket-trainer.webp" type="image/webp"><img src="img/high-ticket-trainer.png" alt="High Ticket Trainer" class="brand-logo" style="height: 36px;" loading="lazy"></picture></div>
+        <div class="flex items-center"><picture><source srcset="img/corner-capital.webp" type="image/webp"><img src="img/corner-capital.jpg" alt="Corner Capital" class="brand-logo logo-invert" loading="lazy"></picture></div>
+        <div class="flex items-center"><picture><source srcset="img/complily.webp" type="image/webp"><img src="img/complily.png" alt="Complily" class="brand-logo logo-white" loading="lazy"></picture></div>
         <div class="flex items-center"><img src="img/bnsn.png" alt="BNSN" class="brand-logo logo-white" loading="lazy"></div>
-        <div class="flex items-center"><img src="img/bc-logo.png" alt="BC" class="brand-logo logo-white" loading="lazy"></div>
+        <div class="flex items-center"><picture><source srcset="img/bc-logo.webp" type="image/webp"><img src="img/bc-logo.png" alt="BC" class="brand-logo logo-white" loading="lazy"></picture></div>
 
         <!-- Duplicate Items for infinite scroll -->
-        <div class="flex items-center"><img src="img/disney.png" alt="Disney" class="brand-logo logo-white" loading="lazy"></div>
+        <div class="flex items-center"><picture><source srcset="img/disney.webp" type="image/webp"><img src="img/disney.png" alt="Disney" class="brand-logo logo-white" loading="lazy"></picture></div>
         <div class="flex items-center"><img src="img/nfl.svg" alt="NFL" class="brand-logo logo-white" loading="lazy"></div>
-        <div class="flex items-center"><img src="img/jawzrsize.jpg" alt="Jawzrsize" class="brand-logo logo-invert" loading="lazy"></div>
+        <div class="flex items-center"><picture><source srcset="img/jawzrsize.webp" type="image/webp"><img src="img/jawzrsize.jpg" alt="Jawzrsize" class="brand-logo logo-invert" loading="lazy"></picture></div>
         <div class="flex items-center"><img src="img/gr8fl-solar.png" alt="Gr8fl Solar" class="brand-logo logo-white" loading="lazy"></div>
-        <div class="flex items-center"><img src="img/lurn.png" alt="Lurn" class="brand-logo logo-white" loading="lazy"></div>
+        <div class="flex items-center"><picture><source srcset="img/lurn.webp" type="image/webp"><img src="img/lurn.png" alt="Lurn" class="brand-logo logo-white" loading="lazy"></picture></div>
         <div class="flex items-center"><img src="img/entrepreneur.svg" alt="Entrepreneur" class="brand-logo logo-white" loading="lazy"></div>
         <div class="flex items-center"><img src="img/techcrunch.svg" alt="TechCrunch" class="brand-logo logo-white" loading="lazy"></div>
         <div class="flex items-center"><img src="img/app-sumo.svg" alt="AppSumo" class="brand-logo logo-white" loading="lazy"></div>
-        <div class="flex items-center"><img src="img/mixergy.png" alt="Mixergy" class="brand-logo logo-white" loading="lazy"></div>
-        <div class="flex items-center"><img src="img/high-ticket-trainer.png" alt="High Ticket Trainer" class="brand-logo" style="height: 36px;" loading="lazy"></div>
-        <div class="flex items-center"><img src="img/corner-capital.jpg" alt="Corner Capital" class="brand-logo logo-invert" loading="lazy"></div>
-        <div class="flex items-center"><img src="img/complily.png" alt="Complily" class="brand-logo logo-white" loading="lazy"></div>
+        <div class="flex items-center"><picture><source srcset="img/mixergy.webp" type="image/webp"><img src="img/mixergy.png" alt="Mixergy" class="brand-logo logo-white" loading="lazy"></picture></div>
+        <div class="flex items-center"><picture><source srcset="img/high-ticket-trainer.webp" type="image/webp"><img src="img/high-ticket-trainer.png" alt="High Ticket Trainer" class="brand-logo" style="height: 36px;" loading="lazy"></picture></div>
+        <div class="flex items-center"><picture><source srcset="img/corner-capital.webp" type="image/webp"><img src="img/corner-capital.jpg" alt="Corner Capital" class="brand-logo logo-invert" loading="lazy"></picture></div>
+        <div class="flex items-center"><picture><source srcset="img/complily.webp" type="image/webp"><img src="img/complily.png" alt="Complily" class="brand-logo logo-white" loading="lazy"></picture></div>
         <div class="flex items-center"><img src="img/bnsn.png" alt="BNSN" class="brand-logo logo-white" loading="lazy"></div>
-        <div class="flex items-center"><img src="img/bc-logo.png" alt="BC" class="brand-logo logo-white" loading="lazy"></div>
+        <div class="flex items-center"><picture><source srcset="img/bc-logo.webp" type="image/webp"><img src="img/bc-logo.png" alt="BC" class="brand-logo logo-white" loading="lazy"></picture></div>
       </div>
     </div>
   </div>
@@ -1400,7 +1388,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="flex flex-col gap-6">
         <div class="flex items-center gap-3">
           <div class="flex gap-x-3 items-center">
-            <img src="img/ai-simple-logo.png" alt="AI Simple" class="h-8 w-auto drop-shadow-[0_0_5px_rgba(255,255,255,0.3)]">
+            <picture>
+  <source srcset="img/ai-simple-logo.webp" type="image/webp">
+  <img src="img/ai-simple-logo.png" alt="AI Simple" class="h-8 w-auto drop-shadow-[0_0_5px_rgba(255,255,255,0.3)]">
+</picture>
             <span class="text-xl font-bold text-white tracking-tight font-manrope">AI Simple</span>
           </div>
         </div>

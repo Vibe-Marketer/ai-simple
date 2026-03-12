@@ -10,7 +10,7 @@ const COMPOSIO_BASE = 'https://backend.composio.dev/api/v3';
 const GRACE_USER_ID = 'grace-leveragedcre';
 
 export default async function handler(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Origin', 'https://aisimple.co');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
