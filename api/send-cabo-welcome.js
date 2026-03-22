@@ -1,4 +1,4 @@
-// Sends a welcome email from Soren (soren@vibeos.com) via Composio Gmail
+// Sends a welcome email from Soren via a@aisimple.co (Composio Gmail)
 // CC: Andrew (andrew@aisimple.co)
 // Triggered manually or after cabo lead signup
 

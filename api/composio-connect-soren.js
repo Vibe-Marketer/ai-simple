@@ -1,4 +1,4 @@
-// Generates a fresh Composio OAuth connection link for Soren's Gmail (soren@vibeos.com)
+// Generates a fresh Composio OAuth connection link for Soren via a@aisimple.co
 // Visit GET /api/composio-connect-soren to get redirected to the OAuth consent screen
 
 const COMPOSIO_API_KEY = process.env.COMPOSIO_API_KEY;
