@@ -19,7 +19,10 @@
     { "source": "/blueprint", "destination": "/employee-setup", "permanent": false },
     { "source": "/ai-employee", "destination": "/employee-setup", "permanent": false },
     { "source": "/leveragedcre", "destination": "/cre", "permanent": false },
-    { "source": "/phill", "destination": "/cre", "permanent": false }
+    { "source": "/phill", "destination": "/cre", "permanent": false },
+    { "source": "/resources", "destination": "/cabo", "permanent": false },
+    { "source": "/ai-architect", "destination": "/cabo", "permanent": false },
+    { "source": "/speaking", "destination": "/cabo", "permanent": false }
   ],
   "headers": [
     {

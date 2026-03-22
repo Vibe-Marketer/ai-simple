@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>!function(key) {if (window.reb2b) return;window.reb2b = {loaded: true};var s = document.createElement("script");s.async = true;s.src = "https://ddwl4m2hdecbv.cloudfront.net/b/" + key + "/" + key + ".js.gz";document.getElementsByTagName("script")[0].parentNode.insertBefore(s, document.getElementsByTagName("script")[0]);}("QOQRJH9PE562");</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+<!-- End Google Tag Manager -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5JY8VWSF4Y"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-5JY8VWSF4Y');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your AI Resource Vault | AI Simple</title>
+<meta name="description" content="Your complete AI resource vault. Tools, repos, guides, and frameworks from Andrew Naegele.">
+<link rel="icon" href="/img/ai-simple-logo.png?v=3" type="image/png">
+<link rel="apple-touch-icon" href="/img/ai-simple-logo.png?v=3">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --text-primary: #18181B;
+    --text-body: #52525B;
+    --text-muted: #A1A1AA;
+    --red: #EF233C;
+    --border: #E4E4E7;
+    --surface: #F4F4F5;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text-body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .font-manrope { font-family: 'Manrope', sans-serif; }
+  .font-mono { font-family: 'Geist Mono', monospace; }
+
+  /* Layout */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+  .container-wide { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+  /* Nav */
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    max-width: 1080px;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .nav-left img { height: 32px; width: 32px; }
+  .nav-left span {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--text-primary);
+  }
+  .nav-right {
+    font-family: 'Geist Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  /* Hero */
+  .hero {
+    text-align: center;
+    padding: 72px 24px 48px;
+  }
+  .hero-label {
+    font-family: 'Geist Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--red);
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+  .hero p {
+    font-size: 17px;
+    color: var(--text-body);
+    max-width: 540px;
+    margin: 0 auto;
+  }
+
+  /* Section headers */
+  .section { padding: 48px 0; }
+  .section-label {
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed var(--border);
+  }
+
+  /* Resource cards */
+  .card {
+    position: relative;
+    border: 1px dashed var(--border);
+    border-radius: 0;
+    padding: 32px;
+    background: var(--bg);
+    transition: border-color 0.2s ease;
+  }
+  .card:hover { border-color: var(--text-muted); }
+
+  /* Corner marks */
+  .card::before,
+  .card::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-color: var(--red);
+    border-style: solid;
+  }
+  .card::before {
+    top: -1px;
+    left: -1px;
+    border-width: 2px 0 0 2px;
+  }
+  .card::after {
+    bottom: -1px;
+    right: -1px;
+    border-width: 0 2px 2px 0;
+  }
+
+  .card-title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+  }
+  .card-desc {
+    font-size: 15px;
+    color: var(--text-body);
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  .card-icon {
+    font-size: 24px;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-block;
+    font-family: 'Geist Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    padding: 10px 20px;
+    border: 1px solid var(--text-primary);
+    background: var(--text-primary);
+    color: var(--bg);
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-radius: 0;
+  }
+  .btn:hover {
+    background: var(--bg);
+    color: var(--text-primary);
+  }
+  .btn-outline {
+    background: var(--bg);
+    color: var(--text-primary);
+    border-color: var(--border);
+  }
+  .btn-outline:hover {
+    border-color: var(--text-primary);
+  }
+  .btn-red {
+    background: var(--red);
+    border-color: var(--red);
+    color: #fff;
+  }
+  .btn-red:hover {
+    background: #d01030;
+    border-color: #d01030;
+  }
+
+  /* Grid */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  @media (max-width: 640px) {
+    .grid-2 { grid-template-columns: 1fr; }
+  }
+
+  /* Tool list */
+  .tool-list { list-style: none; }
+  .tool-item {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--surface);
+    font-size: 15px;
+  }
+  .tool-item:last-child { border-bottom: none; }
+  .tool-name {
+    font-weight: 600;
+    color: var(--text-primary);
+    white-space: nowrap;
+  }
+  .tool-name a {
+    color: var(--text-primary);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    transition: border-color 0.2s ease;
+  }
+  .tool-name a:hover { border-color: var(--red); }
+  .tool-sep { color: var(--text-muted); }
+  .tool-desc { color: var(--text-body); }
+
+  /* Level headers */
+  .level-header {
+    font-family: 'Geist Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--red);
+    font-weight: 500;
+    margin-top: 32px;
+    margin-bottom: 8px;
+    padding-top: 24px;
+    border-top: 1px dashed var(--border);
+  }
+  .level-header:first-child { margin-top: 0; border-top: none; padding-top: 0; }
+
+  /* Bonus card */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--red);
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+  .pulse-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--red);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.8); }
+  }
+
+  /* Premium card accent */
+  .card-premium {
+    border-color: var(--red);
+    border-style: solid;
+  }
+
+  /* Spots label */
+  .spots-label {
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--red);
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+
+  /* Services section */
+  .service-item {
+    padding: 24px 0;
+    border-bottom: 1px solid var(--surface);
+  }
+  .service-item:last-child { border-bottom: none; }
+  .service-title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+  }
+  .service-desc {
+    font-size: 15px;
+    color: var(--text-body);
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 48px 24px;
+    border-top: 1px solid var(--border);
+    margin-top: 48px;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  /* Divider */
+  .divider {
+    border: none;
+    border-top: 1px dashed var(--border);
+    margin: 0;
+  }
+
+  /* Top accent bar */
+  .top-bar {
+    height: 3px;
+    background: var(--red);
+  }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<div class="top-bar"></div>
+
+<!-- Nav -->
+<nav class="nav">
+  <div class="nav-left">
+    <img src="/img/ai-simple-logo.png" alt="AI Simple">
+    <span class="font-manrope">AI Simple</span>
+  </div>
+  <div class="nav-right">Your AI Resource Vault</div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-label font-mono">YOU'RE IN</div>
+  <h1>Your AI Architect Resource Vault</h1>
+  <p>Everything below is yours. Bookmark this page &mdash; it's not going anywhere.</p>
+</section>
+
+<hr class="divider" style="max-width: 960px; margin: 0 auto;">
+
+<!-- Section A: Open Source Repos -->
+<section class="section container">
+  <div class="section-label font-mono">Open Source Repos</div>
+  <div class="grid-2">
+    <div class="card">
+      <span class="card-icon">&#128736;</span>
+      <div class="card-title">Top 7 Claude Code Skills</div>
+      <div class="card-desc">The exact skills from my personal toolkit that I use daily. Copy them into your Claude Code setup and start using them immediately.</div>
+      <a href="https://github.com/Vibe-Marketer/top-skills" target="_blank" rel="noopener" class="btn">Get the Skills &rarr;</a>
+    </div>
+    <div class="card">
+      <span class="card-icon">&#129302;</span>
+      <div class="card-title">Agency-in-a-Box (100+ AI Agents)</div>
+      <div class="card-desc">The complete agent library &mdash; 100+ specialized AI agents organized into 11 divisions. Engineering, Marketing, Sales, Design, and more.</div>
+      <a href="https://github.com/Vibe-Marketer/agency-agents" target="_blank" rel="noopener" class="btn">Get the Agents &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- Section B: OpenClaw Resources -->
+<section class="section container">
+  <div class="section-label font-mono">OpenClaw Resources</div>
+  <div class="card">
+    <span class="card-icon">&#128203;</span>
+    <div class="card-title">OpenClaw Setup & Field Reports</div>
+    <div class="card-desc">The complete OpenClaw documentation: AI Employee Identity Blueprint, Setup Guide, Onboarding SOP, Slack Setup Guide, Token Optimization Guide, and the Field Report. Everything you need to deploy your own AI employee system.</div>
+    <a href="https://drive.google.com/drive/folders/YOUR_FOLDER_ID" target="_blank" rel="noopener" class="btn">Access Google Drive &rarr;</a>
+  </div>
+</section>
+
+<!-- Section C: Complete AI Tool Stack -->
+<section class="section container">
+  <div class="section-label font-mono">Complete AI Tool Stack</div>
+
+  <div class="card" style="padding: 32px;">
+
+    <div class="level-header">Level 1-2: Get Your Voice Into AI</div>
+    <ul class="tool-list">
+      <li class="tool-item">
+        <span class="tool-name"><a href="https://aquavoice.ai" target="_blank" rel="noopener">Aqua Voice</a></span>
+        <span class="tool-sep">&mdash;</span>
+        <span class="tool-desc">Voice-to-text that actually works.</span>
+      </li>
+      <li class="tool-item">
+        <span class="tool-name"><a href="https://fathom.video" target="_blank" rel="noopener">Fathom</a></span>
+        <span class="tool-sep">&mdash;</span>
+        <span class="tool-desc">AI meeting recorder for Zoom/Teams/Meet.</span>
+      </li>
+    </ul>
+
+    <div class="level-header">Level 2-3: Pick ONE AI and Go Deep</div>
+    <ul class="tool-list">
+      <li class="tool-item">
+        <span class="tool-name"><a href="https://claude.ai" target="_blank" rel="noopener">Claude (Anthropic)</a></span>
+        <span class="tool-sep">&mdash;</span>
+        <span class="tool-desc">The AI I use for everything.</span>
+      </li>
+      <li class="tool-item">
+        <span class="tool-name"><a href="https://chat.openai.com" target="_blank" rel="noopener">ChatGPT (OpenAI)</a></span>
+        <span class="tool-sep">&mdash;</span>
+        <span class="tool-desc">Alternative option.</span>
+      </li>
+    </ul>
+
+    <div class="level-header">Level 3-4: Replace Google</div>
+    <ul class="tool-list">
+      <li class="tool-item">
+        <span class="tool-name"><a href="https://perplexity.ai" target="_blank" rel="noopener">Perplexity</a></span>
+        <span class="tool-sep">&mdash;</span>
+        <span class="tool-desc">AI search that gives answers, not links.</span>
+      </li>
+      <li class="tool-item">
+        <span class="tool-name"><a href="https://cometbrowser.com" target="_blank" rel="noopener">Comet Browser</a></span>
+        <span class="tool-sep">&mdash;</span>
+        <span class="tool-desc">Chrome replacement with AI built in.</span>
+      </li>
+    </ul>
+
+    <div class="level-header">Level 4-5: Build Without Code</div>
+    <ul class="tool-list">
+      <li class="tool-item">
+        <span class="tool-name"><a href="https://lovable.dev" target="_blank" rel="noopener">Lovable</a></span>
+        <span class="tool-sep">&mdash;</span>
+        <span class="tool-desc">AI app builder. Describe in English, get apps.</span>
+      </li>
+      <li class="tool-item">
+        <span class="tool-name">Antigravity (Google/Gemini)</span>
+        <span class="tool-sep">&mdash;</span>
+        <span class="tool-desc">Google's AI app builder.</span>
+      </li>
+    </ul>
+
+    <div class="level-header">Level 5-6: Autonomous AI Agents</div>
+    <ul class="tool-list">
+      <li class="tool-item">
+        <span class="tool-name"><a href="https://manus.im" target="_blank" rel="noopener">Manus</a></span>
+        <span class="tool-sep">&mdash;</span>
+        <span class="tool-desc">Full AI agent platform.</span>
+      </li>
+    </ul>
+
+    <div class="level-header">Level 6-7: Terminal-Level AI</div>
+    <ul class="tool-list">
+      <li class="tool-item">
+        <span class="tool-name">Claude Code + GSD Framework</span>
+        <span class="tool-sep">&mdash;</span>
+        <span class="tool-desc">Claude in your terminal with step-by-step structure.</span>
+      </li>
+      <li class="tool-item">
+        <span class="tool-name"><a href="https://zed.dev" target="_blank" rel="noopener">Zed Editor</a></span>
+        <span class="tool-sep">&mdash;</span>
+        <span class="tool-desc">Lightning fast code editor.</span>
+      </li>
+      <li class="tool-item">
+        <span class="tool-name">OpenCode</span>
+        <span class="tool-sep">&mdash;</span>
+        <span class="tool-desc">Open source terminal AI coding tool.</span>
+      </li>
+      <li class="tool-item">
+        <span class="tool-name"><a href="https://github.com" target="_blank" rel="noopener">GitHub + GitHub Desktop</a></span>
+        <span class="tool-sep">&mdash;</span>
+        <span class="tool-desc">Version control and collaboration.</span>
+      </li>
+      <li class="tool-item">
+        <span class="tool-name">Claude DevTools</span>
+        <span class="tool-sep">&mdash;</span>
+        <span class="tool-desc">Developer tooling for Claude integrations.</span>
+      </li>
+    </ul>
+
+    <div class="level-header">Level 7-8: Open Source Revolution</div>
+    <ul class="tool-list">
+      <li class="tool-item">
+        <span class="tool-name"><a href="https://github.com/elie222/inbox-zero" target="_blank" rel="noopener">Inbox Zero</a></span>
+        <span class="tool-sep">&mdash;</span>
+        <span class="tool-desc">AI email management (self-hosted).</span>
+      </li>
+      <li class="tool-item">
+        <span class="tool-name"><a href="https://twenty.com" target="_blank" rel="noopener">Twenty CRM</a></span>
+        <span class="tool-sep">&mdash;</span>
+        <span class="tool-desc">Open-source CRM.</span>
+      </li>
+      <li class="tool-item">
+        <span class="tool-name"><a href="https://listmonk.app" target="_blank" rel="noopener">Listmonk</a></span>
+        <span class="tool-sep">&mdash;</span>
+        <span class="tool-desc">Self-hosted email marketing.</span>
+      </li>
+      <li class="tool-item">
+        <span class="tool-name"><a href="https://resend.com" target="_blank" rel="noopener">Resend</a></span>
+        <span class="tool-sep">&mdash;</span>
+        <span class="tool-desc">Email delivery API.</span>
+      </li>
+      <li class="tool-item">
+        <span class="tool-name"><a href="https://n8n.io" target="_blank" rel="noopener">n8n</a></span>
+        <span class="tool-sep">&mdash;</span>
+        <span class="tool-desc">Workflow automation (Zapier alternative).</span>
+      </li>
+      <li class="tool-item">
+        <span class="tool-name"><a href="https://composio.dev" target="_blank" rel="noopener">Composio</a></span>
+        <span class="tool-sep">&mdash;</span>
+        <span class="tool-desc">Universal tool connector (1000+ integrations).</span>
+      </li>
+      <li class="tool-item">
+        <span class="tool-name"><a href="https://github.com/exelban/stats" target="_blank" rel="noopener">Stats</a></span>
+        <span class="tool-sep">&mdash;</span>
+        <span class="tool-desc">Mac system monitor.</span>
+      </li>
+      <li class="tool-item">
+        <span class="tool-name">Chops</span>
+        <span class="tool-sep">&mdash;</span>
+        <span class="tool-desc">Skill organization for Claude Code.</span>
+      </li>
+      <li class="tool-item">
+        <span class="tool-name"><a href="https://tailscale.com" target="_blank" rel="noopener">Tailscale</a></span>
+        <span class="tool-sep">&mdash;</span>
+        <span class="tool-desc">Zero-config VPN.</span>
+      </li>
+      <li class="tool-item">
+        <span class="tool-name">Jump Desktop</span>
+        <span class="tool-sep">&mdash;</span>
+        <span class="tool-desc">Remote desktop app.</span>
+      </li>
+    </ul>
+
+    <div class="level-header">Level 8-9: Computer-Use Agents</div>
+    <ul class="tool-list">
+      <li class="tool-item">
+        <span class="tool-name">Paperclip</span>
+        <span class="tool-sep">&mdash;</span>
+        <span class="tool-desc">Autonomous screen automation.</span>
+      </li>
+    </ul>
+
+    <div class="level-header">Level 9-10: Full AI Architecture</div>
+    <ul class="tool-list">
+      <li class="tool-item">
+        <span class="tool-name">OpenClaw</span>
+        <span class="tool-sep">&mdash;</span>
+        <span class="tool-desc">Complete AI architecture system (see resources above).</span>
+      </li>
+    </ul>
+
+    <div class="level-header">Infrastructure Layer</div>
+    <ul class="tool-list">
+      <li class="tool-item">
+        <span class="tool-name"><a href="https://supabase.com" target="_blank" rel="noopener">Supabase</a></span>
+        <span class="tool-sep">&mdash;</span>
+        <span class="tool-desc">Open-source backend.</span>
+      </li>
+      <li class="tool-item">
+        <span class="tool-name"><a href="https://vercel.com" target="_blank" rel="noopener">Vercel</a></span>
+        <span class="tool-sep">&mdash;</span>
+        <span class="tool-desc">Deployment platform.</span>
+      </li>
+      <li class="tool-item">
+        <span class="tool-name"><a href="https://cloudflare.com" target="_blank" rel="noopener">Cloudflare</a></span>
+        <span class="tool-sep">&mdash;</span>
+        <span class="tool-desc">DNS / CDN / Security.</span>
+      </li>
+    </ul>
+
+    <div class="level-header">Mac Productivity</div>
+    <ul class="tool-list">
+      <li class="tool-item">
+        <span class="tool-name">Paste</span>
+        <span class="tool-sep">&mdash;</span>
+        <span class="tool-desc">Clipboard manager ($4/mo).</span>
+      </li>
+      <li class="tool-item">
+        <span class="tool-name">CleanShot X</span>
+        <span class="tool-sep">&mdash;</span>
+        <span class="tool-desc">Screenshots ($29 one-time).</span>
+      </li>
+      <li class="tool-item">
+        <span class="tool-name">Downie</span>
+        <span class="tool-sep">&mdash;</span>
+        <span class="tool-desc">Video downloader ($20 one-time).</span>
+      </li>
+      <li class="tool-item">
+        <span class="tool-name">PLAUD Note</span>
+        <span class="tool-sep">&mdash;</span>
+        <span class="tool-desc">AI recording device (~$169).</span>
+      </li>
+    </ul>
+
+    <div class="level-header">Browser Extensions</div>
+    <ul class="tool-list">
+      <li class="tool-item">
+        <span class="tool-name">Claude Chrome Extension</span>
+        <span class="tool-sep">&mdash;</span>
+        <span class="tool-desc">Free.</span>
+      </li>
+      <li class="tool-item">
+        <span class="tool-name">Tampermonkey</span>
+        <span class="tool-sep">&mdash;</span>
+        <span class="tool-desc">Free.</span>
+      </li>
+      <li class="tool-item">
+        <span class="tool-name">Get cookies.txt locally</span>
+        <span class="tool-sep">&mdash;</span>
+        <span class="tool-desc">Free.</span>
+      </li>
+      <li class="tool-item">
+        <span class="tool-name">Codex Bar</span>
+        <span class="tool-sep">&mdash;</span>
+        <span class="tool-desc">Subscription tracker.</span>
+      </li>
+    </ul>
+
+    <div class="level-header">APIs & Developer Tools</div>
+    <ul class="tool-list">
+      <li class="tool-item">
+        <span class="tool-name"><a href="https://tavily.com" target="_blank" rel="noopener">Tavily</a></span>
+        <span class="tool-sep">&mdash;</span>
+        <span class="tool-desc">AI search API.</span>
+      </li>
+      <li class="tool-item">
+        <span class="tool-name"><a href="https://transcriptapi.com" target="_blank" rel="noopener">TranscriptAPI.com</a></span>
+        <span class="tool-sep">&mdash;</span>
+        <span class="tool-desc">YouTube transcripts.</span>
+      </li>
+      <li class="tool-item">
+        <span class="tool-name">TubeLab</span>
+        <span class="tool-sep">&mdash;</span>
+        <span class="tool-desc">YouTube analytics.</span>
+      </li>
+      <li class="tool-item">
+        <span class="tool-name">Dev Browser</span>
+        <span class="tool-sep">&mdash;</span>
+        <span class="tool-desc">Claude Code browser automation skill.</span>
+      </li>
+    </ul>
+
+    <div class="level-header">Content Stack</div>
+    <ul class="tool-list">
+      <li class="tool-item">
+        <span class="tool-name"><a href="https://substack.com" target="_blank" rel="noopener">Substack</a></span>
+        <span class="tool-sep">&mdash;</span>
+        <span class="tool-desc">Newsletter platform.</span>
+      </li>
+      <li class="tool-item">
+        <span class="tool-name"><a href="https://x.com/andrewnaegele" target="_blank" rel="noopener">X / Twitter</a></span>
+        <span class="tool-sep">&mdash;</span>
+        <span class="tool-desc">@andrewnaegele</span>
+      </li>
+      <li class="tool-item">
+        <span class="tool-name">YouTube</span>
+        <span class="tool-sep">&mdash;</span>
+        <span class="tool-desc">AI Simple channel.</span>
+      </li>
+    </ul>
+
+  </div>
+</section>
+
+<!-- Bonus Section -->
+<section class="section container">
+  <div class="section-label font-mono">Bonus</div>
+  <div class="card">
+    <div class="badge"><span class="pulse-dot"></span> Coming Soon</div>
+    <div class="card-title">The Memory System & Second Brain Setup</div>
+    <div class="card-desc" style="margin-bottom: 0;">My complete personal knowledge management system &mdash; how I use QMD, Obsidian vault, and Claude Code memory to build a second brain that actually compounds. This is how I remember everything across hundreds of client conversations and never lose context.</div>
+  </div>
+</section>
+
+<!-- Call Booking Section -->
+<section class="section container">
+  <div class="section-label font-mono">Ready to Go Deeper?</div>
+  <div class="grid-2">
+    <div class="card">
+      <span class="card-icon">&#128197;</span>
+      <div class="card-title">Book a Strategy Call</div>
+      <div class="card-desc">Let's talk about where AI fits in your business. No pitch, no pressure &mdash; just a conversation about what's possible.</div>
+      <a href="#" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/andrewnaegele/scale-with-us?background_color=ffffff&text_color=18181b&primary_color=ef233c'});return false;" class="btn btn-outline">Book a Call &rarr;</a>
+    </div>
+    <div class="card card-premium">
+      <div class="spots-label">Only 3 Spots Remaining</div>
+      <div class="card-title">Become a Personal Client</div>
+      <div class="card-desc">I know I need and want you in my business. I'm ready to invest to be guaranteed one of only 3 spots remaining on Andrew's personal client list.</div>
+      <a href="https://aisimple.co/#book" target="_blank" rel="noopener" class="btn btn-red">Apply for a Spot &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- What It Looks Like Section -->
+<section class="section container">
+  <div class="section-label font-mono">What It Looks Like to Work With Me</div>
+
+  <div class="service-item">
+    <div class="service-title">90-Day AI Architect Pilot</div>
+    <div class="service-desc">Deep-dive into your business, AI Opportunity Map, architecture for 2-3 priority projects, 12-month AI roadmap. Weekly working sessions + async support.</div>
+  </div>
+  <div class="service-item">
+    <div class="service-title">12-Month Retainer</div>
+    <div class="service-desc">Ongoing architecture, quarterly roadmap refresh, strategy calls, spec reviews. Two tiers based on engagement depth.</div>
+  </div>
+  <div class="service-item">
+    <div class="service-title" style="font-size: 15px; font-weight: 500; color: var(--text-body); font-style: italic;">You get the thinking, the architecture, and the leadership. Your team handles the building.</div>
+  </div>
+  <p style="font-size: 13px; color: var(--text-muted); margin-top: 16px;">Investment details discussed on the call.</p>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  &copy; 2026 AI Simple &mdash; Andrew Naegele &middot; Certified Chief AI Officer &middot; <a href="https://aisimple.co" target="_blank" rel="noopener" style="color: var(--text-muted); text-decoration: none; border-bottom: 1px solid var(--border);">aisimple.co</a>
+</footer>
+
+</body>
+</html>
