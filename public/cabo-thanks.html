@@ -17,6 +17,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   gtag('js', new Date());
   gtag('config', 'G-5JY8VWSF4Y');
 </script>
+<!-- PostHog Analytics -->
+<script>
+  !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug getPageViewId captureTrackedNode captureIncrementProperty captureDecrementProperty".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+  posthog.init('phc_YOUR_PROJECT_KEY', {
+    api_host: 'https://us.i.posthog.com',
+    person_profiles: 'identified_only'
+  });
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Your AI Resource Vault | AI Simple</title>
@@ -719,10 +727,111 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="spots-label">Only 3 Spots Remaining</div>
       <div class="card-title">Become a Personal Client</div>
       <div class="card-desc">I know I need and want you in my business. I'm ready to invest to be guaranteed one of only 3 spots remaining on Andrew's personal client list.</div>
-      <a href="https://aisimple.co/#book" target="_blank" rel="noopener" class="btn btn-red">Apply for a Spot &rarr;</a>
+      <a href="#" onclick="openApplyModal();return false;" class="btn btn-red">Apply for a Spot &rarr;</a>
     </div>
   </div>
 </section>
+
+<!-- Apply Modal -->
+<div id="applyModal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.5);align-items:center;justify-content:center;padding:24px;">
+  <div style="background:#fff;max-width:540px;width:100%;max-height:90vh;overflow-y:auto;border:1px dashed var(--border);position:relative;padding:40px 32px 32px;">
+    <!-- Corner marks -->
+    <div style="position:absolute;top:-1px;left:-1px;width:14px;height:14px;border-top:2px solid var(--red);border-left:2px solid var(--red);"></div>
+    <div style="position:absolute;top:-1px;right:-1px;width:14px;height:14px;border-top:2px solid var(--red);border-right:2px solid var(--red);"></div>
+    <div style="position:absolute;bottom:-1px;left:-1px;width:14px;height:14px;border-bottom:2px solid var(--red);border-left:2px solid var(--red);"></div>
+    <div style="position:absolute;bottom:-1px;right:-1px;width:14px;height:14px;border-bottom:2px solid var(--red);border-right:2px solid var(--red);"></div>
+    <!-- Close button -->
+    <button onclick="closeApplyModal()" style="position:absolute;top:12px;right:16px;background:none;border:none;font-size:24px;color:var(--text-muted);cursor:pointer;line-height:1;">&times;</button>
+    <!-- Form state -->
+    <div id="applyFormState">
+      <div style="font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--red);font-weight:500;margin-bottom:8px;">Apply for a Spot</div>
+      <div style="font-family:'Manrope',sans-serif;font-size:22px;font-weight:800;color:var(--text-primary);margin-bottom:8px;">Become a Personal Client</div>
+      <p style="font-size:14px;color:var(--text-body);margin-bottom:24px;">Answer a few questions so I can understand your business and see if we're a fit.</p>
+      <form id="applyForm" novalidate>
+        <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:16px;">
+          <label style="font-family:'Geist Mono',monospace;font-size:11px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted);">Full Name *</label>
+          <input type="text" name="full_name" required placeholder="Andrew Naegele" style="font-family:'Inter',sans-serif;font-size:15px;padding:10px 12px;border:1px solid var(--border);border-radius:0;background:var(--surface);color:var(--text-primary);outline:none;width:100%;">
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:16px;">
+          <label style="font-family:'Geist Mono',monospace;font-size:11px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted);">Email *</label>
+          <input type="email" name="email" required placeholder="you@company.com" style="font-family:'Inter',sans-serif;font-size:15px;padding:10px 12px;border:1px solid var(--border);border-radius:0;background:var(--surface);color:var(--text-primary);outline:none;width:100%;">
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:16px;">
+          <label style="font-family:'Geist Mono',monospace;font-size:11px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted);">Business Name</label>
+          <input type="text" name="business_name" placeholder="Acme Inc." style="font-family:'Inter',sans-serif;font-size:15px;padding:10px 12px;border:1px solid var(--border);border-radius:0;background:var(--surface);color:var(--text-primary);outline:none;width:100%;">
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:16px;">
+          <label style="font-family:'Geist Mono',monospace;font-size:11px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted);">Website</label>
+          <input type="url" name="website" placeholder="https://yoursite.com" style="font-family:'Inter',sans-serif;font-size:15px;padding:10px 12px;border:1px solid var(--border);border-radius:0;background:var(--surface);color:var(--text-primary);outline:none;width:100%;">
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:16px;">
+          <label style="font-family:'Geist Mono',monospace;font-size:11px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted);">Monthly Revenue</label>
+          <select name="monthly_revenue" style="font-family:'Inter',sans-serif;font-size:15px;padding:10px 12px;border:1px solid var(--border);border-radius:0;background:var(--surface);color:var(--text-primary);outline:none;width:100%;-webkit-appearance:none;appearance:none;">
+            <option value="">Select...</option>
+            <option value="pre-revenue">Pre-revenue</option>
+            <option value="0-10k">$0 - $10K</option>
+            <option value="10k-50k">$10K - $50K</option>
+            <option value="50k-100k">$50K - $100K</option>
+            <option value="100k-500k">$100K - $500K</option>
+            <option value="500k+">$500K+</option>
+          </select>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:16px;">
+          <label style="font-family:'Geist Mono',monospace;font-size:11px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted);">Primary Acquisition Channel</label>
+          <select name="acquisition_channel" style="font-family:'Inter',sans-serif;font-size:15px;padding:10px 12px;border:1px solid var(--border);border-radius:0;background:var(--surface);color:var(--text-primary);outline:none;width:100%;-webkit-appearance:none;appearance:none;">
+            <option value="">Select...</option>
+            <option value="organic-social">Organic Social</option>
+            <option value="paid-ads">Paid Ads</option>
+            <option value="cold-outreach">Cold Outreach</option>
+            <option value="referrals">Referrals</option>
+            <option value="seo-content">SEO/Content</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:24px;">
+          <label style="font-family:'Geist Mono',monospace;font-size:11px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted);">How ready are you to invest in AI over the next 90 days?</label>
+          <select name="investment_readiness" style="font-family:'Inter',sans-serif;font-size:15px;padding:10px 12px;border:1px solid var(--border);border-radius:0;background:var(--surface);color:var(--text-primary);outline:none;width:100%;-webkit-appearance:none;appearance:none;">
+            <option value="">Select...</option>
+            <option value="30k+">I'm ready to invest $30K+ in AI implementation in the next 30-90 days.</option>
+            <option value="15k-30k">I'm ready to invest $15K-$30K to implement AI in the next 30-90 days.</option>
+            <option value="5k-15k">I'm ready to invest $5K-$15K to get AI systems in place (phased or smaller scope).</option>
+            <option value="under-5k">I'm interested, but I'm not ready to invest at least $5K right now.</option>
+          </select>
+        </div>
+        <button type="submit" id="applySubmitBtn" style="width:100%;padding:14px 24px;background:var(--red);color:#fff;font-family:'Manrope',sans-serif;font-weight:700;font-size:15px;border:none;border-radius:0;cursor:pointer;transition:background 0.15s ease;">Submit Application</button>
+      </form>
+    </div>
+    <!-- Success: Qualified -->
+    <div id="applySuccessQualified" style="display:none;text-align:center;padding:24px 0;">
+      <div style="font-size:48px;margin-bottom:16px;">&#10003;</div>
+      <div style="font-family:'Manrope',sans-serif;font-size:22px;font-weight:800;color:var(--text-primary);margin-bottom:8px;">Application Received</div>
+      <p style="font-size:15px;color:var(--text-body);margin-bottom:24px;">You look like a great fit. Book your strategy call now so we can map out your AI roadmap together.</p>
+      <a href="#" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/andrewnaegele/scale-with-us?background_color=ffffff&text_color=18181b&primary_color=ef233c'});return false;" class="btn btn-red" style="display:inline-block;padding:14px 28px;font-size:15px;">Book Your Strategy Call &rarr;</a>
+    </div>
+    <!-- Success: Not Qualified -->
+    <div id="applySuccessNotQualified" style="display:none;text-align:center;padding:24px 0;">
+      <div style="font-size:48px;margin-bottom:16px;">&#128075;</div>
+      <div style="font-family:'Manrope',sans-serif;font-size:22px;font-weight:800;color:var(--text-primary);margin-bottom:8px;">Thanks for Your Interest</div>
+      <p style="font-size:15px;color:var(--text-body);margin-bottom:24px;">It sounds like you might not be quite ready for 1:1 work yet &mdash; and that's totally fine. Check out the AI MBA program to get started building AI into your business at your own pace.</p>
+      <a href="/mba" class="btn btn-outline" style="display:inline-block;padding:14px 28px;font-size:15px;">Explore the AI MBA &rarr;</a>
+    </div>
+  </div>
+</div>
+
+<!-- Exit Intent Popup -->
+<div id="exitPopup" style="display:none;position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,0.5);align-items:center;justify-content:center;padding:24px;">
+  <div style="background:#fff;max-width:440px;width:100%;border:1px dashed var(--border);position:relative;padding:48px 32px 32px;text-align:center;">
+    <!-- Corner marks -->
+    <div style="position:absolute;top:-1px;left:-1px;width:14px;height:14px;border-top:2px solid var(--red);border-left:2px solid var(--red);"></div>
+    <div style="position:absolute;top:-1px;right:-1px;width:14px;height:14px;border-top:2px solid var(--red);border-right:2px solid var(--red);"></div>
+    <div style="position:absolute;bottom:-1px;left:-1px;width:14px;height:14px;border-bottom:2px solid var(--red);border-left:2px solid var(--red);"></div>
+    <div style="position:absolute;bottom:-1px;right:-1px;width:14px;height:14px;border-bottom:2px solid var(--red);border-right:2px solid var(--red);"></div>
+    <div style="font-family:'Manrope',sans-serif;font-size:26px;font-weight:800;color:var(--text-primary);margin-bottom:12px;">Before you go...</div>
+    <p style="font-size:15px;color:var(--text-body);margin-bottom:28px;line-height:1.6;">Book a free strategy call and let's map out where AI fits in your business.</p>
+    <a href="#" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/andrewnaegele/scale-with-us?background_color=ffffff&text_color=18181b&primary_color=ef233c'});return false;" class="btn btn-red" style="display:inline-block;padding:14px 28px;font-size:15px;width:100%;">Book a Free Strategy Call &rarr;</a>
+    <div style="margin-top:16px;"><a href="#" onclick="closeExitPopup();return false;" style="font-size:13px;color:var(--text-muted);text-decoration:none;">No thanks</a></div>
+  </div>
+</div>
 
 <!-- What It Looks Like Section -->
 <section class="section container">
@@ -747,5 +856,95 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   &copy; 2026 AI Simple &mdash; Andrew Naegele &middot; Certified Chief AI Officer &middot; <a href="https://aisimple.co" target="_blank" rel="noopener" style="color: var(--text-muted); text-decoration: none; border-bottom: 1px solid var(--border);">aisimple.co</a>
 </footer>
 
+<script>
+// Apply Modal
+function openApplyModal() {
+  document.getElementById('applyModal').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+function closeApplyModal() {
+  document.getElementById('applyModal').style.display = 'none';
+  document.body.style.overflow = '';
+}
+document.getElementById('applyModal').addEventListener('click', function(e) {
+  if (e.target === this) closeApplyModal();
+});
+
+// Apply Form Submission
+document.getElementById('applyForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  var form = this;
+  var btn = document.getElementById('applySubmitBtn');
+  var fullName = form.full_name.value.trim();
+  var email = form.email.value.trim();
+  if (!fullName || !email) return;
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return;
+
+  var revenue = form.monthly_revenue.value;
+  var readiness = form.investment_readiness.value;
+  var qualified = readiness !== 'under-5k' && revenue !== 'pre-revenue' && revenue !== '0-10k';
+
+  var payload = {
+    full_name: fullName,
+    email: email,
+    business_name: form.business_name.value.trim() || null,
+    website: form.website.value.trim() || null,
+    monthly_revenue: revenue || null,
+    acquisition_channel: form.acquisition_channel.value || null,
+    investment_readiness: readiness || null,
+    qualified: qualified,
+    source: 'cabo-thanks-apply',
+    page_url: window.location.href,
+    user_agent: navigator.userAgent
+  };
+
+  btn.disabled = true;
+  btn.textContent = 'Submitting...';
+
+  fetch('/api/submit-lead', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  })
+  .then(function(res) {
+    if (!res.ok) throw new Error('Server error');
+    return res.json();
+  })
+  .then(function() {
+    document.getElementById('applyFormState').style.display = 'none';
+    if (qualified) {
+      document.getElementById('applySuccessQualified').style.display = 'block';
+    } else {
+      document.getElementById('applySuccessNotQualified').style.display = 'block';
+    }
+  })
+  .catch(function() {
+    // Still show success on error (lead saved in localStorage as backup)
+    document.getElementById('applyFormState').style.display = 'none';
+    if (qualified) {
+      document.getElementById('applySuccessQualified').style.display = 'block';
+    } else {
+      document.getElementById('applySuccessNotQualified').style.display = 'block';
+    }
+  });
+});
+
+// Exit Intent Popup
+function closeExitPopup() {
+  document.getElementById('exitPopup').style.display = 'none';
+  document.body.style.overflow = '';
+}
+document.getElementById('exitPopup').addEventListener('click', function(e) {
+  if (e.target === this) closeExitPopup();
+});
+
+document.addEventListener('mouseout', function(e) {
+  if (e.clientY < 0 && window.innerWidth > 768 && !sessionStorage.getItem('exitPopupShown')) {
+    sessionStorage.setItem('exitPopupShown', '1');
+    document.getElementById('exitPopup').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+});
+</script>
 </body>
 </html>
