@@ -15,7 +15,10 @@
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.39.0",
+    "cheerio": "^1.2.0",
     "composio-core": "^0.5.39",
+    "disposable-email-domains": "^1.0.62",
+    "libphonenumber-js": "^1.12.40",
     "stripe": "^20.4.0"
   }
 }

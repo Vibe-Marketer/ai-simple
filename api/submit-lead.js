@@ -149,6 +149,23 @@ export default async function handler(req, res) {
       });
     }
 
+    // Fire-and-forget enrichment
+    const baseUrl = `https://${req.headers.host}`;
+    fetch(`${baseUrl}/api/enrich-lead`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-enrich-key': process.env.ENRICH_SECRET,
+      },
+      body: JSON.stringify({
+        lead_id: data?.[0]?.id,
+        lead_table: 'leads',
+        email: safeEmail,
+        phone: safePhone || null,
+        website: safeWebsite || null,
+      }),
+    }).catch(err => console.error('Enrichment trigger error:', err));
+
     return res.status(200).json({ success: true, id: data?.[0]?.id });
   } catch (err) {
     console.error('Server error:', err);

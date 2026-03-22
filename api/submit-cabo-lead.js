@@ -65,6 +65,21 @@ export default async function handler(req, res) {
       if (!emailRes.ok) {
         console.error('Cabo welcome email failed:', JSON.stringify(emailResult));
       }
+
+      // Fire-and-forget enrichment (don't await — runs async after response)
+      fetch(`${baseUrl}/api/enrich-lead`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-enrich-key': process.env.ENRICH_SECRET,
+        },
+        body: JSON.stringify({
+          lead_id: data?.[0]?.id,
+          lead_table: 'cabo_leads',
+          email,
+          phone: phone || null,
+        }),
+      }).catch(err => console.error('Enrichment trigger error:', err));
     } catch (emailErr) {
       console.error('Cabo welcome email error:', emailErr);
     }

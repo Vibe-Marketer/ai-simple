@@ -77,6 +77,22 @@ export default async function handler(req, res) {
       console.error('Welcome email error:', emailErr);
     }
 
+    // Fire-and-forget enrichment
+    const enrichBaseUrl = `https://${req.headers.host}`;
+    fetch(`${enrichBaseUrl}/api/enrich-lead`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-enrich-key': process.env.ENRICH_SECRET,
+      },
+      body: JSON.stringify({
+        lead_id: data?.[0]?.id,
+        lead_table: 'cre_leads',
+        email,
+        phone: mobile || null,
+      }),
+    }).catch(err => console.error('Enrichment trigger error:', err));
+
     return res.status(200).json({ success: true, id: data?.[0]?.id });
   } catch (err) {
     console.error('Server error:', err);
