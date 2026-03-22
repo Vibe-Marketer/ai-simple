@@ -53,6 +53,22 @@ export default async function handler(req, res) {
       return res.status(500).json({ error: 'Failed to save lead' });
     }
 
+    // Send welcome email via Soren (a@aisimple.co)
+    try {
+      const baseUrl = `https://${req.headers.host}`;
+      const emailRes = await fetch(`${baseUrl}/api/send-cabo-welcome`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ first_name, last_name, email }),
+      });
+      const emailResult = await emailRes.json();
+      if (!emailRes.ok) {
+        console.error('Cabo welcome email failed:', JSON.stringify(emailResult));
+      }
+    } catch (emailErr) {
+      console.error('Cabo welcome email error:', emailErr);
+    }
+
     return res.status(200).json({ success: true, id: data?.[0]?.id });
   } catch (err) {
     console.error('Server error:', err);
