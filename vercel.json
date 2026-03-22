@@ -1,4 +1,9 @@
 {
+  "functions": {
+    "api/enrich-lead.js": {
+      "includeFiles": "api/lib/enrichment/**"
+    }
+  },
   "buildCommand": "npm install && npm run build:css",
   "outputDirectory": "public",
   "cleanUrls": true,
