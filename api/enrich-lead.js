@@ -458,6 +458,24 @@ export default async function handler(req, res) {
       return res.status(500).json({ error: 'Failed to save enrichment', details: error.message });
     }
 
+    // Also update the unified contacts table with enrichment data
+    supabase.from('contacts')
+      .update({
+        confidence_score: score,
+        email_valid: emailData?.valid ?? null,
+        email_provider: emailData?.mx_provider ?? null,
+        phone_valid: phoneData?.valid ?? null,
+        phone_type: phoneData?.type ?? null,
+        domain: domain,
+        domain_has_website: domainData?.has_website ?? null,
+        stage: 'enriched',
+      })
+      .eq('original_table', lead_table)
+      .eq('original_id', lead_id)
+      .then(({ error: cErr }) => {
+        if (cErr) console.error('Contacts enrichment update error:', cErr);
+      });
+
     console.log(`Enriched ${email} (${lead_table}/${lead_id}) — score: ${score}, duration: ${enrichmentDuration}ms`);
 
     return res.status(200).json({

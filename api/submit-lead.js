@@ -118,6 +118,29 @@ export default async function handler(req, res) {
       return res.status(500).json({ error: 'Failed to save lead' });
     }
 
+    // Also write to unified contacts table
+    const nameParts = (safeName || '').split(' ');
+    supabase.from('contacts').upsert({
+      first_name: nameParts[0] || '',
+      last_name: nameParts.slice(1).join(' ') || '',
+      email: safeEmail,
+      phone: safePhone || null,
+      business: safeBusiness || null,
+      website: safeWebsite || null,
+      revenue: safeRevenue || null,
+      source: safeSource || 'mba-lead-magnet',
+      source_detail: safePageUrl || null,
+      channel: safeChannel || null,
+      help_wanted: safeHelpWanted || null,
+      investment_readiness: safeInvestmentReadiness || null,
+      qualified: false,
+      user_agent: safeUserAgent || null,
+      original_table: 'leads',
+      original_id: data?.[0]?.id,
+    }, { onConflict: 'email,source' }).then(({ error: cErr }) => {
+      if (cErr) console.error('Contacts upsert error:', cErr);
+    });
+
     // Fire-and-forget emails (don't block response)
     const qualified = data?.[0]?.qualified;
     const leadName = safeName || name;

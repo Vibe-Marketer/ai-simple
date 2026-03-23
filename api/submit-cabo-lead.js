@@ -53,6 +53,19 @@ export default async function handler(req, res) {
       return res.status(500).json({ error: 'Failed to save lead' });
     }
 
+    // Also write to unified contacts table
+    supabase.from('contacts').upsert({
+      first_name, last_name, email,
+      phone: phone || null,
+      source: source || 'cabo-speaking',
+      source_detail: page_url || null,
+      user_agent: user_agent || null,
+      original_table: 'cabo_leads',
+      original_id: data?.[0]?.id,
+    }, { onConflict: 'email,source' }).then(({ error: cErr }) => {
+      if (cErr) console.error('Contacts upsert error:', cErr);
+    });
+
     // Send welcome email via Soren (a@aisimple.co)
     try {
       const baseUrl = `https://${req.headers.host}`;

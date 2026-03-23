@@ -61,6 +61,23 @@ export default async function handler(req, res) {
       return res.status(500).json({ error: 'Failed to save lead' });
     }
 
+    // Also write to unified contacts table
+    supabase.from('contacts').upsert({
+      first_name, last_name, email,
+      phone: mobile || null,
+      source: source || 'cre-partnership',
+      source_detail: page_url || null,
+      user_agent: user_agent || null,
+      cre_workshop: workshop || false,
+      cre_resources: resources || false,
+      cre_microtraining: microtraining || false,
+      cre_intro_to_andrew: intro_to_andrew || false,
+      original_table: 'cre_leads',
+      original_id: data?.[0]?.id,
+    }, { onConflict: 'email,source' }).then(({ error: cErr }) => {
+      if (cErr) console.error('Contacts upsert error:', cErr);
+    });
+
     // Send welcome email via Composio (must await or Vercel kills the function)
     try {
       const baseUrl = `https://${req.headers.host}`;
