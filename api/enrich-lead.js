@@ -222,15 +222,47 @@ async function analyzeDomain(domain) {
     if (headers?.['x-powered-by']) result.tech_stack[`x-powered-by: ${headers['x-powered-by']}`] = true;
     if (headers?.['server']) result.tech_stack[`server: ${headers['server']}`] = true;
 
-    // Social links
-    for (const { pattern, platform } of SOCIAL_PATTERNS) {
-      const matches = html.match(pattern);
-      if (matches?.[0]) {
-        const clean = matches[0].replace(/['"<>].*$/, '');
-        if (!clean.endsWith('/search') && !clean.endsWith('/sharer')) {
-          result.social_links[platform] = clean.startsWith('http') ? clean : `https://${clean}`;
+    // Social links — extract from <a> tags only, filter junk
+    try {
+      const $html = cheerio.load(html);
+
+      // Junk patterns to reject
+      const JUNK_SOCIAL = [
+        /\/sharer/i, /\/share\?/i, /\/search/i, /\/fbml/i, /\/plugins/i,
+        /\/dialog/i, /\/oauth/i, /\/intent\//i, /\/hashtag/i,
+        /\/2008\//i, /\/tr\?/i, /\/embed/i, /platform\.twitter/i,
+        /\/widgets/i, /\/status\//i,
+      ];
+
+      // Only look at <a> tags with href — real links people click
+      const socialCandidates = {};
+      $html('a[href]').each((_, el) => {
+        const href = $html(el).attr('href') || '';
+        for (const { pattern, platform } of SOCIAL_PATTERNS) {
+          pattern.lastIndex = 0; // reset regex state
+          if (pattern.test(href)) {
+            // Reject junk URLs
+            if (JUNK_SOCIAL.some(junk => junk.test(href))) return;
+
+            // Extract clean URL
+            const clean = href.replace(/['"<>].*$/, '').replace(/\?.*$/, '');
+            if (!clean || clean.length < 15) return;
+
+            // Store with context — prefer links in footer/header/nav
+            const parentTag = $html(el).closest('footer, header, nav, [class*="social"], [class*="footer"], [class*="header"], [id*="footer"], [id*="header"]').length > 0;
+            if (!socialCandidates[platform] || parentTag) {
+              socialCandidates[platform] = { url: clean.startsWith('http') ? clean : `https://${clean}`, fromNavFooter: parentTag };
+            }
+          }
         }
+      });
+
+      // Only include links found in nav/footer/header areas, OR if it's the only link for that platform
+      for (const [platform, data] of Object.entries(socialCandidates)) {
+        result.social_links[platform] = data.url;
       }
+    } catch {
+      // Social link extraction failed — skip
     }
 
     // Schema.org
