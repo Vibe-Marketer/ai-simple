@@ -1,4 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
+import { generateTrackedUrl } from './lib/tracking/generate-tracked-url.js';
 
 async function sendEmail({ to, toName, subject, body, replyTo }) {
   try {
@@ -163,12 +164,19 @@ export default async function handler(req, res) {
         body: `Hey ${leadName.split(' ')[0]},\n\nJust got your application — you look like a strong fit.\n\nAndrew will review it personally and be in touch within 24 hours to confirm your call.\n\nIn the meantime, here's what to expect:\n• 45-minute strategy call (no pitch, just clarity)\n• We'll map out your exact AI implementation plan\n• You'll leave with a clear roadmap regardless of whether we work together\n\nIf you have any questions before the call, just reply to this email.\n\n— Andrew Naegele\nAI Simple\nhttps://aisimple.co`,
       });
     } else {
-      // Nurture email for non-qualified leads
+      // Nurture email for non-qualified leads — with tracked links
+      const trackParams = { email: leadEmail, source: 'mba-nurture', campaignId: 'mba-welcome', contentType: 'lead-magnet', utmSource: 'email', utmMedium: 'nurture' };
+      const mbaLink = generateTrackedUrl('mba-download', { ...trackParams, messageId: 'nurture-1' });
+      const leadsLink = generateTrackedUrl('728m-leads', { ...trackParams, messageId: 'nurture-1' });
+      const gptLink = generateTrackedUrl('direct-gpt', { ...trackParams, messageId: 'nurture-1' });
+      const trialLink = generateTrackedUrl('trial', { ...trackParams, messageId: 'nurture-1' });
+      const communityLink = generateTrackedUrl('community', { ...trackParams, messageId: 'nurture-1' });
+
       sendEmail({
         to: leadEmail,
         toName: leadName,
         subject: `Your Free AI Resources from AI Simple`,
-        body: `Hey ${leadName.split(' ')[0]},\n\nThanks for applying. Right now we're focused on done-for-you AI implementations for established businesses, so we're not the right fit just yet.\n\nBut that doesn't mean you can't start building — here's where to go next:\n\n→ Free Offer MBA + 728M Lead Vault: https://aisimple.co/mba\n→ THE LAB ($49/week): https://aisimple.co/trial\n→ Community: https://aisimple.co/community\n\nTHE LAB is the best place to start — you get every tool, automation, and workflow we build for 7-9 figure clients, plus weekly live calls with Andrew. $49 gets you 7 full days.\n\nHope to work with you soon.\n\n— Andrew Naegele\nAI Simple\nhttps://aisimple.co`,
+        body: `Hey ${leadName.split(' ')[0]},\n\nThanks for applying. Right now we're focused on done-for-you AI implementations for established businesses, so we're not the right fit just yet.\n\nBut that doesn't mean you can't start building — here's your resources:\n\n→ Offer MBA (build your offer in an hour): ${mbaLink}\n→ 728M Lead Vault (pre-built lead data): ${leadsLink}\n→ Direct Copywriter GPT (brutal copy audits): ${gptLink}\n→ THE LAB ($49/week — every tool we build): ${trialLink}\n→ Free Community: ${communityLink}\n\nTHE LAB is the best place to start — you get every tool, automation, and workflow we build for 7-9 figure clients, plus weekly live calls with Andrew. $49 gets you 7 full days.\n\nHope to work with you soon.\n\n— Andrew Naegele\nAI Simple\nhttps://aisimple.co`,
       });
     }
 

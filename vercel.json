@@ -2,6 +2,9 @@
   "functions": {
     "api/enrich-lead.js": {
       "includeFiles": "api/lib/enrichment/**"
+    },
+    "api/track-redirect.js": {
+      "includeFiles": "api/lib/tracking/**"
     }
   },
   "buildCommand": "npm install && npm run build:css",
@@ -48,5 +51,8 @@
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
     }
+  ],
+  "rewrites": [
+    { "source": "/:path*", "destination": "/api/track-redirect?path=$path" }
   ]
 }
