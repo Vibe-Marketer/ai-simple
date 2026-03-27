@@ -52,5 +52,7 @@
       ]
     }
   ],
-  "rewrites": []
+  "rewrites": [
+    { "source": "/:path((?!api|_next|img|css|[^/]*\\.[^/]+$).*)", "destination": "/api/track-redirect?path=:path" }
+  ]
 }
