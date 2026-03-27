@@ -52,7 +52,5 @@
       ]
     }
   ],
-  "rewrites": [
-    { "source": "/:path*", "destination": "/api/track-redirect?path=$path" }
-  ]
+  "rewrites": []
 }
