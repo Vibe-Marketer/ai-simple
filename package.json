@@ -7,7 +7,10 @@
     "watch:css": "tailwindcss -i ./src/input.css -o ./public/css/tailwind.css --watch",
     "build": "npm run build:css",
     "dev": "npm run watch:css",
-    "optimize-images": "node scripts/optimize-images.js"
+    "optimize-images": "node scripts/optimize-images.js",
+    "enrich": "node scripts/enrich-contacts.js enrich",
+    "listen": "node scripts/enrich-contacts.js listen",
+    "setup-fub": "node scripts/enrich-contacts.js setup-fields"
   },
   "devDependencies": {
     "sharp": "^0.33.2",
@@ -19,6 +22,7 @@
     "composio-core": "^0.5.39",
     "disposable-email-domains": "^1.0.62",
     "libphonenumber-js": "^1.12.40",
+    "openai": "^6.33.0",
     "stripe": "^20.4.0"
   }
 }

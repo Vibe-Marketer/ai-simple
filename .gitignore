@@ -4,7 +4,9 @@ node_modules/
 .DS_Store
 .vercel
 .env
-.env.*
+.env.local
+!.env.example
+data/
 supabase/.temp/
 public/css/tailwind.css
 *.log
