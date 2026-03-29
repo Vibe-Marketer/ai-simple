@@ -186,7 +186,8 @@ body { font-family: 'Inter', sans-serif; }
   width: 100%; aspect-ratio: 1; background: linear-gradient(-50deg, transparent, #ef233c, transparent);
   mask-image: radial-gradient(circle at bottom, transparent 40%, black); opacity: 0.6; animation: shimmer 4s linear infinite;
 }
-.shiny-cta span { position: relative; z-index: 2; display: inline-block; }
+.shiny-cta { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; }
+.shiny-cta span { position: relative; z-index: 2; display: inline-flex; align-items: center; gap: 0.5rem; white-space: nowrap; }
 .shiny-cta span::before {
   content: ''; pointer-events: none; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: -1;
   --size: calc(100% + 1rem); width: var(--size); height: var(--size);
@@ -683,8 +684,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <!-- CTA after video — highest-converting position -->
   <div class="mt-10 text-center animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.5s_both]">
-    <a href="#" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/andrewnaegele/scale-with-ai'}); return false;" class="inline-flex items-center gap-2 text-sm font-bold text-[#ef233c] uppercase tracking-wide hover:text-red-400 transition-colors">
-      Seen enough? Book a call <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+    <a href="#" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/andrewnaegele/scale-with-ai'}); return false;" class="shiny-cta">
+      <span>Book a Call With Andrew <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
     </a>
   </div>
 </section>
@@ -916,8 +917,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <!-- Mid-section CTA -->
   <div class="mt-12 text-center animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.7s_both]">
-    <a href="#" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/andrewnaegele/scale-with-ai'}); return false;" class="inline-flex items-center gap-2 text-sm font-bold text-[#ef233c] uppercase tracking-wide hover:text-red-400 transition-colors">
-      This is what working together looks like. Book a call if it fits <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+    <a href="#" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/andrewnaegele/scale-with-ai'}); return false;" class="shiny-cta">
+      <span>Book a Call With Andrew <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
     </a>
   </div>
 </section>
