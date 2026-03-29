@@ -148,8 +148,15 @@ body { font-family: 'Inter', sans-serif; }
 .delay-7 { animation-delay: 0.7s; }
 
 /* Scroll-triggered animation */
-.animate-on-scroll { animation-play-state: paused !important; will-change: transform, opacity, filter; transform: translateZ(0); }
-.animate-on-scroll.animate { animation-play-state: running !important; }
+.animate-on-scroll {
+  opacity: 0.15;
+  transform: translateY(18px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.animate-on-scroll.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 /* Prevent black flash — show critical above-fold content immediately */
 .no-flash { opacity: 1 !important; animation-play-state: running !important; }
@@ -329,7 +336,7 @@ select.form-input {
           if (once) window.__inViewIO.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1, rootMargin: "0px 0px -5% 0px" });
+    }, { threshold: 0.05, rootMargin: "0px 0px 50px 0px" });
   }
   window.initInViewAnimations = function (selector = ".animate-on-scroll") {
     document.querySelectorAll(selector).forEach((el) => { window.__inViewIO.observe(el); });
