@@ -53,6 +53,6 @@
     }
   ],
   "rewrites": [
-    { "source": "/:path((?!api|_next|img|css|[^/]*\\.[^/]+$).*)", "destination": "/api/track-redirect?path=:path" }
+    { "source": "/:path((?!api|_next|img|css|terms|privacy|cookies|disclaimer|refund|acceptable-use|[^/]*\\.[^/]+$).*)", "destination": "/api/track-redirect?path=:path" }
   ]
 }

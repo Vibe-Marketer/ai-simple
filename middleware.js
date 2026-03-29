@@ -11,6 +11,24 @@ export default function middleware(request) {
   const url = new URL(request.url);
   const pathname = url.pathname;
 
+  // Shortlink rewrite: catch non-API, non-static paths and rewrite to track-redirect
+  if (!pathname.startsWith('/api/') && !pathname.startsWith('/_next/') && !pathname.includes('.')) {
+    const knownPages = ['/mba', '/cabo', '/cre', '/trial', '/community', '/index', '/privacy', '/terms',
+      '/cookies', '/disclaimer', '/refund', '/acceptable-use',
+      '/employee-setup', '/welcome', '/thank-you', '/cabo-thanks', '/cre-thanks', '/sign-in'];
+    if (!knownPages.includes(pathname) && pathname !== '/') {
+      const slug = pathname.slice(1);
+      // Preserve all query params (tracking params like e=, src=, utm_*)
+      const params = new URLSearchParams(url.search);
+      params.set('path', slug);
+      const rewriteUrl = new URL(`/api/track-redirect?${params.toString()}`, request.url);
+      return new Response(null, {
+        status: 307,
+        headers: { 'x-middleware-rewrite': rewriteUrl.toString() }
+      });
+    }
+  }
+
   const strictPaths = ['/api/submit-lead', '/api/submit-cre-lead', '/api/send-cre-welcome'];
   const linkPaths = ['/api/track-redirect'];
 
@@ -54,5 +72,8 @@ export default function middleware(request) {
 }
 
 export const config = {
-  matcher: '/api/:path*',
+  matcher: [
+    '/api/:path*',
+    '/((?!_next|[^?]*\\.(?:html?|css|js|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)'
+  ],
 };
