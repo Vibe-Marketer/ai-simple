@@ -7,7 +7,7 @@
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-REMOVED');</script>
+})(window,document,'script','dataLayer','GTM-KJC3LKKP');</script>
 <!-- End Google Tag Manager -->
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-5JY8VWSF4Y"></script>
@@ -150,6 +150,9 @@ body { font-family: 'Inter', sans-serif; }
 /* Scroll-triggered animation */
 .animate-on-scroll { animation-play-state: paused !important; will-change: transform, opacity, filter; transform: translateZ(0); }
 .animate-on-scroll.animate { animation-play-state: running !important; }
+
+/* Prevent black flash — show critical above-fold content immediately */
+.no-flash { opacity: 1 !important; animation-play-state: running !important; }
 
 /* ========== SHINY CTA BUTTON ========== */
 @property --gradient-angle { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
@@ -340,11 +343,18 @@ select.form-input {
 <link rel="dns-prefetch" href="//assets.calendly.com">
 <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
 <link rel="dns-prefetch" href="//www.googletagmanager.com">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preload" href="https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.29/dist/unicornStudio.umd.js" as="script">
+<style>
+  /* Prevent FOIC (flash of invisible content) — show nav and hero immediately */
+  .hero-immediate { opacity: 1 !important; }
+  .hero-section-bg { background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(239,35,60,0.06) 0%, transparent 70%); }
+</style>
 </head>
 
 <body class="antialiased overflow-x-hidden selection:bg-red-600/30 selection:text-red-200 text-white bg-black">
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-REMOVED"
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KJC3LKKP"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
@@ -403,9 +413,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ============================================================ -->
 <!-- HERO SECTION -->
 <!-- ============================================================ -->
-<section class="h-auto min-h-[800px] flex flex-col overflow-hidden w-full pt-20 md:pt-20 relative items-center justify-start">
+<section class="h-auto min-h-[800px] flex flex-col overflow-hidden w-full pt-20 md:pt-20 relative items-center justify-start hero-section-bg">
   <!-- Animated background grid -->
-  <div class="absolute inset-0 bg-grid-pattern opacity-0 animate-on-scroll [animation:fadeSlideIn_2s_ease-out_0.3s_both]" style="mask-image: radial-gradient(ellipse 80% 80% at 50% 30%, black 30%, transparent 80%);"></div>
+  <div class="absolute inset-0 bg-grid-pattern opacity-[0.03]" style="mask-image: radial-gradient(ellipse 80% 80% at 50% 30%, black 30%, transparent 80%);"></div>
   
   <!-- Floating particles -->
   <div class="particle" style="top: 15%; left: 10%; animation-delay: 0s; animation-duration: 7s;"></div>
@@ -416,8 +426,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="particle" style="top: 35%; left: 40%; animation-delay: 1.5s; animation-duration: 7.5s; width: 3px; height: 3px;"></div>
 
   <!-- Red glow orbs -->
-  <div class="absolute top-20 left-1/4 w-96 h-96 bg-[#ef233c]/5 rounded-full blur-[120px] pointer-events-none animate-on-scroll [animation:fadeSlideIn_3s_ease-out_0.5s_both]"></div>
-  <div class="absolute top-40 right-1/4 w-64 h-64 bg-[#ef233c]/3 rounded-full blur-[100px] pointer-events-none animate-on-scroll [animation:fadeSlideIn_3s_ease-out_1s_both]"></div>
+  <div class="absolute top-20 left-1/4 w-96 h-96 bg-[#ef233c]/5 rounded-full blur-[120px] pointer-events-none"></div>
+  <div class="absolute top-40 right-1/4 w-64 h-64 bg-[#ef233c]/3 rounded-full blur-[100px] pointer-events-none"></div>
 
   <!-- Unicorn Studio Aura Background -->
   <div class="aura-background-component -z-10 w-full top-0 absolute h-[800px]" data-alpha-mask="80" style="mask-image: linear-gradient(transparent, black 0%, black 80%, transparent);">
@@ -507,7 +517,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- ============================================================ -->
   <!-- ANIMATED STATS STRIP (from OG System Status card) -->
   <!-- ============================================================ -->
-  <div class="w-full max-w-6xl mx-auto px-6 z-20 mb-8 animate-on-scroll [animation:fadeSlideIn_1s_ease-out_1.6s_both]">
+  <div class="w-full max-w-6xl mx-auto px-6 z-20 mb-8 [animation:fadeSlideIn_1s_ease-out_0.8s_both]">
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
       <div class="bg-black border border-dashed border-zinc-800 p-6 relative group hover:border-[#ef233c]/50 transition-all duration-500 hover-glow-card scan-line overflow-hidden">
         <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#ef233c]"></div>
@@ -714,7 +724,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <p class="text-zinc-500 text-xs">Inventor of the VSL &middot; 9-Figure Copywriter</p>
         </div>
       </div>
-      <p class="text-zinc-400 text-sm leading-relaxed italic">"This is impressive as hell. The AI architecture Andrew builds is on another level &mdash; I haven't seen anyone else do it this way."</p>
+      <p class="text-zinc-400 text-sm leading-relaxed italic">"This is impressive as hell... Interested in possibly doing something together on this?"</p>
     </div>
   </div>
 </section>
