@@ -483,9 +483,11 @@ tags: [discovery, ai-readiness, high-intent]
 
     <div class="card">
       <div class="card-title">Get QMD</div>
-      <p>Install QMD, point it at your vault folder, and run <code class="inline">qmd embed</code> to index everything.</p>
-      <p>Then install the QMD MCP server so Claude Code can search your vault in any conversation.</p>
-      <a href="https://github.com/nicobailey/qmd" target="_blank" rel="noopener" class="btn btn-red btn-large">View QMD on GitHub &rarr;</a>
+      <p>Install QMD globally with one command:</p>
+      <pre class="code-block"><code>bun install -g https://github.com/tobi/qmd</code></pre>
+      <p>Point it at your vault folder and run <code class="inline">qmd embed</code> to index everything. It runs completely standalone &mdash; no cloud, no dependencies beyond Bun.</p>
+      <p>QMD also has an MCP server, which means Claude Code can search your entire vault mid-conversation. Your AI doesn't just read one file &mdash; it searches across everything you know.</p>
+      <a href="https://github.com/tobi/qmd" target="_blank" rel="noopener" class="btn btn-red btn-large">View QMD on GitHub &rarr;</a>
     </div>
   </section>
 
