@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>!function(key) {if (window.reb2b) return;window.reb2b = {loaded: true};var s = document.createElement("script");s.async = true;s.src = "https://ddwl4m2hdecbv.cloudfront.net/b/" + key + "/" + key + ".js.gz";document.getElementsByTagName("script")[0].parentNode.insertBefore(s, document.getElementsByTagName("script")[0]);}("QOQRJH9PE562");</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KJC3LKKP');</script>
+<!-- End Google Tag Manager -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5JY8VWSF4Y"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-5JY8VWSF4Y');
+</script>
+<!-- PostHog Analytics -->
+<script>
+  !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug getPageViewId captureTrackedNode captureIncrementProperty captureDecrementProperty".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+  posthog.init('phc_A92sL9jSBDSQNHtquZapNMtHPhREmqjAWAgjreth0Lm', {
+    api_host: 'https://us.i.posthog.com',
+    defaults: '2026-01-30',
+    person_profiles: 'identified_only',
+    autocapture: true,
+    enable_heatmaps: true,
+    enable_recording_console_log: true,
+    capture_scrolldepth: true,
+    capture_dead_clicks: true,
+    session_recording: {
+      maskAllInputs: false,
+      maskInputOptions: {
+        password: true
+      }
+    }
+  });
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Memory System | AI Simple</title>
+<meta name="description" content="How to build a knowledge base your AI can actually use. A practical guide for founders.">
+<link rel="icon" href="/img/ai-simple-logo.png?v=3" type="image/png">
+<link rel="apple-touch-icon" href="/img/ai-simple-logo.png?v=3">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --text-primary: #18181B;
+    --text-body: #52525B;
+    --text-muted: #A1A1AA;
+    --red: #EF233C;
+    --border: #E4E4E7;
+    --surface: #F4F4F5;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text-body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .font-manrope { font-family: 'Manrope', sans-serif; }
+  .font-mono { font-family: 'Geist Mono', monospace; }
+
+  /* Layout */
+  .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+  /* Nav */
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    max-width: 1080px;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .nav-left img { height: 32px; width: 32px; }
+  .nav-left span {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--text-primary);
+  }
+  .nav-right {
+    font-family: 'Geist Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  /* Hero */
+  .hero {
+    text-align: center;
+    padding: 72px 24px 48px;
+  }
+  .hero-label {
+    font-family: 'Geist Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--red);
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+  .hero p {
+    font-size: 17px;
+    color: var(--text-body);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* Sections */
+  .section { padding: 48px 0; }
+  .section + .section { border-top: 1px dashed var(--border); }
+  .section-label {
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed var(--border);
+  }
+  .section h2 {
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(22px, 4vw, 30px);
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1.2;
+    margin-bottom: 24px;
+  }
+  .section p {
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+  .section p:last-child { margin-bottom: 0; }
+
+  /* Code blocks */
+  .code-block {
+    background: var(--surface);
+    border: 1px dashed var(--border);
+    border-radius: 0;
+    padding: 24px;
+    overflow-x: auto;
+    margin: 24px 0;
+    font-family: 'Geist Mono', monospace;
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--text-primary);
+  }
+  .code-block code {
+    font-family: inherit;
+    font-size: inherit;
+  }
+
+  /* Inline code */
+  code.inline {
+    font-family: 'Geist Mono', monospace;
+    font-size: 14px;
+    background: var(--surface);
+    padding: 2px 6px;
+    color: var(--text-primary);
+  }
+
+  /* Bullet lists */
+  .bullet-list {
+    list-style: none;
+    margin: 20px 0;
+    padding: 0;
+  }
+  .bullet-list li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 12px;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .bullet-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 6px;
+    height: 6px;
+    background: var(--red);
+  }
+
+  /* Numbered steps */
+  .steps {
+    list-style: none;
+    margin: 24px 0;
+    padding: 0;
+    counter-reset: step;
+  }
+  .steps li {
+    counter-increment: step;
+    position: relative;
+    padding-left: 48px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .steps li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Geist Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--red);
+    border: 1px dashed var(--border);
+  }
+
+  /* Card */
+  .card {
+    position: relative;
+    border: 1px dashed var(--border);
+    border-radius: 0;
+    padding: 32px;
+    background: var(--bg);
+    transition: border-color 0.2s ease;
+    margin: 24px 0;
+  }
+  .card:hover { border-color: var(--text-muted); }
+  .card::before,
+  .card::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-color: var(--red);
+    border-style: solid;
+  }
+  .card::before {
+    top: -1px;
+    left: -1px;
+    border-width: 2px 0 0 2px;
+  }
+  .card::after {
+    bottom: -1px;
+    right: -1px;
+    border-width: 0 2px 2px 0;
+  }
+  .card-title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+  }
+  .card p {
+    font-size: 15px;
+    color: var(--text-body);
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+  .card p:last-child { margin-bottom: 0; }
+
+  /* Buttons */
+  .btn {
+    display: inline-block;
+    font-family: 'Geist Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    padding: 10px 20px;
+    border: 1px solid var(--text-primary);
+    background: var(--text-primary);
+    color: var(--bg);
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-radius: 0;
+  }
+  .btn:hover {
+    background: var(--bg);
+    color: var(--text-primary);
+  }
+  .btn-red {
+    background: var(--red);
+    border-color: var(--red);
+    color: #fff;
+  }
+  .btn-red:hover {
+    background: #d01030;
+    border-color: #d01030;
+    color: #fff;
+  }
+  .btn-outline {
+    background: var(--bg);
+    color: var(--text-primary);
+    border-color: var(--border);
+  }
+  .btn-outline:hover {
+    border-color: var(--text-primary);
+  }
+  .btn-large {
+    padding: 14px 32px;
+    font-size: 14px;
+  }
+
+  /* CTA section */
+  .cta-section {
+    text-align: center;
+    padding: 64px 24px;
+    border-top: 1px dashed var(--border);
+  }
+  .cta-section p {
+    font-size: 18px;
+    color: var(--text-primary);
+    font-weight: 500;
+    max-width: 540px;
+    margin: 0 auto 24px;
+    line-height: 1.6;
+  }
+  .cta-section .secondary {
+    display: block;
+    margin-top: 16px;
+    font-size: 14px;
+    color: var(--text-muted);
+  }
+  .cta-section .secondary a {
+    color: var(--text-body);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    transition: border-color 0.2s ease;
+  }
+  .cta-section .secondary a:hover {
+    border-color: var(--red);
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 48px 24px;
+    border-top: 1px solid var(--border);
+    margin-top: 0;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  /* Top accent bar */
+  .top-bar {
+    height: 3px;
+    background: var(--red);
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .hero { padding: 48px 24px 32px; }
+    .section { padding: 36px 0; }
+    .code-block { padding: 16px; font-size: 11px; }
+    .card { padding: 24px; }
+  }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KJC3LKKP"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<div class="top-bar"></div>
+
+<!-- Nav -->
+<nav class="nav">
+  <div class="nav-left">
+    <img src="/img/ai-simple-logo.png" alt="AI Simple">
+    <span class="font-manrope">AI Simple</span>
+  </div>
+  <div class="nav-right">Bonus Resource</div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-label font-mono">BONUS RESOURCE</div>
+  <h1>The Memory System: How to Build a Knowledge Base Your AI Can Actually Use</h1>
+  <p>A practical starting point for founders who want their AI tools to remember, search, and build on everything they know &mdash; instead of starting from scratch every conversation.</p>
+</section>
+
+<div class="container">
+
+  <!-- Section 1: Why This Matters -->
+  <section class="section">
+    <div class="section-label">WHY THIS MATTERS</div>
+    <p>Most people use AI like a stranger every time they open it. No context. No memory. No knowledge of your business, your clients, your decisions, or your frameworks. The Memory System fixes that. It gives your AI a structured knowledge base it can read from, search through, and build on &mdash; so every conversation starts where the last one left off.</p>
+    <p>This isn't my full production system (that has 20 data sources and a processing pipeline). This is the starting point &mdash; the foundation you can set up in an afternoon and expand from there.</p>
+  </section>
+
+  <!-- Section 2: The Vault (Layer 1) -->
+  <section class="section">
+    <div class="section-label">LAYER 1</div>
+    <h2>The Vault &mdash; Markdown Files as Your Knowledge Base</h2>
+    <p>At its core, your memory system is just a folder of <code class="inline">.md</code> (markdown) files. That's it. No special software required. Every AI tool &mdash; Claude, ChatGPT, Cursor, Claude Code &mdash; can read markdown files natively.</p>
+    <p>The trick is <strong>structure</strong>. Without structure, you have a pile of notes. With structure, you have a knowledge base.</p>
+    <p>Here's a starting point &mdash; 12 folders that cover most businesses. You don't need all of them. Start with the ones that make sense for you and add more as you go:</p>
+
+    <div class="code-block"><pre><code>vault/
+├── clients/           ← One folder per client. Everything about them lives here.
+├── leads/             ← People you're talking to but haven't closed yet.
+├── offers/            ← Your offers, pricing, positioning, sales pages.
+├── content/           ← Content you've created or plan to create.
+├── systems/           ← SOPs, processes, how your business runs.
+├── knowledge/         ← Frameworks, swipe files, reference material.
+├── products/          ← Your products, tools, SaaS projects.
+├── transcripts/       ← Call recordings, meeting notes, voice memos.
+├── decisions/         ← What you decided, why, and what you rejected.
+├── inbox/             ← Quick captures. Process weekly.
+├── personal/          ← Private stuff. Values, stories, timeline.
+└── archive/           ← Done or dead. Searchable but out of the way.</code></pre></div>
+
+    <p>The rule: when you sit down to work on something, you go to its folder. Client work? <code class="inline">clients/jane-doe/</code>. Building an offer? <code class="inline">offers/new-coaching-program/</code>. The folder IS the workspace.</p>
+    <p>Adding YAML frontmatter to your files makes them even more powerful &mdash; it lets tools like QMD (Layer 2) understand what each file IS, when it was created, and what it relates to. But it's not required to start.</p>
+
+    <div class="code-block"><pre><code>---
+title: Jane Doe - Discovery Call Notes
+type: transcript
+client: jane-doe
+date: 2026-03-15
+tags: [discovery, ai-readiness, high-intent]
+---
+
+# Discovery Call &mdash; Jane Doe
+...your notes here...</code></pre></div>
+  </section>
+
+  <!-- Section 3: QMD (Layer 2) -->
+  <section class="section">
+    <div class="section-label">LAYER 2</div>
+    <h2>QMD &mdash; Semantic Search Over Everything You Know</h2>
+    <p>Once you have a vault of markdown files, the next question is: how do you FIND things? Ctrl+F doesn't cut it when you have thousands of files.</p>
+    <p>QMD is a local search engine built specifically for markdown knowledge bases. It runs on your machine &mdash; nothing goes to the cloud. It indexes your files and lets you search by keyword (BM25) or by meaning (semantic/vector search).</p>
+    <p><strong>Why this is groundbreaking:</strong></p>
+
+    <ul class="bullet-list">
+      <li><strong>It runs 100% locally.</strong> Your knowledge never leaves your machine.</li>
+      <li><strong>It understands meaning, not just keywords.</strong> Search "how to handle client objections" and it finds your call transcript where you handled one &mdash; even if those exact words aren't in the file.</li>
+      <li><strong>It has an MCP server,</strong> which means Claude Code and other AI tools can search your entire vault mid-conversation. Your AI doesn't just read one file &mdash; it searches across everything you know.</li>
+      <li><strong>It indexes 34,000+ documents in seconds.</strong> No lag. No cloud dependency.</li>
+    </ul>
+
+    <p><strong>To get started:</strong></p>
+
+    <div class="card">
+      <div class="card-title">Get QMD</div>
+      <p>Install QMD, point it at your vault folder, and run <code class="inline">qmd embed</code> to index everything.</p>
+      <p>Then install the QMD MCP server so Claude Code can search your vault in any conversation.</p>
+      <a href="https://github.com/nicobailey/qmd" target="_blank" rel="noopener" class="btn btn-red btn-large">View QMD on GitHub &rarr;</a>
+    </div>
+  </section>
+
+  <!-- Section 4: The Graph (Layer 3) -->
+  <section class="section">
+    <div class="section-label">LAYER 3</div>
+    <h2>The Knowledge Graph &mdash; Relationships Between Everything</h2>
+    <p>This is the frontier layer. Layers 1 and 2 give you storage and search. Layer 3 gives you <strong>connections</strong>.</p>
+    <p>A knowledge graph is a simple SQLite database that tracks relationships between entities &mdash; people, companies, projects, decisions &mdash; with temporal data (when things happened, how relationships changed over time).</p>
+    <p><strong>For example:</strong></p>
+
+    <ul class="bullet-list">
+      <li><strong>Which clients did I talk to this week?</strong> (temporal query)</li>
+      <li><strong>Who introduced me to this person?</strong> (relationship traversal)</li>
+      <li><strong>What decisions did I make about this project, and when?</strong> (decision timeline)</li>
+      <li><strong>Which relationships are going cold?</strong> (drift detection)</li>
+    </ul>
+
+    <p>This layer is powerful but optional to start. Get Layer 1 and Layer 2 running first. The graph becomes valuable when you have enough data flowing through the system that you need to understand relationships between things, not just find individual files.</p>
+    <p>The YAML frontmatter from Layer 1 feeds into this &mdash; tags, dates, client names, and relationship markers in your files become nodes and edges in the graph automatically.</p>
+  </section>
+
+  <!-- Section 5: How to Start -->
+  <section class="section">
+    <div class="section-label">START HERE</div>
+    <h2>30 Minutes to Your First Working Vault</h2>
+
+    <ol class="steps">
+      <li>Create a folder called <code class="inline">vault/</code> anywhere on your machine.</li>
+      <li>Add 5-6 of the subfolders from the structure above &mdash; whichever match your business.</li>
+      <li>Move your existing notes, docs, and transcripts into the right folders. Don't overthink it.</li>
+      <li>Install QMD and point it at your vault. Run <code class="inline">qmd embed</code>.</li>
+      <li>Install the QMD MCP server for Claude Code.</li>
+      <li>Open Claude Code in your vault directory. Ask it something about your business. Watch it search your files and answer with context.</li>
+      <li>Add YAML frontmatter to new files as you create them. Don't go back and retrofit old ones &mdash; it's not worth the time.</li>
+    </ol>
+
+    <p>That's it. You now have a searchable, AI-accessible knowledge base. Everything you add from here compounds.</p>
+  </section>
+
+</div>
+
+<!-- CTA -->
+<section class="cta-section">
+  <p>Want someone to build a full memory system for your business &mdash; with automated collection from calls, messages, and AI conversations?</p>
+  <a href="javascript:void(0)" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/andrewnaegele/scale-with-ai'});return false;" class="btn btn-red btn-large">Book a Call With Andrew</a>
+  <span class="secondary">Or <a href="https://skool.com/vibe-marketing" target="_blank" rel="noopener">join the free community</a></span>
+</section>
+
+<!-- Footer -->
+<footer class="footer" style="padding: 32px 24px;">
+  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 20px; margin-bottom: 12px;">
+    <a href="/terms" style="font-size: 11px; color: var(--text-muted); text-decoration: none;">Terms</a>
+    <a href="/privacy" style="font-size: 11px; color: var(--text-muted); text-decoration: none;">Privacy</a>
+    <a href="/cookies" style="font-size: 11px; color: var(--text-muted); text-decoration: none;">Cookies</a>
+    <a href="/disclaimer" style="font-size: 11px; color: var(--text-muted); text-decoration: none;">Disclaimer</a>
+    <a href="/refund" style="font-size: 11px; color: var(--text-muted); text-decoration: none;">Refund</a>
+    <a href="/acceptable-use" style="font-size: 11px; color: var(--text-muted); text-decoration: none;">Acceptable Use</a>
+  </div>
+  <p style="font-size: 11px; color: #D4D4D8; text-align: center;">&copy; 2026 AI Simple &mdash; <a href="/" style="color: var(--red); text-decoration: none;">aisimple.co</a></p>
+</footer>
+
+</body>
+</html>

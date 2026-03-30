@@ -14,7 +14,7 @@ export default function middleware(request) {
   // Shortlink rewrite: catch non-API, non-static paths and rewrite to track-redirect
   if (!pathname.startsWith('/api/') && !pathname.startsWith('/_next/') && !pathname.includes('.')) {
     const knownPages = ['/mba', '/cabo', '/cre', '/trial', '/community', '/index', '/privacy', '/terms',
-      '/cookies', '/disclaimer', '/refund', '/acceptable-use',
+      '/cookies', '/disclaimer', '/refund', '/acceptable-use', '/memory-system',
       '/employee-setup', '/welcome', '/thank-you', '/cabo-thanks', '/cre-thanks', '/sign-in'];
     if (!knownPages.includes(pathname) && pathname !== '/') {
       const slug = pathname.slice(1);
