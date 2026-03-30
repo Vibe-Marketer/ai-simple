@@ -7,7 +7,7 @@
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+})(window,document,'script','dataLayer','GTM-KJC3LKKP');</script>
 <!-- End Google Tag Manager -->
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-5JY8VWSF4Y"></script>
@@ -41,6 +41,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI Architect Resource Vault | AI Simple — Cabo 2026</title>
 <meta name="description" content="Get the complete AI tool stack, open-source agent library, top Claude Code skills, and full resource guide. Free from Andrew Naegele's Cabo speaking session.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://aisimple.co/cabo">
+<meta property="og:title" content="AI Architect Resource Vault | Everything From Stage — Plus More">
+<meta property="og:description" content="Get the complete AI tool stack, open-source agent library, top Claude Code skills, and full resource guide. Free from Andrew Naegele.">
+<meta property="og:image" content="https://aisimple.co/img/ai-simple-logo.png">
+<meta property="og:site_name" content="AI Simple">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/img/ai-simple-logo.png?v=3" type="image/png">
 <link rel="apple-touch-icon" href="/img/ai-simple-logo.png?v=3">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -134,6 +141,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     margin-bottom: 16px;
     letter-spacing: -0.02em;
   }
+  .hero-quote {
+    font-style: italic;
+    font-size: 14px;
+    color: var(--text-body);
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+  .hero-quote .attribution {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 12px;
+  }
   .hero-sub {
     font-size: 16px;
     line-height: 1.7;
@@ -142,14 +162,59 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     margin: 0 auto;
   }
 
+  /* VAULT LIST */
+  .vault-list {
+    max-width: 720px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 40px 24px 0;
+  }
+  .vault-list-inner {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  .vault-list-label {
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+  .vault-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .vault-item:last-child {
+    border-bottom: none;
+  }
+  .vault-icon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    margin-top: 1px;
+    color: var(--red);
+  }
+  .vault-item-text {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-primary);
+    line-height: 1.4;
+  }
+
   /* FORM CARD */
   .form-section {
     max-width: 720px;
     margin: 0 auto;
     width: 100%;
-    padding: 48px 24px 64px;
+    padding: 48px 24px 32px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
   }
   .form-card {
     width: 100%;
@@ -287,6 +352,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     cursor: not-allowed;
   }
 
+  .urgency-line {
+    text-align: center;
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    color: var(--red);
+    letter-spacing: 0.04em;
+    margin-top: 12px;
+    font-weight: 500;
+  }
+
   .trust-line {
     display: flex;
     align-items: center;
@@ -300,17 +375,146 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     flex-shrink: 0;
   }
 
-  /* FOOTER */
-  .footer {
-    margin-top: auto;
-    padding: 24px;
+  /* LOGO MARQUEE */
+  @keyframes infinite-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .brand-marquee {
+    max-width: 100%;
+    overflow: hidden;
+    padding: 32px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .brand-marquee-inner {
+    display: flex;
+    width: max-content;
+    animation: infinite-scroll 35s linear infinite;
+  }
+  .brand-marquee:hover .brand-marquee-inner {
+    animation-play-state: paused;
+  }
+  .brand-marquee-inner > div {
+    display: flex;
+    align-items: center;
+    margin: 0 24px;
+  }
+  .brand-logo {
+    height: 24px;
+    width: auto;
+    object-fit: contain;
+    max-width: 100px;
+    filter: grayscale(1);
+    opacity: 0.35;
+    transition: opacity 0.3s, filter 0.3s;
+  }
+  .brand-logo:hover {
+    opacity: 0.7;
+    filter: grayscale(0);
+  }
+  .logo-dark {
+    filter: grayscale(1) brightness(0.2);
+    opacity: 0.35;
+  }
+  .logo-dark:hover {
+    filter: grayscale(0) brightness(1);
+    opacity: 0.7;
+  }
+
+  /* 3D TESTIMONIAL MARQUEE */
+  .proof-perspective { perspective: 1200px; overflow: hidden; }
+  .proof-3d-grid {
+    transform: rotateX(20deg) rotateY(-4deg) rotateZ(4deg) scale(1.15);
+    transform-style: preserve-3d; will-change: transform;
+  }
+  .proof-track { will-change: transform; }
+  .proof-card {
+    border-radius: 10px; overflow: hidden;
+    border: 1px solid #e4e4e7;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    transition: box-shadow 0.3s;
+  }
+  .proof-card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+  .proof-card img { width: 100%; height: auto; display: block; }
+  .proof-quote {
+    border-radius: 10px; border: 1px solid #e4e4e7;
+    background: #fff; padding: 20px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+
+  .proof-section {
+    padding: 48px 24px;
+    position: relative;
+  }
+  .proof-section-header {
+    max-width: 720px;
+    margin: 0 auto 32px;
     text-align: center;
+  }
+  .proof-section-label {
     font-family: 'Geist Mono', monospace;
     font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
     color: var(--text-muted);
-    letter-spacing: 0.04em;
-    border-top: 1px solid var(--border);
+    margin-bottom: 8px;
   }
+  .proof-section-headline {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 800;
+    font-size: clamp(22px, 4vw, 32px);
+    line-height: 1.2;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+  }
+  .proof-section-sub {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-top: 6px;
+  }
+
+  /* Proof grid columns */
+  .proof-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    max-width: 900px;
+    margin: 0 auto;
+    height: 600px;
+  }
+  @media (min-width: 768px) {
+    .proof-grid {
+      grid-template-columns: 1fr 1fr 1fr;
+      height: 800px;
+    }
+  }
+  .proof-col {
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+  .proof-col-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .proof-col-3 {
+    display: none;
+  }
+  @media (min-width: 768px) {
+    .proof-col-3 {
+      display: block;
+    }
+  }
+
+  /* Proof quote Tailwind-like utility classes done inline */
+  .pq-text { color: #3f3f46; font-size: 14px; font-style: italic; line-height: 1.6; margin-bottom: 12px; }
+  .pq-avatar { width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, #ef233c, #991b1b); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 10px; font-weight: 700; flex-shrink: 0; }
+  .pq-name { color: #18181b; font-size: 12px; font-weight: 600; }
+  .pq-role { color: #a1a1aa; font-size: 10px; }
+  .pq-row { display: flex; align-items: center; gap: 8px; }
 
   /* ERROR */
   .form-error {
@@ -340,7 +544,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KJC3LKKP"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
@@ -355,7 +559,35 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <section class="hero">
     <p class="hero-label">AI Architect Resource Vault</p>
     <h1 class="hero-headline">Everything I Showed You On Stage — Plus More</h1>
+    <p class="hero-quote">"Andrew is absolutely by far the best AI expert I've had a chance to talk to."<br><span class="attribution">— Anik Singal, 9-Figure Founder</span></p>
     <p class="hero-sub">Get my complete AI tool stack, open-source agent library, top Claude Code skills, and the full resource guide. No fluff. No paywalls. Just the stuff that works.</p>
+  </section>
+
+  <!-- VAULT CONTENTS -->
+  <section class="vault-list">
+    <div class="vault-list-inner">
+      <p class="vault-list-label">What's Inside the Vault</p>
+      <div class="vault-item">
+        <svg class="vault-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+        <span class="vault-item-text">Complete AI Tool Stack & Software Vault</span>
+      </div>
+      <div class="vault-item">
+        <svg class="vault-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+        <span class="vault-item-text">Open-Source Agent Library (115+ projects)</span>
+      </div>
+      <div class="vault-item">
+        <svg class="vault-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+        <span class="vault-item-text">Top Claude Code Skills & Configurations</span>
+      </div>
+      <div class="vault-item">
+        <svg class="vault-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+        <span class="vault-item-text">10,000+ Automation Templates (Make.com + n8n)</span>
+      </div>
+      <div class="vault-item">
+        <svg class="vault-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+        <span class="vault-item-text">Full Resource Guide & Implementation Playbook</span>
+      </div>
+    </div>
   </section>
 
   <section class="form-section">
@@ -382,6 +614,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000">
         </div>
         <button type="submit" class="submit-btn" id="submitBtn">Get Instant Access</button>
+        <p class="urgency-line">Resources available for a limited time after the event.</p>
         <div class="trust-line">
           <svg width="12" height="14" viewBox="0 0 12 14" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M10 5H9V3.5C9 1.84 7.66 0.5 6 0.5C4.34 0.5 3 1.84 3 3.5V5H2C1.17 5 0.5 5.67 0.5 6.5V12C0.5 12.83 1.17 13.5 2 13.5H10C10.83 13.5 11.5 12.83 11.5 12V6.5C11.5 5.67 10.83 5 10 5ZM6 10.5C5.17 10.5 4.5 9.83 4.5 9C4.5 8.17 5.17 7.5 6 7.5C6.83 7.5 7.5 8.17 7.5 9C7.5 9.83 6.83 10.5 6 10.5ZM7.5 5H4.5V3.5C4.5 2.67 5.17 2 6 2C6.83 2 7.5 2.67 7.5 3.5V5Z" fill="currentColor"/>
@@ -392,7 +625,186 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </section>
 
-  <footer class="footer">&copy; 2026 AI Simple &mdash; aisimple.co</footer>
+  <!-- LOGO MARQUEE -->
+  <div class="brand-marquee" style="mask-image: linear-gradient(to right, transparent 0, black 80px, black calc(100% - 80px), transparent 100%); -webkit-mask-image: linear-gradient(to right, transparent 0, black 80px, black calc(100% - 80px), transparent 100%);">
+    <div class="brand-marquee-inner">
+      <div><picture><source srcset="/img/disney.webp" type="image/webp"><img src="/img/disney.png" alt="Disney" class="brand-logo logo-dark" loading="lazy"></picture></div>
+      <div><img src="/img/nfl.svg" alt="NFL" class="brand-logo logo-dark" loading="lazy"></div>
+      <div><picture><source srcset="/img/jawzrsize.webp" type="image/webp"><img src="/img/jawzrsize.jpg" alt="Jawzrsize" class="brand-logo logo-dark" loading="lazy"></picture></div>
+      <div><picture><source srcset="/img/lurn.webp" type="image/webp"><img src="/img/lurn.png" alt="Lurn" class="brand-logo logo-dark" loading="lazy"></picture></div>
+      <div><img src="/img/entrepreneur.svg" alt="Entrepreneur" class="brand-logo logo-dark" loading="lazy"></div>
+      <div><img src="/img/techcrunch.svg" alt="TechCrunch" class="brand-logo logo-dark" loading="lazy"></div>
+      <div><img src="/img/app-sumo.svg" alt="AppSumo" class="brand-logo logo-dark" loading="lazy"></div>
+      <div><picture><source srcset="/img/mixergy.webp" type="image/webp"><img src="/img/mixergy.png" alt="Mixergy" class="brand-logo logo-dark" loading="lazy"></picture></div>
+      <!-- DUPLICATE for seamless loop -->
+      <div><picture><source srcset="/img/disney.webp" type="image/webp"><img src="/img/disney.png" alt="Disney" class="brand-logo logo-dark" loading="lazy"></picture></div>
+      <div><img src="/img/nfl.svg" alt="NFL" class="brand-logo logo-dark" loading="lazy"></div>
+      <div><picture><source srcset="/img/jawzrsize.webp" type="image/webp"><img src="/img/jawzrsize.jpg" alt="Jawzrsize" class="brand-logo logo-dark" loading="lazy"></picture></div>
+      <div><picture><source srcset="/img/lurn.webp" type="image/webp"><img src="/img/lurn.png" alt="Lurn" class="brand-logo logo-dark" loading="lazy"></picture></div>
+      <div><img src="/img/entrepreneur.svg" alt="Entrepreneur" class="brand-logo logo-dark" loading="lazy"></div>
+      <div><img src="/img/techcrunch.svg" alt="TechCrunch" class="brand-logo logo-dark" loading="lazy"></div>
+      <div><img src="/img/app-sumo.svg" alt="AppSumo" class="brand-logo logo-dark" loading="lazy"></div>
+      <div><picture><source srcset="/img/mixergy.webp" type="image/webp"><img src="/img/mixergy.png" alt="Mixergy" class="brand-logo logo-dark" loading="lazy"></picture></div>
+    </div>
+  </div>
+
+  <!-- 3D TESTIMONIAL MARQUEE -->
+  <section class="proof-section">
+    <div class="proof-section-header">
+      <p class="proof-section-label">Proof</p>
+      <h2 class="proof-section-headline">Members Aren't Talking. They're Closing.</h2>
+      <p class="proof-section-sub">Real screenshots. Real results. Nothing staged.</p>
+    </div>
+
+    <div class="proof-perspective" id="proof-marquee" style="width: 100%; height: 600px; position: relative;">
+      <!-- Fade edges -->
+      <div style="pointer-events:none;position:absolute;top:0;left:0;right:0;height:128px;background:linear-gradient(to bottom,#fff,rgba(255,255,255,0.8),transparent);z-index:10;"></div>
+      <div style="pointer-events:none;position:absolute;bottom:0;left:0;right:0;height:128px;background:linear-gradient(to top,#fff,rgba(255,255,255,0.8),transparent);z-index:10;"></div>
+      <div style="pointer-events:none;position:absolute;top:0;bottom:0;left:0;width:64px;background:linear-gradient(to right,#fff,transparent);z-index:10;"></div>
+      <div style="pointer-events:none;position:absolute;top:0;bottom:0;right:0;width:64px;background:linear-gradient(to left,#fff,transparent);z-index:10;"></div>
+
+      <div class="proof-3d-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;height:100%;max-width:900px;margin:0 auto;mask-image:linear-gradient(180deg,transparent,black 8%,black 92%,transparent);-webkit-mask-image:linear-gradient(180deg,transparent,black 8%,black 92%,transparent);">
+
+        <!-- COLUMN 1 — scrolls UP -->
+        <div style="height:100%;overflow:hidden;position:relative;">
+          <div class="proof-track" data-direction="up" data-speed="0.4" style="display:flex;flex-direction:column;gap:12px;">
+            <div class="proof-card"><picture><source srcset="/img/testimonials/jessica-pereira.webp" type="image/webp"><img src="/img/testimonials/jessica-pereira.png" alt="Jessica Pereira" loading="lazy"></picture></div>
+            <div class="proof-quote">
+              <p class="pq-text">"This is impressive as hell... Interested in possibly doing something together on this?"</p>
+              <div class="pq-row"><div class="pq-avatar">JB</div><div><p class="pq-name">Jon Benson</p><p class="pq-role">Inventor of the VSL</p></div></div>
+            </div>
+            <div class="proof-card"><picture><source srcset="/img/testimonials/kamaya-johnson.webp" type="image/webp"><img src="/img/testimonials/kamaya-johnson.png" alt="Kamaya Johnson" loading="lazy"></picture></div>
+            <div class="proof-quote">
+              <p class="pq-text">"It is very rare that I make endorsement videos like this. Andrew is absolutely by far the best AI expert I've had a chance to talk to. And I talk to people every day."</p>
+              <div class="pq-row"><div class="pq-avatar">AS</div><div><p class="pq-name">Anik Singal</p><p class="pq-role">Founder of Lurn &middot; 9-Figure Entrepreneur</p></div></div>
+            </div>
+            <div class="proof-card"><picture><source srcset="/img/testimonials/charles-p.webp" type="image/webp"><img src="/img/testimonials/charles-p.png" alt="Charles P" loading="lazy"></picture></div>
+            <div class="proof-quote">
+              <p class="pq-text">"I'm on track to have a $5k week pushing for my first $10k month! I've become more comfortable with AI tools, and my tool I created in Lovable is actually getting completed this month."</p>
+              <div class="pq-row"><div class="pq-avatar">KJ</div><div><p class="pq-name">Kamaya Johnson</p><p class="pq-role">Entrepreneur</p></div></div>
+            </div>
+            <div class="proof-card"><picture><source srcset="/img/testimonials/kofi-akyeampong.webp" type="image/webp"><img src="/img/testimonials/kofi-akyeampong.png" alt="Kofi Akyeampong" loading="lazy"></picture></div>
+            <div class="proof-quote">
+              <p class="pq-text">"Andrew 10x'd my quality, effort, and delivery speed. Complete game changer."</p>
+              <div class="pq-row"><div class="pq-avatar">TC</div><div><p class="pq-name">Terry Chenowith</p><p class="pq-role">Entrepreneur</p></div></div>
+            </div>
+            <div class="proof-card"><picture><source srcset="/img/testimonials/terry---offer-doc.webp" type="image/webp"><img src="/img/testimonials/terry---offer-doc.png" alt="Terry" loading="lazy"></picture></div>
+            <div class="proof-quote">
+              <p class="pq-text">"He's the diamond in the rough. When you find a diamond, you hang on to him. We trust him. We love him. He's a brother."</p>
+              <div class="pq-row"><div class="pq-avatar">PA</div><div><p class="pq-name">Patrick Ampem</p><p class="pq-role">Entrepreneur</p></div></div>
+            </div>
+            <div class="proof-card"><picture><source srcset="/img/testimonials/rizzan-ds-testimonial-post.webp" type="image/webp"><img src="/img/testimonials/rizzan-ds-testimonial-post.png" alt="Rizzan" loading="lazy"></picture></div>
+            <div class="proof-quote">
+              <p class="pq-text">"He doesn't BS. He doesn't sugarcoat. He just tells me like it is exactly what I need to hear. If you're looking for a coach, hire Andrew. Stop looking."</p>
+              <div class="pq-row"><div class="pq-avatar">JL</div><div><p class="pq-name">Jake Lockwood</p><p class="pq-role">Entrepreneur</p></div></div>
+            </div>
+            <!-- DUPLICATE for infinite loop -->
+            <div class="proof-card"><picture><source srcset="/img/testimonials/jessica-pereira.webp" type="image/webp"><img src="/img/testimonials/jessica-pereira.png" alt="Jessica Pereira" loading="lazy"></picture></div>
+            <div class="proof-quote">
+              <p class="pq-text">"This is impressive as hell..."</p>
+              <div class="pq-row"><div class="pq-avatar">JB</div><div><p class="pq-name">Jon Benson</p><p class="pq-role">Inventor of the VSL</p></div></div>
+            </div>
+            <div class="proof-card"><picture><source srcset="/img/testimonials/kamaya-johnson.webp" type="image/webp"><img src="/img/testimonials/kamaya-johnson.png" alt="Kamaya Johnson" loading="lazy"></picture></div>
+            <div class="proof-quote">
+              <p class="pq-text">"Andrew is absolutely by far the best AI expert I've had a chance to talk to."</p>
+              <div class="pq-row"><div class="pq-avatar">AS</div><div><p class="pq-name">Anik Singal</p><p class="pq-role">Founder of Lurn</p></div></div>
+            </div>
+            <div class="proof-card"><picture><source srcset="/img/testimonials/charles-p.webp" type="image/webp"><img src="/img/testimonials/charles-p.png" alt="Charles P" loading="lazy"></picture></div>
+            <div class="proof-quote">
+              <p class="pq-text">"$5k week pushing for my first $10k month!"</p>
+              <div class="pq-row"><div class="pq-avatar">KJ</div><div><p class="pq-name">Kamaya Johnson</p><p class="pq-role">Entrepreneur</p></div></div>
+            </div>
+            <div class="proof-card"><picture><source srcset="/img/testimonials/kofi-akyeampong.webp" type="image/webp"><img src="/img/testimonials/kofi-akyeampong.png" alt="Kofi Akyeampong" loading="lazy"></picture></div>
+            <div class="proof-quote">
+              <p class="pq-text">"Andrew 10x'd my quality, effort, and delivery speed."</p>
+              <div class="pq-row"><div class="pq-avatar">TC</div><div><p class="pq-name">Terry Chenowith</p><p class="pq-role">Entrepreneur</p></div></div>
+            </div>
+            <div class="proof-card"><picture><source srcset="/img/testimonials/terry---offer-doc.webp" type="image/webp"><img src="/img/testimonials/terry---offer-doc.png" alt="Terry" loading="lazy"></picture></div>
+            <div class="proof-quote">
+              <p class="pq-text">"He's the diamond in the rough."</p>
+              <div class="pq-row"><div class="pq-avatar">PA</div><div><p class="pq-name">Patrick Ampem</p><p class="pq-role">Entrepreneur</p></div></div>
+            </div>
+            <div class="proof-card"><picture><source srcset="/img/testimonials/rizzan-ds-testimonial-post.webp" type="image/webp"><img src="/img/testimonials/rizzan-ds-testimonial-post.png" alt="Rizzan" loading="lazy"></picture></div>
+            <div class="proof-quote">
+              <p class="pq-text">"Stop looking. Hire Andrew."</p>
+              <div class="pq-row"><div class="pq-avatar">JL</div><div><p class="pq-name">Jake Lockwood</p><p class="pq-role">Entrepreneur</p></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- COLUMN 2 — scrolls DOWN -->
+        <div style="height:100%;overflow:hidden;position:relative;">
+          <div class="proof-track" data-direction="down" data-speed="0.5" style="display:flex;flex-direction:column;gap:12px;">
+            <div class="proof-card"><picture><source srcset="/img/testimonials/phil-tomlinson.webp" type="image/webp"><img src="/img/testimonials/phil-tomlinson.png" alt="Phill Tomlinson" loading="lazy"></picture></div>
+            <div class="proof-quote">
+              <p class="pq-text">"I stopped bouncing from idea to idea. He doesn't teach theory. He builds momentum."</p>
+              <div class="pq-row"><div class="pq-avatar">DB</div><div><p class="pq-name">David Barton</p><p class="pq-role">Entrepreneur</p></div></div>
+            </div>
+            <div class="proof-card"><picture><source srcset="/img/testimonials/david-barton-__-andrew-testimonial.webp" type="image/webp"><img src="/img/testimonials/david-barton-__-andrew-testimonial.png" alt="David Barton" loading="lazy"></picture></div>
+            <div class="proof-card"><picture><source srcset="/img/testimonials/facundo-aljer.webp" type="image/webp"><img src="/img/testimonials/facundo-aljer.png" alt="Facundo Aljer" loading="lazy"></picture></div>
+            <div class="proof-quote">
+              <p class="pq-text">"I don't think there's many people that can even touch Andrew when it comes to AI. Andrew's the monstrosity here on AI by leaps and bounds."</p>
+              <div class="pq-row"><div class="pq-avatar">LS</div><div><p class="pq-name">Los S.</p><p class="pq-role">8-Figure Investor & Advisor</p></div></div>
+            </div>
+            <div class="proof-card"><picture><source srcset="/img/testimonials/chetali-deshmukh.webp" type="image/webp"><img src="/img/testimonials/chetali-deshmukh.png" alt="Chetali Deshmukh" loading="lazy"></picture></div>
+            <div class="proof-quote">
+              <p class="pq-text">"The way you combined Grok, Perplexity, and Claude to uncover research-based insights was incredible. That approach completely changed my game — I now use it for everything!"</p>
+              <div class="pq-row"><div class="pq-avatar">CD</div><div><p class="pq-name">Chetali Deshmukh</p><p class="pq-role">Digital Marketer</p></div></div>
+            </div>
+            <div class="proof-quote">
+              <p class="pq-text">"I'm usually the one talking in masterminds, but here I'm quiet because I'm taking in so much. Andrew's coaching calls are what make this worth it."</p>
+              <div class="pq-row"><div class="pq-avatar">EB</div><div><p class="pq-name">Eddy Bautista</p><p class="pq-role">Entrepreneur</p></div></div>
+            </div>
+            <div class="proof-card"><picture><source srcset="/img/testimonials/plato-taking-action.webp" type="image/webp"><img src="/img/testimonials/plato-taking-action.png" alt="Plato" loading="lazy"></picture></div>
+            <div class="proof-quote">
+              <p class="pq-text">"This guy has GPTs after GPTs created and we're working with him side by side to innovate. I can't believe how efficient our work's going to be."</p>
+              <div class="pq-row"><div class="pq-avatar">WZ</div><div><p class="pq-name">Wiz of Ecom</p><p class="pq-role">E-Commerce Entrepreneur</p></div></div>
+            </div>
+            <!-- DUPLICATE for infinite loop -->
+            <div class="proof-card"><picture><source srcset="/img/testimonials/phil-tomlinson.webp" type="image/webp"><img src="/img/testimonials/phil-tomlinson.png" alt="Phill Tomlinson" loading="lazy"></picture></div>
+            <div class="proof-quote">
+              <p class="pq-text">"He doesn't teach theory. He builds momentum."</p>
+              <div class="pq-row"><div class="pq-avatar">DB</div><div><p class="pq-name">David Barton</p><p class="pq-role">Entrepreneur</p></div></div>
+            </div>
+            <div class="proof-card"><picture><source srcset="/img/testimonials/david-barton-__-andrew-testimonial.webp" type="image/webp"><img src="/img/testimonials/david-barton-__-andrew-testimonial.png" alt="David Barton" loading="lazy"></picture></div>
+            <div class="proof-card"><picture><source srcset="/img/testimonials/facundo-aljer.webp" type="image/webp"><img src="/img/testimonials/facundo-aljer.png" alt="Facundo Aljer" loading="lazy"></picture></div>
+            <div class="proof-quote">
+              <p class="pq-text">"Andrew's the monstrosity here on AI by leaps and bounds."</p>
+              <div class="pq-row"><div class="pq-avatar">LS</div><div><p class="pq-name">Los S.</p><p class="pq-role">8-Figure Investor & Advisor</p></div></div>
+            </div>
+            <div class="proof-card"><picture><source srcset="/img/testimonials/chetali-deshmukh.webp" type="image/webp"><img src="/img/testimonials/chetali-deshmukh.png" alt="Chetali Deshmukh" loading="lazy"></picture></div>
+            <div class="proof-quote">
+              <p class="pq-text">"That approach completely changed my game."</p>
+              <div class="pq-row"><div class="pq-avatar">CD</div><div><p class="pq-name">Chetali Deshmukh</p><p class="pq-role">Digital Marketer</p></div></div>
+            </div>
+            <div class="proof-quote">
+              <p class="pq-text">"I'm usually the one talking — here I'm quiet because I'm taking in so much."</p>
+              <div class="pq-row"><div class="pq-avatar">EB</div><div><p class="pq-name">Eddy Bautista</p><p class="pq-role">Entrepreneur</p></div></div>
+            </div>
+            <div class="proof-card"><picture><source srcset="/img/testimonials/plato-taking-action.webp" type="image/webp"><img src="/img/testimonials/plato-taking-action.png" alt="Plato" loading="lazy"></picture></div>
+            <div class="proof-quote">
+              <p class="pq-text">"GPTs after GPTs — I can't believe the efficiency."</p>
+              <div class="pq-row"><div class="pq-avatar">WZ</div><div><p class="pq-name">Wiz of Ecom</p><p class="pq-role">E-Commerce Entrepreneur</p></div></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="border-top: 1px solid var(--border); padding: 32px 24px; text-align: center; max-width: 720px; margin: 0 auto;">
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 20px; margin-bottom: 12px;">
+      <a href="/terms" style="font-size: 11px; color: var(--text-muted); text-decoration: none;">Terms</a>
+      <a href="/privacy" style="font-size: 11px; color: var(--text-muted); text-decoration: none;">Privacy</a>
+      <a href="/cookies" style="font-size: 11px; color: var(--text-muted); text-decoration: none;">Cookies</a>
+      <a href="/disclaimer" style="font-size: 11px; color: var(--text-muted); text-decoration: none;">Disclaimer</a>
+      <a href="/refund" style="font-size: 11px; color: var(--text-muted); text-decoration: none;">Refund</a>
+      <a href="/acceptable-use" style="font-size: 11px; color: var(--text-muted); text-decoration: none;">Acceptable Use</a>
+    </div>
+    <p style="font-size: 11px; color: #D4D4D8;">&copy; 2026 AI Simple &mdash; <a href="/" style="color: var(--red); text-decoration: none;">aisimple.co</a></p>
+  </footer>
 
 <script>
 (function() {
@@ -468,6 +880,45 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       btn.textContent = 'Get Instant Access';
     });
   });
+})();
+
+// 3D Testimonial Marquee — infinite scroll
+(function() {
+  var tracks = document.querySelectorAll('.proof-track');
+  if (!tracks.length) return;
+  var states = [];
+  for (var i = 0; i < tracks.length; i++) {
+    var t = tracks[i];
+    states.push({
+      el: t,
+      dir: (t.getAttribute('data-direction') || 'up') === 'up' ? -1 : 1,
+      speed: parseFloat(t.getAttribute('data-speed') || '0.5'),
+      pos: 0,
+      half: 0
+    });
+  }
+  function init() {
+    for (var i = 0; i < states.length; i++) {
+      states[i].half = states[i].el.scrollHeight / 2;
+    }
+  }
+  function tick() {
+    for (var i = 0; i < states.length; i++) {
+      var s = states[i];
+      s.pos += s.speed * s.dir;
+      if (s.dir === -1 && s.pos <= -s.half) s.pos += s.half;
+      if (s.dir === 1 && s.pos >= 0) s.pos -= s.half;
+      s.el.style.transform = 'translate3d(0,' + s.pos + 'px,0)';
+    }
+    requestAnimationFrame(tick);
+  }
+  setTimeout(function() {
+    init();
+    for (var i = 0; i < states.length; i++) {
+      if (states[i].dir === 1) states[i].pos = -states[i].half;
+    }
+    tick();
+  }, 600);
 })();
 </script>
 </body>
